@@ -1,0 +1,37 @@
+﻿<Window x:Class="CS_Caixa.WinMostrarNomesCenib"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+         Title="Consulta Cenib" Height="261" Width="524" ResizeMode="NoResize" Icon="Images/Icone48.ico" ShowInTaskbar="False" WindowStartupLocation="CenterOwner" Loaded="Window_Loaded">
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FF819EA4" Offset="0"/>
+            <GradientStop Color="White" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Background>
+    <Grid>
+        <DockPanel Height="41" LastChildFill="False" Margin="0,10,0,0" Background="White" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
+            <Label Content="NOME" Name="lblNome"  HorizontalAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="14" Height="31" FontFamily="Browallia New" Foreground="#FF4B6EAA" Width="516" FontWeight="Bold"/>
+        </DockPanel>
+        <DataGrid AllowDrop="False" AlternatingRowBackground="PowderBlue" AlternationCount="1" AutoGenerateColumns="False" CanUserResizeRows="False" ClipboardCopyMode="ExcludeHeader" GridLinesVisibility="All" HeadersVisibility="All" HorizontalScrollBarVisibility="Auto" IsReadOnly="True" IsTabStop="True" x:Name="dataGrid1" RowBackground="Beige" SelectionMode="Single" SelectionUnit="FullRow" UseLayoutRounding="True" Margin="0,65,0,0"  VerticalScrollBarVisibility="Visible" Background="{x:Null}">
+            <DataGrid.CellStyle>
+                <Style TargetType="{x:Type DataGridCell}">
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="#FF0086FF" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.CellStyle>
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding IdIndiceRegistros}" CanUserResize="False" Header="Cod" Visibility="Hidden" Width="50" />
+                <DataGridTextColumn Binding="{Binding Nome}" CanUserResize="False" Header="Nome" Width="350" />
+                <DataGridTextColumn Binding="{Binding Livro}" CanUserResize="False" Header="Livro" Width="50" />
+                <DataGridTextColumn Binding="{Binding Reg}" CanUserResize="False" Header="Reg" Width="50" />
+                <DataGridTextColumn Binding="{Binding Numero}" CanUserResize="False" Header="Núm." Width="50" />
+                <DataGridTextColumn Binding="{Binding Fls}" CanUserResize="False" Header="Fls" Width="50" />
+                <DataGridTextColumn Binding="{Binding Ordem}" CanUserResize="False" Header="Ordem" Width="50" />
+            </DataGrid.Columns>
+            
+        </DataGrid>
+    </Grid>
+</Window>

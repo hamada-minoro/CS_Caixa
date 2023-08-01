@@ -1,0 +1,103 @@
+﻿<Window x:Class="CS_Caixa.WinControlePagamentoControle"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Controle de Receitas e Despesas" Height="890" Width="1330.5" Icon="/CS_Caixa;component/Icone48.ico" ShowInTaskbar="False" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+    <Grid Margin="0,0,2,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Label Content="Receitas" Margin="36,99,0,0" Name="label3" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="32" Foreground="Blue" FontWeight="Bold" FontStyle="Normal" FontFamily="Shruti" Height="52" VerticalAlignment="Top" HorizontalAlignment="Left" Width="552" />
+        <Label Content="Despesas" FontFamily="Shruti" FontSize="32" FontStyle="Normal" FontWeight="Bold" Foreground="Red" HorizontalContentAlignment="Center" Margin="0,99,48,0" Name="label4" VerticalContentAlignment="Center" Height="52" VerticalAlignment="Top" HorizontalAlignment="Right" Width="591" />
+        <Label Content="Diferença:" FontFamily="Shruti" FontSize="32" FontStyle="Normal" FontWeight="Bold" Foreground="Blue" HorizontalContentAlignment="Left" Name="lblDiferenca" VerticalContentAlignment="Center" Margin="36,0,0,6" Height="69" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="652" />
+        <Button Content="Imprimir" Cursor="Hand" HorizontalContentAlignment="Right" Margin="0,0,48,6" Name="btnImprimir" VerticalContentAlignment="Bottom" Click="btnImprimir_Click" IsEnabled="False" Height="59" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="105">
+            <Button.Background>
+                <ImageBrush ImageSource="/CS_Caixa;component/Images/1425073008_printer.png" Stretch="Uniform" TileMode="None" />
+            </Button.Background>
+        </Button>
+        <GroupBox Header="Período" x:Name="groupBox1" HorizontalAlignment="Left" Width="596" Height="85" VerticalAlignment="Top" Margin="36,14,0,0">
+            <Grid Margin="0,0,-2,-2">
+                <DatePicker Margin="73,22,0,0" x:Name="datePickerInicio" SelectedDateChanged="datePickerInicio_SelectedDateChanged" Height="25" VerticalAlignment="Top" HorizontalAlignment="Left" Width="111" />
+                <DatePicker Margin="279,22,0,0" x:Name="datePickerFim" SelectedDateChanged="datePickerFim_SelectedDateChanged" HorizontalAlignment="Left" Width="115" Height="25" VerticalAlignment="Top"/>
+                <Label Content="Data Início:" Margin="2,21,0,0" x:Name="label1" Height="28" VerticalAlignment="Top" HorizontalAlignment="Left" Width="70" />
+                <Label Content="Data Fim:" Margin="217,21,0,0" x:Name="label2" HorizontalAlignment="Left" Width="65" Height="28" VerticalAlignment="Top" />
+                <Button Content="Consultar" Cursor="Hand" HorizontalContentAlignment="Right" Margin="430,10,0,0" x:Name="btnConsultar" VerticalContentAlignment="Bottom" Click="btnConsultar_Click" Height="39" VerticalAlignment="Top" HorizontalAlignment="Left" Width="139">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/CS_Caixa;component/Images/1425000775_system-search-20.png" Stretch="Uniform" TileMode="None" />
+                    </Button.Background>
+                </Button>
+            </Grid>
+        </GroupBox>
+        <DataGrid AllowDrop="False" AlternatingRowBackground="PowderBlue" AlternationCount="1" AutoGenerateColumns="False" Background="{x:Null}" CanUserResizeRows="False" ClipboardCopyMode="ExcludeHeader" GridLinesVisibility="All" HeadersVisibility="All" HorizontalScrollBarVisibility="Auto" IsReadOnly="True" IsTabStop="True" x:Name="dataGridDebito" RowBackground="Beige" SelectionMode="Single" SelectionUnit="FullRow" UseLayoutRounding="True" VerticalScrollBarVisibility="Visible" SelectionChanged ="dataGridDebito_SelectionChanged" Margin="681,151,48,118">
+            <DataGrid.CellStyle>
+                <Style TargetType="{x:Type DataGridCell}">
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="#FF0086FF" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.CellStyle>
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Cod}" CanUserResize="False" Header="Cod" Visibility="Hidden" Width="50" />
+                <DataGridTextColumn Binding="{Binding Data, StringFormat=dd/MM/yyyy}" CanUserResize="False" Header="Data" Width="80" />
+                <DataGridTextColumn Binding="{Binding Descricao}" CanUserResize="False" Header="Descrição" Width="270" />
+                <DataGridTextColumn Binding="{Binding Origem}" CanUserResize="False" Header="Origem" Width="130" />
+                <DataGridTextColumn Binding="{Binding Valor, StringFormat=\{0:n2\}}" CanUserResize="False" Header="Valor" Width="80" />
+            </DataGrid.Columns>
+            <DataGrid.ContextMenu>
+                <ContextMenu ForceCursor="True" x:Name="contextMenu1" Selector.IsSelected="True">
+                    <MenuItem Click="menuItemAlterarDebito_Click" Header="Alterar" x:Name="menuItemAlterarDebito">
+                        <MenuItem.Icon>
+                            <Image Source="/CS_Caixa;component/Images/modify.png" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Click="menuItemExcluirDebito_Click" Header="Excluir" x:Name="menuItemExcluirDebito">
+                        <MenuItem.Icon>
+                            <Image Source="/CS_Caixa;component/Images/1425064473_DeleteRed.png" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+        </DataGrid>
+        <DataGrid AllowDrop="False" AlternatingRowBackground="PowderBlue" AlternationCount="1" AutoGenerateColumns="False" Background="{x:Null}" CanUserResizeRows="False" ClipboardCopyMode="ExcludeHeader" GridLinesVisibility="All" HeadersVisibility="All" HorizontalScrollBarVisibility="Auto" IsReadOnly="True" IsTabStop="True" x:Name="dataGridCredito" RowBackground="Beige" SelectionMode="Single" SelectionUnit="FullRow" UseLayoutRounding="True" VerticalScrollBarVisibility="Visible" SelectionChanged="dataGridCredito_SelectionChanged" Margin="36,151,732,118">
+            <DataGrid.CellStyle>
+                <Style TargetType="{x:Type DataGridCell}">
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="#FF0086FF" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.CellStyle>
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Cod}" CanUserResize="False" Header="Cod" Visibility="Hidden" Width="50" />
+                <DataGridTextColumn Binding="{Binding Data, StringFormat=dd/MM/yyyy}" CanUserResize="False" Header="Data" Width="80" />
+                <DataGridTextColumn Binding="{Binding Descricao}" CanUserResize="False" Header="Descrição" Width="230" />
+                <DataGridTextColumn Binding="{Binding TipoCredito}" CanUserResize="False" Header="Tipo" Width="130" />
+                <DataGridTextColumn Binding="{Binding Valor, StringFormat=\{0:n2\}}" CanUserResize="False" Header="Valor" Width="80" />
+            </DataGrid.Columns>
+            <DataGrid.ContextMenu>
+                <ContextMenu ForceCursor="True" x:Name="menu" Selector.IsSelected="True">
+                    <MenuItem Click="MenuItemAlterarCredito_Click" Header="Alterar Crédito" x:Name="MenuItemAlterarCredito">
+                        <MenuItem.Icon>
+                            <Image Source="/CS_Caixa;component/Images/modify.png" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Click="MenuItemExcluirCredito_Click" Header="Excluir Crédito" x:Name="MenuItemExcluirCredito">
+                        <MenuItem.Icon>
+                            <Image Source="/CS_Caixa;component/Images/1425064473_DeleteRed.png" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+        </DataGrid>
+        <Label Content="Total de Despesas:" FontFamily="Shruti" FontSize="18" FontStyle="Normal" FontWeight="Bold" Foreground="#FF2A6C0B" Height="38" HorizontalContentAlignment="Center" x:Name="lblTotalDebito" VerticalContentAlignment="Center" Margin="0,0,48,75" HorizontalAlignment="Right" Width="591" VerticalAlignment="Bottom" Background="#FFAFDEFF" />
+        <Label Content="Total de Receitas:" FontFamily="Shruti" FontSize="18" FontStyle="Normal" FontWeight="Bold" Foreground="#FF2A6C0B" HorizontalContentAlignment="Center" x:Name="lblTotalCredito" VerticalContentAlignment="Center" Height="38" Margin="36,0,0,75" HorizontalAlignment="Left" Width="552" VerticalAlignment="Bottom" Background="#FFAFDEFF" />
+    </Grid>
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FFA5DAE6" Offset="0" />
+            <GradientStop Color="AliceBlue" Offset="0.803" />
+        </LinearGradientBrush>
+    </Window.Background>
+</Window>

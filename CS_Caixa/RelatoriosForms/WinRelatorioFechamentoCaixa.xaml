@@ -1,0 +1,12 @@
+﻿<Window x:Class="CS_Caixa.RelatoriosForms.WinRelatorioFechamentoCaixa"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+       xmlns:rv="clr-namespace:Microsoft.Reporting.WinForms;assembly=Microsoft.ReportViewer.WinForms"
+        Title="RELATÓRIO" Height="513" Width="503" WindowState="Maximized" WindowStartupLocation="CenterScreen" ShowInTaskbar="False" WindowStyle="ThreeDBorderWindow">
+    <Grid>
+        <WindowsFormsHost>
+            <rv:ReportViewer x:Name="ReportViewer" Load="ReportViewer_Load"/>
+        </WindowsFormsHost>
+
+    </Grid>
+</Window>

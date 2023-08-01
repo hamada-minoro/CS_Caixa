@@ -1,0 +1,544 @@
+﻿<Window x:Class="CS_Caixa.WinChamarSenhas"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="WinChamarSenhas" Height="695.45" Width="1027" ResizeMode="NoResize" Icon="Images/Icone48.ico" ShowInTaskbar="False" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" WindowStyle="None" PreviewKeyDown="Window_PreviewKeyDown" Background="#FFCDC5E8" >
+    <Grid>
+        <Label x:Name="lblTitulo" Content="Chamada de Senhas" Height="46" FontSize="22" FontWeight="Bold" FontFamily="Arial" Background="#FFE6A78A" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Top" Foreground="#FF7A1212" BorderBrush="#FF4168D1" OpacityMask="#FF060606">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="1" ScaleX="1"/>
+                    <SkewTransform AngleY="0" AngleX="0"/>
+                    <RotateTransform Angle="0"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <Image x:Name="imageSair" HorizontalAlignment="Right" Cursor="Hand" Width="36" MouseUp="Image_MouseUp" Source="Images/ExcluirPequeno.png" Height="35" VerticalAlignment="Top" OpacityMask="#FFE46326" RenderTransformOrigin="0.5,0.5" Margin="0,6,6,0">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="1" ScaleX="-1"/>
+                    <SkewTransform AngleY="0" AngleX="0"/>
+                    <RotateTransform Angle="0"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+        <TabControl Margin="10,0,10,10" Name="tabControl1" Height="439" VerticalAlignment="Bottom" BorderBrush="#FF040813" Background="#FFFBB2A7">
+            <TabItem Header="Fila de Atendimento" BorderBrush="Black">
+                <TabItem.Background>
+                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                        <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                        <GradientStop Color="#FFEBEBEB" Offset="0.204"/>
+                        <GradientStop Color="#FF6BAAD4" Offset="1"/>
+                    </LinearGradientBrush>
+                </TabItem.Background>
+                <Grid Background="#FFB4C8D6">
+                    <DataGrid AutoGenerateColumns="False" Cursor="Hand" AlternationCount="2" RowBackground="White" AlternatingRowBackground="#FF8DE1FF" IsReadOnly="True" SelectionMode="Single" x:Name="dataGridPrioridade" AllowDrop="False" HeadersVisibility="All" CanUserResizeRows="False" SelectionUnit="FullRow" GridLinesVisibility="None" ClipboardCopyMode="ExcludeHeader" HorizontalScrollBarVisibility="Auto" UseLayoutRounding="True" Background="{x:Null}" IsTabStop="True"  Margin="0,77,499,0">
+                        <DataGrid.CellStyle>
+                            <Style TargetType="{x:Type DataGridCell}">
+                                <Style.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter Property="Background" Value="#FF0086FF" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </DataGrid.CellStyle>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Fila" Width="40" Binding="{Binding Fila}" CanUserResize="False" Visibility="Visible"/>
+                            <DataGridTextColumn Header="Senha" Width="80" Binding="{Binding Senha}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="Data" Width="70" Binding="{Binding Data, StringFormat='dd/MM/yyyy'}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="Hora Retirada" Width="90" Binding="{Binding HoraRetirada}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="Tipo" Width="40" Binding="{Binding TipoAtendimento}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="Status" Width="165" Binding="{Binding Status}" CanUserResize="False"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <DataGrid AutoGenerateColumns="False" Cursor="Hand" AlternationCount="2" RowBackground="White" AlternatingRowBackground="#FF8DE1FF" IsReadOnly="True" SelectionMode="Single" x:Name="dataGridNormal" AllowDrop="False" HeadersVisibility="All" CanUserResizeRows="False" SelectionUnit="FullRow" GridLinesVisibility="None" ClipboardCopyMode="ExcludeHeader" HorizontalScrollBarVisibility="Auto" UseLayoutRounding="True" Background="{x:Null}" IsTabStop="True"  Margin="503,77,0,0">
+                        <DataGrid.CellStyle>
+                            <Style TargetType="{x:Type DataGridCell}">
+                                <Style.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter Property="Background" Value="#FF0086FF" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </DataGrid.CellStyle>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Fila" Width="40" Binding="{Binding Fila}" CanUserResize="False" Visibility="Visible"/>
+                            <DataGridTextColumn Header="Senha" Width="80" Binding="{Binding Senha}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="Data" Width="70" Binding="{Binding Data, StringFormat=dd/MM/yyyy}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="Hora Retirada" Width="90" Binding="{Binding HoraRetirada}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="Tipo" Width="40" Binding="{Binding TipoAtendimento}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="Status" Width="160" Binding="{Binding Status}" CanUserResize="False"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="PREFERENCIAL" Margin="80,17,627,335" FontSize="36" FontWeight="Bold" Foreground="#FFFF1010"/>
+                    <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="NORMAL" Margin="631,17,137,335" FontSize="36" FontWeight="Bold" Foreground="#FF0051FF"/>
+                    <Button Content="Balcão Sem Senha" Height="62" Margin="388,10,384,0" x:Name="btnAtendimentoRapido" VerticalAlignment="Top" Background="{x:Null}" Cursor="Hand" Click="btnAtendimentoRapido_Click" TabIndex="4" FontSize="18" FontWeight="Bold" Foreground="#FFC32C2C" />
+                </Grid>
+            </TabItem>
+            <TabItem Header="Atendimentos Finalizados" BorderBrush="Black">
+                <TabItem.Background>
+                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                        <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                        <GradientStop Color="#FFEBEBEB" Offset="0.204"/>
+                        <GradientStop Color="#FF92C985" Offset="1"/>
+                    </LinearGradientBrush>
+                </TabItem.Background>
+                <Grid Background="#FFB3C7AE">
+                    <DataGrid AutoGenerateColumns="False" Cursor="Hand" AlternationCount="2" RowBackground="White" AlternatingRowBackground="#FF8DE1FF" IsReadOnly="True" SelectionMode="Single" x:Name="dataGridMeusAtendimentos" SelectionChanged="dataGridMeusAtendimentos_SelectionChanged" AllowDrop="False" HeadersVisibility="All" CanUserResizeRows="False" SelectionUnit="FullRow" GridLinesVisibility="None" ClipboardCopyMode="ExcludeHeader" HorizontalScrollBarVisibility="Auto" UseLayoutRounding="True" Background="{x:Null}" IsTabStop="True"  Margin="10,167,495,6">
+                        <DataGrid.CellStyle>
+                            <Style TargetType="{x:Type DataGridCell}">
+                                <Style.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter Property="Background" Value="#FF0086FF" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </DataGrid.CellStyle>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Fila" Width="40" Binding="{Binding Fila}" CanUserResize="False" Visibility="Visible"/>
+                            <DataGridTextColumn Header="Senha" Width="50" Binding="{Binding Senha}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="Data" Width="70" Binding="{Binding Data, StringFormat=dd/MM/yyyy}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="Retirada" Width="80" Binding="{Binding HoraRetirada}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="Chamada" Width="80" Binding="{Binding OrdemChamada}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="Lançado" Width="80" Binding="{Binding HoraAtendimento}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="Finalizado" Width="80" Binding="{Binding HoraFinalizado}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="Tipo" Width="40" Binding="{Binding TipoAtendimento}" CanUserResize="False"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Label x:Name="lblResultados" Content="Atendimentos Finalizados" Height="36" FontSize="22" FontWeight="Bold" FontFamily="Arial" Background="{x:Null}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Top" Foreground="#FF7A1212" BorderBrush="#FF4168D1" OpacityMask="#FF060606" Margin="10,131,495,0">
+                        <Label.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform ScaleY="1" ScaleX="1"/>
+                                <SkewTransform AngleY="0" AngleX="0"/>
+                                <RotateTransform Angle="0"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Label.RenderTransform>
+                    </Label>
+                    <DataGrid AutoGenerateColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" IsReadOnly="True" Margin="507,40,10,281" x:Name="dataGridReciboBalcao" SelectionMode="Single" AlternatingRowBackground="#FFFFE0D1" RowBackground="#FFBAFFDB" SelectionChanged="dataGridReciboBalcao_SelectionChanged" IsEnabled="True" Background="{x:Null}">
+                        <DataGrid.CellStyle>
+                            <Style TargetType="{x:Type DataGridCell}">
+                                <Style.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter Property="Background" Value="#FF0086FF" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </DataGrid.CellStyle>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="IdRecibo" Width="70" Binding="{Binding IdReciboBalcao}" CanUserResize="False" Visibility="Hidden"/>
+                            <DataGridTextColumn Header="Recibo" Width="50" Binding="{Binding NumeroRecibo}" CanUserResize="False"/>
+                            <DataGridCheckBoxColumn Header="Pago" Width="37" Binding="{Binding Pago}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="Nome" Width="140" Binding="{Binding Usuario}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="Tipo Pag." Width="80" Binding="{Binding TipoPagamento}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="Aut." Width="40" Binding="{Binding QuantAut}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="Abert." Width="40" Binding="{Binding QuantAbert}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="RecAut" Width="40" Binding="{Binding QuantRecAut}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="RecSem" Width="40" Binding="{Binding QuantRecSem}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="Cópia" Width="40" Binding="{Binding QuantCopia}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="Total" Width="70" Binding="{Binding Total, StringFormat=\{0:n2\}}" CanUserResize="False"/>
+                        </DataGrid.Columns>
+
+                    </DataGrid>
+                    <Label x:Name="lblTitulo_Copy1" Content="Recibo" Height="36" FontSize="22" FontWeight="Bold" FontFamily="Arial" Background="{x:Null}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Top" Foreground="#FF7A1212" BorderBrush="#FF4168D1" OpacityMask="#FF060606" Margin="507,4,10,0">
+                        <Label.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform ScaleY="1" ScaleX="1"/>
+                                <SkewTransform AngleY="0" AngleX="0"/>
+                                <RotateTransform Angle="0"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Label.RenderTransform>
+                    </Label>
+                    <DataGrid AutoGenerateColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" IsReadOnly="True" x:Name="dataGridSelos" SelectionMode="Single" Margin="507,167,10,6" AlternatingRowBackground="#FFFFE0D1" RowBackground="#FFBAFFDB" Background="{x:Null}">
+                        <DataGrid.CellStyle>
+                            <Style TargetType="{x:Type DataGridCell}">
+                                <Style.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter Property="Background" Value="#FF0086FF" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </DataGrid.CellStyle>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="id" Binding="{Binding Id_Ato}" CanUserResize="False" Width="140" Visibility="Hidden"/>
+                            <DataGridTextColumn Header="Letra" Width="50" Binding="{Binding LetraSelo}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="Selo" Width="70" Binding="{Binding NumeroSelo}" CanUserResize="False" />
+                            <DataGridTextColumn Header="Recibo" Width="70" Binding="{Binding ReciboBalcao}" CanUserResize="False" />
+                            <DataGridTextColumn Header="Tipo" Width="150" Binding="{Binding TipoAto}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="Nome" Width="200" Binding="{Binding Escrevente}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="Descrição" Binding="{Binding Path=DescricaoAto}" CanUserResize="False" Width="250"/>
+                            <DataGridTextColumn Header="Ficha" Binding="{Binding Path=FichaAto}" CanUserResize="False" Width="70"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Label x:Name="lblTitulo_Copy2" Content="Selos" Height="36" FontSize="22" FontWeight="Bold" FontFamily="Arial" Background="{x:Null}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Top" Foreground="#FF7A1212" BorderBrush="#FF4168D1" OpacityMask="#FF060606" Margin="507,131,10,0">
+                        <Label.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform ScaleY="1" ScaleX="1"/>
+                                <SkewTransform AngleY="0" AngleX="0"/>
+                                <RotateTransform Angle="0"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Label.RenderTransform>
+                    </Label>
+                    <GroupBox Header="Período de Consulta" HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top" Height="95" Width="492">
+                        <Grid Margin="0,0,-2,-3">
+                            <DatePicker x:Name="datePickerConsulta" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="200,33,0,0" Width="109"/>
+                            <Label Name="lblInform" Content="Data:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="200,9,0,0"/>
+                            <Button Content="Consultar" Margin="335,10,10,10" x:Name="btnConsultaFinalizados" Background="{x:Null}" Cursor="Hand" Click="btnConsultaFinalizados_Click" TabIndex="4" FontSize="16" FontWeight="Bold" Foreground="#FF4738D8" />
+                            <ComboBox Height="23" HorizontalAlignment="Left" IsEditable="False" Margin="10,34,0,0" x:Name="cmbTipoConsulta" SelectedIndex="0" TabIndex="1" VerticalAlignment="Top" Width="164" SelectionChanged="cmbTipoConsulta_SelectionChanged" BorderBrush="Black" Background="{x:Null}">
+                                <ComboBoxItem Content="DATA"/>
+                                <ComboBoxItem Content="RECIBO"/>
+                                <ComboBoxItem Content="SELO"/>
+                                <ComboBoxItem Content="SENHA"/>
+                            </ComboBox>
+                            <Label Content="Tipo de Consulta:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,8,0,0" Width="150"/>
+                            <TextBox Name="txtInform" MaxLength="9" CharacterCasing="Upper" HorizontalAlignment="Left" Height="24" TextWrapping="Wrap" PreviewKeyDown="txtInform_PreviewKeyDown" VerticalAlignment="Top" Width="109" Margin="200,33,0,0"/>
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Senhas Em Atendimento" BorderBrush="Black">
+                <TabItem.Background>
+                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                        <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                        <GradientStop Color="#FFDDDDDD" Offset="0.204"/>
+                        <GradientStop Color="#FF73DCDC" Offset="1"/>
+                    </LinearGradientBrush>
+                </TabItem.Background>
+                <Grid Background="#FFBEDCDC">
+                    <DataGrid AutoGenerateColumns="False" Cursor="Hand" AlternationCount="2" RowBackground="White" AlternatingRowBackground="#FF8DE1FF" IsReadOnly="True" SelectionMode="Single" x:Name="dataGridPrioridadeEmAtendimento" AllowDrop="False" HeadersVisibility="All" CanUserResizeRows="False" SelectionUnit="FullRow" GridLinesVisibility="None" ClipboardCopyMode="ExcludeHeader" HorizontalScrollBarVisibility="Auto" UseLayoutRounding="True" Background="{x:Null}" IsTabStop="True"  Margin="0,77,499,0">
+                        <DataGrid.CellStyle>
+                            <Style TargetType="{x:Type DataGridCell}">
+                                <Style.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter Property="Background" Value="#FF0086FF" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </DataGrid.CellStyle>
+                        <DataGrid.ContextMenu>
+                            <ContextMenu Selector.IsSelected="True" ForceCursor="True" Name="menuPrioridade">
+                                <MenuItem Header="Chamar Senha" Name="MenuItemChamarSenhaPrioridade" Click="MenuItemChamarSenha_Click" >
+
+                                </MenuItem>
+                            </ContextMenu>
+                        </DataGrid.ContextMenu>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Fila" Width="40" Binding="{Binding Fila}" CanUserResize="False" Visibility="Visible"/>
+                            <DataGridTextColumn Header="Senha" Width="80" Binding="{Binding Senha}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="Data" Width="70" Binding="{Binding Data, StringFormat=dd/MM/yyyy}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="Hora Retirada" Width="90" Binding="{Binding HoraRetirada}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="Tipo" Width="40" Binding="{Binding TipoAtendimento}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="Status" Width="165" Binding="{Binding Status}" CanUserResize="False"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <DataGrid AutoGenerateColumns="False" Cursor="Hand" AlternationCount="2" RowBackground="White" AlternatingRowBackground="#FF8DE1FF" IsReadOnly="True" SelectionMode="Single" x:Name="dataGridNormalEmAtendimento" AllowDrop="False" HeadersVisibility="All" CanUserResizeRows="False" SelectionUnit="FullRow" GridLinesVisibility="None" ClipboardCopyMode="ExcludeHeader" HorizontalScrollBarVisibility="Auto" UseLayoutRounding="True" Background="{x:Null}" IsTabStop="True"  Margin="503,77,0,0">
+                        <DataGrid.CellStyle>
+                            <Style TargetType="{x:Type DataGridCell}">
+                                <Style.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter Property="Background" Value="#FF0086FF" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </DataGrid.CellStyle>
+                        <DataGrid.ContextMenu>
+                            <ContextMenu Selector.IsSelected="True" ForceCursor="True" Name="menuNormal">
+                                <MenuItem Header="Chamar Senha" Name="MenuItemChamarSenhaNormal" Click="MenuItemChamarSenhaNormal_Click" >
+
+                                </MenuItem>
+                            </ContextMenu>
+                        </DataGrid.ContextMenu>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Fila" Width="40" Binding="{Binding Fila}" CanUserResize="False" Visibility="Visible"/>
+                            <DataGridTextColumn Header="Senha" Width="80" Binding="{Binding Senha}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="Data" Width="70" Binding="{Binding Data, StringFormat=dd/MM/yyyy}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="Hora Retirada" Width="90" Binding="{Binding HoraRetirada}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="Tipo" Width="40" Binding="{Binding TipoAtendimento}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="Status" Width="160" Binding="{Binding Status}" CanUserResize="False"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="PREFERENCIAL" Margin="0,0,499,330" FontSize="60" FontWeight="Bold" Foreground="#FFFF1010"/>
+                    <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="NORMAL" Margin="503,0,0,330" FontSize="60" FontWeight="Bold" Foreground="#FF0051FF"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Senhas Chamadas" BorderBrush="Black">
+                <TabItem.Background>
+                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                        <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                        <GradientStop Color="#FFDDDDDD" Offset="0.204"/>
+                        <GradientStop Color="#FF528DF7" Offset="1"/>
+                    </LinearGradientBrush>
+                </TabItem.Background>
+                <Grid Background="#FFB5CCF5">
+                    <DataGrid AutoGenerateColumns="False" Cursor="Hand" AlternationCount="2" RowBackground="White" AlternatingRowBackground="#FF8DE1FF" IsReadOnly="True" SelectionMode="Single" x:Name="dataGridPrioridadeChamada" AllowDrop="False" HeadersVisibility="All" CanUserResizeRows="False" SelectionUnit="FullRow" GridLinesVisibility="None" ClipboardCopyMode="ExcludeHeader" HorizontalScrollBarVisibility="Auto" UseLayoutRounding="True" Background="{x:Null}" IsTabStop="True"  Margin="0,77,499,0">
+                        <DataGrid.CellStyle>
+                            <Style TargetType="{x:Type DataGridCell}">
+                                <Style.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter Property="Background" Value="#FF0086FF" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </DataGrid.CellStyle>
+                        <DataGrid.ContextMenu>
+                            <ContextMenu Selector.IsSelected="True" ForceCursor="True" x:Name="menuPrioridade1">
+                                <MenuItem Header="Chamar Senha" x:Name="MenuItemChamarSenhaPrioridadeChamada" Click="MenuItemChamarSenhaPrioridadeChamada_Click" />
+                            </ContextMenu>
+                        </DataGrid.ContextMenu>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Fila" Width="40" Binding="{Binding Fila}" CanUserResize="False" Visibility="Visible"/>
+                            <DataGridTextColumn Header="Senha" Width="80" Binding="{Binding Senha}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="Data" Width="70" Binding="{Binding Data, StringFormat=dd/MM/yyyy}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="Hora Retirada" Width="90" Binding="{Binding HoraRetirada}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="Tipo" Width="40" Binding="{Binding TipoAtendimento}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="Status" Width="165" Binding="{Binding Status}" CanUserResize="False"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <DataGrid AutoGenerateColumns="False" Cursor="Hand" AlternationCount="2" RowBackground="White" AlternatingRowBackground="#FF8DE1FF" IsReadOnly="True" SelectionMode="Single" x:Name="dataGridNormalChamada" AllowDrop="False" HeadersVisibility="All" CanUserResizeRows="False" SelectionUnit="FullRow" GridLinesVisibility="None" ClipboardCopyMode="ExcludeHeader" HorizontalScrollBarVisibility="Auto" UseLayoutRounding="True" Background="{x:Null}" IsTabStop="True"  Margin="503,77,0,0">
+                        <DataGrid.CellStyle>
+                            <Style TargetType="{x:Type DataGridCell}">
+                                <Style.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter Property="Background" Value="#FF0086FF" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </DataGrid.CellStyle>
+                        <DataGrid.ContextMenu>
+                            <ContextMenu Selector.IsSelected="True" ForceCursor="True" x:Name="menuNormal1">
+                                <MenuItem Header="Chamar Senha" x:Name="MenuItemChamarSenhaNormalChamada" Click="MenuItemChamarSenhaNormalChamada_Click" />
+                            </ContextMenu>
+                        </DataGrid.ContextMenu>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Fila" Width="40" Binding="{Binding Fila}" CanUserResize="False" Visibility="Visible"/>
+                            <DataGridTextColumn Header="Senha" Width="80" Binding="{Binding Senha}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="Data" Width="70" Binding="{Binding Data, StringFormat=dd/MM/yyyy}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="Hora Retirada" Width="90" Binding="{Binding HoraRetirada}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="Tipo" Width="40" Binding="{Binding TipoAtendimento}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="Status" Width="160" Binding="{Binding Status}" CanUserResize="False"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="PREFERENCIAL" Margin="0,0,499,330" FontSize="60" FontWeight="Bold" Foreground="#FFFF1010"/>
+                    <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="NORMAL" Margin="503,0,0,330" FontSize="60" FontWeight="Bold" Foreground="#FF0051FF"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Senhas Canceladas" BorderBrush="Black">
+                <TabItem.Background>
+                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                        <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                        <GradientStop Color="#FFDDDDDD" Offset="0.204"/>
+                        <GradientStop Color="#FFB971F5" Offset="1"/>
+                    </LinearGradientBrush>
+                </TabItem.Background>
+                <Grid Background="#FFE7CAFF">
+                    <DataGrid AutoGenerateColumns="False" Cursor="Hand" AlternationCount="2" RowBackground="White" AlternatingRowBackground="#FF8DE1FF" IsReadOnly="True" SelectionMode="Single" x:Name="dataGridPrioridadeCanceladas" AllowDrop="False" HeadersVisibility="All" CanUserResizeRows="False" SelectionUnit="FullRow" GridLinesVisibility="None" ClipboardCopyMode="ExcludeHeader" HorizontalScrollBarVisibility="Auto" UseLayoutRounding="True" Background="{x:Null}" IsTabStop="True"  Margin="0,77,499,0">
+                        <DataGrid.CellStyle>
+                            <Style TargetType="{x:Type DataGridCell}">
+                                <Style.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter Property="Background" Value="#FF0086FF" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </DataGrid.CellStyle>
+                        <DataGrid.ContextMenu>
+                            <ContextMenu Selector.IsSelected="True" ForceCursor="True" x:Name="menuPrioridadeCanceladas">
+                                <MenuItem Header="Chamar Senha" x:Name="MenuItemChamarSenhaPrioridadeCancelada" Click="MenuItemChamarSenhaPrioridadeCancelada_Click" />
+                            </ContextMenu>
+                        </DataGrid.ContextMenu>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Fila" Width="40" Binding="{Binding Fila}" CanUserResize="False" Visibility="Visible"/>
+                            <DataGridTextColumn Header="Senha" Width="80" Binding="{Binding Senha}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="Data" Width="70" Binding="{Binding Data, StringFormat=dd/MM/yyyy}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="Hora Retirada" Width="90" Binding="{Binding HoraRetirada}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="Tipo" Width="40" Binding="{Binding TipoAtendimento}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="Status" Width="165" Binding="{Binding Status}" CanUserResize="False"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <DataGrid AutoGenerateColumns="False" Cursor="Hand" AlternationCount="2" RowBackground="White" AlternatingRowBackground="#FF8DE1FF" IsReadOnly="True" SelectionMode="Single" x:Name="dataGridNormalCanceladas" AllowDrop="False" HeadersVisibility="All" CanUserResizeRows="False" SelectionUnit="FullRow" GridLinesVisibility="None" ClipboardCopyMode="ExcludeHeader" HorizontalScrollBarVisibility="Auto" UseLayoutRounding="True" Background="{x:Null}" IsTabStop="True"  Margin="503,77,0,0">
+                        <DataGrid.CellStyle>
+                            <Style TargetType="{x:Type DataGridCell}">
+                                <Style.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter Property="Background" Value="#FF0086FF" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </DataGrid.CellStyle>
+                        <DataGrid.ContextMenu>
+                            <ContextMenu Selector.IsSelected="True" ForceCursor="True" x:Name="menuNormalCancelados">
+                                <MenuItem Header="Chamar Senha" x:Name="MenuItemChamarSenhaNormalCancelada" Click="MenuItemChamarSenhaNormalCancelada_Click" />
+                            </ContextMenu>
+                        </DataGrid.ContextMenu>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Fila" Width="40" Binding="{Binding Fila}" CanUserResize="False" Visibility="Visible"/>
+                            <DataGridTextColumn Header="Senha" Width="80" Binding="{Binding Senha}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="Data" Width="70" Binding="{Binding Data, StringFormat=dd/MM/yyyy}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="Hora Retirada" Width="90" Binding="{Binding HoraRetirada}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="Tipo" Width="40" Binding="{Binding TipoAtendimento}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="Status" Width="160" Binding="{Binding Status}" CanUserResize="False"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="PREFERENCIAL" Margin="0,0,499,330" FontSize="60" FontWeight="Bold" Foreground="#FFFF1010"/>
+                    <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="NORMAL" Margin="503,0,0,330" FontSize="60" FontWeight="Bold" Foreground="#FF0051FF"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Consultar Relatórios" Name="tabItemRelatorios" BorderBrush="Black" >
+                <TabItem.Background>
+                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                        <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                        <GradientStop Color="#FFDDDDDD" Offset="0.204"/>
+                        <GradientStop Color="#FFD6CA5B" Offset="1"/>
+                    </LinearGradientBrush>
+                </TabItem.Background>
+                <Grid Background="#FFE8E8CE">
+                    <GroupBox Header="Período de Consulta" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="87" Width="415">
+                        <Grid Margin="0,0,-2,-3">
+                            <DatePicker Name="datePickerInicioConsulta" SelectedDateChanged="datePickerInicioConsulta_SelectedDateChanged" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="16,24,0,0" Width="109"/>
+                            <DatePicker Name="datePickerFimConsulta" SelectedDateChanged="datePickerFimConsulta_SelectedDateChanged" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="148,24,0,0" Width="109"/>
+                            <Label Content="Data Início:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="16,0,0,0"/>
+                            <Label Content="Data Fim" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="148,0,0,0"/>
+                            <Button Content="Consultar" Margin="288,10,19,10" x:Name="btnConsultaRelatorio" Background="{x:Null}" Cursor="Hand" Click="btnConsultaRelatorio_Click" TabIndex="4" FontSize="16" FontWeight="Bold" Foreground="#FF4738D8" />
+                        </Grid>
+                    </GroupBox>
+                    <Label x:Name="lblMelhorDesempenho" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="" Margin="0,19,7,0" FontSize="20" FontWeight="Bold" Height="77" VerticalAlignment="Top" HorizontalAlignment="Right" Width="557" Foreground="#FFD80808" Background="#FF74DE8C"/>
+                    <ComboBox Height="23" HorizontalAlignment="Left" IsEditable="False" Margin="10,125,0,0" x:Name="cmbLogin" SelectedIndex="0" TabIndex="1" VerticalAlignment="Top" Width="415" SelectionChanged="cmbLogin_SelectionChanged" BorderBrush="Black" Background="{x:Null}"/>
+                    <Label Content="Funcionário:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,99,0,0"/>
+                    <DataGrid AutoGenerateColumns="False" Cursor="Hand" AlternationCount="2" RowBackground="White" AlternatingRowBackground="#FF8DE1FF" IsReadOnly="True" SelectionMode="Single" x:Name="dataGridConsultaRelatorios" AllowDrop="False" HeadersVisibility="All" CanUserResizeRows="False" SelectionUnit="FullRow" GridLinesVisibility="None" ClipboardCopyMode="ExcludeHeader" HorizontalScrollBarVisibility="Auto" UseLayoutRounding="True" Background="{x:Null}" IsTabStop="True"  Margin="433,125,7,0" SelectionChanged="dataGridConsultaRelatorios_SelectionChanged">
+                        <DataGrid.CellStyle>
+                            <Style TargetType="{x:Type DataGridCell}">
+                                <Style.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter Property="Background" Value="#FF0086FF" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </DataGrid.CellStyle>
+                        <DataGrid.ContextMenu>
+                            <ContextMenu Selector.IsSelected="True" ForceCursor="True" x:Name="menuNormalRestrito1">
+                                <MenuItem Header="Alterar para Em Espera" x:Name="MenuItemChamarSenhaNormalRestrito1" Click="MenuItemChamarSenhaNormalRestrito_Click" />
+                            </ContextMenu>
+                        </DataGrid.ContextMenu>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Senha" Width="80" Binding="{Binding Senha}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="Data" Width="70" Binding="{Binding Data, StringFormat=dd/MM/yyyy}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="Hora Retirada" Width="90" Binding="{Binding HoraRetirada}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="Tipo" Width="40" Binding="{Binding TipoAtendimento}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="Hora Finalizado" Width="100" Binding="{Binding HoraFinalizado}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="Status" Width="170" Binding="{Binding Status}" CanUserResize="False"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Rectangle HorizontalAlignment="Left" Height="175" Margin="10,153,0,0" Stroke="Black" VerticalAlignment="Top" Width="415"/>
+                    <Label Name="lblMediaAtendimento" Content="Média de atendimentos por dia        =" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,284,0,0" FontSize="16" FontWeight="Bold" Foreground="#FF2D53B8"/>
+                    <Label Name="lblTotalAtendimento" Content="Total de atendimentos no Período    =" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="8,219,0,0" Foreground="#FF2D53B8" FontSize="16" FontWeight="Bold"/>
+                    <Label Name="lblTotalDiasUteis" Content="Total de dias úteis no Período           =" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,153,0,0" Foreground="#FF2D53B8" FontSize="16" FontWeight="Bold"/>
+                    <DataGrid AutoGenerateColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" Height="67" HorizontalAlignment="Left" IsReadOnly="True" Margin="10,333,0,0" x:Name="dataGridReciboBalcao_Copy" SelectionMode="Single" VerticalAlignment="Top" Width="415" AlternatingRowBackground="#FFFFE0D1" RowBackground="#FFBAFFDB" >
+                        <DataGrid.CellStyle>
+                            <Style TargetType="{x:Type DataGridCell}">
+                                <Style.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter Property="Background" Value="#FF0086FF" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </DataGrid.CellStyle>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="IdRecibo" Width="70" Binding="{Binding IdReciboBalcao}" CanUserResize="False" Visibility="Hidden"/>
+                            <DataGridTextColumn Header="Recibo" Width="50" Binding="{Binding NumeroRecibo}" CanUserResize="False"/>
+                            <DataGridCheckBoxColumn Header="Pago" Width="37" Binding="{Binding Pago}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="Tipo Pag." Width="80" Binding="{Binding TipoPagamento}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="Aut." Width="40" Binding="{Binding QuantAut}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="Abert." Width="40" Binding="{Binding QuantAbert}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="RecAut" Width="40" Binding="{Binding QuantRecAut}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="RecSem" Width="40" Binding="{Binding QuantRecSem}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="Cópia" Width="40" Binding="{Binding QuantCopia}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="Total" Width="70" Binding="{Binding Total, StringFormat=\{0:n2\}}" CanUserResize="False"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            
+            <TabItem Header="Consultar Atendimento" Name="tabItemRestrito" BorderBrush="Black">
+                <TabItem.Background>
+                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                        <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                        <GradientStop Color="#FFDDDDDD" Offset="0.204"/>
+                        <GradientStop Color="#FF61D3D3" Offset="1"/>
+                    </LinearGradientBrush>
+                </TabItem.Background>
+                <Grid Background="#FF93D1D1">
+                    <DataGrid AutoGenerateColumns="False" Cursor="Hand" AlternationCount="2" RowBackground="White" AlternatingRowBackground="#FF8DE1FF" IsReadOnly="True" SelectionMode="Single" x:Name="dataGridPrioridadeRestrito" AllowDrop="False" HeadersVisibility="All" CanUserResizeRows="False" SelectionUnit="FullRow" GridLinesVisibility="None" ClipboardCopyMode="ExcludeHeader" HorizontalScrollBarVisibility="Auto" UseLayoutRounding="True" Background="{x:Null}" IsTabStop="True"  Margin="0,77,499,0">
+                        <DataGrid.CellStyle>
+                            <Style TargetType="{x:Type DataGridCell}">
+                                <Style.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter Property="Background" Value="#FF0086FF" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </DataGrid.CellStyle>
+                        <DataGrid.ContextMenu>
+                            <ContextMenu Selector.IsSelected="True" ForceCursor="True" x:Name="menuPrioridadeRestrito">
+                                <MenuItem Header="Alterar para Em Espera" x:Name="MenuItemChamarSenhaPrioridadeRestrito" Click="MenuItemChamarSenhaPrioridadeRestrito_Click" />
+                            </ContextMenu>
+                        </DataGrid.ContextMenu>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Fila" Width="40" Binding="{Binding Fila}" CanUserResize="False" Visibility="Visible"/>
+                            <DataGridTextColumn Header="Senha" Width="80" Binding="{Binding Senha}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="Data" Width="70" Binding="{Binding Data, StringFormat=dd/MM/yyyy}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="Hora Retirada" Width="90" Binding="{Binding HoraRetirada}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="Tipo" Width="40" Binding="{Binding TipoAtendimento}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="Status" Width="165" Binding="{Binding Status}" CanUserResize="False"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <DataGrid AutoGenerateColumns="False" Cursor="Hand" AlternationCount="2" RowBackground="White" AlternatingRowBackground="#FF8DE1FF" IsReadOnly="True" SelectionMode="Single" x:Name="dataGridNormalRestrito" AllowDrop="False" HeadersVisibility="All" CanUserResizeRows="False" SelectionUnit="FullRow" GridLinesVisibility="None" ClipboardCopyMode="ExcludeHeader" HorizontalScrollBarVisibility="Auto" UseLayoutRounding="True" Background="{x:Null}" IsTabStop="True"  Margin="503,77,0,0">
+                        <DataGrid.CellStyle>
+                            <Style TargetType="{x:Type DataGridCell}">
+                                <Style.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter Property="Background" Value="#FF0086FF" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </DataGrid.CellStyle>
+                        <DataGrid.ContextMenu>
+                            <ContextMenu Selector.IsSelected="True" ForceCursor="True" x:Name="menuNormalRestrito">
+                                <MenuItem Header="Alterar para Em Espera" x:Name="MenuItemChamarSenhaNormalRestrito" Click="MenuItemChamarSenhaNormalRestrito_Click" />
+                            </ContextMenu>
+                        </DataGrid.ContextMenu>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Fila" Width="40" Binding="{Binding Fila}" CanUserResize="False" Visibility="Visible"/>
+                            <DataGridTextColumn Header="Senha" Width="80" Binding="{Binding Senha}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="Data" Width="70" Binding="{Binding Data, StringFormat=dd/MM/yyyy}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="Hora Retirada" Width="90" Binding="{Binding HoraRetirada}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="Tipo" Width="40" Binding="{Binding TipoAtendimento}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="Status" Width="160" Binding="{Binding Status}" CanUserResize="False"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="PREFERENCIAL" Margin="0,45,499,330" FontSize="20" FontWeight="Bold" Foreground="#FFFF1010"/>
+                    <Label HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="NORMAL" Margin="503,45,0,330" FontSize="20" FontWeight="Bold" Foreground="#FF0051FF"/>
+                    <TextBox Name="txtIp" HorizontalAlignment="Left" Height="23" Margin="10,22,0,0" TextWrapping="Wrap" VerticalAlignment="Top" PreviewKeyDown="txtIp_PreviewKeyDown" Width="198"/>
+                    <Label Content="IP do Painel de Senhas:" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.462" Margin="10,0,0,0"/>
+                    <TextBox Name="txtPorta" HorizontalAlignment="Left" Height="23" Margin="230,22,0,0" TextWrapping="Wrap" PreviewKeyDown="txtPorta_PreviewKeyDown" VerticalAlignment="Top" Width="108"/>
+                    <Label Content="Porta:" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.462" Margin="230,0,0,0"/>
+                    <Button Content="Alterar" Name="btnAlterarIpPorta" HorizontalAlignment="Left" Margin="352,22,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="btnAlterarIpPorta_Click"/>
+                </Grid>
+            </TabItem>
+
+
+ 
+
+        </TabControl>
+        <Grid Height="130" Margin="265,71,268,0" VerticalAlignment="Top" Background="#FFB8ACD3">
+            <Label Name="lblUltSenha" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="A000" Margin="101,29,101,9" FontSize="60" FontWeight="Bold"/>
+            <Label Content="ÚLTIMA SENHA CHAMADA:" Margin="101,1,101,92" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" FontWeight="Bold"/>
+        </Grid>
+        <Button Content="Chamar Senha" Height="130" Margin="837,71,10,0" x:Name="btnChamarSenha" VerticalAlignment="Top" Background="{x:Null}" Cursor="Hand" Click="btnChamarSenha_Click" TabIndex="4" FontSize="24" FontWeight="Bold" Foreground="#FFC32C2C" />
+        <Button Content="Atualizar" Height="130" Margin="10,71,837,0" x:Name="btnAtualizar" VerticalAlignment="Top" Background="{x:Null}" Cursor="Hand" Click="btnAtualizar_Click" TabIndex="4" FontSize="24" FontWeight="Bold" Foreground="#FFC32C2C" />
+        <Label Content="Quantidade de pessoas na fila:" Name="lblPessoasFila" HorizontalAlignment="Left" Margin="10,215,0,0" VerticalAlignment="Top" Foreground="#FFF90000" FontSize="16" FontWeight="Bold"/>
+
+    </Grid>
+</Window>

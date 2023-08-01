@@ -1,0 +1,66 @@
+﻿<Window x:Class="CS_Caixa.WinCadUsuario"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Cadastro de Usuários" Height="505" Width="726" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen" ShowInTaskbar="False" Icon="/CS_Caixa;component/Images/Icone48.ico" ResizeMode="NoResize">
+    <Grid Width="705" Height="468">
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FFC3A3FF" Offset="1" />
+                <GradientStop Color="White" Offset="0.238" />
+            </LinearGradientBrush>
+        </Grid.Background>
+        <GroupBox Header="Cadastro do Usuário" Height="330" HorizontalAlignment="Left" Margin="16,121,0,0" Name="groupBoxCadUsuario" VerticalAlignment="Top" Width="675">
+            <Grid>
+                <TextBox CharacterCasing="Upper" Height="23" HorizontalAlignment="Left" Margin="22,48,0,0" Name="txtNome" VerticalAlignment="Top" Width="389" />
+                <GroupBox Header="Permissões" Height="92" HorizontalAlignment="Left" Margin="22,102,0,0" Name="groupBoxPermissoes" VerticalAlignment="Top" Width="621">
+                    <Grid>
+                        <CheckBox Background="#FFFCF9F9" Click="checkBoxUsuarioMaster_Click" Content="Usuário Master" Cursor="Hand" Foreground="#FFF50000" Height="16" HorizontalAlignment="Left" Margin="7,14,0,0" Name="checkBoxUsuarioMaster" ToolTip="Livre Acesso ao Sistema" VerticalAlignment="Top" TabIndex="1" />
+                        <CheckBox Content="Excluir Atos" Cursor="Hand" Height="16" HorizontalAlignment="Left" Margin="129,37,0,0" Name="checkBoxExcluirAtos" ToolTip="Permitir que usuário exclua os atos" VerticalAlignment="Top" TabIndex="4" />
+                        <CheckBox Content="Alterar Atos" Cursor="Hand" Height="16" HorizontalAlignment="Left" Margin="129,14,0,0" Name="checkBoxAlterarAtos" ToolTip="Permitir que usuário Altere os atos" VerticalAlignment="Top" TabIndex="3" />
+                        <CheckBox Content="Permissão Protesto" Cursor="Hand" Height="16" HorizontalAlignment="Left" Margin="240,14,0,0" Name="checkBoxProtesto" ToolTip="Permitir que usuário acesse Protesto" VerticalAlignment="Top" TabIndex="5" />
+                        <CheckBox Content="Permissão Rgi" Cursor="Hand" Height="16" HorizontalAlignment="Left" Margin="240,37,0,0" Name="checkBoxRgi" ToolTip="Permitir que usuário aacesse Rgi" VerticalAlignment="Top" TabIndex="6" />
+                        <CheckBox Content="Usuário Caixa" Cursor="Hand" Height="16" HorizontalAlignment="Left" Margin="7,37,0,0" Name="checkBoxCaixa" ToolTip="Usuário é Caixa" VerticalAlignment="Top" TabIndex="2" />
+                        <CheckBox Content="Permissão Balcão" Cursor="Hand" Height="16" HorizontalAlignment="Left" Margin="379,37,0,0" Name="checkBoxBalcao" ToolTip="Permitir que usuário acesse Balcão" VerticalAlignment="Top" TabIndex="8" />
+                        <CheckBox Content="Permissão Notas" Cursor="Hand" Height="16" HorizontalAlignment="Left" Margin="379,14,0,0" Name="checkBoxNotas" ToolTip="Permitir que usuário Acesse Notas" VerticalAlignment="Top" TabIndex="7" />
+                        <CheckBox Content="Imp. Matrícula" Cursor="Hand" Height="16" HorizontalAlignment="Left" Margin="500,14,0,0" x:Name="checkBoxImprimirMatricula" ToolTip="Permitir que usuário imprima matrículas de RGI" VerticalAlignment="Top" TabIndex="8" />
+                        <CheckBox Content="Administração" Cursor="Hand" Height="16" HorizontalAlignment="Left" Margin="500,37,0,0" x:Name="checkBoxAdm" ToolTip="Usuário de Administração" VerticalAlignment="Top" TabIndex="8" />
+                    </Grid>
+                </GroupBox>
+                <Button Click="btnSalvar_Click" ClickMode="Release" Cursor="Hand" Focusable="True" FontStretch="Expanded" ForceCursor="True" Height="76.04" HorizontalAlignment="Left" HorizontalContentAlignment="Center" IsDefault="False" IsEnabled="True" IsManipulationEnabled="True" Margin="239,0,0,10.04" MouseEnter="btnSalvar_MouseEnter" MouseLeave="btnSalvar_MouseLeave" Name="btnSalvar" OverridesDefaultStyle="False" SnapsToDevicePixels="False" TabIndex="3" ToolTip="Salvar Alterações e Inclusões" UseLayoutRounding="False" VerticalAlignment="Bottom" VerticalContentAlignment="Center" Width="75">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/CS_Caixa;component/Images/1448986681_Accept-Male-User.png" />
+                    </Button.Background>
+                </Button>
+                <Label Content="Nome:" Height="23" HorizontalAlignment="Left" Margin="18,24,0,0" Name="label2" VerticalAlignment="Top" Width="45" />
+                <Label Content="Senha:" Height="23" HorizontalAlignment="Left" Margin="431,24,0,0" Name="label6" VerticalAlignment="Top" Width="45" />
+                <Button Click="btnCancelar_Click" ClickMode="Release" Cursor="Hand" Focusable="True" FontStretch="Expanded" ForceCursor="True" Height="76.04" HorizontalAlignment="Left" HorizontalContentAlignment="Center" IsDefault="False" IsEnabled="True" IsManipulationEnabled="True" Margin="357,0,0,10.04" MouseEnter="btnCancelar_MouseEnter" MouseLeave="btnCancelar_MouseLeave" Name="btnCancelar" OverridesDefaultStyle="False" SnapsToDevicePixels="False" TabIndex="3" ToolTip="Cancelar Alteração e Inclusão" UseLayoutRounding="False" VerticalAlignment="Bottom" VerticalContentAlignment="Center" Width="75">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/CS_Caixa;component/Images/1425000530_dialog-error-32.png" Stretch="None" TileMode="None" />
+                    </Button.Background>
+                </Button>
+                <PasswordBox Height="23" HorizontalAlignment="Left" Margin="437,48,0,0" Name="txtSenha" VerticalAlignment="Top" Width="206" />
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="Usuário" Height="99" HorizontalAlignment="Left" Margin="16,16,0,0" Name="groupBoxUsuario" VerticalAlignment="Top" Width="675">
+            <Grid>
+                <ComboBox Background="{x:Null}" Height="23" HorizontalAlignment="Left" IsEditable="False" IsReadOnly="False" Margin="70,29,0,0" Name="cmbLogin" SelectedIndex="0" SelectionChanged="cmbLogin_SelectionChanged" TabIndex="1" VerticalAlignment="Top" Width="332" />
+                <Label Content="Usuário:" Height="23" HorizontalAlignment="Left" Margin="15,27,0,0" Name="label1" VerticalAlignment="Top" Width="64" />
+                <Button Click="btnAdicionar_Click" ClickMode="Release" Cursor="Hand" Focusable="True" FontStretch="Expanded" ForceCursor="True" Height="76.04" HorizontalContentAlignment="Center" IsDefault="False" IsEnabled="True" IsManipulationEnabled="True" Margin="416,0,175,0" MouseEnter="btnAdicionar_MouseEnter" MouseLeave="btnAdicionar_MouseLeave" Name="btnAdicionar" OverridesDefaultStyle="False" SnapsToDevicePixels="False" TabIndex="3" ToolTip="Adicionar Novo Usuário" UseLayoutRounding="False" VerticalAlignment="Bottom" VerticalContentAlignment="Center">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/CS_Caixa;component/Images/1448986602_Add-Male-User.png" />
+                    </Button.Background>
+                </Button>
+                <Button Click="btnAlterar_Click" ClickMode="Release" Cursor="Hand" Focusable="True" FontStretch="Expanded" ForceCursor="True" Height="76.04" HorizontalContentAlignment="Center" IsDefault="False" IsEnabled="True" IsManipulationEnabled="True" Margin="498,0,93,0" MouseEnter="btnAlterar_MouseEnter" MouseLeave="btnAlterar_MouseLeave" Name="btnAlterar" OverridesDefaultStyle="False" SnapsToDevicePixels="False" TabIndex="3" ToolTip="Alterar Usuário Cadastrado" UseLayoutRounding="False" VerticalAlignment="Bottom" VerticalContentAlignment="Center">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/CS_Caixa;component/Images/1448986613_Edit-Male-User.png" />
+                    </Button.Background>
+                </Button>
+                <Button Click="btnExcluir_Click" ClickMode="Release" Cursor="Hand" Focusable="True" FontStretch="Expanded" ForceCursor="True" Height="76.04" HorizontalContentAlignment="Center" IsDefault="False" IsEnabled="True" IsManipulationEnabled="True" Margin="580,0,9,0" MouseEnter="btnExcluir_MouseEnter" MouseLeave="btnExcluir_MouseLeave" Name="btnExcluir" OverridesDefaultStyle="False" SnapsToDevicePixels="False" TabIndex="3" ToolTip="Excluir Usuário Cadastrado" UseLayoutRounding="False" VerticalAlignment="Bottom" VerticalContentAlignment="Center">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/CS_Caixa;component/Images/1448986620_Remove-Male-User.png" />
+                    </Button.Background>
+                </Button>
+            </Grid>
+        </GroupBox>
+    </Grid>
+</Window>

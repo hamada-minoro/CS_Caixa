@@ -1,0 +1,157 @@
+﻿<Window x:Class="CS_Caixa.WinImportarRecolhimentoNotas"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="WinImportarRecolhimentoNotas" Height="400" Width="600" WindowStyle="None"
+        ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Background="Transparent" 
+        ShowActivated="False" ShowInTaskbar="False" Loaded="Window_Loaded">
+    <Border Background="#FFD2E3FB">
+        <Grid Background="Transparent">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.ColumnSpan="2" Background="#FFAB9CDC">
+                <TextBlock x:Name="txbTitulo" Text="IMPORTAR VALORES DO NOTAS"  Margin="5" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Fonts/#Dosis" FontWeight="Medium" FontSize="15" Foreground="#FF001678"/>
+                <Button x:Name="btnFechar" Height="20" Margin="0,5,7,5" Focusable="False" Click="btnFechar_Click" HorizontalAlignment="Right" Width="20">
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Content" Value="X"/>
+                            <Setter Property="BorderBrush" Value="{x:Null}"/>
+                            <Setter Property="Background" Value="#FF001678"/>
+                            <Setter Property="Foreground" Value="LightGray"/>
+                            <Setter Property="FontFamily" Value="Font/#Dosis"/>
+                            <Setter Property="FontWeight" Value="Bold"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border x:Name="border" BorderBrush="White" CornerRadius="10" Background="{TemplateBinding Background}"
+            								BorderThickness="0" >
+                                            <ContentPresenter VerticalAlignment="Center"
+            									HorizontalAlignment="Center"/>
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="true">
+                                                <Setter Property="Background" TargetName="border" Value="#FF143F7E" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Style>
+                </Button>
+            </Grid>
+
+            <Grid Grid.Row="1" Margin="10,0,0,10" Background="#FF8282D3">
+
+                <StackPanel Orientation="Vertical">
+                    <Grid Height="50" Margin="10 10" Background="#FFA9B9DA" >
+                        <TextBlock Text="Data do Ato:" Height="18" VerticalAlignment="Top" Margin="5,0,10,0" />
+                        <DatePicker x:Name="dpDataAto" Height="25" Margin="5,20,5,5" SelectedDateChanged="dpDataAto_SelectedDateChanged"/>
+                    </Grid>
+                    <Grid  Margin="10 10 10 10" Background="#FFA9B9DA" Height="270" >
+                        <StackPanel Orientation="Vertical" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                            <TextBlock x:Name="txbEmol" Margin="5" Text="EMOLS: 0" FontFamily="Fonts/#Dosis" FontSize="18" FontWeight="Medium" Foreground="#FF320404"/>
+                            <TextBlock x:Name="txbFetj" Margin="5" Text="FETJ: 0" FontFamily="Fonts/#Dosis" FontSize="18" FontWeight="Medium" Foreground="#FF320404"/>
+                            <TextBlock x:Name="txbFund" Margin="5" Text="FUND: 0" FontFamily="Fonts/#Dosis" FontSize="18" FontWeight="Medium" Foreground="#FF320404"/>
+                            <TextBlock x:Name="txbFunp" Margin="5" Text="FUNP: 0" FontFamily="Fonts/#Dosis" FontSize="18" FontWeight="Medium" Foreground="#FF320404"/>
+                            <TextBlock x:Name="txbFuna" Margin="5" Text="FUNA: 0" FontFamily="Fonts/#Dosis" FontSize="18" FontWeight="Medium" Foreground="#FF320404"/>
+                            <TextBlock x:Name="txbPmcmv" Margin="5" Text="PMCMV: 0" FontFamily="Fonts/#Dosis" FontSize="18" FontWeight="Medium" Foreground="#FF320404"/>
+                            <TextBlock x:Name="txbIss" Margin="5" Text="ISS: 0" FontFamily="Fonts/#Dosis" FontSize="18" FontWeight="Medium" Foreground="#FF320404"/>
+
+
+                            <Button x:Name="btnImportar" HorizontalAlignment="Center" VerticalAlignment="Top" Width="100" Margin="5" Height="30" Click="btnImportar_Click">
+                                <Button.Style>
+                                    <Style TargetType="{x:Type Button}" >
+                                        <Setter Property="Content" Value="Importar"/>
+                                        <Setter Property="FontFamily" Value="Font/#Dosis"/>
+                                        <Setter Property="FontSize" Value="15"/>
+                                        <Setter Property="Background" Value="#FF3C2466"/>
+                                        <Setter Property="Foreground" Value="AliceBlue"/>
+                                        <Setter Property="BorderBrush" Value="{x:Null}"/>
+                                        <Setter Property="BorderThickness" Value="0"/>
+                                        <Setter Property="Cursor" Value="Hand"/>
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="{x:Type Button}">
+                                                    <Border x:Name="border" CornerRadius="10" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}"
+        											BorderThickness="{TemplateBinding BorderThickness}">
+                                                        <ContentPresenter Content="{TemplateBinding Content}" VerticalAlignment="Center" HorizontalAlignment="Center" ClipToBounds="False"/>
+                                                    </Border>
+                                                    <ControlTemplate.Triggers>
+                                                        <Trigger Property="IsMouseOver" Value="true">
+                                                            <Setter Property="Background" TargetName="border" Value="#FF545BEE"/>
+                                                        </Trigger>
+                                                        <Trigger Property="IsEnabled" Value="false">
+                                                            <Setter Property="Background" TargetName="border" Value="#FFA6A6A6"/>
+                                                        </Trigger>
+                                                    </ControlTemplate.Triggers>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </Button.Style>
+                            </Button>
+
+
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+            </Grid>
+
+            <Grid Grid.Column="1" Grid.Row="1" Margin="0, 0,10,10" Background="#FF8B93EA">
+                <DataGrid AutoGenerateColumns="False" Focusable="False" CanUserResizeColumns="False" CanUserSortColumns="False" Height="340" IsReadOnly="True" Margin="3,10,0,0" x:Name="dataGrid" SelectionMode="Single" VerticalAlignment="Top" AlternatingRowBackground="#FFFFE0D1" RowBackground="#FFBAFFDB" Background="{x:Null}" >
+                    <DataGrid.RowStyle>
+                        <Style TargetType="{x:Type DataGridRow}">
+                            <EventSetter Event="Control.MouseDoubleClick" Handler="dataGrid_MouseDoubleClick"/>
+                        </Style>
+                    </DataGrid.RowStyle>
+                    <DataGrid.CellStyle>
+                        <Style TargetType="{x:Type DataGridCell}">
+                            <Style.Triggers>
+                                <Trigger Property="IsSelected" Value="True">
+                                    <Setter Property="Background" Value="#FF0086FF" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DataGrid.CellStyle>
+                    <DataGrid.Columns>
+                        <DataGridTemplateColumn CanUserResize="False" >
+                            <DataGridTemplateColumn.Header>
+                                <CheckBox x:Name="checkTodos" IsChecked="True" Checked="checkTodos_Checked" Unchecked="checkTodos_Unchecked" Cursor="Hand"/>
+                            </DataGridTemplateColumn.Header>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <CheckBox x:Name="checkedUm" Checked="checkedUm_Checked" Unchecked="checkedUm_Unchecked" HorizontalAlignment="Center" Cursor="Hand" VerticalAlignment="Center" IsChecked="{Binding Checked, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTextColumn Header="Id_Ato" Width="70" Binding="{Binding IdReciboBalcao}" CanUserResize="False" Visibility="Hidden"/>
+                        <DataGridTextColumn Header="Livro" Width="60" Binding="{Binding Livro}" CanUserResize="False"/>
+                        <DataGridTextColumn Header="Folha" Width="50" Binding="{Binding FolhaInical}" CanUserResize="False"/>
+                        <DataGridTextColumn Header="Ato" Width="50" Binding="{Binding NumeroAto}" CanUserResize="False"/>
+                        <DataGridTextColumn Header="Espécie do Ato" Width="180" Binding="{Binding TipoAto}" CanUserResize="False"/>
+                        <DataGridTextColumn Header="Emol." Width="60" Binding="{Binding Emolumentos, StringFormat=\{0:n2\}}" CanUserResize="False"/>
+                        <DataGridTextColumn Header="Fetj" Width="60" Binding="{Binding Fetj, StringFormat=\{0:n2\}}" CanUserResize="False"/>
+                        <DataGridTextColumn Header="Fund" Width="60" Binding="{Binding Fundperj, StringFormat=\{0:n2\}}" CanUserResize="False"/>
+                        <DataGridTextColumn Header="Funp" Width="60" Binding="{Binding Funperj, StringFormat=\{0:n2\}}" CanUserResize="False"/>
+                        <DataGridTextColumn Header="Funa" Width="60" Binding="{Binding Funarpen, StringFormat=\{0:n2\}}" CanUserResize="False"/>
+                        <DataGridTextColumn Header="Pmcmv" Width="60" Binding="{Binding Pmcmv, StringFormat=\{0:n2\}}" CanUserResize="False"/>
+                        <DataGridTextColumn Header="Iss" Width="40" Binding="{Binding Iss, StringFormat=\{0:n2\}}" CanUserResize="False"/>
+                        <DataGridTextColumn Header="Letra" Width="50" Binding="{Binding LetraSelo}" CanUserResize="False"/>
+                        <DataGridTextColumn Header="Selo" Width="50" Binding="{Binding NumeroSelo}" CanUserResize="False"/>
+                    </DataGrid.Columns>
+
+                </DataGrid>
+                <ProgressBar Visibility="Hidden" x:Name="progressBar" Margin="3,10,0,0" Foreground="#FF8F64B2"/>
+                <TextBox x:Name="txbAguarde" Visibility="Hidden" BorderThickness="0" BorderBrush="{x:Null}" FontWeight="Medium" Foreground="#FF474645" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="Fonts/#Dosis" FontSize="40" Margin="3,10,0,0" TextWrapping="Wrap" Text="Aguarde..." Background="{x:Null}"/>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>

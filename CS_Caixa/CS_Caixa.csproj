@@ -1,0 +1,1903 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E7BFD8D3-88D0-468D-97E8-EEEF7632DE3A}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CS_Caixa</RootNamespace>
+    <AssemblyName>CS_Caixa</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <NuGetPackageImportStamp>7dc75266</NuGetPackageImportStamp>
+    <PublishUrl>\\SERVIDOR\CS_Sistemas\CS_Caixa\Atualização\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Unc</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>4</ApplicationRevision>
+    <ApplicationVersion>6.21.11.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Icone48.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>CS_Caixa.App</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>E4731CC8FDA0DFFC2FF79FA11501697C4D32C3E1</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>CS_Caixa_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>Always</RunPostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <DelaySign>true</DelaySign>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net40\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FirebirdSql.Data.FirebirdClient, Version=5.8.0.0, Culture=neutral, PublicKeyToken=3750abcc3150b00c, processorArchitecture=MSIL">
+      <HintPath>..\packages\FirebirdSql.Data.FirebirdClient.5.8.0\lib\net40-client\FirebirdSql.Data.FirebirdClient.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MessagingToolkit.QRCode, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MessagingToolkit.QRCode.1.3.0\lib\MessagingToolkit.QRCode.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Word, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.ReportViewer.Common">
+      <HintPath>..\packages\Microsoft.ReportViewer.Common.10.0.40219.1\lib\Microsoft.ReportViewer.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization">
+      <HintPath>..\packages\Microsoft.ReportViewer.Common.10.0.40219.1\lib\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.ReportViewer.Common.10.0.40219.1\lib\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.ReportViewer.WinForms.10.0.40219.1\lib\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Model.Control">
+      <HintPath>..\..\CS_Notas\Notas\bin\Debug\Model.Control.dll</HintPath>
+    </Reference>
+    <Reference Include="Modelos.Gerencial">
+      <HintPath>..\..\CS_Notas\Notas\bin\Debug\Modelos.Gerencial.dll</HintPath>
+    </Reference>
+    <Reference Include="Modelos.Notas">
+      <HintPath>..\..\CS_Notas\Notas\bin\Debug\Modelos.Notas.dll</HintPath>
+    </Reference>
+    <Reference Include="mysql.data, Version=6.2.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.6.2.5\lib\net20\mysql.data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NTwain, Version=3.0.0.0, Culture=neutral, PublicKeyToken=f9f7e0c5169536c8, processorArchitecture=MSIL">
+      <HintPath>..\packages\NTwain.3.5.2\lib\net40-client\NTwain.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Speech" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
+    <Reference Include="WPFToolkit, Version=3.5.40128.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+    <Reference Include="Xceed.Words.NET, Version=1.3.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocX.1.3.0\lib\net40\Xceed.Words.NET.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="AgendaEletronica.xaml.cs">
+      <DependentUpon>AgendaEletronica.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Agragador\AtoPrincipalQrCode.cs" />
+    <Compile Include="Agragador\Boleto.cs" />
+    <Compile Include="Agragador\Devedores.cs" />
+    <Compile Include="Agragador\Portadores.cs" />
+    <Compile Include="Agragador\Sacadores.cs" />
+    <Compile Include="Agragador\TiposTitulos.cs" />
+    <Compile Include="Agragador\TituloProtesto.cs" />
+    <Compile Include="Aguarde.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aguarde.Designer.cs">
+      <DependentUpon>Aguarde.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AguardeCarregandoGridQrCode.xaml.cs">
+      <DependentUpon>AguardeCarregandoGridQrCode.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AguardeCarregandoNaoPagos.xaml.cs">
+      <DependentUpon>AguardeCarregandoNaoPagos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AguardeGerandoXml.xaml.cs">
+      <DependentUpon>AguardeGerandoXml.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AguardeIntegracaoIssMas.xaml.cs">
+      <DependentUpon>AguardeIntegracaoIssMas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AguardeSalvarParametros.xaml.cs">
+      <DependentUpon>AguardeSalvarParametros.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AguardeTotal.xaml.cs">
+      <DependentUpon>AguardeTotal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Apresentacao.xaml.cs">
+      <DependentUpon>Apresentacao.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Chamada.xaml.cs">
+      <DependentUpon>Chamada.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ClassFalarTexto.cs" />
+    <Compile Include="ClienteCadastro.xaml.cs">
+      <DependentUpon>ClienteCadastro.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ConfirmarChamadaSenha.xaml.cs">
+      <DependentUpon>ConfirmarChamadaSenha.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ClassAdicionarCaixa.cs" />
+    <Compile Include="Controls\ClassAgendaEletronica.cs" />
+    <Compile Include="Controls\ClassAtendimento.cs" />
+    <Compile Include="Controls\ClassAto.cs" />
+    <Compile Include="Controls\ClassAtualizaSite.cs" />
+    <Compile Include="Controls\ClassBalcao.cs" />
+    <Compile Include="Controls\ClassCadastroCheque.cs" />
+    <Compile Include="Controls\ClassConexao.cs" />
+    <Compile Include="Controls\ClassControleAto.cs" />
+    <Compile Include="Controls\ClassControleInterno.cs" />
+    <Compile Include="Controls\ClassControlePagamento.cs" />
+    <Compile Include="Controls\ClassCriptografia.cs" />
+    <Compile Include="Controls\ClassCustasNotas.cs" />
+    <Compile Include="Controls\ClassCustasProtesto.cs" />
+    <Compile Include="Controls\ClassCustasRgi.cs" />
+    <Compile Include="Controls\ClassDivida.cs" />
+    <Compile Include="Controls\ClassEnotariado.cs" />
+    <Compile Include="Controls\ClassEnviarEmail.cs" />
+    <Compile Include="Controls\ClassGerarAleatorio.cs" />
+    <Compile Include="Controls\ClassImportarAtosTotal.cs" />
+    <Compile Include="Controls\ClassImportarMas.cs" />
+    <Compile Include="Controls\ClassIndiceEscritura.cs" />
+    <Compile Include="Controls\ClassIndiceProcuracao.cs" />
+    <Compile Include="Controls\ClassIndiceRgi.cs" />
+    <Compile Include="Controls\ClassIndisponibilidade.cs" />
+    <Compile Include="Controls\ClassLoteamentos.cs" />
+    <Compile Include="Controls\ClassMensalista.cs" />
+    <Compile Include="Controls\ClassPortador.cs" />
+    <Compile Include="Controls\ClassReciboNotas.cs" />
+    <Compile Include="Controls\ClassRecolhimento.cs" />
+    <Compile Include="Controls\ClassRepasseCaixa.cs" />
+    <Compile Include="Controls\ClassRetiradaCaixa.cs" />
+    <Compile Include="Controls\ClassServidor.cs" />
+    <Compile Include="Controls\ClassStatusChangeEventArgs.cs" />
+    <Compile Include="Controls\ClassTabelaCustas.cs" />
+    <Compile Include="Controls\ClassUsuario.cs" />
+    <Compile Include="Controls\ClassVerificaBackup.cs" />
+    <Compile Include="Controls\GerarXmlIndiceRgi.cs" />
+    <Compile Include="Controls\IdentificacaoDigital.cs" />
+    <Compile Include="Controls\NetworkShareAccesser.cs" />
+    <Compile Include="Controls\ValidaCpfCnpj.cs" />
+    <Compile Include="Controls\ValidadorSchemaXml.cs" />
+    <Compile Include="Controls\WIAScanner.cs" />
+    <Compile Include="CS_CAIXA_DBDataSet.cs">
+      <DependentUpon>CS_CAIXA_DBDataSet.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CS_CAIXA_DBDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CS_CAIXA_DBDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="CS_CAIXA_DBDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CS_CAIXA_DBDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="CS_CAIXA_DBDataSetRecolhimento.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CS_CAIXA_DBDataSetRecolhimento.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="EscolherSetor.xaml.cs">
+      <DependentUpon>EscolherSetor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FormImprimirRecibo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormImprimirRecibo.Designer.cs">
+      <DependentUpon>FormImprimirRecibo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormImprimirSenha.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormImprimirSenha.Designer.cs">
+      <DependentUpon>FormImprimirSenha.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ImportarMas.xaml.cs">
+      <DependentUpon>ImportarMas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ImprimirSenha.xaml.cs">
+      <DependentUpon>ImprimirSenha.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Adicionar_Caixa.cs" />
+    <Compile Include="Models\AgendaEletronica.cs" />
+    <Compile Include="Models\Atendimento.cs" />
+    <Compile Include="Models\Ato.cs" />
+    <Compile Include="Models\AtosValores.cs" />
+    <Compile Include="Models\AtualizaSite.cs" />
+    <Compile Include="Models\CadastroCliente.cs" />
+    <Compile Include="Models\CadastroCompraMaterial.cs" />
+    <Compile Include="Models\CadastroMaterial.cs" />
+    <Compile Include="Models\Cadastro_Painel.cs" />
+    <Compile Include="Models\Cadastro_Pc.cs" />
+    <Compile Include="Models\CadCheque.cs" />
+    <Compile Include="Models\CadMensalista.cs" />
+    <Compile Include="Models\ConexaoPainelSenha.cs" />
+    <Compile Include="Models\ControleAto.cs" />
+    <Compile Include="Models\ControlePagamentoCredito.cs" />
+    <Compile Include="Models\ControlePagamentoDebito.cs" />
+    <Compile Include="Models\Controle_Interno.cs" />
+    <Compile Include="Models\Controle_Uso.cs" />
+    <Compile Include="Models\CS_CAIXA_DBContext.cs" />
+    <Compile Include="Models\CustasDistribuicao.cs" />
+    <Compile Include="Models\CustasNota.cs" />
+    <Compile Include="Models\CustasProtesto.cs" />
+    <Compile Include="Models\CustasRgi.cs" />
+    <Compile Include="Models\Divida.cs" />
+    <Compile Include="Models\Email.cs" />
+    <Compile Include="Models\Enotariado.cs" />
+    <Compile Include="Models\ImportarMa.cs" />
+    <Compile Include="Models\IndiceEscritura.cs" />
+    <Compile Include="Models\IndiceProcuracao.cs" />
+    <Compile Include="Models\IndiceRegistro.cs" />
+    <Compile Include="Models\Indisponibilidade.cs" />
+    <Compile Include="Models\ItensAtoNota.cs" />
+    <Compile Include="Models\ItensAtoRgi.cs" />
+    <Compile Include="Models\ItensControleAtoNota.cs" />
+    <Compile Include="Models\ItensControleAtoProtesto.cs" />
+    <Compile Include="Models\ItensCustasControleAtosNota.cs" />
+    <Compile Include="Models\ItensCustasControleAtosProtesto.cs" />
+    <Compile Include="Models\ItensCustasNota.cs" />
+    <Compile Include="Models\ItensCustasProtesto.cs" />
+    <Compile Include="Models\ItensCustasRgi.cs" />
+    <Compile Include="Models\Log.cs" />
+    <Compile Include="Models\Loteamento.cs" />
+    <Compile Include="Models\Mapping\Adicionar_CaixaMap.cs" />
+    <Compile Include="Models\Mapping\AgendaEletronicaMap.cs" />
+    <Compile Include="Models\Mapping\AtendimentoMap.cs" />
+    <Compile Include="Models\Mapping\AtoMap.cs" />
+    <Compile Include="Models\Mapping\AtualizaSiteMap.cs" />
+    <Compile Include="Models\Mapping\CadastroClienteMap.cs" />
+    <Compile Include="Models\Mapping\CadastroCompraMaterialMap.cs" />
+    <Compile Include="Models\Mapping\CadastroMaterialMap.cs" />
+    <Compile Include="Models\Mapping\Cadastro_PainelMap.cs" />
+    <Compile Include="Models\Mapping\Cadastro_PcMap.cs" />
+    <Compile Include="Models\Mapping\CadChequeMap.cs" />
+    <Compile Include="Models\Mapping\CadMensalistaMap.cs" />
+    <Compile Include="Models\Mapping\ConexaoPainelSenhaMap.cs" />
+    <Compile Include="Models\Mapping\ControleAtoMap.cs" />
+    <Compile Include="Models\Mapping\ControlePagamentoCreditoMap.cs" />
+    <Compile Include="Models\Mapping\ControlePagamentoDebitoMap.cs" />
+    <Compile Include="Models\Mapping\Controle_InternoMap.cs" />
+    <Compile Include="Models\Mapping\Controle_UsoMap.cs" />
+    <Compile Include="Models\Mapping\CustasDistribuicaoMap.cs" />
+    <Compile Include="Models\Mapping\CustasNotaMap.cs" />
+    <Compile Include="Models\Mapping\CustasProtestoMap.cs" />
+    <Compile Include="Models\Mapping\CustasRgiMap.cs" />
+    <Compile Include="Models\Mapping\DividaMap.cs" />
+    <Compile Include="Models\Mapping\EmailMap.cs" />
+    <Compile Include="Models\Mapping\EnotariadoMap.cs" />
+    <Compile Include="Models\Mapping\ImportarMaMap.cs" />
+    <Compile Include="Models\Mapping\IndiceEscrituraMap.cs" />
+    <Compile Include="Models\Mapping\IndiceProcuracaoMap.cs" />
+    <Compile Include="Models\Mapping\IndiceRegistroMap.cs" />
+    <Compile Include="Models\Mapping\IndisponibilidadeMap.cs" />
+    <Compile Include="Models\Mapping\ItensAtoNotaMap.cs" />
+    <Compile Include="Models\Mapping\ItensAtoRgiMap.cs" />
+    <Compile Include="Models\Mapping\ItensControleAtoNotaMap.cs" />
+    <Compile Include="Models\Mapping\ItensControleAtoProtestoMap.cs" />
+    <Compile Include="Models\Mapping\ItensCustasControleAtosNotaMap.cs" />
+    <Compile Include="Models\Mapping\ItensCustasControleAtosProtestoMap.cs" />
+    <Compile Include="Models\Mapping\ItensCustasNotaMap.cs" />
+    <Compile Include="Models\Mapping\ItensCustasProtestoMap.cs" />
+    <Compile Include="Models\Mapping\ItensCustasRgiMap.cs" />
+    <Compile Include="Models\Mapping\LogMap.cs" />
+    <Compile Include="Models\Mapping\LoteamentoMap.cs" />
+    <Compile Include="Models\Mapping\MensagemMap.cs" />
+    <Compile Include="Models\Mapping\ParametroMap.cs" />
+    <Compile Include="Models\Mapping\ParcelaMap.cs" />
+    <Compile Include="Models\Mapping\ParteMap.cs" />
+    <Compile Include="Models\Mapping\Pc_PainelMap.cs" />
+    <Compile Include="Models\Mapping\PortadorMap.cs" />
+    <Compile Include="Models\Mapping\ReciboBalcaoMap.cs" />
+    <Compile Include="Models\Mapping\ReciboNotaMap.cs" />
+    <Compile Include="Models\Mapping\RecolhimentoMap.cs" />
+    <Compile Include="Models\Mapping\RepasseCaixaMap.cs" />
+    <Compile Include="Models\Mapping\RetiradaMaterialMap.cs" />
+    <Compile Include="Models\Mapping\Retirada_CaixaMap.cs" />
+    <Compile Include="Models\Mapping\SeloAtualBalcaoMap.cs" />
+    <Compile Include="Models\Mapping\SenhaMap.cs" />
+    <Compile Include="Models\Mapping\sysdiagramMap.cs" />
+    <Compile Include="Models\Mapping\TrocoMap.cs" />
+    <Compile Include="Models\Mapping\UsuarioMap.cs" />
+    <Compile Include="Models\Mapping\ValorPagoMap.cs" />
+    <Compile Include="Models\Mapping\VerificaBackupMap.cs" />
+    <Compile Include="Models\Mapping\VerificacaoCaixaMap.cs" />
+    <Compile Include="Models\Mensagem.cs" />
+    <Compile Include="Models\Parametro.cs" />
+    <Compile Include="Models\Parcela.cs" />
+    <Compile Include="Models\Parte.cs" />
+    <Compile Include="Models\Pc_Painel.cs" />
+    <Compile Include="Models\Portador.cs" />
+    <Compile Include="Models\ReciboBalcao.cs" />
+    <Compile Include="Models\ReciboNota.cs" />
+    <Compile Include="Models\Recolhimento.cs" />
+    <Compile Include="Models\RepasseCaixa.cs" />
+    <Compile Include="Models\RetiradaMaterial.cs" />
+    <Compile Include="Models\Retirada_Caixa.cs" />
+    <Compile Include="Models\SeloAtualBalcao.cs" />
+    <Compile Include="Models\Senha.cs" />
+    <Compile Include="Models\sysdiagram.cs" />
+    <Compile Include="Models\Troco.cs" />
+    <Compile Include="Models\Usuario.cs" />
+    <Compile Include="Models\ValorPago.cs" />
+    <Compile Include="Models\VerificaBackup.cs" />
+    <Compile Include="Models\VerificacaoCaixa.cs" />
+    <Compile Include="MP2032.cs" />
+    <Compile Include="Objetos de Valor\Ato.cs" />
+    <Compile Include="Objetos de Valor\AtoConjuntoQrCode.cs" />
+    <Compile Include="Objetos de Valor\AtosFirmas.cs" />
+    <Compile Include="Objetos de Valor\AtosFirmasSite.cs" />
+    <Compile Include="Objetos de Valor\AtosNotasSite.cs" />
+    <Compile Include="Objetos de Valor\AtosPraticadosSite.cs" />
+    <Compile Include="Objetos de Valor\AtosProtestoSite.cs" />
+    <Compile Include="Objetos de Valor\AtosRgiSite.cs" />
+    <Compile Include="Objetos de Valor\AtosValorPago.cs" />
+    <Compile Include="Objetos de Valor\ConsultaApontado.cs" />
+    <Compile Include="Objetos de Valor\ConsultaFirma.cs" />
+    <Compile Include="Objetos de Valor\ConsultaProtesto.cs" />
+    <Compile Include="Objetos de Valor\ConsultaRegistro.cs" />
+    <Compile Include="Objetos de Valor\FichaFirmas.cs" />
+    <Compile Include="Objetos de Valor\IntimacaoProtesto.cs" />
+    <Compile Include="Objetos de Valor\MatriculaImprimir.cs" />
+    <Compile Include="Objetos de Valor\NaturezaQrCode.cs" />
+    <Compile Include="Objetos de Valor\ReciboRgiSite.cs" />
+    <Compile Include="Objetos de Valor\SetorAtendimento.cs" />
+    <Compile Include="Objetos de Valor\UsuariosSite.cs" />
+    <Compile Include="ObjetosValor.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ObjetosValor.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="PainelSenhas.xaml.cs">
+      <DependentUpon>PainelSenhas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="relatorio.xml.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>relatorio.xml.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="RelatoriosForms\FrmImprimirEtiqueta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RelatoriosForms\FrmImprimirEtiqueta.Designer.cs">
+      <DependentUpon>FrmImprimirEtiqueta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelatoriosForms\FrmImprimirSeloQrCode.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RelatoriosForms\FrmImprimirSeloQrCode.Designer.cs">
+      <DependentUpon>FrmImprimirSeloQrCode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelatoriosForms\FrmIndiceRgi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RelatoriosForms\FrmIndiceRgi.Designer.cs">
+      <DependentUpon>FrmIndiceRgi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelatoriosForms\FrmRelatorioControlePagamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RelatoriosForms\FrmRelatorioControlePagamento.Designer.cs">
+      <DependentUpon>FrmRelatorioControlePagamento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelatoriosForms\FrmControleDiarioEscritura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RelatoriosForms\FrmControleDiarioEscritura.Designer.cs">
+      <DependentUpon>FrmControleDiarioEscritura.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelatoriosForms\FrmControleDiarioProcuracao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RelatoriosForms\FrmControleDiarioProcuracao.Designer.cs">
+      <DependentUpon>FrmControleDiarioProcuracao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelatoriosForms\FrmFichaIndisponibilidade.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RelatoriosForms\FrmFichaIndisponibilidade.Designer.cs">
+      <DependentUpon>FrmFichaIndisponibilidade.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelatoriosForms\FrmMovimentoDiarioBalcao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RelatoriosForms\FrmMovimentoDiarioBalcao.Designer.cs">
+      <DependentUpon>FrmMovimentoDiarioBalcao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelatoriosForms\FrmMovimentoDiarioNotas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RelatoriosForms\FrmMovimentoDiarioNotas.Designer.cs">
+      <DependentUpon>FrmMovimentoDiarioNotas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelatoriosForms\FrmMovimentoDiarioProtesto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RelatoriosForms\FrmMovimentoDiarioProtesto.Designer.cs">
+      <DependentUpon>FrmMovimentoDiarioProtesto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelatoriosForms\FrmMovimentoDiarioRgi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RelatoriosForms\FrmMovimentoDiarioRgi.Designer.cs">
+      <DependentUpon>FrmMovimentoDiarioRgi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelatoriosForms\FrmReciboRetiradaCaixa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RelatoriosForms\FrmReciboRetiradaCaixa.Designer.cs">
+      <DependentUpon>FrmReciboRetiradaCaixa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelatoriosForms\FrmRelatorioMensalista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RelatoriosForms\FrmRelatorioMensalista.Designer.cs">
+      <DependentUpon>FrmRelatorioMensalista.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelatoriosForms\FrmRelatorioRepasseEscrevente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RelatoriosForms\FrmRelatorioRepasseEscrevente.Designer.cs">
+      <DependentUpon>FrmRelatorioRepasseEscrevente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RelatoriosForms\WinControleDiario.xaml.cs">
+      <DependentUpon>WinControleDiario.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RelatoriosForms\WinImprimirReciboNotas.xaml.cs">
+      <DependentUpon>WinImprimirReciboNotas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RelatoriosForms\WinImprimirRecolhimento.xaml.cs">
+      <DependentUpon>WinImprimirRecolhimento.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RelatoriosForms\WinMovimentoDiario.xaml.cs">
+      <DependentUpon>WinMovimentoDiario.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RelatoriosForms\WinRelatorioConsultaProtestoApontamento.xaml.cs">
+      <DependentUpon>WinRelatorioConsultaProtestoApontamento.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RelatoriosForms\WinRelatorioFechamentoCaixa.xaml.cs">
+      <DependentUpon>WinRelatorioFechamentoCaixa.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RelatoriosForms\WinRelatorioFechamentoCaixaGeral.xaml.cs">
+      <DependentUpon>WinRelatorioFechamentoCaixaGeral.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RelatoriosForms\WinRelatorioImprimirQrCode.xaml.cs">
+      <DependentUpon>WinRelatorioImprimirQrCode.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RelatoriosForms\WinRelatorioImprimirQrCodePrenotacao.xaml.cs">
+      <DependentUpon>WinRelatorioImprimirQrCodePrenotacao.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RelatoriosForms\WinRelatorioMensalista.xaml.cs">
+      <DependentUpon>WinRelatorioMensalista.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RelatoriosForms\WinRelatorioMovimentoDiario.xaml.cs">
+      <DependentUpon>WinRelatorioMovimentoDiario.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Repositorios\RepositorioBase.cs" />
+    <Compile Include="Repositorios\RepositorioCadastroCliente.cs" />
+    <Compile Include="Repositorios\RepositorioCadastro_Painel.cs" />
+    <Compile Include="Repositorios\RepositorioCadastro_Pc.cs" />
+    <Compile Include="Repositorios\RepositorioControle_Uso.cs" />
+    <Compile Include="Repositorios\RepositorioMensagem.cs" />
+    <Compile Include="Repositorios\RepositorioMP2032.cs" />
+    <Compile Include="Repositorios\RepositorioParametros.cs" />
+    <Compile Include="Repositorios\RepositorioPc_Painel.cs" />
+    <Compile Include="Repositorios\RepositorioSenha.cs" />
+    <Compile Include="Repositorios\RepositorioUsuario.cs" />
+    <Compile Include="RetiradaSenha.xaml.cs">
+      <DependentUpon>RetiradaSenha.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\DbLight\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ObterToken\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="UC\UcAgendaEletronica.xaml.cs">
+      <DependentUpon>UcAgendaEletronica.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\SiteCartorio\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="WinAdicionarCaixa.xaml.cs">
+      <DependentUpon>WinAdicionarCaixa.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinAguardeAtualizacaoCustas.xaml.cs">
+      <DependentUpon>WinAguardeAtualizacaoCustas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinAguardeBalcao.xaml.cs">
+      <DependentUpon>WinAguardeBalcao.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinAguardeCenprot.xaml.cs">
+      <DependentUpon>WinAguardeCenprot.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinAguardeConsultaReconhecimento.xaml.cs">
+      <DependentUpon>WinAguardeConsultaReconhecimento.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinAguardeControleAtos.xaml.cs">
+      <DependentUpon>WinAguardeControleAtos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinAguardeControlePagamento.xaml.cs">
+      <DependentUpon>WinAguardeControlePagamento.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinAguardeCosultaIssMas.xaml.cs">
+      <DependentUpon>WinAguardeCosultaIssMas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinAguardeEnviarSite.xaml.cs">
+      <DependentUpon>WinAguardeEnviarSite.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinAguardeIndisponibilidade.xaml.cs">
+      <DependentUpon>WinAguardeIndisponibilidade.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinAguardePagamento.xaml.cs">
+      <DependentUpon>WinAguardePagamento.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinAguardeProtesto.xaml.cs">
+      <DependentUpon>WinAguardeProtesto.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinAguardeRelatorioFechamentoCaixa.xaml.cs">
+      <DependentUpon>WinAguardeRelatorioFechamentoCaixa.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinAguardeVerificaBackup.xaml.cs">
+      <DependentUpon>WinAguardeVerificaBackup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinAlterarControlePagamento.xaml.cs">
+      <DependentUpon>WinAlterarControlePagamento.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinAlterarItemCustas.xaml.cs">
+      <DependentUpon>WinAlterarItemCustas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinAtoProtesto.xaml.cs">
+      <DependentUpon>WinAtoProtesto.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinAtosRgi.xaml.cs">
+      <DependentUpon>WinAtosRgi.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinBalcao.xaml.cs">
+      <DependentUpon>WinBalcao.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinBalcaoNovo.xaml.cs">
+      <DependentUpon>WinBalcaoNovo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinCadastroSite.xaml.cs">
+      <DependentUpon>WinCadastroSite.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinCadCheque.xaml.cs">
+      <DependentUpon>WinCadCheque.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinCadLoteamentos.xaml.cs">
+      <DependentUpon>WinCadLoteamentos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinCadMensalista.xaml.cs">
+      <DependentUpon>WinCadMensalista.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinCadUsuario.xaml.cs">
+      <DependentUpon>WinCadUsuario.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinCenprot.xaml.cs">
+      <DependentUpon>WinCenprot.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinChamadaSenhaNotas.xaml.cs">
+      <DependentUpon>WinChamadaSenhaNotas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinChamadaSenhaRecepcao.xaml.cs">
+      <DependentUpon>WinChamadaSenhaRecepcao.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinChamarSenhas.xaml.cs">
+      <DependentUpon>WinChamarSenhas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinConfirmaChamadaSenha.xaml.cs">
+      <DependentUpon>WinConfirmaChamadaSenha.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinConfirmarData.xaml.cs">
+      <DependentUpon>WinConfirmarData.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinConfirmaSenhaMaster.xaml.cs">
+      <DependentUpon>WinConfirmaSenhaMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinConsultaCenib.xaml.cs">
+      <DependentUpon>WinConsultaCenib.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinConsultaReconhecimento.xaml.cs">
+      <DependentUpon>WinConsultaReconhecimento.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinControleAtosNotas.xaml.cs">
+      <DependentUpon>WinControleAtosNotas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinControleAtosProtesto.xaml.cs">
+      <DependentUpon>WinControleAtosProtesto.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinControlePagamento.xaml.cs">
+      <DependentUpon>WinControlePagamento.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinControlePagamentoControle.xaml.cs">
+      <DependentUpon>WinControlePagamentoControle.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinCustasNotas.xaml.cs">
+      <DependentUpon>WinCustasNotas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinCustasProtesto.xaml.cs">
+      <DependentUpon>WinCustasProtesto.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinCustasRgi.xaml.cs">
+      <DependentUpon>WinCustasRgi.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinDataImportarCredito.xaml.cs">
+      <DependentUpon>WinDataImportarCredito.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinDigitarAtoNotas.xaml.cs">
+      <DependentUpon>WinDigitarAtoNotas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinAtosNotas.xaml.cs">
+      <DependentUpon>WinAtosNotas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinDigitarAtoProtesto.xaml.cs">
+      <DependentUpon>WinDigitarAtoProtesto.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinDigitarAtoRgi.xaml.cs">
+      <DependentUpon>WinDigitarAtoRgi.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinDigitarControleAtosNotas.xaml.cs">
+      <DependentUpon>WinDigitarControleAtosNotas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinDigitarControleAtosProtesto.xaml.cs">
+      <DependentUpon>WinDigitarControleAtosProtesto.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinDividasCartorio.xaml.cs">
+      <DependentUpon>WinDividasCartorio.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinEnviarBoleto.xaml.cs">
+      <DependentUpon>WinEnviarBoleto.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinEtiquetaPrenotacao.xaml.cs">
+      <DependentUpon>WinEtiquetaPrenotacao.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinGerarQrCode.xaml.cs">
+      <DependentUpon>WinGerarQrCode.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinGerarQrCodeRgi.xaml.cs">
+      <DependentUpon>WinGerarQrCodeRgi.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinImportarProtesto.xaml.cs">
+      <DependentUpon>WinImportarProtesto.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinImportarRecolhimentoBalcao.xaml.cs">
+      <DependentUpon>WinImportarRecolhimentoBalcao.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinImportarRecolhimentoNotas.xaml.cs">
+      <DependentUpon>WinImportarRecolhimentoNotas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinImportarRecolhimentoProtesto.xaml.cs">
+      <DependentUpon>WinImportarRecolhimentoProtesto.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinImportarRecolhimentoRgi.xaml.cs">
+      <DependentUpon>WinImportarRecolhimentoRgi.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinImpressaoMatricula.xaml.cs">
+      <DependentUpon>WinImpressaoMatricula.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinImprimirRecibo.xaml.cs">
+      <DependentUpon>WinImprimirRecibo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinImprimirReciboCartao.xaml.cs">
+      <DependentUpon>WinImprimirReciboCartao.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinIndiceEscritura.xaml.cs">
+      <DependentUpon>WinIndiceEscritura.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinIndiceProcuracao.xaml.cs">
+      <DependentUpon>WinIndiceProcuracao.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinIndiceRgi.xaml.cs">
+      <DependentUpon>WinIndiceRgi.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinIndisponibilidade.xaml.cs">
+      <DependentUpon>WinIndisponibilidade.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinLogin.xaml.cs">
+      <DependentUpon>WinLogin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinMostrarNomesCenib.xaml.cs">
+      <DependentUpon>WinMostrarNomesCenib.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinNaoPagos.xaml.cs">
+      <DependentUpon>WinNaoPagos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinPainelSenhas.xaml.cs">
+      <DependentUpon>WinPainelSenhas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinParametros.xaml.cs">
+      <DependentUpon>WinParametros.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinPrincipal.xaml.cs">
+      <DependentUpon>WinPrincipal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinReciboNotas.xaml.cs">
+      <DependentUpon>WinReciboNotas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinReciboNotasControle.xaml.cs">
+      <DependentUpon>WinReciboNotasControle.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinRecolhimento.xaml.cs">
+      <DependentUpon>WinRecolhimento.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinRepasse.xaml.cs">
+      <DependentUpon>WinRepasse.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinRetiradaCaixa.xaml.cs">
+      <DependentUpon>WinRetiradaCaixa.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinSaldoControle.xaml.cs">
+      <DependentUpon>WinSaldoControle.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinSincronizarControleAtos.xaml.cs">
+      <DependentUpon>WinSincronizarControleAtos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinTotal.xaml.cs">
+      <DependentUpon>WinTotal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WinVisualizarDigitalizarRgi.xaml.cs">
+      <DependentUpon>WinVisualizarDigitalizarRgi.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Win_Inicializacao\Window1.xaml.cs">
+      <DependentUpon>Window1.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Aguarde.resx">
+      <DependentUpon>Aguarde.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormImprimirRecibo.resx">
+      <DependentUpon>FormImprimirRecibo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormImprimirSenha.resx">
+      <DependentUpon>FormImprimirSenha.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelatoriosForms\FrmImprimirEtiqueta.resx">
+      <DependentUpon>FrmImprimirEtiqueta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelatoriosForms\FrmImprimirSeloQrCode.resx">
+      <DependentUpon>FrmImprimirSeloQrCode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelatoriosForms\FrmIndiceRgi.resx">
+      <DependentUpon>FrmIndiceRgi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelatoriosForms\FrmRelatorioControlePagamento.resx">
+      <DependentUpon>FrmRelatorioControlePagamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelatoriosForms\FrmControleDiarioEscritura.resx">
+      <DependentUpon>FrmControleDiarioEscritura.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelatoriosForms\FrmControleDiarioProcuracao.resx">
+      <DependentUpon>FrmControleDiarioProcuracao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelatoriosForms\FrmFichaIndisponibilidade.resx">
+      <DependentUpon>FrmFichaIndisponibilidade.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelatoriosForms\FrmMovimentoDiarioBalcao.resx">
+      <DependentUpon>FrmMovimentoDiarioBalcao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelatoriosForms\FrmMovimentoDiarioNotas.resx">
+      <DependentUpon>FrmMovimentoDiarioNotas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelatoriosForms\FrmMovimentoDiarioProtesto.resx">
+      <DependentUpon>FrmMovimentoDiarioProtesto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelatoriosForms\FrmMovimentoDiarioRgi.resx">
+      <DependentUpon>FrmMovimentoDiarioRgi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelatoriosForms\FrmReciboRetiradaCaixa.resx">
+      <DependentUpon>FrmReciboRetiradaCaixa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelatoriosForms\FrmRelatorioMensalista.resx">
+      <DependentUpon>FrmRelatorioMensalista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelatoriosForms\FrmRelatorioRepasseEscrevente.resx">
+      <DependentUpon>FrmRelatorioRepasseEscrevente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\QrCodeProtesto\RepQrCodeInteiroTeorProtesto.rdlc" />
+    <EmbeddedResource Include="Relatorios\QrCodeRgi\RepQrCodeEtiquetaOnusRgi.rdlc" />
+    <EmbeddedResource Include="Relatorios\QrCodeRgi\RepQrCodeEtiquetaOnusRgiGravame.rdlc" />
+    <EmbeddedResource Include="Relatorios\QrCodeRgi\RepQrCodeEtiquetaOnusRgiInteiroTeor.rdlc" />
+    <EmbeddedResource Include="Relatorios\QrCodeRgi\RepQrCodeModeloRgi.rdlc" />
+    <EmbeddedResource Include="Relatorios\QrCodeRgi\RepQrCodeModeloRgiPrenotacao.rdlc" />
+    <EmbeddedResource Include="Relatorios\RepConsultaAtosProtestoApontamento.rdlc" />
+    <EmbeddedResource Include="Relatorios\RepConsultaAtosProtestoApostilamento.rdlc" />
+    <EmbeddedResource Include="Relatorios\RepConsultaAtosProtestoAverbacao.rdlc" />
+    <EmbeddedResource Include="Relatorios\RepConsultaAtosProtestoCancelamento.rdlc" />
+    <EmbeddedResource Include="Relatorios\RepConsultaAtosProtestoCertidao.rdlc" />
+    <EmbeddedResource Include="Relatorios\RepConsultaAtosProtestoCertidaoNotas.rdlc" />
+    <EmbeddedResource Include="Relatorios\RepConsultaAtosProtestoCertidaoRgi.rdlc" />
+    <EmbeddedResource Include="Relatorios\RepConsultaAtosProtestoEscritura.rdlc" />
+    <EmbeddedResource Include="Relatorios\RepConsultaAtosProtestoPagamento.rdlc" />
+    <EmbeddedResource Include="Relatorios\RepConsultaAtosProtestoProcuracao.rdlc" />
+    <EmbeddedResource Include="Relatorios\RepConsultaAtosProtestoRegistro.rdlc" />
+    <EmbeddedResource Include="Relatorios\RepConsultaAtosProtestoTestamento.rdlc" />
+    <EmbeddedResource Include="Relatorios\RepControleDiarioEscritura.rdlc" />
+    <EmbeddedResource Include="Relatorios\RepControleDiarioProcuracao.rdlc" />
+    <EmbeddedResource Include="Relatorios\RepFechamentoCaixaBalcaoDetalhadoAtosPraticados.rdlc" />
+    <EmbeddedResource Include="Relatorios\RepFechamentoCaixaBalcaoSimplificadoAtosPraticados.rdlc" />
+    <EmbeddedResource Include="Relatorios\RepFechamentoCaixaBalcaoSimplificadoFinanceiro.rdlc" />
+    <EmbeddedResource Include="Relatorios\RepFechamentoCaixaDetalhadoAtosPraticados.rdlc" />
+    <EmbeddedResource Include="Relatorios\RepFechamentoCaixaDetalhadoFinanceiro.rdlc" />
+    <EmbeddedResource Include="Relatorios\RepFechamentoCaixaNotasDetalhadoAtosPraticados.rdlc" />
+    <EmbeddedResource Include="Relatorios\RepFechamentoCaixaNotasSimplificadoAtosPraticados.rdlc" />
+    <EmbeddedResource Include="Relatorios\RepFechamentoCaixaNotasSimplificadoFinanceiro.rdlc" />
+    <EmbeddedResource Include="Relatorios\RepFechamentoCaixaProtestoDetalhadoAtosPraticados.rdlc" />
+    <EmbeddedResource Include="Relatorios\RepFechamentoCaixaProtestoDetalhadoFinanceiro.rdlc" />
+    <EmbeddedResource Include="Relatorios\RepFechamentoCaixaProtestoSimplificadoAtosPraticados.rdlc" />
+    <EmbeddedResource Include="Relatorios\RepFechamentoCaixaProtestoSimplificadoFinanceiro.rdlc" />
+    <EmbeddedResource Include="Relatorios\RepFechamentoCaixaRgiDetalhadoAtosPraticados.rdlc" />
+    <EmbeddedResource Include="Relatorios\RepFechamentoCaixaRgiSimplificadoAtosPraticados.rdlc" />
+    <EmbeddedResource Include="Relatorios\RepFechamentoCaixaRgiSimplificadoFinanceiro.rdlc" />
+    <EmbeddedResource Include="Relatorios\RepFechamentoCaixaSimplificadoAtosPraticados.rdlc" />
+    <EmbeddedResource Include="Relatorios\RepFechamentoCaixaSimplificadoFinanceiro.rdlc" />
+    <EmbeddedResource Include="Relatorios\Matriculas\RepImpressaoMatricula1.rdlc" />
+    <EmbeddedResource Include="Relatorios\RepImprimirBalcaoRecolhimento.rdlc" />
+    <EmbeddedResource Include="Relatorios\RepImprimirEtiqueta.rdlc" />
+    <EmbeddedResource Include="Relatorios\RepImprimirNotasRecolhimento.rdlc" />
+    <EmbeddedResource Include="Relatorios\RepImprimirProtestoRecolhimento.rdlc" />
+    <EmbeddedResource Include="Relatorios\RepImprimirRgiRecolhimento.rdlc" />
+    <EmbeddedResource Include="Relatorios\RepImprimirTodosRecolhimento.rdlc" />
+    <EmbeddedResource Include="Relatorios\RepIndiceRgi.rdlc" />
+    <EmbeddedResource Include="Relatorios\RepIndisponibilidade.rdlc" />
+    <EmbeddedResource Include="Relatorios\RepMovimentoDiarioBalcao.rdlc" />
+    <EmbeddedResource Include="Relatorios\RepMovimentoDiarioNotas.rdlc" />
+    <EmbeddedResource Include="Relatorios\RepMovimentoDiarioProtesto.rdlc" />
+    <EmbeddedResource Include="Relatorios\RepMovimentoDiarioRgi.rdlc" />
+    <EmbeddedResource Include="Relatorios\QrCodeNotas\RepQrCodeModeloNotas.rdlc" />
+    <EmbeddedResource Include="Relatorios\RepReciboBalcao.rdlc" />
+    <EmbeddedResource Include="Relatorios\RepReciboNotasImprimir.rdlc" />
+    <EmbeddedResource Include="Relatorios\RepReciboSeresa.rdlc" />
+    <EmbeddedResource Include="Relatorios\RepReciboVale.rdlc" />
+    <EmbeddedResource Include="Relatorios\RepRelatorioControlePagamento.rdlc" />
+    <EmbeddedResource Include="Relatorios\RepFechamentoCaixaBalcaoDetalhadoFinanceiro.rdlc" />
+    <EmbeddedResource Include="Relatorios\RepFechamentoCaixaNotasDetalhadoFinanceiro.rdlc" />
+    <EmbeddedResource Include="Relatorios\RepFechamentoCaixaRgiDetalhadoFinanceiro.rdlc" />
+    <EmbeddedResource Include="Relatorios\RepRelatorioMensalista.rdlc" />
+    <EmbeddedResource Include="Relatorios\RepRelatorioRepasseEscrevente.rdlc" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="cartkey.pfx" />
+    <None Include="CS_CAIXA_DBDataSet.xsc">
+      <DependentUpon>CS_CAIXA_DBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="CS_CAIXA_DBDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CS_CAIXA_DBDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="CS_CAIXA_DBDataSet.xss">
+      <DependentUpon>CS_CAIXA_DBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="CS_CAIXA_DBDataSet1.xsc">
+      <DependentUpon>CS_CAIXA_DBDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="CS_CAIXA_DBDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CS_CAIXA_DBDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="CS_CAIXA_DBDataSet1.xss">
+      <DependentUpon>CS_CAIXA_DBDataSet1.xsd</DependentUpon>
+    </None>
+    <Resource Include="Fonts\Dosis.ttf" />
+    <None Include="CS_CAIXA_DBDataSetRecolhimento.xsc">
+      <DependentUpon>CS_CAIXA_DBDataSetRecolhimento.xsd</DependentUpon>
+    </None>
+    <None Include="CS_CAIXA_DBDataSetRecolhimento.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CS_CAIXA_DBDataSetRecolhimento.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="CS_CAIXA_DBDataSetRecolhimento.xss">
+      <DependentUpon>CS_CAIXA_DBDataSetRecolhimento.xsd</DependentUpon>
+    </None>
+    <None Include="CS_Caixa_TemporaryKey.pfx" />
+    <None Include="ObjetosValor.xsc">
+      <DependentUpon>ObjetosValor.xsd</DependentUpon>
+    </None>
+    <None Include="ObjetosValor.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ObjetosValor.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="ObjetosValor.xss">
+      <DependentUpon>ObjetosValor.xsd</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\app.manifest" />
+    <None Include="Properties\DataSources\CS_Caixa.Models.Adicionar_Caixa.datasource" />
+    <None Include="Properties\DataSources\CS_Caixa.Models.Ato.datasource" />
+    <None Include="Properties\DataSources\CS_Caixa.Models.AtosValores.datasource" />
+    <None Include="Properties\DataSources\CS_Caixa.Models.Retirada_Caixa.datasource" />
+    <None Include="Properties\DataSources\WinAdicionarCaixa.datasource" />
+    <None Include="Properties\DataSources\WinRetiradaCaixa.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+    <None Include="relatorio.xml.xsc">
+      <DependentUpon>relatorio.xml.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="relatorio.xml.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="relatorio.xml.xss">
+      <DependentUpon>relatorio.xml.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Service References\DbLight\bdlight.wsdl" />
+    <None Include="Service References\DbLight\bdlight.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DbLight\bdlight1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DbLight\bdlight2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DbLight\bdlight3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\DbLight\CS_Caixa.DbLight.BDLightResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DbLight\CS_Caixa.DbLight.GetArquivoXMLBDLResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\DbLight\CS_Caixa.DbLight.ListArquivosXMLBDLResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ObterToken\CS_Caixa.ObterToken.GetTokenResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ObterToken\Token.wsdl" />
+    <None Include="Service References\ObterToken\Token.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ObterToken\Token1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ObterToken\Token2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ObterToken\Token3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web References\SiteCartorio\Cartorio1Oficio.wsdl" />
+    <None Include="Web References\SiteCartorio\ConsultaProtesto.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\SiteCartorio\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="AgendaEletronica.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AguardeCarregandoGridQrCode.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AguardeCarregandoNaoPagos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AguardeGerandoXml.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AguardeIntegracaoIssMas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AguardeSalvarParametros.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AguardeTotal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Apresentacao.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Chamada.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ClienteCadastro.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ConfirmarChamadaSenha.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EscolherSetor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ImportarMas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ImprimirSenha.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PainelSenhas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RelatoriosForms\WinControleDiario.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RelatoriosForms\WinImprimirReciboNotas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RelatoriosForms\WinImprimirRecolhimento.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RelatoriosForms\WinMovimentoDiario.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RelatoriosForms\WinRelatorioConsultaProtestoApontamento.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RelatoriosForms\WinRelatorioFechamentoCaixa.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RelatoriosForms\WinRelatorioFechamentoCaixaGeral.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RelatoriosForms\WinRelatorioImprimirQrCode.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RelatoriosForms\WinRelatorioImprimirQrCodePrenotacao.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RelatoriosForms\WinRelatorioMensalista.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RelatoriosForms\WinRelatorioMovimentoDiario.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RetiradaSenha.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UC\UcAgendaEletronica.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinAdicionarCaixa.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinAguardeAtualizacaoCustas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinAguardeBalcao.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinAguardeCenprot.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinAguardeConsultaReconhecimento.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinAguardeControleAtos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinAguardeControlePagamento.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinAguardeCosultaIssMas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinAguardeEnviarSite.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinAguardeIndisponibilidade.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinAguardePagamento.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinAguardeProtesto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinAguardeRelatorioFechamentoCaixa.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinAguardeVerificaBackup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinAlterarControlePagamento.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinAlterarItemCustas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinAtoProtesto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinAtosRgi.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinBalcao.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinBalcaoNovo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinCadastroSite.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinCadCheque.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinCadLoteamentos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinCadMensalista.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinCadUsuario.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinCenprot.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinChamadaSenhaNotas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinChamadaSenhaRecepcao.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinChamarSenhas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinConfirmaChamadaSenha.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinConfirmarData.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinConfirmaSenhaMaster.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinConsultaCenib.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinConsultaReconhecimento.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinControleAtosNotas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinControleAtosProtesto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinControlePagamento.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinControlePagamentoControle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinCustasNotas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinCustasProtesto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinCustasRgi.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinDataImportarCredito.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinDigitarAtoNotas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinAtosNotas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinDigitarAtoProtesto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinDigitarAtoRgi.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinDigitarControleAtosNotas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinDigitarControleAtosProtesto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinDividasCartorio.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinEnviarBoleto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinEtiquetaPrenotacao.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinGerarQrCode.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinGerarQrCodeRgi.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinImportarProtesto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinImportarRecolhimentoBalcao.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinImportarRecolhimentoNotas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinImportarRecolhimentoProtesto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinImportarRecolhimentoRgi.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinImpressaoMatricula.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinImprimirRecibo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinImprimirReciboCartao.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinIndiceEscritura.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinIndiceProcuracao.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinIndiceRgi.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinIndisponibilidade.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinLogin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinMostrarNomesCenib.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinNaoPagos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinPainelSenhas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinParametros.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinPrincipal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinReciboNotas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinReciboNotasControle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinRecolhimento.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinRepasse.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinRetiradaCaixa.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinSaldoControle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinSincronizarControleAtos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinTotal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinVisualizarDigitalizarRgi.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Win_Inicializacao\Window1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icon Caixa.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icone Caixa.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\fundo login.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\1424996563_Community Help.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Cadeado.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\cadeado.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\1424998914_Apply.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\1441069143_folder_txt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Documents8686.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\1448_128x128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\1441068430_27-Edit Text.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\1441069061_kmenuedit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\1441069684_Documents_bleu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\1441069021_folder_documents.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\1424997344_Documents_Black.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\1424997479_TextEdit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\1425097360_Application.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\1448986602_Add-Male-User.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\1448986613_Edit-Male-User.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\1448986620_Remove-Male-User.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\cpf_Inv.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\cpf_ok.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\1448986681_Accept-Male-User.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\1425000530_dialog-error-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\aesthetica_5109_computers.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\1425064473_DeleteRed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\copia.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\yes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\cancel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\1425064473_DeleteRed1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\modify.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icon Caixa.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\1425064642_Create.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\1425063175_Add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\1424997823_edit-clear-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Cancelar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\1425071074_system-software-update.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Alterar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\1441068624_25-Folder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\6199_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Salvar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icone48.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Icone48.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.4.5">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 4.5</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\import.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\1425000775_system-search-20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\1425073008_printer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\12094_64x64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\AdicionarRegistro.png" />
+    <Resource Include="Images\AdicionarUsuario.png" />
+    <Resource Include="Images\AdicionarUsuarioPequeno.png" />
+    <Resource Include="Images\AlterarRegistro.png" />
+    <Resource Include="Images\AlterarUsuario.png" />
+    <Resource Include="Images\Baixar Manual.png" />
+    <Resource Include="Images\bancos.png" />
+    <Resource Include="Images\Check.png" />
+    <Resource Include="Images\Entrar.png" />
+    <Resource Include="Images\ExcluirPequeno.png" />
+    <Resource Include="Images\ExcluirRegistro.png" />
+    <Resource Include="Images\ExcluirUsuario.png" />
+    <Resource Include="Images\Fornecedores.png" />
+    <Resource Include="Images\Gerencial.ico" />
+    <Resource Include="Images\Gerencial.jpg" />
+    <Resource Include="Images\Importar.png" />
+    <Resource Include="Images\ImprimirLivroAuxiliar.png" />
+    <Resource Include="Images\ImprimirRelacaoSelos.png" />
+    <Resource Include="Images\ImprimirSelosReservados.png" />
+    <Resource Include="Images\ImprimirSelosUtilizados.png" />
+    <Resource Include="Images\Indisponibilidade.png" />
+    <Resource Include="Images\Indisponibilidades.png" />
+    <Resource Include="Images\Liberar Selo.png" />
+    <Resource Include="Images\LivroAuxiliar.png" />
+    <Resource Include="Images\Localizar Diretorio.png" />
+    <Resource Include="Images\Lupa grande.png" />
+    <Resource Include="Images\modifyPequeno.png" />
+    <Resource Include="Images\PlanosContas.png" />
+    <Resource Include="Images\PlanosDeContas.png" />
+    <Resource Include="Images\SalvarUsuario.png" />
+    <Resource Include="Images\SeloEletronico.png" />
+    <Resource Include="Images\Serventia.png" />
+    <Resource Include="Images\Sincronizar.png" />
+    <Resource Include="Images\UpdateIndisponibilidade.png" />
+    <Resource Include="Images\UsuarioAlterarPequeno.png" />
+    <Resource Include="Images\UsuarioExcluirPequeno.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\xml.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="IWshRuntimeLibrary">
+      <Guid>{F935DC20-1CF0-11D0-ADB9-00C04FD58A0B}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="WIA">
+      <Guid>{94A0E92D-43C0-494E-AC29-FD45948A5221}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\next-track_icon-icons.com_70913.png" />
+    <Resource Include="Images\previous-track_icon-icons.com_71595.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Anterior.png" />
+    <Resource Include="Images\Proximo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\DbLight\" />
+    <WCFMetadataStorage Include="Service References\ObterToken\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ObterToken\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ObterToken\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ObterToken\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\DbLight\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\DbLight\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\DbLight\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://192.168.254.1/cartorio1oficio/WebService/Cartorio1Oficio.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\SiteCartorio\</RelPath>
+      <UpdateFromURL>http://192.168.254.1/cartorio1oficio/WebService/Cartorio1Oficio.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>CS_Caixa_SiteCartorio_Cartorio1Oficio</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\SiteCartorio\Cartorio1Oficio.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\images.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\qrcode.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <PublishFile Include="Microsoft.ReportViewer.ProcessingObjectModel">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+    <PublishFile Include="Microsoft.ReportViewer.WinForms">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\add_server_icon-icons.com_76716.png" />
+    <Resource Include="Images\cpf_Correto.png" />
+    <Resource Include="Images\data_server_icon-icons.com_76718.png" />
+    <Resource Include="Images\desable_server_icon-icons.com_76719.png" />
+    <Resource Include="Images\enable_server_icon-icons.com_76722.png" />
+    <Resource Include="Images\firewall_server_icon-icons.com_76723.png" />
+    <Resource Include="Images\IconeAtendimento.ico" />
+    <Resource Include="Images\Login.png" />
+    <Resource Include="Images\Logo.png" />
+    <Resource Include="Images\upload_server_icon-icons.com_76732.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\som.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\PainelSenha.png" />
+    <Resource Include="Images\RecolhimentoNotas.png" />
+    <Resource Include="Images\RecolhimentoProtesto.png" />
+    <Resource Include="Images\RecolhimentoRgi.png" />
+    <Resource Include="Images\RecolhimentoQtdAtos.png" />
+    <Resource Include="Images\RecolhimentoEmol.png" />
+    <Resource Include="Images\RecolhimentoBalcao.png" />
+    <Content Include="Repositorios\mp2032.dll" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\MaterialDesignThemes.4.1.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.1.0\build\MaterialDesignThemes.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\MaterialDesignThemes.4.1.0\build\MaterialDesignThemes.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MaterialDesignThemes.4.1.0\build\MaterialDesignThemes.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,96 @@
+﻿<Window x:Class="CS_Caixa.WinIndisponibilidade"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Indisponibilidade" Height="651.132" Width="621" ResizeMode="NoResize" WindowStartupLocation="CenterOwner" ShowInTaskbar="False" Loaded="Window_Loaded" WindowStyle="ToolWindow">
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FF1EA0D8" Offset="0" />
+            <GradientStop Color="White" Offset="1" />
+        </LinearGradientBrush>
+    </Window.Background>
+    <Grid PreviewKeyDown="Grid_PreviewKeyDown">
+        <Frame Height="46" Name="frame1" VerticalAlignment="Top" BorderBrush="Black" Background="#FFB7E8FF" Focusable="False" />
+        <TextBox Height="29" Margin="12,8,12,0" Name="txtTitulo" VerticalAlignment="Top" TextAlignment="Center" FontSize="16" Text="" CharacterCasing="Upper" MaxLength="100" PreviewKeyDown="txtTitulo_PreviewKeyDown" />
+        <Frame Background="#FFB7E8FF" BorderBrush="Black" Height="69" Margin="0,357,0,0" Name="frame2" VerticalAlignment="Top" Focusable="False" />
+        <GroupBox Header="Dados" Height="304" Margin="6,48,6,0" Name="groupBox1" VerticalAlignment="Top">
+            <Grid Width="581" Name="GridDados" PreviewKeyDown="GridDados_PreviewKeyDown" Margin="0,0,10,3">
+                <Label Content="Nome:" Height="28" HorizontalAlignment="Left" Margin="2,10,0,0" Name="label1" VerticalAlignment="Top" />
+                <TextBox Height="23" Margin="64,12,12,0" MaxLength="255" Name="txtNome" VerticalAlignment="Top" CharacterCasing="Upper" PreviewKeyDown="txtNome_PreviewKeyDown" />
+                <Label Content="Cpf/Cnpj:" Height="28" HorizontalAlignment="Left" Margin="2,39,0,0" Name="label2" VerticalAlignment="Top" />
+                <TextBox Height="23" HorizontalAlignment="Left" Margin="64,41,0,0" MaxLength="255" Name="txtCpfCnpj" VerticalAlignment="Top" Width="167" CharacterCasing="Upper" PreviewKeyDown="txtCpfCnpj_PreviewKeyDown" LostFocus="txtCpfCnpj_LostFocus" GotFocus="txtCpfCnpj_GotFocus"/>
+                <Label Content="Ofício:" Height="28" HorizontalAlignment="Left" Margin="2,67,0,0" Name="label3" VerticalAlignment="Top" />
+                <TextBox Height="23" Margin="64,69,12,0" MaxLength="255" Name="txtOficio" VerticalAlignment="Top" CharacterCasing="Upper"  PreviewKeyDown="txtOficio_PreviewKeyDown"/>
+                <Label Content="Aviso:" Height="28" HorizontalAlignment="Left" Margin="2,95,0,0" Name="label4" VerticalAlignment="Top" />
+                <TextBox Height="23" Margin="64,97,12,0" MaxLength="255" Name="txtAviso" VerticalAlignment="Top" CharacterCasing="Upper" PreviewKeyDown="txtAviso_PreviewKeyDown"/>
+                <Label Content="Processo:" Height="28" HorizontalAlignment="Left" Margin="2,123,0,0" Name="label5" VerticalAlignment="Top" />
+                <TextBox Height="23" Margin="64,125,12,0" MaxLength="255" Name="txtProcesso" VerticalAlignment="Top" CharacterCasing="Upper" PreviewKeyDown="txtProcesso_PreviewKeyDown"/>
+                <Label Content="Obs.:" Height="28" HorizontalAlignment="Left" Margin="11,202,0,0" Name="label6" VerticalAlignment="Top" />
+                <TextBox Height="116" Margin="64,153,12,0" Name="txtObs" VerticalAlignment="Top" TextAlignment="Justify" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" 
+         AcceptsReturn="True"/>
+
+
+            </Grid>
+        </GroupBox>
+        <Button Content="_Novo" Cursor="Hand" Height="48" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="523,370,0,0" Name="btnNovo" VerticalAlignment="Top" VerticalContentAlignment="Bottom" Width="81" Click="btnNovo_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="/CS_Caixa;component/Images/1425064642_Create.png" Stretch="Uniform" TileMode="None" />
+            </Button.Background>
+        </Button>
+        <Button Content="_Salvar" Cursor="Hand" Height="48" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="422,370,0,0" Name="btnSalvar" VerticalAlignment="Top" VerticalContentAlignment="Bottom" Width="86" Click="btnSalvar_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="/CS_Caixa;component/Images/Salvar.png" Stretch="Uniform" TileMode="None" />
+            </Button.Background>
+        </Button>
+        <DataGrid AllowDrop="False" AlternatingRowBackground="#FF8DE1FF" AlternationCount="2" AutoGenerateColumns="False" Background="{x:Null}" CanUserResizeRows="False" ClipboardCopyMode="ExcludeHeader" GridLinesVisibility="None" HeadersVisibility="All" HorizontalScrollBarVisibility="Auto" IsReadOnly="True" IsTabStop="True" Name="dataGrid1" RowBackground="White" SelectionMode="Single" SelectionUnit="FullRow" UseLayoutRounding="True" SelectionChanged="dataGrid1_SelectionChanged" Margin="0,454,0,1">
+            <DataGrid.CellStyle>
+                <Style TargetType="DataGridCell">
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="#FF0086FF" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.CellStyle>
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Path=IdIndisponibilidade}" CanUserResize="False" Header="Ato" Visibility="Hidden" Width="50" />
+                <DataGridTextColumn Binding="{Binding Path=Nome}" CanUserResize="False" Header="Nome" Width="270" />
+                <DataGridTextColumn Binding="{Binding Path=CpfCnpj}" CanUserResize="False" Header="Cpf/Cnpj" Width="130" />
+                <DataGridTextColumn Binding="{Binding Path=Titulo}" CanUserResize="False" Header="Título" Width="300" />
+            </DataGrid.Columns>
+            <DataGrid.ContextMenu>
+                <ContextMenu ForceCursor="True" Name="menu" Selector.IsSelected="True">
+                    <MenuItem Click="MenuItemExcluir_Click" Header="Excluir" Name="MenuItemExcluir">
+                        <MenuItem.Icon>
+                            <Image Source="/CS_Caixa;component/Images/1425064473_DeleteRed.png" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Click="MenuItemAlterar_Click" Header="Alterar" Name="MenuItemAlterar">
+                        <MenuItem.Icon>
+                            <Image Source="/CS_Caixa;component/Images/modify.png" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Click="MenuItemImprimir_Click" Header="Visualizar Ficha" Name="MenuItemImprimir">
+                        <MenuItem.Icon>
+                            <Image Source="/CS_Caixa;component/Images/copia.png" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+        </DataGrid>
+        <GroupBox Header="Consulta" Height="59" HorizontalAlignment="Left" Margin="10,360,0,0" Name="groupBoxConsulta" VerticalAlignment="Top" Width="299">
+            <Grid>
+                <ComboBox Height="23" HorizontalAlignment="Left" Margin="6,6,0,0" Name="cmbTipoConsulta" VerticalAlignment="Top" Width="94" SelectedIndex="0" SelectionChanged="cmbTipoConsulta_SelectionChanged">
+                    <ComboBoxItem Content="NOME" />
+                    <ComboBoxItem Content="CPF/CNPJ" />
+                </ComboBox>
+                <TextBox Height="23" HorizontalAlignment="Left" Margin="108,6,0,0" MaxLength="150" Name="txtConsulta" VerticalAlignment="Top" Width="173" CharacterCasing="Upper" TextChanged="txtConsulta_TextChanged"  />
+            </Grid>
+        </GroupBox>
+        <Button Content="_Cancelar" Cursor="Hand" Height="48" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="315,370,0,0" Name="btnCancelar" VerticalAlignment="Top" VerticalContentAlignment="Bottom" Width="86" Click="btnCancelar_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="/CS_Caixa;component/Images/Cancelar.png" Stretch="Uniform" TileMode="None" />
+            </Button.Background>
+        </Button>
+        <Label Content="Label" Height="28" HorizontalAlignment="Left" Margin="0,426,0,0" Name="label7" VerticalAlignment="Top" />
+    </Grid>
+</Window>

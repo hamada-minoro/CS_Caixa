@@ -1,0 +1,86 @@
+﻿<Window x:Class="CS_Caixa.WinCadLoteamentos"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Cadastro de Loteamentos" Height="433" Width="698" ShowInTaskbar="False" Icon="/CS_Caixa;component/Images/Icone48.ico" ResizeMode="NoResize" Background="#FFE0E8D8" Loaded="Window_Loaded" WindowStartupLocation="CenterOwner">
+    <Grid>
+        <GroupBox Header="Dados do Loteamento" HorizontalAlignment="Left" Height="144" Margin="10,1,0,0" VerticalAlignment="Top" Width="669">
+            <Grid Margin="0,0,-2,1" x:Name="GridDados">
+                <Label Content="Nome do Loteamento:" HorizontalAlignment="Left" Margin="21,7,0,0" VerticalAlignment="Top"/>
+                <TextBox x:Name="txtNome" TabIndex="4" MaxLength="200" CharacterCasing="Upper" HorizontalAlignment="Left" Height="23" Margin="21,30,0,0" TextWrapping="Wrap" PreviewKeyDown="txtNome_PreviewKeyDown" VerticalAlignment="Top" Width="622"/>
+                <Label Content="Localização:" HorizontalAlignment="Left" Margin="21,58,0,0" VerticalAlignment="Top" Width="186"/>
+                <Label Content="Proprietário:" HorizontalAlignment="Left" Margin="174,58,0,0" VerticalAlignment="Top" Width="115"/>
+                <TextBox x:Name="txtProprietario" CharacterCasing="Upper" MaxLength="200" TabIndex="7" HorizontalAlignment="Left" Height="23" Margin="174,82,0,0" TextWrapping="Wrap" PreviewKeyDown="txtProprietario_PreviewKeyDown" VerticalAlignment="Top" Width="311" />
+                <Label Content="Matrícula:"  HorizontalAlignment="Left" Margin="497,58,0,0" VerticalAlignment="Top"/>
+                <TextBox x:Name="txtMatricula" MaxLength="6" TabIndex="9" CharacterCasing="Upper"  HorizontalAlignment="Left" Height="23" Margin="497,82,0,0" TextWrapping="Wrap" PreviewKeyDown="txtMatricula_PreviewKeyDown" VerticalAlignment="Top" Width="75" />
+                <ComboBox x:Name="cmbLocalizacao" TabIndex="5"  HorizontalAlignment="Left" Margin="21,82,0,0" VerticalAlignment="Top" Width="141" SelectedIndex="-1" Height="23" PreviewKeyDown="cmbLocalizacao_PreviewKeyDown">
+                    <ComboBoxItem Content="2º DISTRITO"/>
+                    <ComboBoxItem Content="3º DISTRITO"/>
+                </ComboBox>
+                <Label Content="Nº insc.:"  HorizontalAlignment="Left" Margin="583,58,0,0" VerticalAlignment="Top"/>
+                <TextBox x:Name="txtInscricao" MaxLength="5" TabIndex="9" CharacterCasing="Upper"  HorizontalAlignment="Left" Height="23" Margin="583,82,0,0" TextWrapping="Wrap" PreviewKeyDown="txtInscricao_PreviewKeyDown" VerticalAlignment="Top" Width="60" />
+            </Grid>
+        </GroupBox>
+        <Button Content="_Cancelar" TabIndex="20" Cursor="Hand" Height="62" HorizontalContentAlignment="Right" x:Name="btnCancelar" VerticalContentAlignment="Bottom" Click="btnCancelar_Click" Margin="418,169,195,0" VerticalAlignment="Top">
+            <Button.Background>
+                <ImageBrush ImageSource="Images/1425000530_dialog-error-32.png" Stretch="Uniform" TileMode="None" />
+            </Button.Background>
+        </Button>
+        <Button Content="_Salvar" x:Name="btnSalvar" TabIndex="17" Cursor="Hand" Height="62" HorizontalContentAlignment="Right"  VerticalContentAlignment="Bottom" Click="btnSalvar_Click" Margin="509,169,104,0" VerticalAlignment="Top">
+            <Button.Background>
+                <ImageBrush ImageSource="Images/Salvar.png" Stretch="Uniform" TileMode="None" />
+            </Button.Background>
+        </Button>
+        <Button Content="_Novo" Cursor="Hand" Height="62" HorizontalContentAlignment="Right" x:Name="btnNovo" VerticalContentAlignment="Bottom" Click="btnNovo_Click" Margin="600,169,13,0" VerticalAlignment="Top">
+            <Button.Background>
+                <ImageBrush ImageSource="Images/1425064642_Create.png" Stretch="Uniform" TileMode="None" />
+            </Button.Background>
+        </Button>
+        <DataGrid AllowDrop="False" AlternatingRowBackground="PowderBlue" AlternationCount="1" AutoGenerateColumns="False" CanUserResizeRows="False" ClipboardCopyMode="ExcludeHeader" GridLinesVisibility="All" HeadersVisibility="All" HorizontalScrollBarVisibility="Auto" IsReadOnly="True" IsTabStop="True" x:Name="dataGrid1" RowBackground="Beige" SelectionMode="Single" SelectionUnit="FullRow" UseLayoutRounding="True" Margin="0,254,0,0" SelectionChanged="dataGrid1_SelectionChanged" VerticalScrollBarVisibility="Visible" Background="{x:Null}">
+            <DataGrid.RowStyle>
+                <Style TargetType="{x:Type DataGridRow}">
+                    <EventSetter Event="Control.MouseDoubleClick" Handler="dataGrid1_MouseDoubleClick"/>
+                </Style>
+            </DataGrid.RowStyle>
+            <DataGrid.CellStyle>
+                <Style TargetType="{x:Type DataGridCell}">
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="#FF0086FF" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.CellStyle>
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding LoteamentoId}" CanUserResize="False" Header="Cod" Visibility="Hidden" Width="50" />
+                <DataGridTextColumn Binding="{Binding Nome}" CanUserResize="False" Header="Nome" Width="245" />
+                <DataGridTextColumn Binding="{Binding Localizacao}" CanUserResize="False" Header="Localização" Width="100" />
+                <DataGridTextColumn Binding="{Binding Proprietario}" CanUserResize="False" Header="Proprietário" Width="200" />
+                <DataGridTextColumn Binding="{Binding Matricula}" CanUserResize="False" Header="Matrícula" Width="70" />
+                <DataGridTextColumn Binding="{Binding NumeroInscricao}" CanUserResize="False" Header="Nº Insc" Width="60" />
+            </DataGrid.Columns>
+            <DataGrid.ContextMenu>
+                <ContextMenu ForceCursor="True" x:Name="menu" Selector.IsSelected="True">
+                    <MenuItem Header="Alterar" x:Name="MenuItemAlterar" Click="MenuItemAlterar_Click">
+                        <MenuItem.Icon>
+                            <Image Source="Images/modify.png" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="Excluir" x:Name="MenuItemExcluir" Click="MenuItemExcluir_Click">
+                        <MenuItem.Icon>
+                            <Image Source="Images/1425064473_DeleteRed.png" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+        </DataGrid>
+        <GroupBox Header="Consulta" Height="86" x:Name="groupBox1" VerticalAlignment="Top" Margin="10,150,313,0">
+            <Grid Margin="0,0,-2,1" x:Name="GridConsulta">
+                <TextBox x:Name="txtConsulta" HorizontalAlignment="Left" Height="23" Margin="10,28,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="339" CharacterCasing="Upper" PreviewKeyDown="txtConsulta_PreviewKeyDown"  TextChanged="txtConsulta_TextChanged" TabIndex="21"/>
+                <RadioButton Content="Nome" IsChecked="True" x:Name="rbNome" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="12,7,0,0" Checked="rbNome_Checked"/>
+                <RadioButton Content="Proprietário" x:Name="rbProprietario" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="135,7,0,0" Checked="rbProprietario_Checked"/>
+                <RadioButton Content="Matrícula" x:Name="rbMatricula" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="277,7,0,0" Checked="rbMatricula_Checked"/>
+            </Grid>
+        </GroupBox>
+
+    </Grid>
+</Window>

@@ -1,0 +1,102 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+         xmlns:UC="clr-namespace:CS_Caixa.UC" x:Class="CS_Caixa.AgendaEletronica"
+
+         Title="AGENDA ELETRÔNICA" Height="517.761" Width="777.396" ShowInTaskbar="False" WindowStartupLocation="CenterScreen" WindowStyle="ThreeDBorderWindow" Loaded="Window_Loaded" ResizeMode="NoResize">
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FF39CBDE" Offset="0" />
+            <GradientStop Color="#FFE2F9FC" Offset="0.285" />
+        </LinearGradientBrush>
+    </Window.Background>
+    <Grid Background="#FFACC3CB">
+        <Label Content="AGENDA ELETRÔNICA" x:Name="lblMes" HorizontalContentAlignment="Center" VerticalAlignment="Top" FontSize="14" Background="#FF202599" Foreground="White"/>
+        <Grid Name="gridSalvar" Height="222" Margin="10,259,10,0" VerticalAlignment="Top" Background="#FFB6CAE2">
+            <ComboBox Name="cmbTipoAto" HorizontalAlignment="Left" Margin="10,28,0,0" VerticalAlignment="Top" Width="507" Height="30" IsEditable="True" FontSize="16" LostFocus="cmbTipoAto_LostFocus" PreviewKeyDown="cmbTipoAto_PreviewKeyDown"/>
+            <ComboBox Name="txtNomeCliente" HorizontalAlignment="Left" Height="30" Margin="10,83,0,0" IsEditable="True" VerticalAlignment="Top" Width="507" FontSize="16" LostFocus="txtNomeCliente_LostFocus" PreviewKeyDown="txtNomeCliente_PreviewKeyDown"/>
+            <Label Content="Tipo de Serviço:" HorizontalAlignment="Left" Margin="10,2,0,0" VerticalAlignment="Top" Width="119"/>
+            <Label Content="Nome do Cliente:" HorizontalAlignment="Left" Margin="10,58,0,0" VerticalAlignment="Top" Width="207"/>
+            <TextBox Name="txtObservacao" Height="73" CharacterCasing="Upper" Margin="10,139,10,0" TextWrapping="Wrap" VerticalAlignment="Top" PreviewKeyDown="txtObservacao_PreviewKeyDown"/>
+            <Label Content="Descrição:" HorizontalAlignment="Left" Margin="10,113,0,0" VerticalAlignment="Top" Width="119"/>
+            <Border BorderBrush="Black" CornerRadius="10" BorderThickness="1" HorizontalAlignment="Left" Height="65" Margin="642,33,0,0" VerticalAlignment="Top" Width="99" Background="#FF537CAE">
+                <Button Content="Salvar" Name="btnSalvar" Margin="9" Foreground="#FF081274" FontSize="22" Click="btnSalvar_Click"/>
+            </Border>
+            <Border BorderBrush="Black" CornerRadius="10" BorderThickness="1" HorizontalAlignment="Left" Height="65" Margin="530,33,0,0" VerticalAlignment="Top" Width="96" Background="#FFAE5353">
+                <Button Content="Limpar" x:Name="btnLimpar" Margin="9" Foreground="#FF740D08" FontSize="22" Click="btnLimpar_Click"/>
+            </Border>
+
+        </Grid>
+        <Grid HorizontalAlignment="Left" Height="220" Margin="10,34,0,0" VerticalAlignment="Top" Width="751">
+            <Grid Background="#FF8D90C1" Margin="0,0,518,0">
+                <Calendar Foreground="#FF4D4949" BorderThickness="5" Margin="23,31,23,7" x:Name="calendar" SelectedDatesChanged="calendar_SelectedDatesChanged">
+                    <Calendar.BorderBrush>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFA3AEB9" Offset="0"/>
+                            <GradientStop Color="#FF8399A9" Offset="0.375"/>
+                            <GradientStop Color="#FF718597" Offset="0.375"/>
+                            <GradientStop Color="#FF559ACF" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Calendar.BorderBrush>
+                    <Calendar.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFE4EAF0" Offset="0"/>
+                            <GradientStop Color="#FFECF0F4" Offset="0.16"/>
+                            <GradientStop Color="#FFFCFCFD" Offset="0.16"/>
+                            <GradientStop Color="#FFD4DFFB" Offset="0.988"/>
+                        </LinearGradientBrush>
+                    </Calendar.Background>
+                </Calendar>
+                <Label Content="DATA" HorizontalContentAlignment="Center" Margin="23,6,23,0" VerticalAlignment="Top" Background="#FFD8C0C0"/>
+            </Grid>
+            <Grid x:Name="gridHora" Margin="233,0,4,0">
+                <Label Content="SELECIONA A HORA" Name="lblDataHoraSelecionada" HorizontalContentAlignment="Center" VerticalAlignment="Top" Background="PapayaWhip" Margin="10,7,10,0"/>
+                <StackPanel Height="40" VerticalAlignment="Top" Margin="10,38,10,0" Orientation="Horizontal">
+                    <Button Content="9:00" x:Name="btn9hs" HorizontalAlignment="Left" Width="67" FontSize="16" Background="Gainsboro" Click="btn9hs_Click" Margin="0,0,0,1" />
+                    <Grid Width="40"/>
+                    <Button Content="9:30" x:Name="btn9_30hs" HorizontalAlignment="Left" VerticalAlignment="Top" Width="67" Height="39" FontSize="16" Background="Gainsboro" Click="btn9_30hs_Click"/>
+                    <Grid Width="40"/>
+                    <Button Content="10:00" x:Name="btn10hs" HorizontalAlignment="Left" VerticalAlignment="Top" Width="67" Height="39" FontSize="16" Background="Gainsboro" Click="btn10hs_Click"/>
+                    <Grid Width="40"/>
+                    <Button Content="10:30" x:Name="btn10_30hs" HorizontalAlignment="Left" VerticalAlignment="Top" Width="67" Height="39" FontSize="16" Background="Gainsboro" Click="btn10_30hs_Click"/>
+                    <Grid Width="39"/>
+                    <Button Content="11:00" x:Name="btn11hs" HorizontalAlignment="Left" VerticalAlignment="Top" Width="67" Height="39" FontSize="16" Background="Gainsboro" Click="btn11hs_Click"/>
+                </StackPanel>
+                <StackPanel Height="40" VerticalAlignment="Top" Margin="10,83,10,0" Orientation="Horizontal">
+                    <Button Content="11:30" x:Name="btn11_30hs" HorizontalAlignment="Left" VerticalAlignment="Top" Width="67" Height="39" FontSize="16" Background="Gainsboro" Click="btn11_30hs_Click"/>
+                    <Grid Width="40"/>
+                    <Button Content="12:00" x:Name="btn12hs" HorizontalAlignment="Left" VerticalAlignment="Top" Width="67" Height="39" FontSize="16" Background="Gainsboro" Click="btn12hs_Click"/>
+                    <Grid Width="40"/>
+                    <Button Content="12:30" x:Name="btn12_30hs" HorizontalAlignment="Left" VerticalAlignment="Top" Width="67" Height="39" FontSize="16" Background="Gainsboro" Click="btn12_30hs_Click"/>
+                    <Grid Width="40"/>
+                    <Button Content="13:00" x:Name="btn13hs" HorizontalAlignment="Left" VerticalAlignment="Top" Width="67" Height="39" FontSize="16" Background="Gainsboro" Click="btn13hs_Click"/>
+                    <Grid Width="39"/>
+                    <Button Content="13:30" x:Name="btn13_30hs" HorizontalAlignment="Left" VerticalAlignment="Top" Width="67" Height="39" FontSize="16" Background="Gainsboro" Click="btn13_30hs_Click"/>
+                </StackPanel>
+                <StackPanel Height="40" VerticalAlignment="Top" Margin="10,128,10,0" Orientation="Horizontal">
+                    <Button Content="14:00" x:Name="btn14hs" HorizontalAlignment="Left" VerticalAlignment="Top" Width="67" Height="39" FontSize="16" Background="Gainsboro" Click="btn14hs_Click"/>
+                    <Grid Width="40"/>
+                    <Button Content="14:30" x:Name="btn14_30hs" HorizontalAlignment="Left" VerticalAlignment="Top" Width="67" Height="39" FontSize="16" Background="Gainsboro" Click="btn14_30hs_Click"/>
+                    <Grid Width="40"/>
+                    <Button Content="15:00" x:Name="btn15hs" HorizontalAlignment="Left" VerticalAlignment="Top" Width="67" Height="39" FontSize="16" Background="Gainsboro" Click="btn15hs_Click"/>
+                    <Grid Width="40"/>
+                    <Button Content="15:30" x:Name="btn15_30hs" HorizontalAlignment="Left" VerticalAlignment="Top" Width="67" Height="39" FontSize="16" Background="Gainsboro" Click="btn15_30hs_Click"/>
+                    <Grid Width="39"/>
+                    <Button Content="16:00" x:Name="btn16hs" HorizontalAlignment="Left" VerticalAlignment="Top" Width="67" Height="39" FontSize="16" Background="Gainsboro" Click="btn16hs_Click"/>
+                </StackPanel>
+                <StackPanel Height="40" VerticalAlignment="Top" Margin="10,173,10,0" Orientation="Horizontal">
+                    <Button Content="16:30" x:Name="btn16_30hs" HorizontalAlignment="Left" VerticalAlignment="Top" Width="67" Height="39" FontSize="16" Background="Gainsboro" Click="btn16_30hs_Click"/>
+                    <Grid Width="40"/>
+                    <Button Content="17:00" x:Name="btn17hs" HorizontalAlignment="Left" VerticalAlignment="Top" Width="67" Height="39" FontSize="16" Background="Gainsboro" Click="btn17hs_Click"/>
+                    <Grid Width="40"/>
+                    <Button Content="17:30" x:Name="btn17_30hs" HorizontalAlignment="Left" VerticalAlignment="Top" Width="67" Height="39" FontSize="16" Background="Gainsboro" Click="btn17_30hs_Click"/>
+                    <Grid Width="40"/>
+                    <Button Content="18:00" x:Name="btn18hs" HorizontalAlignment="Left" VerticalAlignment="Top" Width="67" Height="39" FontSize="16" Background="Gainsboro" Click="btn18hs_Click"/>
+                    <Grid Width="39"/>
+                    <Button Content="18:30" x:Name="btn18_30hs" HorizontalAlignment="Left" VerticalAlignment="Top" Width="67" Height="39" FontSize="16" Background="Gainsboro" Click="btn18_30hs_Click"/>
+                </StackPanel>
+            </Grid>
+        </Grid>
+
+    </Grid>
+</Window>

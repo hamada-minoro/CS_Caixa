@@ -1,0 +1,20 @@
+﻿CS_Caixa
+
+
+winexe
+C#
+.cs
+C:\Users\Erick\OneDrive\Área de Trabalho\CS_Caixa\CS_Caixa\obj\x86\Release\
+CS_Caixa
+none
+false
+DEBUG;TRACE
+C:\Users\Erick\OneDrive\Área de Trabalho\CS_Caixa\CS_Caixa\App.xaml
+97-1377862232
+1-1925257371
+3411774441704
+38-432882009
+AgendaEletronica.xaml;AguardeCarregandoGridQrCode.xaml;AguardeGerandoXml.xaml;AguardeIntegracaoIssMas.xaml;AguardeSalvarParametros.xaml;AguardeTotal.xaml;Apresentacao.xaml;Chamada.xaml;ClienteCadastro.xaml;ConfirmarChamadaSenha.xaml;EscolherSetor.xaml;ImportarMas.xaml;ImprimirSenha.xaml;PainelSenhas.xaml;RelatoriosForms\WinControleDiario.xaml;RelatoriosForms\WinMovimentoDiario.xaml;RelatoriosForms\WinRelatorioConsultaProtestoApontamento.xaml;RelatoriosForms\WinRelatorioFechamentoCaixa.xaml;RelatoriosForms\WinRelatorioFechamentoCaixaGeral.xaml;RelatoriosForms\WinRelatorioImprimirQrCode.xaml;RelatoriosForms\WinRelatorioImprimirQrCodePrenotacao.xaml;RelatoriosForms\WinRelatorioMensalista.xaml;RelatoriosForms\WinRelatorioMovimentoDiario.xaml;RetiradaSenha.xaml;UC\UcAgendaEletronica.xaml;WinAdicionarCaixa.xaml;WinAguardeAtualizacaoCustas.xaml;WinAguardeBalcao.xaml;WinAguardeCenprot.xaml;WinAguardeConsultaReconhecimento.xaml;WinAguardeControleAtos.xaml;WinAguardeControlePagamento.xaml;WinAguardeCosultaIssMas.xaml;WinAguardeEnviarSite.xaml;WinAguardeIndisponibilidade.xaml;WinAguardePagamento.xaml;WinAguardeProtesto.xaml;WinAguardeRelatorioFechamentoCaixa.xaml;WinAguardeVerificaBackup.xaml;WinAlterarControlePagamento.xaml;WinAlterarItemCustas.xaml;WinAtoProtesto.xaml;WinAtosRgi.xaml;WinBalcao.xaml;WinBalcaoNovo.xaml;WinCadastroSite.xaml;WinCadCheque.xaml;WinCadLoteamentos.xaml;WinCadUsuario.xaml;WinCenprot.xaml;WinChamadaSenhaNotas.xaml;WinChamadaSenhaRecepcao.xaml;WinChamarSenhas.xaml;WinConfirmaChamadaSenha.xaml;WinConfirmarData.xaml;WinConfirmaSenhaMaster.xaml;WinConsultaCenib.xaml;WinConsultaReconhecimento.xaml;WinControleAtosNotas.xaml;WinControleAtosProtesto.xaml;WinControlePagamento.xaml;WinControlePagamentoControle.xaml;WinCustasNotas.xaml;WinCustasProtesto.xaml;WinCustasRgi.xaml;WinDataImportarCredito.xaml;WinDigitarAtoNotas.xaml;WinAtosNotas.xaml;WinDigitarAtoProtesto.xaml;WinDigitarAtoRgi.xaml;WinDigitarControleAtosNotas.xaml;WinDigitarControleAtosProtesto.xaml;WinDividasCartorio.xaml;WinEnviarBoleto.xaml;WinEtiquetaPrenotacao.xaml;WinGerarQrCode.xaml;WinGerarQrCodeRgi.xaml;WinImportarProtesto.xaml;WinImpressaoMatricula.xaml;WinImprimirRecibo.xaml;WinImprimirReciboCartao.xaml;WinIndiceEscritura.xaml;WinIndiceProcuracao.xaml;WinIndiceRgi.xaml;WinIndisponibilidade.xaml;WinLogin.xaml;WinMostrarNomesCenib.xaml;WinNaoPagos.xaml;WinPainelSenhas.xaml;WinParametros.xaml;WinPrincipal.xaml;WinRepasse.xaml;WinRetiradaCaixa.xaml;WinSaldoControle.xaml;WinSincronizarControleAtos.xaml;WinTotal.xaml;WinVisualizarDigitalizarRgi.xaml;
+
+False
+

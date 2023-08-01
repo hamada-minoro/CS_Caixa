@@ -1,0 +1,372 @@
+﻿<Window x:Class="CS_Caixa.ImportarMas"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Integração - ISS / Mas" Height="701.5" Width="958" ResizeMode="NoResize" WindowState="Normal" WindowStartupLocation="CenterOwner" ShowInTaskbar="False" Icon="Icon Caixa.ico" Background="#FFE9FFFD" Loaded="Window_Loaded">
+    <Grid>
+        <TabControl Margin="0,110,0,0" Height="563" VerticalAlignment="Top" Background="#FFB9E6FB" >
+            <TabItem Name="tabItemAtosPraticados" Header="Atos Praticados" >
+                <Grid Background="#FFE5E5E5">
+                    <Grid Background="#FFE7EED8" Margin="0,1,0,0">
+                        <StackPanel Margin="0,463,0,0" Orientation="Horizontal" Height="45" VerticalAlignment="Top">
+                            <StackPanel HorizontalAlignment="Left" Height="45" VerticalAlignment="Top" Width="5"/>
+                            <Button x:Name="btnAdicionarAto" Padding="0" BorderThickness="0" Cursor="Hand" ToolTip="Adicionar" RenderTransformOrigin="-0.357,0.569" HorizontalAlignment="Left" Width="73" Height="43" VerticalAlignment="Top" Click="btnAdicionarAto_Click">
+                                <Button.Background>
+                                    <ImageBrush/>
+                                </Button.Background>
+                                <Button.ContentTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="0" Padding="0" Height="32" Width="48">
+                                            <TextBlock.Background>
+                                                <ImageBrush ImageSource="Images/AdicionarRegistro.png"/>
+                                            </TextBlock.Background>
+                                            <TextBlock.Style>
+                                                <Style TargetType="{x:Type TextBlock}">
+                                                    <Style.Triggers>
+                                                        <Trigger Property ="IsMouseOver" Value="True">
+                                                            <Setter Property= "Background" Value="Transparent"/>
+                                                        </Trigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
+                                    </DataTemplate>
+                                </Button.ContentTemplate>
+                            </Button>
+                            <StackPanel HorizontalAlignment="Left" Height="45" VerticalAlignment="Top" Width="9"/>
+                            <Button x:Name="btnAlterarAto" IsEnabled="False" Padding="0" BorderThickness="0" Cursor="Hand" ToolTip="Alterar" RenderTransformOrigin="-0.357,0.569" HorizontalAlignment="Left" Width="73" Height="43" VerticalAlignment="Top" Click="btnAlterarAto_Click">
+                                <Button.Background>
+                                    <ImageBrush/>
+                                </Button.Background>
+                                <Button.ContentTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="0" Padding="0" Height="32" Width="48">
+                                            <TextBlock.Background>
+                                                <ImageBrush ImageSource="Images/AlterarRegistro.png"/>
+                                            </TextBlock.Background>
+                                            <TextBlock.Style>
+                                                <Style TargetType="{x:Type TextBlock}">
+                                                    <Style.Triggers>
+                                                        <Trigger Property ="IsMouseOver" Value="True">
+                                                            <Setter Property= "Background" Value="Transparent"/>
+                                                        </Trigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
+                                    </DataTemplate>
+                                </Button.ContentTemplate>
+                            </Button>
+                            <StackPanel HorizontalAlignment="Left" Height="45" VerticalAlignment="Top" Width="9"/>
+                            <Button x:Name="btnExcluirAto" IsEnabled="False" Padding="0" BorderThickness="0" Cursor="Hand" ToolTip="Excluir" RenderTransformOrigin="-0.357,0.569" HorizontalAlignment="Left" Width="73" Height="43" VerticalAlignment="Top" Click="btnExcluirAto_Click">
+                                <Button.Background>
+                                    <ImageBrush/>
+                                </Button.Background>
+                                <Button.ContentTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="0" Padding="0" Height="32" Width="48">
+                                            <TextBlock.Background>
+                                                <ImageBrush ImageSource="Images/ExcluirRegistro.png"/>
+                                            </TextBlock.Background>
+                                            <TextBlock.Style>
+                                                <Style TargetType="{x:Type TextBlock}">
+                                                    <Style.Triggers>
+                                                        <Trigger Property ="IsMouseOver" Value="True">
+                                                            <Setter Property= "Background" Value="Transparent"/>
+                                                        </Trigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
+                                    </DataTemplate>
+                                </Button.ContentTemplate>
+                            </Button>
+                            <StackPanel HorizontalAlignment="Left" Height="45" VerticalAlignment="Top" Width="9"/>
+                            <Button x:Name="btnCancelarAto" IsEnabled="False" Padding="0" BorderThickness="0" Cursor="Hand" ToolTip="Cancelar" RenderTransformOrigin="-0.357,0.569" HorizontalAlignment="Left" Width="73" Height="43" VerticalAlignment="Top" Click="btnCancelarAto_Click">
+                                <Button.Background>
+                                    <ImageBrush/>
+                                </Button.Background>
+                                <Button.ContentTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="0" Padding="0" Height="32" Width="48">
+                                            <TextBlock.Background>
+                                                <ImageBrush ImageSource="Images/Cancelar.png"/>
+                                            </TextBlock.Background>
+                                            <TextBlock.Style>
+                                                <Style TargetType="{x:Type TextBlock}">
+                                                    <Style.Triggers>
+                                                        <Trigger Property ="IsMouseOver" Value="True">
+                                                            <Setter Property= "Background" Value="Transparent"/>
+                                                        </Trigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
+                                    </DataTemplate>
+                                </Button.ContentTemplate>
+                            </Button>
+                            <StackPanel HorizontalAlignment="Left" Height="45" VerticalAlignment="Top" Width="524"/>
+                            <Button x:Name="btnSalvarAto" TabIndex="18" IsEnabled="False" Padding="0" BorderThickness="0" Cursor="Hand" ToolTip="Salvar" RenderTransformOrigin="-0.357,0.569" HorizontalAlignment="Left" Width="73" Height="43" VerticalAlignment="Top" Click="btnSalvarAto_Click">
+                                <Button.Background>
+                                    <ImageBrush/>
+                                </Button.Background>
+                                <Button.ContentTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="0" Padding="0" Height="32" Width="48">
+                                            <TextBlock.Background>
+                                                <ImageBrush ImageSource="Images/Check.png"/>
+                                            </TextBlock.Background>
+                                            <TextBlock.Style>
+                                                <Style TargetType="{x:Type TextBlock}">
+                                                    <Style.Triggers>
+                                                        <Trigger Property ="IsMouseOver" Value="True">
+                                                            <Setter Property= "Background" Value="Transparent"/>
+                                                        </Trigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
+                                    </DataTemplate>
+                                </Button.ContentTemplate>
+                            </Button>
+                        </StackPanel>
+                        <GroupBox Header="Ato" Margin="0,301,0,0" Height="157" VerticalAlignment="Top">
+                            <Grid Name="gridAtoPraticado" IsEnabled="False" Margin="0,0,-2,0" PreviewKeyDown="gridAtoPraticado_PreviewKeyDown">
+                                <DatePicker Name="dpData" TabIndex="1" HorizontalAlignment="Left" Margin="5,17,0,0" Height="24" VerticalAlignment="Top" Width="96" PreviewKeyDown="dpData_PreviewKeyDown"/>
+                                <Label Content="Data:" HorizontalAlignment="Left" Margin="5,-3,0,0" VerticalAlignment="Top"/>
+                                <ComboBox Name="cmbAtribuicao"  TabIndex="2" HorizontalAlignment="Left" Margin="109,17,0,0" Width="192" Height="24" VerticalAlignment="Top" Background="#FFE7EED8" PreviewKeyDown="cmbAtribuicao_PreviewKeyDown"/>
+                                <Label Content="Atribuição:" HorizontalAlignment="Left" Margin="111,-3,0,0" VerticalAlignment="Top"/>
+                                <Label Content="FETJ:" HorizontalAlignment="Left" Margin="111,42,0,0" VerticalAlignment="Top"/>
+                                <TextBox Name="txtFetj" MaxLength="9" TabIndex="8" HorizontalAlignment="Left" Margin="111,64,0,0" TextWrapping="Wrap" Width="78" Height="23" VerticalAlignment="Top" PreviewKeyDown="txtFetj_PreviewKeyDown" LostFocus="txtFetj_LostFocus" GotFocus="txtFetj_GotFocus"/>
+                                <Label Content="FUNDPERJ:" HorizontalAlignment="Left" Margin="200,42,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.673,0.538"/>
+                                <TextBox Name="txtFundperj" TabIndex="9" MaxLength="9" HorizontalAlignment="Left" Margin="200,64,0,0" TextWrapping="Wrap" Width="74" Height="23" VerticalAlignment="Top" PreviewKeyDown="txtFundperj_PreviewKeyDown" LostFocus="txtFundperj_LostFocus" GotFocus="txtFundperj_GotFocus"/>
+                                <Label Content="FUNPERJ:" HorizontalAlignment="Left" Margin="286,42,0,0" VerticalAlignment="Top"/>
+                                <TextBox Name="txtFunperj" MaxLength="9" TabIndex="10" HorizontalAlignment="Left" Margin="286,64,0,0" TextWrapping="Wrap" Width="74" Height="23" VerticalAlignment="Top" PreviewKeyDown="txtFunperj_PreviewKeyDown" LostFocus="txtFunperj_LostFocus" GotFocus="txtFunperj_GotFocus"/>
+                                <Label Content="FUNARPEN:" HorizontalAlignment="Left" Margin="372,42,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.105,0.538"/>
+                                <TextBox Name="txtFunarpen" TabIndex="11" MaxLength="25" HorizontalAlignment="Left" Margin="372,64,0,0" TextWrapping="Wrap" Width="74" Height="23" VerticalAlignment="Top" PreviewKeyDown="txtFunarpen_PreviewKeyDown" LostFocus="txtFunarpen_LostFocus" GotFocus="txtFunarpen_GotFocus"/>
+                                <Label Content="RESSAG:" HorizontalAlignment="Left" Margin="460,42,0,0" VerticalAlignment="Top"/>
+                                <TextBox Name="txtRessag" TabIndex="12" MaxLength="9" HorizontalAlignment="Left" Margin="460,64,0,0" TextWrapping="Wrap" Width="74" Height="23" VerticalAlignment="Top" PreviewKeyDown="txtRessag_PreviewKeyDown" LostFocus="txtRessag_LostFocus" GotFocus="txtRessag_GotFocus"/>
+                                <Label Content="MUTUA:" HorizontalAlignment="Left" Margin="549,42,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.362,0.577"/>
+                                <TextBox Name="txtMutua" TabIndex="13" MaxLength="9" HorizontalAlignment="Left" Margin="549,64,0,0" TextWrapping="Wrap" Width="77" Height="23" VerticalAlignment="Top" PreviewKeyDown="txtMutua_PreviewKeyDown" LostFocus="txtMutua_LostFocus" GotFocus="txtMutua_GotFocus"/>
+                                <Label Content="EMOL:" HorizontalAlignment="Left" Margin="5,42,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.224,0.692"/>
+                                <TextBox Name="txtEmolumentos" TabIndex="7" MaxLength="9" HorizontalAlignment="Left" Margin="5,64,0,0" TextWrapping="Wrap" Width="96" Height="23" VerticalAlignment="Top" PreviewKeyDown="txtEmolumentos_PreviewKeyDown" LostFocus="txtEmolumentos_LostFocus" GotFocus="txtEmolumentos_GotFocus"/>
+                                <Label Content="Tipo de Ato:" HorizontalAlignment="Left" Margin="315,-3,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.125,0.654"/>
+                                <Label Content="Selo:" HorizontalAlignment="Left" Margin="642,-3,0,112"/>
+                                <TextBox Name="txtSelo" TabIndex="4" MaxLength="9" CharacterCasing="Upper" HorizontalAlignment="Left" Margin="642,17,0,0" TextWrapping="Wrap" Width="77" Height="23" VerticalAlignment="Top" Background="#FFFFD4D4" PreviewKeyDown="txtSelo_PreviewKeyDown"/>
+                                <Label Content="Aleatório:" HorizontalAlignment="Left" Margin="735,-3,0,0" VerticalAlignment="Top"/>
+                                <TextBox Name="txtAleatorio" TabIndex="5" MaxLength="3" CharacterCasing="Upper" HorizontalAlignment="Left" Margin="735,17,0,0" TextWrapping="Wrap" Width="77" Height="23" VerticalAlignment="Top" Background="#FFFFD4D4" PreviewKeyDown="txtAleatorio_PreviewKeyDown"/>
+                                <Label Content="Tipo Cobrança:" HorizontalAlignment="Left" Margin="828,-3,0,0" VerticalAlignment="Top"/>
+                                <TextBox x:Name="txtTipoCobranca" CharacterCasing="Upper" MaxLength="2" TabIndex="6" HorizontalAlignment="Left" Margin="828,17,0,0" TextWrapping="Wrap" Width="89" Height="23" VerticalAlignment="Top" PreviewKeyDown="txtTipoCobranca_PreviewKeyDown"/>
+                                <Label Content="ACOTERJ:" HorizontalAlignment="Left" Margin="642,42,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.362,0.577"/>
+                                <TextBox x:Name="txtAcoterj" TabIndex="14" MaxLength="9" HorizontalAlignment="Left" Margin="642,64,0,0" TextWrapping="Wrap" Width="77" Height="23" VerticalAlignment="Top" PreviewKeyDown="txtAcoterj_PreviewKeyDown" LostFocus="txtAcoterj_LostFocus" GotFocus="txtAcoterj_GotFocus"/>
+                                <Label Content="ISS:" HorizontalAlignment="Left" Margin="735,42,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.362,0.577"/>
+                                <TextBox x:Name="txtIss" TabIndex="15" MaxLength="9" HorizontalAlignment="Left" Margin="735,64,0,0" TextWrapping="Wrap" Width="77" Height="23" VerticalAlignment="Top" PreviewKeyDown="txtIss_PreviewKeyDown" LostFocus="txtIss_LostFocus" GotFocus="txtIss_GotFocus"/>
+                                <Label Content="Distribuidor:" HorizontalAlignment="Left" Margin="828,42,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.362,0.577"/>
+                                <TextBox x:Name="txtDistribuidor" TabIndex="16" MaxLength="9" HorizontalAlignment="Left" Margin="828,64,0,0" TextWrapping="Wrap" Width="89" Height="23" VerticalAlignment="Top" PreviewKeyDown="txtDistribuidor_PreviewKeyDown" LostFocus="txtDistribuidor_LostFocus" GotFocus="txtDistribuidor_GotFocus"/>
+                                <Label Content="Total:" HorizontalAlignment="Left" Margin="697,102,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.417" Height="23"/>
+                                <TextBox x:Name="txtTotal" TabIndex="17" MaxLength="9" HorizontalAlignment="Left" Margin="735,102,0,0" TextWrapping="Wrap" Width="182" Height="23" VerticalAlignment="Top" PreviewKeyDown="txtTotal_PreviewKeyDown" LostFocus="txtTotal_LostFocus" GotFocus="txtTotal_GotFocus"/>
+                                <ComboBox x:Name="cmbTipoAto" TabIndex="3" HorizontalAlignment="Left" Margin="315,17,0,0" Width="311" Height="24" VerticalAlignment="Top" Background="#FFE7EED8" PreviewKeyDown="cmbTipoAto_PreviewKeyDown"/>
+                            </Grid>
+                        </GroupBox>
+                        <DataGrid AutoGenerateColumns="False" AlternationCount="2" RowBackground="White" AlternatingRowBackground="#FF8DE1FF" IsReadOnly="True" SelectionMode="Single" x:Name="dataGridAtoPraticado" AllowDrop="False" HeadersVisibility="All" CanUserResizeRows="False" SelectionUnit="FullRow" GridLinesVisibility="None" ClipboardCopyMode="ExcludeHeader" HorizontalScrollBarVisibility="Auto" UseLayoutRounding="True" Height="296" VerticalAlignment="Top" Background="{x:Null}" IsTabStop="True" SelectedCellsChanged="dataGridAtoPraticado_SelectedCellsChanged">
+                            <DataGrid.CellStyle>
+                                <Style TargetType="{x:Type DataGridCell}">
+                                    <Style.Triggers>
+                                        <Trigger Property="IsSelected" Value="True">
+                                            <Setter Property="Background" Value="#FF0086FF" />
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </DataGrid.CellStyle>
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="AtoId" Width="50" Binding="{Binding IdImportarMas}" CanUserResize="False" Visibility="Hidden"/>
+                                <DataGridTextColumn Header="Data" Width="100" Binding="{Binding Data, StringFormat=dd/MM/yyyy}" CanUserResize="False"/>
+                                <DataGridTextColumn Header="Tipo de Ato" Width="280" Binding="{Binding TipoAto}" CanUserResize="False"/>
+                                <DataGridTextColumn Header="Tipo Cobranca" Width="100" Binding="{Binding TipoCobranca, StringFormat=\{0:n2\}}" CanUserResize="False" />
+                                <DataGridTextColumn Header="Selo" Width="100" Binding="{Binding Selo}" CanUserResize="False"/>
+                                <DataGridTextColumn Header="Aleatorio" Width="60" Binding="{Binding Aleatorio}" CanUserResize="False"/>
+                                <DataGridTextColumn Header="Emolumentos" Width="100" Binding="{Binding Emolumentos, StringFormat=\{0:n2\}}" CanUserResize="False" />
+                                <DataGridTextColumn Header="Iss" Width="100" Binding="{Binding Iss, StringFormat=\{0:n2\}}" CanUserResize="False" />
+                                <DataGridTextColumn Header="Total" Width="100" Binding="{Binding Total}" CanUserResize="False"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem Name="tabItemRelatorios" Header="Totais e Relatório">
+                <Grid Background="#FFE7EED8" Margin="0,1,0,0">
+                    <Grid HorizontalAlignment="Left" Height="118" Margin="0,416,0,0" VerticalAlignment="Top" Width="946" Background="#FFE9FFFD">
+                        <Button x:Name="btnRelatorioIss" Padding="0" BorderThickness="0" Cursor="Hand" ToolTip="Sincronizar" Height="82" VerticalAlignment="Top" RenderTransformOrigin="-0.357,0.569" Margin="674,19,156,0" Click="btnRelatorioIss_Click">
+                            <Button.Background>
+                                <ImageBrush/>
+                            </Button.Background>
+                            <Button.ContentTemplate>
+                                <DataTemplate>
+                                    <TextBlock  Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="0" Padding="0" Height="40" Width="52">
+                                        <TextBlock.Background>
+                                            <ImageBrush ImageSource="Images/ImprimirLivroAuxiliar.png"/>
+                                        </TextBlock.Background>
+                                        <TextBlock.Style>
+                                            <Style TargetType="{x:Type TextBlock}">
+                                                <Style.Triggers>
+                                                    <Trigger Property ="IsMouseOver" Value="True">
+                                                        <Setter Property= "Background" Value="Transparent"/>
+                                                    </Trigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                </DataTemplate>
+                            </Button.ContentTemplate>
+                        </Button>
+                        <Button x:Name="btnRelatorioTotal" Padding="0" BorderThickness="0" Cursor="Hand" ToolTip="Sincronizar" Height="82" VerticalAlignment="Top" RenderTransformOrigin="-0.357,0.569" Margin="809,19,21,0" Click="btnRelatorioTotal_Click">
+                            <Button.Background>
+                                <ImageBrush/>
+                            </Button.Background>
+                            <Button.ContentTemplate>
+                                <DataTemplate>
+                                    <TextBlock  Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="0" Padding="0" Height="40" Width="52">
+                                        <TextBlock.Background>
+                                            <ImageBrush ImageSource="Images/LivroAuxiliar.png"/>
+                                        </TextBlock.Background>
+                                        <TextBlock.Style>
+                                            <Style TargetType="{x:Type TextBlock}">
+                                                <Style.Triggers>
+                                                    <Trigger Property ="IsMouseOver" Value="True">
+                                                        <Setter Property= "Background" Value="Transparent"/>
+                                                    </Trigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                </DataTemplate>
+                            </Button.ContentTemplate>
+                        </Button>
+                        <Label Content="Imprimir Valores ISS" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="674,75,0,0" VerticalAlignment="Top" Width="116"/>
+                        <Label Content="Imprimir Total" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="809,75,0,0" VerticalAlignment="Top" Width="116"/>
+                        <TextBox x:Name="txtTotalGrerj" IsReadOnly="True" HorizontalAlignment="Left" Height="31" Margin="79,57,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="181" FontSize="18" Background="#FFFFF7A3"/>
+                        <Label Content="VALOR GRERJ:" HorizontalAlignment="Left" Margin="79,31,0,0" VerticalAlignment="Top" Width="148"/>
+                    </Grid>
+                    <GroupBox Header="Valores do Relatório" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="380" Width="916">
+                        <Grid Height="364" Margin="0,0,-2,-6" VerticalAlignment="Top">
+                            <TextBox Name="txtTotalEmolumentos" IsReadOnly="True" HorizontalAlignment="Left" Height="31" Margin="61,86,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="181" FontSize="18"/>
+                            <Label Content="EMOLUMENTOS:" HorizontalAlignment="Left" Margin="61,60,0,0" VerticalAlignment="Top" Width="148"/>
+                            <TextBox Name="txtTotalFetj" IsReadOnly="True" HorizontalAlignment="Left" Height="31" Margin="262,86,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="181" FontSize="18"/>
+                            <Label Content="FETJ:" HorizontalAlignment="Left" Margin="262,60,0,0" VerticalAlignment="Top" Width="148"/>
+                            <TextBox Name="txtTotalFundperj" IsReadOnly="True" HorizontalAlignment="Left" Height="31" Margin="465,86,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="181" FontSize="18"/>
+                            <Label Content="FUNDPERJ:" HorizontalAlignment="Left" Margin="465,60,0,0" VerticalAlignment="Top" Width="148"/>
+                            <TextBox Name="txtTotalFunperj" IsReadOnly="True" HorizontalAlignment="Left" Height="31" Margin="669,86,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="181" FontSize="18"/>
+                            <Label Content="FUNPERJ:" HorizontalAlignment="Left" Margin="669,60,0,0" VerticalAlignment="Top" Width="148"/>
+                            <TextBox Name="txtTotalFunarpen" IsReadOnly="True" HorizontalAlignment="Left" Height="31" Margin="61,182,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="181" FontSize="18"/>
+                            <Label Content="FUNARPEN:" HorizontalAlignment="Left" Margin="61,156,0,0" VerticalAlignment="Top" Width="148"/>
+                            <TextBox Name="txtTotalRessag" IsReadOnly="True" HorizontalAlignment="Left" Height="31" Margin="262,182,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="181" FontSize="18"/>
+                            <Label Content="RESSAG:" HorizontalAlignment="Left" Margin="262,156,0,0" VerticalAlignment="Top" Width="148"/>
+                            <TextBox Name="txtTotalMutua" IsReadOnly="True" HorizontalAlignment="Left" Height="31" Margin="465,182,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="181" FontSize="18"/>
+                            <Label Content="MUTUA:" HorizontalAlignment="Left" Margin="465,156,0,0" VerticalAlignment="Top" Width="148"/>
+                            <TextBox Name="txtTotalAcoterj" IsReadOnly="True" HorizontalAlignment="Left" Height="31" Margin="669,182,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="181" FontSize="18"/>
+                            <Label Content="ACOTERJ:" HorizontalAlignment="Left" Margin="669,156,0,0" VerticalAlignment="Top" Width="148"/>
+                            <TextBox Name="txtTotalIss" IsReadOnly="True" HorizontalAlignment="Left" Height="31" Margin="61,281,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="181" FontSize="18"/>
+                            <Label Content="ISS:" HorizontalAlignment="Left" Margin="61,255,0,0" VerticalAlignment="Top" Width="148"/>
+                            <TextBox Name="txtTotalDistribuidor" IsReadOnly="True" HorizontalAlignment="Left" Height="31" Margin="262,281,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="181" FontSize="18"/>
+                            <Label Content="DISTRIBUIDOR:" HorizontalAlignment="Left" Margin="262,255,0,0" VerticalAlignment="Top" Width="148"/>
+                            <TextBox Name="txtTotalTotal" IsReadOnly="True" HorizontalAlignment="Left" Height="31" Margin="669,281,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="181" FontSize="18"/>
+                            <Label Content="TOTAL:" HorizontalAlignment="Left" Margin="669,255,0,0" VerticalAlignment="Top" Width="148"/>
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+            </TabItem>
+
+
+        </TabControl>
+        <GroupBox Header="Consultar" Margin="10,0" VerticalAlignment="Top" Height="110">
+            <Grid Margin="0,0,7,-2" Name="GridConsulta">
+                <GroupBox Header="Período de consulta" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Height="80" Width="373">
+                    <Grid Margin="0,0,-2,1" >
+                        <DatePicker Name="dpConsultaInicio" Margin="19,22,0,11" SelectedDateChanged="dpConsultaInicio_SelectedDateChanged" HorizontalAlignment="Left" Width="106" PreviewKeyDown="dpConsultaInicio_PreviewKeyDown"/>
+                        <DatePicker Name="dpConsultaFim" Margin="144,22,0,11" SelectedDateChanged="dpConsultaFim_SelectedDateChanged" HorizontalAlignment="Left" Width="106" PreviewKeyDown="dpConsultaFim_PreviewKeyDown"/>
+                        <Label Content="Data Inicial:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="19,0,0,0"/>
+                        <Label Content="Data Final:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="144,0,0,0"/>
+                        <Button x:Name="btnConsultar" Padding="0" BorderThickness="0" Cursor="Hand" ToolTip="Consultar" RenderTransformOrigin="-0.357,0.569" Margin="269,6,18,5" Click="btnConsultar_Click">
+                            <Button.Background>
+                                <ImageBrush/>
+                            </Button.Background>
+                            <Button.ContentTemplate>
+                                <DataTemplate>
+                                    <TextBlock Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="0" Padding="0" Height="40" Width="52">
+                                        <TextBlock.Background>
+                                            <ImageBrush ImageSource="Images/Lupa grande.png"/>
+                                        </TextBlock.Background>
+                                        <TextBlock.Style>
+                                            <Style TargetType="{x:Type TextBlock}">
+                                                <Style.Triggers>
+                                                    <Trigger Property ="IsMouseOver" Value="True">
+                                                        <Setter Property= "Background" Value="Transparent"/>
+                                                    </Trigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                </DataTemplate>
+                            </Button.ContentTemplate>
+                        </Button>
+                        <Label Content="Data Inicial:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="19,0,0,0"/>
+                    </Grid>
+                </GroupBox>
+                <Button x:Name="btnSincronizar" Padding="0" BorderThickness="0" Cursor="Hand" ToolTip="Sincronizar" Height="70" VerticalAlignment="Top" RenderTransformOrigin="-0.357,0.569" Margin="819,9,10,0" Click="btnSincronizar_Click">
+                    <Button.Background>
+                        <ImageBrush/>
+                    </Button.Background>
+                    <Button.ContentTemplate>
+                        <DataTemplate>
+                            <TextBlock  Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="0" Padding="0" Height="40" Width="52">
+                                <TextBlock.Background>
+                                    <ImageBrush ImageSource="Images/Sincronizar.png"/>
+                                </TextBlock.Background>
+                                <TextBlock.Style>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Style.Triggers>
+                                            <Trigger Property ="IsMouseOver" Value="True">
+                                                <Setter Property= "Background" Value="Transparent"/>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </DataTemplate>
+                    </Button.ContentTemplate>
+                </Button>
+                <Label Name="lblSincronizar" Content="Sincronizar" Cursor="Hand" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="819,57,0,0" VerticalAlignment="Top" Width="84" Height="23" MouseLeftButtonUp="lblSincronizar_MouseLeftButtonUp"/>
+                <GroupBox Header="Consulta Detalhada" HorizontalAlignment="Left" Margin="401,0,0,0" VerticalAlignment="Top" Height="80" Width="413">
+                    <Grid Margin="0,0,-2,1" >
+                        <Label Content="Tipo Consulta:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,0,0,0"/>
+                        <Button x:Name="btnConsultaDetalhada" TabIndex="3" Padding="0" BorderThickness="0" Cursor="Hand" ToolTip="Consultar" RenderTransformOrigin="-0.357,0.569" Margin="314,6,10,5" Click="btnConsultaDetalhada_Click">
+                            <Button.Background>
+                                <ImageBrush/>
+                            </Button.Background>
+                            <Button.ContentTemplate>
+                                <DataTemplate>
+                                    <TextBlock Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="0" Padding="0" Height="40" Width="52">
+                                        <TextBlock.Background>
+                                            <ImageBrush ImageSource="Images/Lupa grande.png"/>
+                                        </TextBlock.Background>
+                                        <TextBlock.Style>
+                                            <Style TargetType="{x:Type TextBlock}">
+                                                <Style.Triggers>
+                                                    <Trigger Property ="IsMouseOver" Value="True">
+                                                        <Setter Property= "Background" Value="Transparent"/>
+                                                    </Trigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+                                </DataTemplate>
+                            </Button.ContentTemplate>
+                        </Button>
+                        <ComboBox x:Name="cmbTipoConsulta"  TabIndex="0" HorizontalAlignment="Left" Margin="10,23,0,0" Width="131" Height="24" VerticalAlignment="Top" Background="{x:Null}" PreviewKeyDown="cmbAtribuicao_PreviewKeyDown" SelectionChanged="cmbTipoConsulta_SelectionChanged"/>
+                        <TextBox Name="txtDadosConsulta" MaxLength="9" CharacterCasing="Upper" TabIndex="1" HorizontalAlignment="Left" Height="23" Margin="146,24,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="163" PreviewKeyDown="txtDadosConsulta_PreviewKeyDown"/>
+                        <ComboBox x:Name="cmbDadosConsulta"  TabIndex="1" HorizontalAlignment="Left" Margin="146,23,0,0" Width="163" Height="24" VerticalAlignment="Top" Background="{x:Null}" PreviewKeyDown="cmbAtribuicao_PreviewKeyDown"/>
+                    </Grid>
+                </GroupBox>
+            </Grid>
+        </GroupBox>
+    </Grid>
+</Window>

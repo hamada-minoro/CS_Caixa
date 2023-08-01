@@ -1,0 +1,1414 @@
+﻿<Window x:Class="CS_Caixa.WinParametros"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+         Title="Parâmetros" Height="468.45" Width="1027" ResizeMode="NoResize"  ShowInTaskbar="true" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" WindowStyle="None" PreviewKeyDown="Window_PreviewKeyDown" Background="#FFCDC5E8" Icon="Images/IconeAtendimento.ico" >
+    <Grid Background="#FF6DB4D4" Margin="0,2,0,-2">
+        <Label x:Name="lblTitulo" Content="Configurações do Sistema" Height="46" FontSize="22" FontWeight="Bold" FontFamily="Arial" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Top" Foreground="#FF341010" BorderBrush="#FF4168D1" MouseLeftButtonDown="lblTitulo_MouseLeftButtonDown" OpacityMask="#FF060606">
+            <Label.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="White" Offset="0"/>
+                    <GradientStop Color="#FF107E6A" Offset="1"/>
+                </LinearGradientBrush>
+            </Label.Background>
+        </Label>
+        <Image x:Name="imageSair" HorizontalAlignment="Right" Cursor="Hand" Width="36" MouseUp="Image_MouseUp" Height="35" VerticalAlignment="Top" OpacityMask="#FFE46326" RenderTransformOrigin="0.5,0.5" Margin="0,6,6,0" Source="Images/ExcluirPequeno.png">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="1" ScaleX="-1"/>
+                    <SkewTransform AngleY="0" AngleX="0"/>
+                    <RotateTransform Angle="0"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+        <TabControl Margin="10,51,10,0" Name="tabControl1" Height="324" VerticalAlignment="Top" BorderBrush="#FF040813" Background="#FFFBB2A7" >
+            <TabItem Header="Retirada de Senhas" Name="tabItemRetiradaSenhas" BorderBrush="Black" FontSize="14" FontWeight="Bold" Cursor="Hand">
+                <TabItem.Background>
+                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                        <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                        <GradientStop Color="#FFEBEBEB" Offset="0.204"/>
+                        <GradientStop Color="#FF6BAAD4" Offset="1"/>
+                    </LinearGradientBrush>
+                </TabItem.Background>
+                <Grid Background="#FFB4C8D6" Cursor="Arrow">
+                    <GroupBox x:Name="groupBotoes" Header="Configure os Botões de Retirada de Senhas" Margin="10,59,511,0" Height="224" VerticalAlignment="Top">
+                        <Grid  Margin="0,0,-2,2" Name="gridBotoes" IsEnabled="False">
+                            <TextBox x:Name="txtNomeBotao1" IsEnabled="False" MaxLength="50" Text="COMUM" HorizontalAlignment="Left" Height="23" Margin="6,34,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225" PreviewKeyDown="txtNomeBotao1_PreviewKeyDown" CharacterCasing="Upper"/>
+                            <ComboBox x:Name="cmbLetraBotao1" IsEnabled="False" HorizontalAlignment="Left" Height="23" Margin="236,34,0,0" VerticalAlignment="Top" Width="47" PreviewKeyDown="txtLetraBotao1_PreviewKeyDown" >
+                                <ComboBoxItem Content="A"/>
+                                <ComboBoxItem Content="B"/>
+                                <ComboBoxItem Content="C"/>
+                                <ComboBoxItem Content="D"/>
+                                <ComboBoxItem Content="E"/>
+                                <ComboBoxItem Content="F"/>
+                                <ComboBoxItem Content="G"/>
+                                <ComboBoxItem Content="H"/>
+                                <ComboBoxItem Content="I"/>
+                                <ComboBoxItem Content="J"/>
+                                <ComboBoxItem Content="K"/>
+                                <ComboBoxItem Content="L"/>
+                                <ComboBoxItem Content="M"/>
+                                <ComboBoxItem Content="N"/>
+                                <ComboBoxItem Content="O"/>
+                                <ComboBoxItem Content="P"/>
+                                <ComboBoxItem Content="Q"/>
+                                <ComboBoxItem Content="R"/>
+                                <ComboBoxItem Content="S"/>
+                                <ComboBoxItem Content="T"/>
+                                <ComboBoxItem Content="U"/>
+                                <ComboBoxItem Content="V"/>
+                                <ComboBoxItem Content="X"/>
+                                <ComboBoxItem Content="W"/>
+                                <ComboBoxItem Content="Y"/>
+                                <ComboBoxItem Content="Z"/>
+                            </ComboBox>
+                            <Label Content="Letra:" HorizontalAlignment="Left" Margin="236,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.395,-0.192"/>
+                            <CheckBox x:Name="ckbHabilitarBotao1" Content="Habilitar Geral" Margin="6,16,0,0" VerticalAlignment="Top" Width="173" Cursor="Hand" HorizontalAlignment="Left" Height="18" Checked="ckbHabilitarBotao1_Checked" Unchecked="ckbHabilitarBotao1_Unchecked" IsEnabledChanged="ckbHabilitarBotao1_IsEnabledChanged"/>
+                            <TextBox x:Name="txtNomeBotao2" IsEnabled="False" MaxLength="50" Text="PREFERENCIAL" HorizontalAlignment="Left" Height="23" Margin="6,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225" PreviewKeyDown="txtNomeBotao2_PreviewKeyDown" CharacterCasing="Upper"/>
+                            <ComboBox x:Name="cmbLetraBotao2" IsEnabled="False" HorizontalAlignment="Left" Height="23" Margin="236,94,0,0" VerticalAlignment="Top" Width="47" PreviewKeyDown="txtLetraBotao2_PreviewKeyDown" >
+                                <ComboBoxItem Content="A"/>
+                                <ComboBoxItem Content="B"/>
+                                <ComboBoxItem Content="C"/>
+                                <ComboBoxItem Content="D"/>
+                                <ComboBoxItem Content="E"/>
+                                <ComboBoxItem Content="F"/>
+                                <ComboBoxItem Content="G"/>
+                                <ComboBoxItem Content="H"/>
+                                <ComboBoxItem Content="I"/>
+                                <ComboBoxItem Content="J"/>
+                                <ComboBoxItem Content="K"/>
+                                <ComboBoxItem Content="L"/>
+                                <ComboBoxItem Content="M"/>
+                                <ComboBoxItem Content="N"/>
+                                <ComboBoxItem Content="O"/>
+                                <ComboBoxItem Content="P"/>
+                                <ComboBoxItem Content="Q"/>
+                                <ComboBoxItem Content="R"/>
+                                <ComboBoxItem Content="S"/>
+                                <ComboBoxItem Content="T"/>
+                                <ComboBoxItem Content="U"/>
+                                <ComboBoxItem Content="V"/>
+                                <ComboBoxItem Content="X"/>
+                                <ComboBoxItem Content="W"/>
+                                <ComboBoxItem Content="Y"/>
+                                <ComboBoxItem Content="Z"/>
+                            </ComboBox>
+                            <Label Content="Letra:" HorizontalAlignment="Left" Margin="236,70,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.395,-0.192"/>
+                            <CheckBox x:Name="ckbHabilitarBotao2" Content="Habilitar Preferancial" Margin="6,76,0,0" VerticalAlignment="Top" Width="173" Cursor="Hand" HorizontalAlignment="Left" Height="18" Checked="ckbHabilitarBotao2_Checked" Unchecked="ckbHabilitarBotao2_Unchecked" IsEnabledChanged="ckbHabilitarBotao2_IsEnabledChanged"/>
+                            <TextBox x:Name="txtNomeBotao3" IsEnabled="True" MaxLength="50" Text="PREFERENCIAL ESPECIAL" HorizontalAlignment="Left" Height="23" Margin="6,154,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225" PreviewKeyDown="txtNomeBotao3_PreviewKeyDown" CharacterCasing="Upper"/>
+                            <ComboBox x:Name="cmbLetraBotao3" IsEnabled="true" HorizontalAlignment="Left" Height="23" Margin="236,154,0,0" VerticalAlignment="Top" Width="47" PreviewKeyDown="txtLetraBotao3_PreviewKeyDown" >
+                                <ComboBoxItem Content="A"/>
+                                <ComboBoxItem Content="B"/>
+                                <ComboBoxItem Content="C"/>
+                                <ComboBoxItem Content="D"/>
+                                <ComboBoxItem Content="E"/>
+                                <ComboBoxItem Content="F"/>
+                                <ComboBoxItem Content="G"/>
+                                <ComboBoxItem Content="H"/>
+                                <ComboBoxItem Content="I"/>
+                                <ComboBoxItem Content="J"/>
+                                <ComboBoxItem Content="K"/>
+                                <ComboBoxItem Content="L"/>
+                                <ComboBoxItem Content="M"/>
+                                <ComboBoxItem Content="N"/>
+                                <ComboBoxItem Content="O"/>
+                                <ComboBoxItem Content="P"/>
+                                <ComboBoxItem Content="Q"/>
+                                <ComboBoxItem Content="R"/>
+                                <ComboBoxItem Content="S"/>
+                                <ComboBoxItem Content="T"/>
+                                <ComboBoxItem Content="U"/>
+                                <ComboBoxItem Content="V"/>
+                                <ComboBoxItem Content="X"/>
+                                <ComboBoxItem Content="W"/>
+                                <ComboBoxItem Content="Y"/>
+                                <ComboBoxItem Content="Z"/>
+                            </ComboBox>
+                            <Label Content="Letra:" HorizontalAlignment="Left" Margin="236,130,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.395,-0.192"/>
+                            <CheckBox x:Name="ckbHabilitarBotao3" Content="Habilitar Maior de 80 Anos" Margin="6,136,0,0" VerticalAlignment="Top" Width="198" Cursor="Hand" HorizontalAlignment="Left" Height="18" Checked="ckbHabilitarBotao3_Checked" Unchecked="ckbHabilitarBotao3_Unchecked" IsEnabledChanged="ckbHabilitarBotao3_IsEnabledChanged"/>
+                            <ComboBox x:Name="cmbVozTipo1" IsEnabled="False" TabIndex="3"  HorizontalAlignment="Left" Margin="289,34,0,0" VerticalAlignment="Top" Width="170" Background="#FFBDF9F9" Height="23">
+
+                            </ComboBox>
+                            <ComboBox x:Name="cmbVozTipo2" IsEnabled="False" TabIndex="3"  HorizontalAlignment="Left" Margin="289,94,0,0" VerticalAlignment="Top" Width="170" Background="#FFBDF9F9" Height="23">
+
+                            </ComboBox>
+                            <ComboBox x:Name="cmbVozTipo3" TabIndex="3" IsEnabled="True" HorizontalAlignment="Left" Margin="289,154,0,0" VerticalAlignment="Top" Width="170" Background="#FFBDF9F9" Height="23">
+
+                            </ComboBox>
+                            <Label Content="Voz:" HorizontalAlignment="Left" Margin="289,9,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.395,-0.192"/>
+                            <Label Content="Voz:" HorizontalAlignment="Left" Margin="289,70,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.395,-0.192"/>
+                            <Label Content="Voz:" HorizontalAlignment="Left" Margin="289,130,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.395,-0.192"/>
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox x:Name="groupSetores" Header="Configure os Setores" Margin="504,0,10,0" Height="283" VerticalAlignment="Top">
+                        <Grid  Margin="0,0,-2,2" x:Name="gridBotoes1" IsEnabled="False">
+                            <TextBox x:Name="txtNomeSetor1" IsEnabled="False" MaxLength="50" HorizontalAlignment="Left" Height="23" Margin="6,34,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225" PreviewKeyDown="txtNomeSetor1_PreviewKeyDown" LostFocus="txtNomeSetor1_LostFocus" CharacterCasing="Upper"/>
+                            <Label Content="Letra:" HorizontalAlignment="Left" Margin="236,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.395,-0.192"/>
+                            <CheckBox x:Name="ckbHabilitarSetor1" Content="Habilitar Setor 1" Margin="6,16,0,0" VerticalAlignment="Top" Width="173" Cursor="Hand" HorizontalAlignment="Left" Height="18" IsChecked="False" Checked="ckbHabilitarSetor1_Checked" Unchecked="ckbHabilitarSetor1_Unchecked" IsEnabledChanged="ckbHabilitarSetor1_IsEnabledChanged"/>
+                            <TextBox x:Name="txtNomeSetor2" IsEnabled="False" MaxLength="50" HorizontalAlignment="Left" Height="23" Margin="6,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225" PreviewKeyDown="txtNomeSetor2_PreviewKeyDown" CharacterCasing="Upper" LostFocus="txtNomeSetor2_LostFocus"/>
+                            <Label Content="Letra:" HorizontalAlignment="Left" Margin="236,70,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.395,-0.192"/>
+                            <CheckBox x:Name="ckbHabilitaSetor2" Content="Habilitar Setor 2" Margin="6,76,0,0" VerticalAlignment="Top" Width="173" Cursor="Hand" HorizontalAlignment="Left" Height="18" IsChecked="False" Checked="ckbHabilitaSetor2_Checked" Unchecked="ckbHabilitaSetor2_Unchecked" IsEnabledChanged="ckbHabilitaSetor2_IsEnabledChanged"/>
+                            <TextBox x:Name="txtNomeSetor3" IsEnabled="False" MaxLength="50" HorizontalAlignment="Left" Height="23" Margin="6,154,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225" PreviewKeyDown="txtNomeSetor3_PreviewKeyDown" CharacterCasing="Upper" LostFocus="txtNomeSetor3_LostFocus"/>
+                            <Label Content="Letra:" HorizontalAlignment="Left" Margin="236,130,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.395,-0.192"/>
+                            <CheckBox x:Name="ckbHabilitarSetor3" Content="Habilitar Setor 3" Margin="6,136,0,0" VerticalAlignment="Top" Width="198" Cursor="Hand" HorizontalAlignment="Left" Height="18" IsChecked="False" Checked="ckbHabilitarSetor3_Checked" Unchecked="ckbHabilitarSetor3_Unchecked" IsEnabledChanged="ckbHabilitarSetor3_IsEnabledChanged"/>
+                            <ComboBox x:Name="cmbVozSetor1" IsEnabled="False" TabIndex="3"  HorizontalAlignment="Left" Margin="289,34,0,0" VerticalAlignment="Top" Width="178" Background="#FFBDF9F9" Height="23" LostFocus="cmbVozSetor1_LostFocus"/>
+                            <ComboBox x:Name="cmbVozSetor2" IsEnabled="False" TabIndex="3"  HorizontalAlignment="Left" Margin="289,94,0,0" VerticalAlignment="Top" Width="178" Background="#FFBDF9F9" Height="23" LostFocus="cmbVozSetor2_LostFocus"/>
+                            <ComboBox x:Name="cmbVozSetor3" IsEnabled="False" TabIndex="3"  HorizontalAlignment="Left" Margin="289,154,0,0" VerticalAlignment="Top" Width="178" Background="#FFBDF9F9" Height="23" LostFocus="cmbVozSetor3_LostFocus"/>
+                            <Label Content="Voz:" HorizontalAlignment="Left" Margin="289,9,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.395,-0.192"/>
+                            <Label Content="Voz:" HorizontalAlignment="Left" Margin="289,70,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.395,-0.192"/>
+                            <Label Content="Voz:" HorizontalAlignment="Left" Margin="289,130,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.395,-0.192"/>
+                            <TextBox x:Name="txtNomeSetor4" IsEnabled="False" MaxLength="50" HorizontalAlignment="Left" Height="23" Margin="6,215,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225" PreviewKeyDown="txtNomeSetor4_PreviewKeyDown" CharacterCasing="Upper" LostFocus="txtNomeSetor4_LostFocus"/>
+                            <Label Content="Letra:" HorizontalAlignment="Left" Margin="236,191,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.395,-0.192"/>
+                            <CheckBox x:Name="ckbHabilitarSetor4" Content="Habilitar Setor 4" Margin="6,197,0,0" VerticalAlignment="Top" Width="198" Cursor="Hand" HorizontalAlignment="Left" Height="18" IsChecked="False" Checked="ckbHabilitarSetor4_Checked" Unchecked="ckbHabilitarSetor4_Unchecked" IsEnabledChanged="ckbHabilitarSetor4_IsEnabledChanged"/>
+                            <ComboBox x:Name="cmbVozSetor4" IsEnabled="False" TabIndex="3"  HorizontalAlignment="Left" Margin="289,215,0,0" VerticalAlignment="Top" Width="178" Background="#FFBDF9F9" Height="23" LostFocus="cmbVozSetor4_LostFocus"/>
+                            <Label Content="Voz:" HorizontalAlignment="Left" Margin="289,191,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.395,-0.192"/>
+                            <ComboBox x:Name="cmbLetraSetor1" IsEnabled="False" HorizontalAlignment="Left" Height="23" Margin="236,34,0,0" VerticalAlignment="Top" Width="47" LostFocus="cmbLetraSetor1_LostFocus" >
+                                <ComboBoxItem Content="A"/>
+                                <ComboBoxItem Content="B"/>
+                                <ComboBoxItem Content="C"/>
+                                <ComboBoxItem Content="D"/>
+                                <ComboBoxItem Content="E"/>
+                                <ComboBoxItem Content="F"/>
+                                <ComboBoxItem Content="G"/>
+                                <ComboBoxItem Content="H"/>
+                                <ComboBoxItem Content="I"/>
+                                <ComboBoxItem Content="J"/>
+                                <ComboBoxItem Content="K"/>
+                                <ComboBoxItem Content="L"/>
+                                <ComboBoxItem Content="M"/>
+                                <ComboBoxItem Content="N"/>
+                                <ComboBoxItem Content="O"/>
+                                <ComboBoxItem Content="P"/>
+                                <ComboBoxItem Content="Q"/>
+                                <ComboBoxItem Content="R"/>
+                                <ComboBoxItem Content="S"/>
+                                <ComboBoxItem Content="T"/>
+                                <ComboBoxItem Content="U"/>
+                                <ComboBoxItem Content="V"/>
+                                <ComboBoxItem Content="X"/>
+                                <ComboBoxItem Content="W"/>
+                                <ComboBoxItem Content="Y"/>
+                                <ComboBoxItem Content="Z"/>
+                            </ComboBox>
+                            <ComboBox x:Name="cmbLetraSetor2" IsEnabled="False" HorizontalAlignment="Left" Height="23" Margin="236,94,0,0" VerticalAlignment="Top" Width="47" LostFocus="cmbLetraSetor2_LostFocus">
+                                <ComboBoxItem Content="A"/>
+                                <ComboBoxItem Content="B"/>
+                                <ComboBoxItem Content="C"/>
+                                <ComboBoxItem Content="D"/>
+                                <ComboBoxItem Content="E"/>
+                                <ComboBoxItem Content="F"/>
+                                <ComboBoxItem Content="G"/>
+                                <ComboBoxItem Content="H"/>
+                                <ComboBoxItem Content="I"/>
+                                <ComboBoxItem Content="J"/>
+                                <ComboBoxItem Content="K"/>
+                                <ComboBoxItem Content="L"/>
+                                <ComboBoxItem Content="M"/>
+                                <ComboBoxItem Content="N"/>
+                                <ComboBoxItem Content="O"/>
+                                <ComboBoxItem Content="P"/>
+                                <ComboBoxItem Content="Q"/>
+                                <ComboBoxItem Content="R"/>
+                                <ComboBoxItem Content="S"/>
+                                <ComboBoxItem Content="T"/>
+                                <ComboBoxItem Content="U"/>
+                                <ComboBoxItem Content="V"/>
+                                <ComboBoxItem Content="X"/>
+                                <ComboBoxItem Content="W"/>
+                                <ComboBoxItem Content="Y"/>
+                                <ComboBoxItem Content="Z"/>
+                            </ComboBox>
+                            <ComboBox x:Name="cmbLetraSetor3" IsEnabled="False" HorizontalAlignment="Left" Height="23" Margin="236,154,0,0" VerticalAlignment="Top" Width="47" LostFocus="cmbLetraSetor3_LostFocus" >
+                                <ComboBoxItem Content="A"/>
+                                <ComboBoxItem Content="B"/>
+                                <ComboBoxItem Content="C"/>
+                                <ComboBoxItem Content="D"/>
+                                <ComboBoxItem Content="E"/>
+                                <ComboBoxItem Content="F"/>
+                                <ComboBoxItem Content="G"/>
+                                <ComboBoxItem Content="H"/>
+                                <ComboBoxItem Content="I"/>
+                                <ComboBoxItem Content="J"/>
+                                <ComboBoxItem Content="K"/>
+                                <ComboBoxItem Content="L"/>
+                                <ComboBoxItem Content="M"/>
+                                <ComboBoxItem Content="N"/>
+                                <ComboBoxItem Content="O"/>
+                                <ComboBoxItem Content="P"/>
+                                <ComboBoxItem Content="Q"/>
+                                <ComboBoxItem Content="R"/>
+                                <ComboBoxItem Content="S"/>
+                                <ComboBoxItem Content="T"/>
+                                <ComboBoxItem Content="U"/>
+                                <ComboBoxItem Content="V"/>
+                                <ComboBoxItem Content="X"/>
+                                <ComboBoxItem Content="W"/>
+                                <ComboBoxItem Content="Y"/>
+                                <ComboBoxItem Content="Z"/>
+                            </ComboBox>
+                            <ComboBox x:Name="cmbLetraSetor4" IsEnabled="False" HorizontalAlignment="Left" Height="23" Margin="236,215,0,0" VerticalAlignment="Top" Width="47" LostFocus="cmbLetraSetor4_LostFocus">
+                                <ComboBoxItem Content="A"/>
+                                <ComboBoxItem Content="B"/>
+                                <ComboBoxItem Content="C"/>
+                                <ComboBoxItem Content="D"/>
+                                <ComboBoxItem Content="E"/>
+                                <ComboBoxItem Content="F"/>
+                                <ComboBoxItem Content="G"/>
+                                <ComboBoxItem Content="H"/>
+                                <ComboBoxItem Content="I"/>
+                                <ComboBoxItem Content="J"/>
+                                <ComboBoxItem Content="K"/>
+                                <ComboBoxItem Content="L"/>
+                                <ComboBoxItem Content="M"/>
+                                <ComboBoxItem Content="N"/>
+                                <ComboBoxItem Content="O"/>
+                                <ComboBoxItem Content="P"/>
+                                <ComboBoxItem Content="Q"/>
+                                <ComboBoxItem Content="R"/>
+                                <ComboBoxItem Content="S"/>
+                                <ComboBoxItem Content="T"/>
+                                <ComboBoxItem Content="U"/>
+                                <ComboBoxItem Content="V"/>
+                                <ComboBoxItem Content="X"/>
+                                <ComboBoxItem Content="W"/>
+                                <ComboBoxItem Content="Y"/>
+                                <ComboBoxItem Content="Z"/>
+                            </ComboBox>
+                        </Grid>
+                    </GroupBox>
+                    <Button x:Name="btnSalvarBotoes" IsEnabled="False" Padding="0" BorderThickness="0" Cursor="Hand" ToolTip="Salvar Retirada Senha" Margin="444,0,0,0" HorizontalAlignment="Left" Width="46" Click="btnSalvarBotoes_Click" Height="43" VerticalAlignment="Top" RenderTransformOrigin="0.517,0.491">
+                        <Button.Background>
+                            <ImageBrush/>
+                        </Button.Background>
+                        <Button.ContentTemplate>
+                            <DataTemplate>
+                                <TextBlock  Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="0" Padding="0" Height="29" Width="34">
+                                    <TextBlock.Background>
+                                        <ImageBrush ImageSource="Images/enable_server_icon-icons.com_76722.png"/>
+                                    </TextBlock.Background>
+                                    <TextBlock.Style>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Style.Triggers>
+                                                <Trigger Property ="IsMouseOver" Value="True">
+                                                    <Setter Property= "Background" Value="Transparent"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
+                            </DataTemplate>
+                        </Button.ContentTemplate>
+                    </Button>
+                    <Label Content="Salvar" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="444,43,0,0" VerticalAlignment="Top" Width="46" FontSize="12" Height="28"/>
+                    <Button x:Name="btnConfigurarBotoes" Padding="0" BorderThickness="0" Cursor="Hand" ToolTip="Configurar Retirada Senha" Margin="359,0,0,0" HorizontalAlignment="Left" Width="46" Click="btnConfigurarBotoes_Click" Height="43" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
+                        <Button.Background>
+                            <ImageBrush/>
+                        </Button.Background>
+                        <Button.ContentTemplate>
+                            <DataTemplate>
+                                <TextBlock  Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="0" Padding="0" Height="29" Width="34">
+                                    <TextBlock.Background>
+                                        <ImageBrush ImageSource="Images/data_server_icon-icons.com_76718.png"/>
+                                    </TextBlock.Background>
+                                    <TextBlock.Style>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Style.Triggers>
+                                                <Trigger Property ="IsMouseOver" Value="True">
+                                                    <Setter Property= "Background" Value="Transparent"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
+                            </DataTemplate>
+                        </Button.ContentTemplate>
+                    </Button>
+                    <Label Content="Configurar" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="344,43,0,0" VerticalAlignment="Top" Width="72" FontSize="12" Height="28"/>
+                    <CheckBox x:Name="ckbModoRetiradaManual" Content="Utilizar retirada de senhas manual" Margin="10,36,0,0" VerticalAlignment="Top" Width="252" Cursor="Hand" HorizontalAlignment="Left" Height="18" IsChecked="False" Checked="ckbModoRetiradaManual_Checked" Unchecked="ckbModoRetiradaManual_Unchecked" IsEnabled="False"/>
+                    <CheckBox x:Name="ckbVozPadrao" Content="Utilizar Voz Padrão" Margin="10,13,0,0" VerticalAlignment="Top" Width="162" Cursor="Hand" HorizontalAlignment="Left" Height="18" IsChecked="False" Checked="ckbVozPadrao_Checked" Unchecked="ckbVozPadrao_Unchecked" IsEnabledChanged="ckbVozPadrao_IsEnabledChanged" IsEnabled="False"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Cadastrar Painel" Name="tabItemCadastrarPainel" BorderBrush="Black" FontSize="14" FontWeight="Bold" Cursor="Hand" Margin="0">
+                <TabItem.Background>
+                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                        <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                        <GradientStop Color="#FFEBEBEB" Offset="0.204"/>
+                        <GradientStop Color="#FF6BAAD4" Offset="1"/>
+                    </LinearGradientBrush>
+                </TabItem.Background>
+                <Grid Background="#FFB4C8D6" Name="gridInternoPainel" Cursor="Arrow" >
+                    <DataGrid AutoGenerateColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" Height="131" HorizontalAlignment="Left" IsReadOnly="True" Margin="10,155,0,0" Name="dataGridCadastroPainel" SelectionMode="Single" VerticalAlignment="Top" Width="981" AlternatingRowBackground="#FFFFE0D1" RowBackground="#FFBAFFDB" SelectionChanged="dataGridCadastroPainel_SelectionChanged" IsEnabled="False">
+                        <DataGrid.RowStyle>
+                            <Style TargetType="{x:Type DataGridRow}">
+                                <EventSetter Event="MouseDoubleClick" Handler="dataGridCadastroPainel_MouseDoubleClick" />
+                            </Style>
+                        </DataGrid.RowStyle>
+                        <DataGrid.CellStyle>
+                            <Style TargetType="DataGridCell">
+                                <Style.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter Property="Background" Value="#FF0086FF" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </DataGrid.CellStyle>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Data Cadastro" Width="120" Binding="{Binding Data_Cadastro, StringFormat='dd/MM/yyyy'}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="ID do Painel" Width="150" Binding="{Binding Identificador_Pc}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="Nome Painel" Width="200" Binding="{Binding Nome_Pc}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="Ip Painel" Width="300" Binding="{Binding Ip_Pc}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="Porta Comunicação" Width="202" Binding="{Binding Porta_Pc}" CanUserResize="False"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <GroupBox x:Name="groupCadastrarPainel" Header="Cadastrar Painel" Margin="10,10,270,0" Height="140" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
+                        <GroupBox.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="0.39"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </GroupBox.RenderTransform>
+                        <Grid Name="gridCadastroPainel"  Margin="0,0,-2,2">
+                            <TextBox x:Name="txtIdentificadorPainel" Focusable="False" HorizontalAlignment="Left" Height="23" Margin="20,27,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="296" MaxLength="30" CharacterCasing="Upper"/>
+                            <TextBox x:Name="txtIpPainel" HorizontalAlignment="Left" Margin="337,27,0,0" VerticalAlignment="Top" Width="257" Height="23" MaxLength="20" PreviewKeyDown="txtIpPainel_PreviewKeyDown"/>
+                            <Label Content="Identificador do Painel de Chamada:" HorizontalAlignment="Left" Margin="20,3,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.395,-0.192"/>
+                            <Label Content="IP do Painel de Chamada:" HorizontalAlignment="Left" Margin="337,3,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.395,-0.192"/>
+                            <TextBox x:Name="txtNomePainel" Focusable="False" HorizontalAlignment="Left" Height="23" Margin="20,79,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="296" MaxLength="30"/>
+                            <Label Content="Nome da Máquina Painel de Chamada:" HorizontalAlignment="Left" Margin="20,55,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.395,-0.192"/>
+                            <TextBox x:Name="txtPortaPainel" HorizontalAlignment="Left" Height="23" Margin="337,79,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="257" PreviewKeyDown="txtPortaPainel_PreviewKeyDown" MaxLength="5" CharacterCasing="Upper"/>
+                            <Label Content="Porta de Comunicação:" HorizontalAlignment="Left" Margin="337,55,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.395,-0.192"/>
+                            <Button x:Name="btnCancelarPainel" Padding="0" BorderThickness="0" Cursor="Hand" ToolTip="Cancelar" Margin="617,14,0,0" HorizontalAlignment="Left" Width="72" Click="btnCancelarPainel_Click" Height="68" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
+                                <Button.Background>
+                                    <ImageBrush/>
+                                </Button.Background>
+                                <Button.ContentTemplate>
+                                    <DataTemplate>
+                                        <TextBlock  Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="0" Padding="0" Height="46" Width="54">
+                                            <TextBlock.Background>
+                                                <ImageBrush ImageSource="Images/1425000530_dialog-error-32.png"/>
+                                            </TextBlock.Background>
+                                            <TextBlock.Style>
+                                                <Style TargetType="{x:Type TextBlock}">
+                                                    <Style.Triggers>
+                                                        <Trigger Property ="IsMouseOver" Value="True">
+                                                            <Setter Property= "Background" Value="Transparent"/>
+                                                        </Trigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
+                                    </DataTemplate>
+                                </Button.ContentTemplate>
+                            </Button>
+                            <Label Content="Cancelar" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="607,79,0,0" VerticalAlignment="Top" Width="94"/>
+                        </Grid>
+                    </GroupBox>
+                    <Button x:Name="btnAdicionarPainel" Padding="0" BorderThickness="0" Cursor="Hand" ToolTip="Adicionar Painel" Margin="833,46,0,0" HorizontalAlignment="Left" Width="72" Click="btnAdicionarPainel_Click" Height="68" VerticalAlignment="Top" RenderTransformOrigin="0.517,0.491">
+                        <Button.Background>
+                            <ImageBrush/>
+                        </Button.Background>
+                        <Button.ContentTemplate>
+                            <DataTemplate>
+                                <TextBlock  Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="0" Padding="0" Height="46" Width="54">
+                                    <TextBlock.Background>
+                                        <ImageBrush ImageSource="Images/add_server_icon-icons.com_76716.png"/>
+                                    </TextBlock.Background>
+                                    <TextBlock.Style>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Style.Triggers>
+                                                <Trigger Property ="IsMouseOver" Value="True">
+                                                    <Setter Property= "Background" Value="Transparent"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
+                            </DataTemplate>
+                        </Button.ContentTemplate>
+                    </Button>
+                    <Label Content="Novo" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="833,114,0,0" VerticalAlignment="Top" Width="72"/>
+                    <Button x:Name="btnRemoverPainel" Padding="0" BorderThickness="0" Cursor="Hand" ToolTip="Remover Painel" Margin="919,46,0,0" HorizontalAlignment="Left" Width="72" Click="btnRemoverPainel_Click" Height="68" VerticalAlignment="Top" RenderTransformOrigin="0.517,0.491">
+                        <Button.Background>
+                            <ImageBrush/>
+                        </Button.Background>
+                        <Button.ContentTemplate>
+                            <DataTemplate>
+                                <TextBlock  Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="0" Padding="0" Height="46" Width="54">
+                                    <TextBlock.Background>
+                                        <ImageBrush ImageSource="Images/desable_server_icon-icons.com_76719.png"/>
+                                    </TextBlock.Background>
+                                    <TextBlock.Style>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Style.Triggers>
+                                                <Trigger Property ="IsMouseOver" Value="True">
+                                                    <Setter Property= "Background" Value="Transparent"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
+                            </DataTemplate>
+                        </Button.ContentTemplate>
+                    </Button>
+                    <Label Content="Remover" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="919,114,0,0" VerticalAlignment="Top" Width="72"/>
+                    <Button x:Name="btnSalvarPainel" Padding="0" BorderThickness="0" Cursor="Hand" ToolTip="Salvar Painel" Margin="744,46,0,0" HorizontalAlignment="Left" Width="72" Click="btnSalvarPainel_Click" Height="68" VerticalAlignment="Top" RenderTransformOrigin="0.517,0.491">
+                        <Button.Background>
+                            <ImageBrush/>
+                        </Button.Background>
+                        <Button.ContentTemplate>
+                            <DataTemplate>
+                                <TextBlock  Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="0" Padding="0" Height="46" Width="54">
+                                    <TextBlock.Background>
+                                        <ImageBrush ImageSource="Images/enable_server_icon-icons.com_76722.png"/>
+                                    </TextBlock.Background>
+                                    <TextBlock.Style>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Style.Triggers>
+                                                <Trigger Property ="IsMouseOver" Value="True">
+                                                    <Setter Property= "Background" Value="Transparent"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
+                            </DataTemplate>
+                        </Button.ContentTemplate>
+                    </Button>
+                    <Label Content="Salvar" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="744,114,0,0" VerticalAlignment="Top" Width="72"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Cadastrar Máquinas" Name="tabItemCadastrarMaquina" BorderBrush="Black" FontSize="14" FontWeight="Bold" Cursor="Hand">
+                <TabItem.Background>
+                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                        <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                        <GradientStop Color="#FFEBEBEB" Offset="0.204"/>
+                        <GradientStop Color="#FF6BAAD4" Offset="1"/>
+                    </LinearGradientBrush>
+                </TabItem.Background>
+                <Grid Background="#FFB4C8D6" Name="gridInternoMaquina" Cursor="Arrow" PreviewKeyDown="gridInternoMaquina_PreviewKeyDown">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <DataGrid AutoGenerateColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" Height="131" HorizontalAlignment="Left" IsReadOnly="True" Margin="10,155,0,0" x:Name="dataGridCadastroMaquina" SelectionMode="Single" VerticalAlignment="Top" Width="981" AlternatingRowBackground="#FFFFE0D1" RowBackground="#FFBAFFDB" SelectionChanged="dataGridCadastroMaquina_SelectionChanged" IsEnabled="False">
+                        <DataGrid.RowStyle>
+                            <Style TargetType="{x:Type DataGridRow}">
+                                <EventSetter Event="Control.MouseDoubleClick" Handler="dataGridCadastroMaquina_MouseDoubleClick" />
+                            </Style>
+                        </DataGrid.RowStyle>
+                        <DataGrid.CellStyle>
+                            <Style TargetType="{x:Type DataGridCell}">
+                                <Style.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter Property="Background" Value="#FF0086FF" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </DataGrid.CellStyle>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Data Cadastro" Width="120" Binding="{Binding Data_Cadastro, StringFormat=dd/MM/yyyy}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="ID do Máquina" Width="150" Binding="{Binding Identificador_Pc}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="Nome Máquina" Width="200" Binding="{Binding Nome_Pc}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="Ip Máquina" Width="300" Binding="{Binding Ip_Pc}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="Porta Comunicação" Width="202" Binding="{Binding Porta_Pc}" CanUserResize="False"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <GroupBox x:Name="groupCadastrarMaquina" Header="Cadastrar Máquina" Margin="10,10,270,0" Height="140" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
+                        <GroupBox.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="0.39"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </GroupBox.RenderTransform>
+                        <Grid x:Name="gridCadastroMaquina"  Margin="0,0,-2,2">
+                            <TextBox x:Name="txtIdentificadorMaquina" Focusable="False" TabIndex="0" HorizontalAlignment="Left" Height="23" Margin="20,27,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="111" MaxLength="30" CharacterCasing="Upper" PreviewKeyDown="txtIdentificadorMaquina_PreviewKeyDown"/>
+                            <TextBox x:Name="txtIpMaquina" TabIndex="2"  HorizontalAlignment="Left" Margin="140,27,0,0" VerticalAlignment="Top" Width="162" Height="23" MaxLength="20" PreviewKeyDown="txtIpMaquina_PreviewKeyDown"/>
+                            <Label Content="ID da Máquina:" HorizontalAlignment="Left" Margin="20,3,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.395,-0.192"/>
+                            <Label Content="IP da Máquina:" HorizontalAlignment="Left" Margin="140,3,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.395,-0.192"/>
+                            <TextBox x:Name="txtNomeMaquina" Focusable="False" TabIndex="4" HorizontalAlignment="Left" Height="23" Margin="20,79,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="111" MaxLength="30" PreviewKeyDown="txtNomeMaquina_PreviewKeyDown"/>
+                            <Label Content="Nome:" HorizontalAlignment="Left" Margin="20,55,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.395,-0.192"/>
+                            <TextBox x:Name="txtPortaMaquina" TabIndex="5" HorizontalAlignment="Left" Height="23" Margin="140,79,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="49" PreviewKeyDown="txtPortaMaquina_PreviewKeyDown" MaxLength="5" CharacterCasing="Upper"/>
+                            <Label Content="Porta:" HorizontalAlignment="Left" Margin="140,55,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.395,-0.192"/>
+                            <ComboBox x:Name="cmbTipoEntradaMaquina" TabIndex="2"  HorizontalAlignment="Left" Margin="311,27,0,0" VerticalAlignment="Top" Width="166" Background="#FFBDF9F9" SelectionChanged="cmbTipoEntradaMaquina_SelectionChanged" Height="23" PreviewKeyDown="cmbTipoEntradaMaquina_PreviewKeyDown">
+                                <ComboBoxItem Content="RETIRADA DE SENHAS"/>
+                                <ComboBoxItem Content="ESTAÇÃO DE ATENDIMENTO"/>
+                            </ComboBox>
+                            <Label Content="Sistema:" HorizontalAlignment="Left" Margin="311,3,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.395,-0.192"/>
+                            <TextBox x:Name="txtTipoAtendimento" TabIndex="6" HorizontalAlignment="Left" Height="23" Margin="196,79,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="106" MaxLength="11" CharacterCasing="Upper" PreviewKeyDown="txtTipoAtendimento_PreviewKeyDown"/>
+                            <Label Content="Tipo: ex: Mesa" Name="lblTipo" HorizontalAlignment="Left" Margin="196,55,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.395,-0.192" Width="106"/>
+                            <TextBox x:Name="txtCaracter" TabIndex="7" HorizontalAlignment="Left" Height="23" Margin="311,79,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="62" MaxLength="3" CharacterCasing="Upper" PreviewKeyDown="txtCaracter_PreviewKeyDown"/>
+                            <Label Content="Caracter:" Name="lblCaracter" HorizontalAlignment="Left" Margin="309,55,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.395,-0.192" Width="74"/>
+                            <Button x:Name="btnCancelarMaquina" Padding="0" BorderThickness="0" Cursor="Hand" ToolTip="Cancelar" Margin="663,76,0,0" HorizontalAlignment="Left" Width="38" Click="btnCancelarMaquina_Click" Height="36" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
+                                <Button.Background>
+                                    <ImageBrush/>
+                                </Button.Background>
+                                <Button.ContentTemplate>
+                                    <DataTemplate>
+                                        <TextBlock  Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="0" Padding="0" Height="31" Width="33">
+                                            <TextBlock.Background>
+                                                <ImageBrush ImageSource="Images/1425000530_dialog-error-32.png"/>
+                                            </TextBlock.Background>
+                                            <TextBlock.Style>
+                                                <Style TargetType="{x:Type TextBlock}">
+                                                    <Style.Triggers>
+                                                        <Trigger Property ="IsMouseOver" Value="True">
+                                                            <Setter Property= "Background" Value="Transparent"/>
+                                                        </Trigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
+                                    </DataTemplate>
+                                </Button.ContentTemplate>
+                            </Button>
+                            <TextBox x:Name="txtFalar" TabIndex="8" HorizontalAlignment="Left" Height="23" Margin="383,79,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="143" MaxLength="50" CharacterCasing="Upper" PreviewKeyDown="txtTipoAtendimento_PreviewKeyDown"/>
+                            <Label Content="Falar:" x:Name="lblFalar" HorizontalAlignment="Left" Margin="383,55,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.395,-0.192"/>
+                            <ComboBox x:Name="cmbSetor" IsEnabled="True" TabIndex="3"  HorizontalAlignment="Left" Margin="536,79,0,0" VerticalAlignment="Top" Width="109" Background="#FFBDF9F9" Height="23" PreviewKeyDown="cmbSetor_PreviewKeyDown"/>
+                            <Label Content="Setor:" Name="lblSetor" HorizontalAlignment="Left" Margin="536,55,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.395,-0.192"/>
+                            <ComboBox x:Name="cmbTipoChamadaSenha" TabIndex="3"  HorizontalAlignment="Left" Margin="487,27,0,0" VerticalAlignment="Top" Width="158" Background="#FFBDF9F9" SelectionChanged="cmbTipoChamadaSenha_SelectionChanged" Height="23" PreviewKeyDown="cmbTipoChamadaSenha_PreviewKeyDown">
+                                <ComboBoxItem Content="SOMENTE COMUM"/>
+                                <ComboBoxItem Content="SOMENTE PREFERENCIAL"/>
+                                <ComboBoxItem Content="CHAMADA ALTERNADA" IsSelected="True"/>
+                            </ComboBox>
+                            <Label Name="lblTipoChamada" Content="Tipo de Chamada:" HorizontalAlignment="Left" Margin="487,3,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.395,-0.192"/>
+                        </Grid>
+                    </GroupBox>
+                    <Button x:Name="btnAdicionarMaquina" Padding="0" BorderThickness="0" Cursor="Hand" ToolTip="Adicionar Máquina" Margin="833,46,0,0" HorizontalAlignment="Left" Width="72" Click="btnAdicionarMaquina_Click" Height="68" VerticalAlignment="Top" RenderTransformOrigin="0.517,0.491">
+                        <Button.Background>
+                            <ImageBrush/>
+                        </Button.Background>
+                        <Button.ContentTemplate>
+                            <DataTemplate>
+                                <TextBlock  Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="0" Padding="0" Height="46" Width="54">
+                                    <TextBlock.Background>
+                                        <ImageBrush ImageSource="Images/add_server_icon-icons.com_76716.png"/>
+                                    </TextBlock.Background>
+                                    <TextBlock.Style>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Style.Triggers>
+                                                <Trigger Property ="IsMouseOver" Value="True">
+                                                    <Setter Property= "Background" Value="Transparent"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
+                            </DataTemplate>
+                        </Button.ContentTemplate>
+                    </Button>
+                    <Label Content="Novo" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="833,114,0,0" VerticalAlignment="Top" Width="72"/>
+                    <Button x:Name="btnRemoverMaquina" Padding="0" BorderThickness="0" Cursor="Hand" ToolTip="Remover Máquina" Margin="919,46,0,0" HorizontalAlignment="Left" Width="72" Click="btnRemoverMaquina_Click" Height="68" VerticalAlignment="Top" RenderTransformOrigin="0.517,0.491">
+                        <Button.Background>
+                            <ImageBrush/>
+                        </Button.Background>
+                        <Button.ContentTemplate>
+                            <DataTemplate>
+                                <TextBlock  Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="0" Padding="0" Height="46" Width="54">
+                                    <TextBlock.Background>
+                                        <ImageBrush ImageSource="Images/desable_server_icon-icons.com_76719.png"/>
+                                    </TextBlock.Background>
+                                    <TextBlock.Style>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Style.Triggers>
+                                                <Trigger Property ="IsMouseOver" Value="True">
+                                                    <Setter Property= "Background" Value="Transparent"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
+                            </DataTemplate>
+                        </Button.ContentTemplate>
+                    </Button>
+                    <Label Content="Remover" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="919,114,0,0" VerticalAlignment="Top" Width="72"/>
+                    <Button x:Name="btnSalvarMaquina" Padding="0" BorderThickness="0" Cursor="Hand" ToolTip="Salvar Painel" Margin="744,46,0,0" HorizontalAlignment="Left" Width="72" Click="btnSalvarMaquina_Click" Height="68" VerticalAlignment="Top" RenderTransformOrigin="0.517,0.491">
+                        <Button.Background>
+                            <ImageBrush/>
+                        </Button.Background>
+                        <Button.ContentTemplate>
+                            <DataTemplate>
+                                <TextBlock  Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="0" Padding="0" Height="46" Width="54">
+                                    <TextBlock.Background>
+                                        <ImageBrush ImageSource="Images/enable_server_icon-icons.com_76722.png"/>
+                                    </TextBlock.Background>
+                                    <TextBlock.Style>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Style.Triggers>
+                                                <Trigger Property ="IsMouseOver" Value="True">
+                                                    <Setter Property= "Background" Value="Transparent"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
+                            </DataTemplate>
+                        </Button.ContentTemplate>
+                    </Button>
+                    <Label Content="Salvar" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="744,114,0,0" VerticalAlignment="Top" Width="72"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Cadastrar Usuários" Name="tabItemCadastrarUsuario" BorderBrush="Black" FontSize="14" FontWeight="Bold" Cursor="Hand">
+                <TabItem.Background>
+                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                        <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                        <GradientStop Color="#FFEBEBEB" Offset="0.204"/>
+                        <GradientStop Color="#FF6BAAD4" Offset="1"/>
+                    </LinearGradientBrush>
+                </TabItem.Background>
+                <Grid Background="#FFB4C8D6" Cursor="Arrow">
+                    <GroupBox Header="Selecione o Usuário" Margin="10,3,571,0" x:Name="groupBoxUsuario" Height="117" VerticalAlignment="Top">
+                        <Grid Margin="2,0,-2,-1">
+                            <Label Content="Usuário:" Height="28" HorizontalAlignment="Left" Margin="6,6,0,0" x:Name="label1" VerticalAlignment="Top" Width="64" />
+                            <ComboBox x:Name="cmbUsuario" HorizontalAlignment="Left" Margin="6,34,0,0" VerticalAlignment="Top" Width="201" Background="#FFBDF9F9" SelectionChanged="cmbUsuario_SelectionChanged"/>
+                            <ToolBarPanel x:Name="toolBarPanel" Height="53" Margin="212,10,0,0" VerticalAlignment="Top" Orientation="Horizontal" HorizontalAlignment="Left" Width="175">
+                                <Button x:Name="btnAdicionar" Padding="0" BorderThickness="0" Cursor="Hand" Width="58" ToolTip="Novo Usuário" Click="btnAdicionar_Click">
+                                    <Button.Background>
+                                        <ImageBrush/>
+                                    </Button.Background>
+                                    <Button.ContentTemplate>
+                                        <DataTemplate>
+                                            <TextBlock  Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="0" Padding="0" Height="48" Width="48">
+                                                <TextBlock.Background>
+                                                    <ImageBrush ImageSource="Images/AdicionarUsuario.png"/>
+                                                </TextBlock.Background>
+                                                <TextBlock.Style>
+                                                    <Style TargetType="{x:Type TextBlock}">
+                                                        <Style.Triggers>
+                                                            <Trigger Property ="IsMouseOver" Value="True">
+                                                                <Setter Property= "Background" Value="Transparent"/>
+                                                            </Trigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </TextBlock.Style>
+                                            </TextBlock>
+                                        </DataTemplate>
+                                    </Button.ContentTemplate>
+                                </Button>
+                                <Button x:Name="btnAlterar" Padding="0" BorderThickness="0" Cursor="Hand" Width="58" ToolTip="Alterar Usuário" Click="btnAlterar_Click">
+                                    <Button.Background>
+                                        <ImageBrush/>
+                                    </Button.Background>
+                                    <Button.ContentTemplate>
+                                        <DataTemplate>
+                                            <TextBlock  Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="0" Padding="0" Height="48" Width="48">
+                                                <TextBlock.Background>
+                                                    <ImageBrush ImageSource="Images/AlterarUsuario.png"/>
+                                                </TextBlock.Background>
+                                                <TextBlock.Style>
+                                                    <Style TargetType="{x:Type TextBlock}">
+                                                        <Style.Triggers>
+                                                            <Trigger Property ="IsMouseOver" Value="True">
+                                                                <Setter Property= "Background" Value="Transparent"/>
+                                                            </Trigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </TextBlock.Style>
+                                            </TextBlock>
+                                        </DataTemplate>
+                                    </Button.ContentTemplate>
+                                </Button>
+                                <Button x:Name="btnExcluir" Padding="0" BorderThickness="0" Cursor="Hand" Width="58" ToolTip="Excluir Usuário" Click="btnExcluir_Click">
+                                    <Button.Background>
+                                        <ImageBrush/>
+                                    </Button.Background>
+                                    <Button.ContentTemplate>
+                                        <DataTemplate>
+                                            <TextBlock  Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="0" Padding="0" Height="48" Width="48">
+                                                <TextBlock.Background>
+                                                    <ImageBrush ImageSource="Images/ExcluirUsuario.png"/>
+                                                </TextBlock.Background>
+                                                <TextBlock.Style>
+                                                    <Style TargetType="{x:Type TextBlock}">
+                                                        <Style.Triggers>
+                                                            <Trigger Property ="IsMouseOver" Value="True">
+                                                                <Setter Property= "Background" Value="Transparent"/>
+                                                            </Trigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </TextBlock.Style>
+                                            </TextBlock>
+                                        </DataTemplate>
+                                    </Button.ContentTemplate>
+                                </Button>
+                            </ToolBarPanel>
+                            <Label Content="Novo" HorizontalAlignment="Left" Margin="212,59,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" RenderTransformOrigin="0.395,-0.192" Width="58"/>
+                            <Label Content="Alterar" HorizontalAlignment="Left" Margin="270,59,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" RenderTransformOrigin="0.395,-0.192" Width="58"/>
+                            <Label Content="Excluir" HorizontalAlignment="Left" Margin="328,59,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" RenderTransformOrigin="0.395,-0.192" Width="58"/>
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox x:Name="groupUsuarioSenha" Header="Usuário / Senha" Margin="10,143,572,0" Height="140" VerticalAlignment="Top">
+                        <Grid  Margin="0,0,-2,2">
+                            <TextBox x:Name="txtNomeUsuario" HorizontalAlignment="Left" Height="23" Margin="6,21,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="262" PreviewKeyDown="txtNomeUsuario_PreviewKeyDown" CharacterCasing="Upper"/>
+                            <PasswordBox x:Name="passSenha" HorizontalAlignment="Left" Margin="273,21,0,0" VerticalAlignment="Top" Width="126" Height="23" PreviewKeyDown="passSenha_PreviewKeyDown"/>
+                            <Label Content="Usuário:" HorizontalAlignment="Left" Margin="6,-3,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.395,-0.192"/>
+                            <Label Content="Senha:" HorizontalAlignment="Left" Margin="273,-3,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.395,-0.192"/>
+                            <TextBox x:Name="txtQualificacao" CharacterCasing="Upper" HorizontalAlignment="Left" Height="23" Margin="6,71,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="262" PreviewKeyDown="txtQualificacao_PreviewKeyDown"/>
+                            <Label Content="Qualificação:" HorizontalAlignment="Left" Margin="6,47,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.395,-0.192"/>
+                            <Button x:Name="btnSalvarUsuario" Padding="0" BorderThickness="0" Cursor="Hand" ToolTip="Salvar Usuário" Margin="341,50,0,0" HorizontalAlignment="Left" Width="58" Click="btnSalvarUsuario_Click" Height="53" VerticalAlignment="Top">
+                                <Button.Background>
+                                    <ImageBrush/>
+                                </Button.Background>
+                                <Button.ContentTemplate>
+                                    <DataTemplate>
+                                        <TextBlock  Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="0" Padding="0" Height="48" Width="48">
+                                            <TextBlock.Background>
+                                                <ImageBrush ImageSource="Images/SalvarUsuario.png"/>
+                                            </TextBlock.Background>
+                                            <TextBlock.Style>
+                                                <Style TargetType="{x:Type TextBlock}">
+                                                    <Style.Triggers>
+                                                        <Trigger Property ="IsMouseOver" Value="True">
+                                                            <Setter Property= "Background" Value="Transparent"/>
+                                                        </Trigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
+                                    </DataTemplate>
+                                </Button.ContentTemplate>
+                            </Button>
+                            <Button x:Name="btnCancelarUsuario" Padding="0" BorderThickness="0" Cursor="Hand" ToolTip="Cancelar" Margin="273,50,0,0" HorizontalAlignment="Left" Width="58" Click="btnCancelarUsuario_Click" Height="53" VerticalAlignment="Top">
+                                <Button.Background>
+                                    <ImageBrush/>
+                                </Button.Background>
+                                <Button.ContentTemplate>
+                                    <DataTemplate>
+                                        <TextBlock  Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="0" Padding="0" Height="48" Width="48">
+                                            <TextBlock.Background>
+                                                <ImageBrush ImageSource="Images/Indisponibilidades.png"/>
+                                            </TextBlock.Background>
+                                            <TextBlock.Style>
+                                                <Style TargetType="{x:Type TextBlock}">
+                                                    <Style.Triggers>
+                                                        <Trigger Property ="IsMouseOver" Value="True">
+                                                            <Setter Property= "Background" Value="Transparent"/>
+                                                        </Trigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
+                                    </DataTemplate>
+                                </Button.ContentTemplate>
+                            </Button>
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox x:Name="Permissoes" Header="Permissões" Margin="453,3,10,0" Height="280" VerticalAlignment="Top">
+                        <Grid x:Name="groupPermissoes" Margin="0,0,-2,2">
+                            <CheckBox x:Name="ckbMaster" Content="Master" Foreground="Red" Margin="30,16,0,0" VerticalAlignment="Top" Width="173" Cursor="Hand" Checked="ckbMaster_Checked" Unchecked="ckbMaster_Unchecked" HorizontalAlignment="Left" Height="18"/>
+                            <CheckBox x:Name="ckbAlterar_Status_Senha" Content="Aterar Status da Senha" Margin="30,62,0,0" VerticalAlignment="Top" Width="173" Cursor="Hand" HorizontalAlignment="Left" Height="18"/>
+                            <CheckBox x:Name="ckbCadastrar_Painel" Content="Cadastrar Pc Painel" Margin="30,111,0,0" VerticalAlignment="Top" Width="173" Cursor="Hand" HorizontalAlignment="Left" Height="18"/>
+                            <CheckBox x:Name="ckbCadastrar_Pc" Content="Cadastrar Pc Estação" Margin="30,160,0,0" VerticalAlignment="Top" Width="173" Cursor="Hand" HorizontalAlignment="Left" Height="18"/>
+                            <CheckBox x:Name="ckbCadastrar_Usuario" Content="Cadastrar Usuário" Margin="30,211,0,0" VerticalAlignment="Top" Width="173" Cursor="Hand" HorizontalAlignment="Left"/>
+                            <CheckBox x:Name="ckbConfigurar_Botoes" Content="Configurar Botões" HorizontalAlignment="Left" Margin="263,16,0,0" VerticalAlignment="Top" Width="185" Cursor="Hand"/>
+                            <CheckBox x:Name="ckbConfigurar_Senha" Content="Configurar Senha" HorizontalAlignment="Left" Margin="264,62,0,0" VerticalAlignment="Top" Width="185" Cursor="Hand"/>
+                            <CheckBox x:Name="ckbConfigurar_Mensagem" Content="Configurar Mensagem" HorizontalAlignment="Left" Margin="264,111,0,0" VerticalAlignment="Top" Width="185" Cursor="Hand"/>
+                            <CheckBox x:Name="ckbChamar_Senha_Cancelada" Content="Chamar Senha Cancelada" HorizontalAlignment="Left" Margin="264,160,0,0" VerticalAlignment="Top" Width="196" Cursor="Hand"/>
+                            <CheckBox x:Name="ckbChamar_Senha_Fora_Sequencia" Content="Chamar Senha Fora de Sequência" HorizontalAlignment="Left" Margin="264,211,0,0" VerticalAlignment="Top" Width="242" Cursor="Hand"/>
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Relação Pc/Painel" Name="tabItemRelacaoPainel" BorderBrush="Black" FontSize="14" FontWeight="Bold" Cursor="Hand">
+                <TabItem.Background>
+                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                        <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                        <GradientStop Color="#FFEBEBEB" Offset="0.204"/>
+                        <GradientStop Color="#FF6BAAD4" Offset="1"/>
+                    </LinearGradientBrush>
+                </TabItem.Background>
+                <Grid Background="#FFB4C8D6" Cursor="Arrow">
+                    <GroupBox Header="Selecione a Máquina Estação" Margin="391,35,279,0" x:Name="groupBoxUsuario_Copy" Height="117" VerticalAlignment="Top">
+                        <Grid Margin="2,0,-2,-1">
+                            <Label Content="Máquina Estação:" Height="28" HorizontalAlignment="Left" Margin="6,6,0,0" x:Name="label2" VerticalAlignment="Top" Width="135" />
+                            <ComboBox x:Name="cmbMaquinaEstacao" HorizontalAlignment="Left" Margin="6,34,0,0" VerticalAlignment="Top" Width="303" Background="#FFBDF9F9" SelectionChanged="cmbMaquinaEstacao_SelectionChanged"/>
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox Header="Selecione a Máquina Painel" Margin="10,35,660,0" x:Name="groupBoxUsuario_Copy1" Height="117" VerticalAlignment="Top">
+                        <Grid Margin="2,0,-2,-1">
+                            <Label Content="Máquina Painel:" Height="28" HorizontalAlignment="Left" Margin="6,6,0,0" x:Name="label3" VerticalAlignment="Top" Width="135" />
+                            <ComboBox x:Name="cmbMaquinaPainel" HorizontalAlignment="Left" Margin="6,34,0,0" VerticalAlignment="Top" Width="303" Background="#FFBDF9F9" SelectionChanged="cmbMaquinaPainel_SelectionChanged" />
+                        </Grid>
+                    </GroupBox>
+                    <DataGrid AutoGenerateColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" Height="105" HorizontalAlignment="Left" IsReadOnly="True" Margin="10,181,0,0" x:Name="dataGridRelacaoPcPainel" SelectionMode="Single" VerticalAlignment="Top" Width="981" AlternatingRowBackground="#FFFFE0D1" RowBackground="#FFBAFFDB" SelectionChanged="dataGridRelacaoPcPainel_SelectionChanged">
+                        <DataGrid.RowStyle>
+                            <Style TargetType="{x:Type DataGridRow}">
+                                <EventSetter Event="Control.MouseDoubleClick" Handler="dataGridCadastroPainel_MouseDoubleClick" />
+                            </Style>
+                        </DataGrid.RowStyle>
+                        <DataGrid.CellStyle>
+                            <Style TargetType="{x:Type DataGridCell}">
+                                <Style.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter Property="Background" Value="#FF0086FF" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </DataGrid.CellStyle>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Data Cadastro" Width="120" Binding="{Binding Data_Cadastro, StringFormat=dd/MM/yyyy}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="ID" Width="150" Binding="{Binding Identificador_Pc}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="Nome Painel" Width="200" Binding="{Binding Nome_Pc}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="Ip Painel" Width="300" Binding="{Binding Ip_Pc}" CanUserResize="False"/>
+                            <DataGridTextColumn Header="Porta Comunicação" Width="202" Binding="{Binding Porta_Pc}" CanUserResize="False"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button x:Name="btnAdicionarRelacao" Padding="0" BorderThickness="0" Cursor="Hand" ToolTip="Adicionar Relação" Margin="764,55,0,0" HorizontalAlignment="Left" Width="72" Click="btnAdicionarRelacao_Click" Height="68" VerticalAlignment="Top" RenderTransformOrigin="0.517,0.491">
+                        <Button.Background>
+                            <ImageBrush/>
+                        </Button.Background>
+                        <Button.ContentTemplate>
+                            <DataTemplate>
+                                <TextBlock  Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="0" Padding="0" Height="46" Width="54">
+                                    <TextBlock.Background>
+                                        <ImageBrush ImageSource="Images/add_server_icon-icons.com_76716.png"/>
+                                    </TextBlock.Background>
+                                    <TextBlock.Style>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Style.Triggers>
+                                                <Trigger Property ="IsMouseOver" Value="True">
+                                                    <Setter Property= "Background" Value="Transparent"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
+                            </DataTemplate>
+                        </Button.ContentTemplate>
+                    </Button>
+                    <Label Content="Adicionar" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="764,123,0,0" VerticalAlignment="Top" Width="72"/>
+                    <Button x:Name="btnRemoverRelacao" IsEnabled="False" Padding="0" BorderThickness="0" Cursor="Hand" ToolTip="Remover Relação" Margin="889,55,0,0" HorizontalAlignment="Left" Width="72" Click="btnRemoverRelacao_Click" Height="68" VerticalAlignment="Top" RenderTransformOrigin="0.517,0.491">
+                        <Button.Background>
+                            <ImageBrush/>
+                        </Button.Background>
+                        <Button.ContentTemplate>
+                            <DataTemplate>
+                                <TextBlock  Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="0" Padding="0" Height="46" Width="54">
+                                    <TextBlock.Background>
+                                        <ImageBrush ImageSource="Images/desable_server_icon-icons.com_76719.png"/>
+                                    </TextBlock.Background>
+                                    <TextBlock.Style>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Style.Triggers>
+                                                <Trigger Property ="IsMouseOver" Value="True">
+                                                    <Setter Property= "Background" Value="Transparent"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
+                            </DataTemplate>
+                        </Button.ContentTemplate>
+                    </Button>
+                    <Label Content="Remover" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="889,123,0,0" VerticalAlignment="Top" Width="72"/>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Mensageiro" Name="tabItemMensageiro" BorderBrush="Black" FontSize="14" FontWeight="Bold" Cursor="Hand">
+                <TabItem.Background>
+                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                        <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                        <GradientStop Color="#FFEBEBEB" Offset="0.204"/>
+                        <GradientStop Color="#FF6BAAD4" Offset="1"/>
+                    </LinearGradientBrush>
+                </TabItem.Background>
+                <Grid Background="#FFB4C8D6" Name="gridMensageiro" Cursor="Arrow" PreviewKeyDown="gridMensageiro_PreviewKeyDown">
+                    <TextBox x:Name="txtTextoMensagem" MaxLength="255" HorizontalAlignment="Left" Height="72" Margin="55,5,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="635" PreviewKeyDown="txtTextoMensagem_PreviewKeyDown" CharacterCasing="Upper" FontSize="12"/>
+                    <Label Content="Texto:" HorizontalAlignment="Left" Margin="0,24,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.395,-0.192"/>
+                    <CheckBox x:Name="ckbPiscaMensagem" Content="Piscar" Margin="744,8,0,0" VerticalAlignment="Top" Width="63" Cursor="Hand" HorizontalAlignment="Left" Height="18"/>
+                    <Label Content="Cor:" Height="28" HorizontalAlignment="Left" Margin="695,2,0,0" x:Name="label1_Copy2" VerticalAlignment="Top" Width="38" />
+                    <ComboBox x:Name="cmbCorMensagem" TabIndex="3"  HorizontalAlignment="Left" Margin="695,30,0,0" VerticalAlignment="Top" Width="112" Background="#FF3AE8E8" Height="23">
+                        <ComboBoxItem Content="VERMELHO" Foreground="Red"/>
+                        <ComboBoxItem Content="AMARELO" Foreground="#FFF3E803"/>
+                        <ComboBoxItem Content="AZUL" Foreground="#FF0101FF"/>
+                        <ComboBoxItem Content="BRANCO" Foreground="#FFD3D3F1"/>
+                    </ComboBox>
+                    <Button x:Name="btnAdicionarMensagem" Padding="0" BorderThickness="0" Cursor="Hand" ToolTip="Adicionar Mensagem" Margin="817,5,0,0" HorizontalAlignment="Left" Width="50" Click="btnAdicionarMensagem_Click" Height="48" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
+                        <Button.Background>
+                            <ImageBrush/>
+                        </Button.Background>
+                        <Button.ContentTemplate>
+                            <DataTemplate>
+                                <TextBlock  Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="0" Padding="0" Height="33" Width="41">
+                                    <TextBlock.Background>
+                                        <ImageBrush ImageSource="Images/add_server_icon-icons.com_76716.png"/>
+                                    </TextBlock.Background>
+                                    <TextBlock.Style>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Style.Triggers>
+                                                <Trigger Property ="IsMouseOver" Value="True">
+                                                    <Setter Property= "Background" Value="Transparent"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
+                            </DataTemplate>
+                        </Button.ContentTemplate>
+                    </Button>
+                    <Label Content="Adicionar" Name="lblAdicionarMensagem" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="809,53,0,0" VerticalAlignment="Top" Width="72"/>
+                    <Button x:Name="btnRemoverMensagem" IsEnabled="False" Padding="0" BorderThickness="0" Cursor="Hand" ToolTip="Remover Mensagem" Margin="940,5,0,0" HorizontalAlignment="Left" Width="50" Click="btnRemoverMensagem_Click" Height="48" VerticalAlignment="Top" RenderTransformOrigin="0.517,0.491">
+                        <Button.Background>
+                            <ImageBrush/>
+                        </Button.Background>
+                        <Button.ContentTemplate>
+                            <DataTemplate>
+                                <TextBlock  Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="0" Padding="0" Height="36" Width="40">
+                                    <TextBlock.Background>
+                                        <ImageBrush ImageSource="Images/desable_server_icon-icons.com_76719.png"/>
+                                    </TextBlock.Background>
+                                    <TextBlock.Style>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Style.Triggers>
+                                                <Trigger Property ="IsMouseOver" Value="True">
+                                                    <Setter Property= "Background" Value="Transparent"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
+                            </DataTemplate>
+                        </Button.ContentTemplate>
+                    </Button>
+                    <Label Content="Remover" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="928,53,0,0" VerticalAlignment="Top" Width="72"/>
+                    <DataGrid AutoGenerateColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" Height="211" IsReadOnly="True" Margin="0,82,0,0" x:Name="dataGridCadastroMensagem" SelectionMode="Single" VerticalAlignment="Top" AlternatingRowBackground="#FFFFE0D1" RowBackground="#FFBAFFDB" SelectionChanged="dataGridCadastroMensagem_SelectionChanged" HeadersVisibility="None" FontSize="11">
+                        <DataGrid.RowStyle>
+                            <Style TargetType="{x:Type DataGridRow}">
+                                <EventSetter Event="Control.MouseDoubleClick" Handler="dataGridCadastroMensagem_MouseDoubleClick" />
+                            </Style>
+                        </DataGrid.RowStyle>
+                        <DataGrid.CellStyle>
+                            <Style TargetType="{x:Type DataGridCell}">
+                                <Style.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter Property="Background" Value="#FF0086FF" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </DataGrid.CellStyle>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Nome Máquina" Width="2009" Binding="{Binding Texto}" CanUserResize="False"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button x:Name="btnSalvarMensagem" Padding="0" BorderThickness="0" Cursor="Hand" ToolTip="Salvar Mensagem" Margin="875,5,0,0" HorizontalAlignment="Left" Width="50" Click="btnSalvarMensagem_Click" Height="48" VerticalAlignment="Top" RenderTransformOrigin="0.517,0.491">
+                        <Button.Background>
+                            <ImageBrush/>
+                        </Button.Background>
+                        <Button.ContentTemplate>
+                            <DataTemplate>
+                                <TextBlock  Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="0" Padding="0" Height="33" Width="41">
+                                    <TextBlock.Background>
+                                        <ImageBrush ImageSource="Images/data_server_icon-icons.com_76718.png"/>
+                                    </TextBlock.Background>
+                                    <TextBlock.Style>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Style.Triggers>
+                                                <Trigger Property ="IsMouseOver" Value="True">
+                                                    <Setter Property= "Background" Value="Transparent"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
+                            </DataTemplate>
+                        </Button.ContentTemplate>
+                    </Button>
+                    <Label Content="Salvar" x:Name="lblAdicionarMensagem_Copy" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="867,53,0,0" VerticalAlignment="Top" Width="72"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Configurações" Name="tabItemConfiguracoesSistema" BorderBrush="Black" FontSize="14" FontWeight="Bold" Cursor="Hand">
+                <TabItem.Background>
+                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                        <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                        <GradientStop Color="#FFEBEBEB" Offset="0.204"/>
+                        <GradientStop Color="#FF6BAAD4" Offset="1"/>
+                    </LinearGradientBrush>
+                </TabItem.Background>
+                <Grid Background="#FFB4C8D6" Cursor="Arrow">
+                    <GroupBox x:Name="ConfiguracaoSenha" Header="Configure as Propriedades da Senha" Margin="10,60,558,0" Height="223" VerticalAlignment="Top">
+                        <Grid x:Name="gridConfiguracoesSenha" Margin="0,0,-2,2">
+                            <CheckBox x:Name="ckbBip_Aviso" Content="Ativar Bip de Aviso" Margin="10,64,0,0" VerticalAlignment="Top" Width="183" Cursor="Hand" HorizontalAlignment="Left" Height="15" FontSize="12" Checked="ckbBip_Aviso_Checked" Unchecked="ckbBip_Aviso_Unchecked"/>
+                            <CheckBox x:Name="ckbFalar_Senha" Content="Ativar Vozes Painel Senha" Margin="10,140,0,0" VerticalAlignment="Top" Width="183" Cursor="Hand" HorizontalAlignment="Left" Height="15" FontSize="12"/>
+                            <CheckBox x:Name="ckbPassar_Mensagem" Content="Exibir Mensagens no rodapé" Margin="10,168,0,0" VerticalAlignment="Top" Width="183" Cursor="Hand" HorizontalAlignment="Left" FontSize="12" Height="15"/>
+                            <Label Content="Tipo de Senha:" Height="28" HorizontalAlignment="Left" Margin="10,-4,0,0" x:Name="label1_Copy" VerticalAlignment="Top" Width="123" />
+
+                            <ComboBox x:Name="cmbTipoSenha" TabIndex="3"  HorizontalAlignment="Left" Margin="10,24,0,0" VerticalAlignment="Top" Width="154" Background="#FFBDF9F9" Height="23" SelectionChanged="cmbTipoSenha_SelectionChanged" >
+                                <ComboBoxItem Content="SEQUENCIAL"/>
+                                <ComboBoxItem Content="ALEATÓRIA"/>
+                            </ComboBox>
+                            <Label Content="Qtd Caracter:" Height="28" HorizontalAlignment="Left" Margin="219,-4,0,0" x:Name="label1_Copy1" VerticalAlignment="Top" Width="123" />
+                            <ComboBox x:Name="cmbQtdCaracter" TabIndex="3"  HorizontalAlignment="Left" Margin="219,24,0,0" VerticalAlignment="Top" Width="154" Background="#FFBDF9F9" Height="23">
+                                <ComboBoxItem Content="3 - TRÊS"/>
+                                <ComboBoxItem Content="4 - QUATRO"/>
+                                <ComboBoxItem Content="5 - CINCO"/>
+                            </ComboBox>
+                            <CheckBox x:Name="ckbMostrar_Hora" Content="Mostrar Hora" Margin="219,90,0,0" VerticalAlignment="Top" Width="183" Cursor="Hand" HorizontalAlignment="Left" FontSize="12" Height="15"/>
+                            <CheckBox x:Name="ckbUtilizarAleatorio" Content="Aleatório de Confirmação" Margin="219,116,0,0" VerticalAlignment="Top" Width="183" Cursor="Hand" HorizontalAlignment="Left" FontSize="12"/>
+                            <CheckBox x:Name="ckbZerarSenhaDiaSeguinte" Content="Zerar Senha a cada dia" Margin="10,90,0,0" VerticalAlignment="Top" Width="183" Cursor="Hand" HorizontalAlignment="Left" Height="15" FontSize="12"/>
+                            <CheckBox x:Name="ckbInicioFimExpediente" Content="Início e Fim de Expediente" Margin="219,142,0,0" VerticalAlignment="Top" Width="183" Cursor="Hand" HorizontalAlignment="Left" FontSize="12" Checked="ckbMensagemExpediente_Checked" Unchecked="ckbMensagemExpediente_Unchecked"/>
+                            <CheckBox x:Name="ckbCadastroCliente" Content="Ativar Cadastro de Cliente" Margin="219,169,0,0" VerticalAlignment="Top" Width="183" Cursor="Hand" HorizontalAlignment="Left" FontSize="12" />
+                            <CheckBox x:Name="ckbFalarRetirada" Content="Ativar Vozes Retirada Senha" Margin="10,113,0,0" VerticalAlignment="Top" Width="183" Cursor="Hand" HorizontalAlignment="Left" Height="15" FontSize="12"/>
+                            <ComboBox x:Name="cmbBeeps" TabIndex="3"  HorizontalAlignment="Left" Margin="219,56,0,0" VerticalAlignment="Top" Width="154" Background="#FFBDF9F9" Height="23" SelectionChanged="cmbBeeps_SelectionChanged">
+
+                            </ComboBox>
+                            <Image Name="imgSom" MouseUp="imgSom_MouseUp" Cursor="Hand" HorizontalAlignment="Left" Height="23" Margin="379,56,0,0" Source="Images/som.png" VerticalAlignment="Top" Width="23"/>
+
+                        </Grid>
+                    </GroupBox>
+                    <TextBox x:Name="txtNomeEmpresa" Text="Nome da Empresa" MaxLength="32" HorizontalAlignment="Left" Height="23" Margin="148,7,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="295" PreviewKeyDown="txtNomeEmpresa_PreviewKeyDown" CharacterCasing="Upper"/>
+                    <Label Content="Nome da Empresa:" HorizontalAlignment="Left" Margin="10,1,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.395,-0.192"/>
+                    <TextBox x:Name="txtSaudacao" Text="Seja Bem Vindo" MaxLength="32" HorizontalAlignment="Left" Height="23" Margin="148,32,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="295" PreviewKeyDown="txtSaudacao_PreviewKeyDown" CharacterCasing="Upper"/>
+                    <Label Content="Saudação:"  HorizontalAlignment="Left" Margin="66,26,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.395,-0.192"/>
+                    <GroupBox Header="Início e Fim de Expediente" HorizontalAlignment="Left" Margin="459,0,0,0" VerticalAlignment="Top" Height="283" Width="532">
+                        <Grid Name="gridExpediente" IsEnabled="False" Margin="0,0,-2,-2" PreviewKeyDown="gridExpediente_PreviewKeyDown">
+                            <Grid Height="33" VerticalAlignment="Top" Margin="-1,0,1,0">
+                                <Grid.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="Black" Offset="0"/>
+                                        <GradientStop Color="White" Offset="1"/>
+                                        <GradientStop Color="#FF0AA8A1" Offset="0.013"/>
+                                    </LinearGradientBrush>
+                                </Grid.Background>
+                                <CheckBox x:Name="ckbDomingo" Content="Domingo" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Cursor="Hand" HorizontalAlignment="Left" FontSize="12"/>
+                                <CheckBox x:Name="ckbSegunda" IsChecked="True" Content="Segunda" Margin="96,10,0,0" VerticalAlignment="Top" Width="71" Cursor="Hand" HorizontalAlignment="Left" FontSize="12"/>
+                                <CheckBox x:Name="ckbTerca" IsChecked="True" Content="Terça" Margin="177,10,0,0" VerticalAlignment="Top" Width="52" Cursor="Hand" HorizontalAlignment="Left" FontSize="12"/>
+                                <CheckBox x:Name="ckbQuarta" IsChecked="True" Content="Quarta" Margin="238,10,0,0" VerticalAlignment="Top" Width="66" Cursor="Hand" HorizontalAlignment="Left" FontSize="12"/>
+                                <CheckBox x:Name="ckbQuinta" IsChecked="True" Content="Quinta" Margin="309,10,0,0" VerticalAlignment="Top" Width="65" Cursor="Hand" HorizontalAlignment="Left" FontSize="12"/>
+                                <CheckBox x:Name="ckbSexta" IsChecked="True" Content="Sexta" Margin="382,10,0,0" VerticalAlignment="Top" Width="55" Cursor="Hand" HorizontalAlignment="Left" FontSize="12"/>
+                                <CheckBox x:Name="ckbSabado" Content="Sábado" Margin="447,10,0,0" VerticalAlignment="Top" Width="65" Cursor="Hand" HorizontalAlignment="Left" FontSize="12"/>
+
+                            </Grid>
+                            <Grid Height="141" Margin="0,33,-1,0" VerticalAlignment="Top" Background="#FF73C9CD">
+                                <Grid Height="45" VerticalAlignment="Top" Margin="10,24,371,0" Background="#FF95A4D4">
+                                    <TextBox Text="00" HorizontalContentAlignment="Center" x:Name="txtHoraInicioExpediente" MaxLength="32" HorizontalAlignment="Left" Height="23" Margin="13,11,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="28" PreviewKeyDown="txtHoraInicioExpediente_PreviewKeyDown" CharacterCasing="Upper" LostFocus="txtHoraInicioExpediente_LostFocus" GotFocus="txtHoraInicioExpediente_GotFocus"/>
+                                    <TextBox Text="00" HorizontalContentAlignment="Center" x:Name="txtMinutoInicioExpediente" MaxLength="32" HorizontalAlignment="Left" Height="23" Margin="57,11,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="28" PreviewKeyDown="txtMinutoInicioExpediente_PreviewKeyDown" CharacterCasing="Upper" LostFocus="txtMinutoInicioExpediente_LostFocus" GotFocus="txtMinutoInicioExpediente_GotFocus"/>
+                                    <Label Content=":" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="41,6,0,0" VerticalAlignment="Top" Width="16" Height="34"/>
+                                    <TextBox Text="00" HorizontalContentAlignment="Center" x:Name="txtSegundoInicioExpediente" MaxLength="32" HorizontalAlignment="Left" Height="23" Margin="101,11,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="28" PreviewKeyDown="txtSegundoInicioExpediente_PreviewKeyDown" CharacterCasing="Upper" LostFocus="txtSegundoInicioExpediente_LostFocus" GotFocus="txtSegundoInicioExpediente_GotFocus"/>
+                                    <Label Content=":" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="85,6,0,0" VerticalAlignment="Top" Width="16" Height="34"/>
+                                </Grid>
+                                <Label Content="Hora Início:" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Width="142" FontSize="11" Height="24"/>
+                                <TextBox x:Name="txtMensagemInicioExpediente" MaxLength="50" HorizontalAlignment="Left" Height="23" Margin="157,46,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="356" PreviewKeyDown="txtMensagemInicioExpediente_PreviewKeyDown" CharacterCasing="Upper"/>
+                                <Label Content="Mensagem de Início de Expediente:" HorizontalAlignment="Left" Margin="157,17,0,0" VerticalAlignment="Top" Width="248"/>
+                                <Grid Name="gridHoraFimExpediente" Height="45" VerticalAlignment="Top" Margin="10,90,371,0" Background="#FF95A4D4">
+                                    <TextBox Text="00" HorizontalContentAlignment="Center" x:Name="txtHoraFimExpediente" MaxLength="32" HorizontalAlignment="Left" Height="23" Margin="13,11,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="28" PreviewKeyDown="txtHoraFimExpediente_PreviewKeyDown" CharacterCasing="Upper" LostFocus="txtHoraFimExpediente_LostFocus" GotFocus="txtHoraFimExpediente_GotFocus"/>
+                                    <TextBox Text="00" HorizontalContentAlignment="Center" x:Name="txtMinutoFimExpediente" MaxLength="32" HorizontalAlignment="Left" Height="23" Margin="57,11,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="28" PreviewKeyDown="txtMinutoFimExpediente_PreviewKeyDown" CharacterCasing="Upper" LostFocus="txtMinutoFimExpediente_LostFocus" GotFocus="txtMinutoFimExpediente_GotFocus"/>
+                                    <Label Content=":" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="41,6,0,0" VerticalAlignment="Top" Width="16" Height="34"/>
+                                    <TextBox Text="00" HorizontalContentAlignment="Center" x:Name="txtSegundoFimExpediente" MaxLength="32" HorizontalAlignment="Left" Height="23" Margin="101,11,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="28" PreviewKeyDown="txtSegundoFimExpediente_PreviewKeyDown" CharacterCasing="Upper" LostFocus="txtSegundoFimExpediente_LostFocus" GotFocus="txtSegundoFimExpediente_GotFocus"/>
+                                    <Label Content=":" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="85,6,0,0" VerticalAlignment="Top" Width="16" Height="34"/>
+                                </Grid>
+                                <Label Content="Hora Encerramento:" HorizontalAlignment="Left" Margin="10,66,0,0" VerticalAlignment="Top" Width="165" FontSize="12"/>
+                                <TextBox x:Name="txtMensagemFimExpediente" MaxLength="50" HorizontalAlignment="Left" Height="23" Margin="157,112,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="356" PreviewKeyDown="txtMensagemFimExpediente_PreviewKeyDown" CharacterCasing="Upper"/>
+                                <Label Content="Mensagem de Encerramento de Expediente:" HorizontalAlignment="Left" Margin="157,83,0,0" VerticalAlignment="Top" Width="322"/>
+
+                            </Grid>
+                            <Grid Height="80" Margin="0,179,-1,0" VerticalAlignment="Top" Background="#FF73C9CD">
+                                <CheckBox x:Name="ckbDesligarPainel" Content="Hora Desligar Painel" VerticalAlignment="Top" Width="142" Cursor="Hand" HorizontalAlignment="Left" FontSize="12" Margin="14,0,0,0" Checked="ckbDesligarPainel_Checked" Unchecked="ckbDesligarPainel_Unchecked"/>
+                                <Grid Name="gridDesligarPainel" IsEnabled="False" Height="45" VerticalAlignment="Top" Margin="14,20,367,0" Background="#FFF09581">
+                                    <TextBox Text="00" HorizontalContentAlignment="Center" x:Name="txtHoraDesligarPainel" MaxLength="32" HorizontalAlignment="Left" Height="23" Margin="13,11,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="28" PreviewKeyDown="txtHoraDesligarPainel_PreviewKeyDown" CharacterCasing="Upper" LostFocus="txtHoraDesligarPainel_LostFocus" GotFocus="txtHoraDesligarPainel_GotFocus"/>
+                                    <TextBox Text="00" HorizontalContentAlignment="Center" x:Name="txtMinutoDesligarPainel" MaxLength="32" HorizontalAlignment="Left" Height="23" Margin="57,11,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="28" PreviewKeyDown="txtMinutoDesligarPainel_PreviewKeyDown" CharacterCasing="Upper" LostFocus="txtMinutoDesligarPainel_LostFocus" GotFocus="txtMinutoDesligarPainel_GotFocus"/>
+                                    <Label Content=":" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="41,6,0,0" VerticalAlignment="Top" Width="16" Height="34"/>
+                                    <TextBox Text="00" HorizontalContentAlignment="Center" x:Name="txtSegundoDesligarPainel" MaxLength="32" HorizontalAlignment="Left" Height="23" Margin="101,11,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="28" PreviewKeyDown="txtSegundoDesligarPainel_PreviewKeyDown" CharacterCasing="Upper" LostFocus="txtSegundoDesligarPainel_LostFocus" GotFocus="txtSegundoDesligarPainel_GotFocus"/>
+                                    <Label Content=":" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="85,6,0,0" VerticalAlignment="Top" Width="16" Height="34"/>
+                                </Grid>
+                                <CheckBox x:Name="ckbDesligarSenha" Content="Hora Desligar Senha" VerticalAlignment="Top" Width="142" Cursor="Hand" HorizontalAlignment="Left" FontSize="12" Margin="189,0,0,0" Checked="ckDesligarSenha_Checked" Unchecked="ckDesligarSenha_Unchecked"/>
+                                <Grid  Name="gridDesligarSenha" IsEnabled="False" Height="45" VerticalAlignment="Top" Margin="189,20,192,0" Background="#FFF09581">
+                                    <TextBox Text="00" HorizontalContentAlignment="Center" x:Name="txtHoraDesligarSenha" MaxLength="32" HorizontalAlignment="Left" Height="23" Margin="13,11,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="28" PreviewKeyDown="txtHoraDesligarSenha_PreviewKeyDown" CharacterCasing="Upper" LostFocus="txtHoraDesligarSenha_LostFocus" GotFocus="txtHoraDesligarSenha_GotFocus"/>
+                                    <TextBox Text="00" HorizontalContentAlignment="Center" x:Name="txtMinutoDesligarSenha" MaxLength="32" HorizontalAlignment="Left" Height="23" Margin="57,11,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="28" PreviewKeyDown="txtMinutoDesligarSenha_PreviewKeyDown" CharacterCasing="Upper" LostFocus="txtMinutoDesligarSenha_LostFocus" GotFocus="txtMinutoDesligarSenha_GotFocus"/>
+                                    <Label Content=":" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="41,6,0,0" VerticalAlignment="Top" Width="16" Height="34"/>
+                                    <TextBox Text="00" HorizontalContentAlignment="Center" x:Name="txtSegundoDesligarSenha" MaxLength="32" HorizontalAlignment="Left" Height="23" Margin="101,11,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="28" PreviewKeyDown="txtSegundoDesligarSenha_PreviewKeyDown" CharacterCasing="Upper" LostFocus="txtSegundoDesligarSenha_LostFocus" GotFocus="txtSegundoDesligarSenha_GotFocus"/>
+                                    <Label Content=":" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="85,6,0,0" VerticalAlignment="Top" Width="16" Height="34"/>
+                                </Grid>
+                                <CheckBox x:Name="ckbDesligarEstacao" Content="Hora Desligar estação" VerticalAlignment="Top" Width="142" Cursor="Hand" HorizontalAlignment="Left" FontSize="12" Margin="365,0,0,0" Checked="ckbDesligarEstacao_Checked" Unchecked="ckbDesligarEstacao_Unchecked"/>
+                                <Grid  Name="gridDesligarEstacao" IsEnabled="False" Height="45" VerticalAlignment="Top" Margin="365,20,16,0" Background="#FFF09581">
+                                    <TextBox Text="00" HorizontalContentAlignment="Center" x:Name="txtHoraDesligarEstacao" MaxLength="32" HorizontalAlignment="Left" Height="23" Margin="13,11,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="28" PreviewKeyDown="txtHoraDesligarEstacao_PreviewKeyDown" CharacterCasing="Upper" LostFocus="txtHoraDesligarEstacao_LostFocus" GotFocus="txtHoraDesligarEstacao_GotFocus"/>
+                                    <TextBox Text="00" HorizontalContentAlignment="Center" x:Name="txtMinutoDesligarEstacao" MaxLength="32" HorizontalAlignment="Left" Height="23" Margin="57,11,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="28" PreviewKeyDown="txtMinutoDesligarEstacao_PreviewKeyDown" CharacterCasing="Upper" LostFocus="txtMinutoDesligarEstacao_LostFocus" GotFocus="txtMinutoDesligarEstacao_GotFocus"/>
+                                    <Label Content=":" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="41,6,0,0" VerticalAlignment="Top" Width="16" Height="34"/>
+                                    <TextBox Text="00" HorizontalContentAlignment="Center" x:Name="txtSegundoDesligarEstacao" MaxLength="32" HorizontalAlignment="Left" Height="23" Margin="101,11,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="28" PreviewKeyDown="txtSegundoDesligarEstacao_PreviewKeyDown" CharacterCasing="Upper" LostFocus="txtSegundoDesligarEstacao_LostFocus" GotFocus="txtSegundoDesligarEstacao_GotFocus"/>
+                                    <Label Content=":" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="85,6,0,0" VerticalAlignment="Top" Width="16" Height="34"/>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Controle de Versão" Name="tabItemControle" BorderBrush="Black" FontSize="14" FontWeight="Bold" Cursor="Hand">
+                <TabItem.Background>
+                    <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                        <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                        <GradientStop Color="#FFEBEBEB" Offset="0.204"/>
+                        <GradientStop Color="#FF6BAAD4" Offset="1"/>
+                    </LinearGradientBrush>
+                </TabItem.Background>
+                <Grid Background="#FFB4C8D6" Cursor="Arrow" Margin="0,-3,0,3">
+                    <Grid HorizontalAlignment="Left" Height="273" Margin="9,10,0,0" VerticalAlignment="Top" Width="348" Background="#FF8BA6FF" OpacityMask="#FFFD3B3B">
+                        <Label Name="lblVersao" Content="Versão:" Margin="10,82,235,0" VerticalAlignment="Top"/>
+                        <Label x:Name="lblCodigoAtivacao" Content="Cód. Ativação:" Margin="10,121,235,0" VerticalAlignment="Top"/>
+                        <Label x:Name="lblDataAtivacao" Content="Data Ativação:" Margin="10,160,235,0" VerticalAlignment="Top"/>
+                        <Label x:Name="lblDataInicio" Content="Data Inicial:" Margin="10,199,235,0" VerticalAlignment="Top"/>
+                        <Label x:Name="lblDataFim" Content="Data Final:" Margin="10,238,235,0" VerticalAlignment="Top"/>
+                        <Label Content="Licença em uso" HorizontalContentAlignment="Center" VerticalAlignment="Top" Foreground="Black" FontSize="24" Margin="24,0,30,0" FontFamily="Arial Rounded MT Bold" FontWeight="Bold"/>
+                        <TextBox Name="txtVersao" IsReadOnly="True" HorizontalAlignment="Left" Height="23" Margin="118,87,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="220" Background="#FFDADEDE"/>
+                        <TextBox x:Name="txtCodigoAtivacao" IsReadOnly="True" HorizontalAlignment="Left" Height="23" Margin="118,126,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="220" Background="#FFDADEDE" FontSize="12"/>
+                        <TextBox x:Name="txtDataAtivacao" IsReadOnly="True" HorizontalAlignment="Left" Height="23" Margin="118,165,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="220" Background="#FFDADEDE"/>
+                        <TextBox x:Name="txtDataInicio" IsReadOnly="True" HorizontalAlignment="Left" Height="23" Margin="118,204,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="220" Background="#FFDADEDE"/>
+                        <TextBox x:Name="txtDataFim" IsReadOnly="True" HorizontalAlignment="Left" Height="23" Margin="118,243,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="220" Background="#FFDADEDE"/>
+                        <Grid Height="39" Margin="10,38,10,0" VerticalAlignment="Top" Background="#FFFF1F1F">
+                            <TextBox x:Name="txtCodigoInstalacao" Text="Codigo de Instalação" IsReadOnly="True" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Height="35" TextWrapping="Wrap" VerticalAlignment="Top" Background="#FFFF5E4E" FontWeight="Bold" FontSize="16" Margin="2,2,0,0" BorderBrush="#FFECECEC" HorizontalAlignment="Left" Width="324" SelectionBrush="White"/>
+                        </Grid>
+                    </Grid>
+                    <Grid HorizontalAlignment="Left" Height="273" Margin="372,10,0,0" VerticalAlignment="Top" Width="619" Background="#FF3A66F5">
+                        <Label Content="Inserir nova licença de utilização do produto." HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontSize="24" Margin="24,0,0,0" FontFamily="Arial Rounded MT Bold" Width="565" FontWeight="Bold"/>
+                        <Label Content="Solicite a chave do produto (Licença de Utilização) entrando em contato com a CS Systems." HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontSize="12" Margin="24,38,0,0" FontFamily="Arial Rounded MT Bold" Width="565" FontWeight="Bold"/>
+                        <Label Content="A chave do produto  deve ser inserida no campo abaixo." HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" FontSize="12" Margin="24,78,0,0" FontFamily="Arial Rounded MT Bold" Width="565" FontWeight="Bold"/>
+                        <TextBox Name="txtLicenca" HorizontalAlignment="Left" MaxLength="24" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Height="54" Margin="24,107,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="565" FontSize="32" Background="White" TextChanged="txtLicenca_TextChanged"/>
+                        <Grid Name="gridProximaLicenca" HorizontalAlignment="Left" Height="100" Margin="24,166,0,0" VerticalAlignment="Top" Width="565" Background="#FF3A66F5">
+                            <Label Content="Código Ativação Próxima Licença: " x:Name="lblCodigoProximaLicenca" HorizontalContentAlignment="Center" BorderBrush="#FF020202" Background="#FF4AFF73" Height="29" VerticalAlignment="Top"/>
+                            <Label x:Name="lblVersaoProximaLicenca" Content="Versão:" Margin="0,37,277,0" VerticalAlignment="Top" FontSize="14"/>
+                            <Label x:Name="lblDataAtivacaoProximaLicenca" Content="Data Ativação:" Margin="0,71,277,0" VerticalAlignment="Top" FontSize="14"/>
+                            <Label x:Name="lblDataInicioProximaLicenca" Content="Data Inicial:" Margin="293,37,10,0" VerticalAlignment="Top"/>
+                            <Label x:Name="lblDataFimProximaLicenca" Content="Data Final:" Margin="293,71,10,0" VerticalAlignment="Top"/>
+                        </Grid>
+                    </Grid>
+
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <Button x:Name="btnSalvarTudo" Padding="0" BorderThickness="0" Cursor="Hand" ToolTip="Salvar Painel" Margin="945,380,0,0" HorizontalAlignment="Left" Width="72" Click="btnSalvarTudo_Click" Height="62" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
+            <Button.Background>
+                <ImageBrush/>
+            </Button.Background>
+            <Button.ContentTemplate>
+                <DataTemplate>
+                    <TextBlock  Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="0" Padding="0" Height="46" Width="54">
+                        <TextBlock.Background>
+                            <ImageBrush ImageSource="Images/data_server_icon-icons.com_76718.png"/>
+                        </TextBlock.Background>
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Style.Triggers>
+                                    <Trigger Property ="IsMouseOver" Value="True">
+                                        <Setter Property= "Background" Value="Transparent"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                </DataTemplate>
+            </Button.ContentTemplate>
+        </Button>
+        <Label Content="Salvar" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="945,442,0,0" VerticalAlignment="Top" Width="72"/>
+        <Label Content="" x:Name="lblUsuario" HorizontalAlignment="Left" Margin="10,432,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.395,-0.192"/>
+        <Button x:Name="btnOk" Padding="0" BorderThickness="0" Cursor="Hand" ToolTip="Salvar e Reiniciar" Margin="822,382,0,0" HorizontalAlignment="Left" Width="72" Click="btnOk_Click" Height="62" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
+            <Button.Background>
+                <ImageBrush/>
+            </Button.Background>
+            <Button.ContentTemplate>
+                <DataTemplate>
+                    <TextBlock  Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="0" Padding="0" Height="46" Width="54">
+                        <TextBlock.Background>
+                            <ImageBrush ImageSource="Images/enable_server_icon-icons.com_76722.png"/>
+                        </TextBlock.Background>
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Style.Triggers>
+                                    <Trigger Property ="IsMouseOver" Value="True">
+                                        <Setter Property= "Background" Value="Transparent"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                </DataTemplate>
+            </Button.ContentTemplate>
+        </Button>
+        <Label Content="Salvar e Sair" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="798,442,0,0" VerticalAlignment="Top" Width="122"/>
+    </Grid>
+    <Window.Resources>
+        <Style TargetType="ComboBox" x:Key="Flat_ComboBox">
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="MinWidth" Value="30"/>
+            <Setter Property="UIElement.SnapsToDevicePixels" Value="True"/>
+            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
+            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="ScrollViewer.CanContentScroll" Value="True"/>
+            <Setter Property="TextElement.Foreground" Value="Black"/>
+            <Setter Property="FrameworkElement.FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Background" Value="White" />
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="LightSkyBlue" />
+                </Trigger>
+            </Style.Triggers>
+
+        </Style>
+
+
+        <ControlTemplate x:Key="ComboBoxToggleButton" TargetType="{x:Type ToggleButton}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="20" />
+                </Grid.ColumnDefinitions>
+                <Border
+  x:Name="Border" 
+  Grid.ColumnSpan="2"
+  CornerRadius="2"
+  Background="#FF72A8A3"
+  BorderBrush="#404040"
+  BorderThickness="1" />
+                <Border 
+  Grid.Column="0"
+  CornerRadius="2,0,0,2" 
+  Margin="1" 
+  Background="#FFFFFF" 
+  BorderBrush="#404040"
+  BorderThickness="0,0,1,0" />
+                <Path 
+  x:Name="Arrow"
+  Grid.Column="1"     
+  Fill="#404040"
+  HorizontalAlignment="Center"
+  VerticalAlignment="Center"
+  Data="M 0 0 L 4 4 L 8 0 Z"/>
+            </Grid>
+            <ControlTemplate.Triggers>
+                <Trigger Property="ToggleButton.IsMouseOver" Value="true">
+                    <Setter TargetName="Border" Property="Background" Value="#808080" />
+                </Trigger>
+                <Trigger Property="ToggleButton.IsChecked" Value="true">
+                    <Setter TargetName="Border" Property="Background" Value="#E0E0E0" />
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter TargetName="Border" Property="Background" Value="#EEEEEE" />
+                    <Setter TargetName="Border" Property="BorderBrush" Value="#AAAAAA" />
+                    <Setter Property="Foreground" Value="#888888"/>
+                    <Setter TargetName="Arrow" Property="Fill" Value="#888888" />
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
+        <ControlTemplate x:Key="ComboBoxTextBox" TargetType="{x:Type TextBox}">
+            <Border x:Name="PART_ContentHost" Focusable="False" Background="{TemplateBinding Background}" />
+        </ControlTemplate>
+
+        <Style x:Key="{x:Type ComboBox}" TargetType="{x:Type ComboBox}">
+            <Setter Property="SnapsToDevicePixels" Value="true"/>
+            <Setter Property="OverridesDefaultStyle" Value="true"/>
+            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="ScrollViewer.CanContentScroll" Value="true"/>
+            <Setter Property="MinWidth" Value="30"/>
+            <Setter Property="MinHeight" Value="20"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ComboBox}">
+                        <Grid>
+                            <ToggleButton 
+        Name="ToggleButton" 
+        Template="{StaticResource ComboBoxToggleButton}" 
+        Grid.Column="2" 
+        Focusable="false"
+        IsChecked="{Binding Path=IsDropDownOpen,Mode=TwoWay,RelativeSource={RelativeSource TemplatedParent}}"
+        ClickMode="Press">
+                            </ToggleButton>
+                            <ContentPresenter
+        Name="ContentSite"
+        IsHitTestVisible="False" 
+        Content="{TemplateBinding SelectionBoxItem}"
+        ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+        ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
+        Margin="3,3,23,3"
+        VerticalAlignment="Center"
+        HorizontalAlignment="Left" />
+                            <TextBox x:Name="PART_EditableTextBox"
+        Style="{x:Null}" 
+        Template="{StaticResource ComboBoxTextBox}" 
+        HorizontalAlignment="Left" 
+        VerticalAlignment="Center" 
+        Margin="3,3,23,3"
+        Focusable="True" 
+        Background="Transparent"
+        Visibility="Hidden"
+        IsReadOnly="{TemplateBinding IsReadOnly}"/>
+                            <Popup 
+        Name="Popup"
+        Placement="Bottom"
+        IsOpen="{TemplateBinding IsDropDownOpen}"
+        AllowsTransparency="True" 
+        Focusable="False"
+        PopupAnimation="Slide">
+                                <Grid 
+          Name="DropDown"
+          SnapsToDevicePixels="True"                
+          MinWidth="{TemplateBinding ActualWidth}"
+          MaxHeight="{TemplateBinding MaxDropDownHeight}">
+                                    <Border 
+            x:Name="DropDownBorder"
+            Background="#FFFFFF"
+            BorderThickness="1"
+            BorderBrush="#888888"/>
+                                    <ScrollViewer Margin="4,6,4,6" SnapsToDevicePixels="True">
+                                        <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Contained" />
+                                    </ScrollViewer>
+                                </Grid>
+                            </Popup>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="HasItems" Value="false">
+                                <Setter TargetName="DropDownBorder" Property="MinHeight" Value="95"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Foreground" Value="#888888"/>
+                            </Trigger>
+                            <Trigger Property="IsGrouping" Value="true">
+                                <Setter Property="ScrollViewer.CanContentScroll" Value="false"/>
+                            </Trigger>
+                            <Trigger SourceName="Popup" Property="Popup.AllowsTransparency" Value="true">
+                                <Setter TargetName="DropDownBorder" Property="CornerRadius" Value="4"/>
+                                <Setter TargetName="DropDownBorder" Property="Margin" Value="0,2,0,0"/>
+                            </Trigger>
+                            <Trigger Property="IsEditable"
+           Value="true">
+                                <Setter Property="IsTabStop" Value="false"/>
+                                <Setter TargetName="PART_EditableTextBox" Property="Visibility" Value="Visible"/>
+                                <Setter TargetName="ContentSite" Property="Visibility" Value="Hidden"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+            </Style.Triggers>
+        </Style>
+
+        <!-- SimpleStyles: ComboBoxItem -->
+        <Style x:Key="{x:Type ComboBoxItem}" TargetType="{x:Type ComboBoxItem}">
+            <Setter Property="SnapsToDevicePixels" Value="true"/>
+            <Setter Property="OverridesDefaultStyle" Value="true"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ComboBoxItem}">
+                        <Border 
+      Name="Border"
+      Padding="2"
+      SnapsToDevicePixels="true">
+                            <ContentPresenter />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsHighlighted" Value="true">
+                                <Setter TargetName="Border" Property="Background" Value="#FFC1F0ED"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Foreground" Value="#888888"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+</Window>

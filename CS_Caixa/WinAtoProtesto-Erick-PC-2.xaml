@@ -1,0 +1,341 @@
+﻿<Window x:Class="CS_Caixa.WinAtoProtesto"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+          Title="APONTAMENTO" Height="480" Width="931" Icon="/CS_Caixa;component/Images/Icone48.ico" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" ShowInTaskbar="False" BorderBrush="Black" Background="#FFE2E0BA">
+    <Grid>
+        <Button Content="_Novo" Height="49" HorizontalAlignment="Left" Margin="846,376,0,0" Name="btnNovo" VerticalAlignment="Top" Width="69" Click="btnNovo_Click" Cursor="Hand" VerticalContentAlignment="Bottom" HorizontalContentAlignment="Right">
+            <Button.Background>
+                <ImageBrush ImageSource="/CS_Caixa;component/Images/1425064642_Create.png" Stretch="Uniform" TileMode="None" />
+            </Button.Background>
+        </Button>
+        <Button Content="_Excluir" Height="49" HorizontalAlignment="Left" Margin="672,376,0,0" Name="btnExcluir" VerticalAlignment="Top" Width="70" Cursor="Hand" Click="btnExcluir_Click" HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom">
+            <Button.Background>
+                <ImageBrush ImageSource="/CS_Caixa;component/Images/1425064473_DeleteRed.png" Stretch="Uniform" TileMode="None" />
+            </Button.Background>
+        </Button>
+        <Button Content="_Alterar" Height="49" HorizontalAlignment="Left" Margin="758,376,0,0" Name="btnAlterar" VerticalAlignment="Top" Width="70" Cursor="Hand" Click="btnAlterar_Click" HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom">
+            <Button.Background>
+                <ImageBrush ImageSource="/CS_Caixa;component/Images/Alterar.png" Stretch="Uniform" TileMode="None" />
+            </Button.Background>
+        </Button>
+        <GroupBox Header="Consulta Detalhada" Height="76" HorizontalAlignment="Left" Margin="12,359,0,0" Name="groupBox1" VerticalAlignment="Top" Width="461">
+            <Grid>
+                <Button Content="_Consultar" Height="41" HorizontalAlignment="Left" Margin="359,6,0,0" Name="btnConsultar" VerticalAlignment="Top" Width="84" Background="{x:Null}" Cursor="Hand" Click="btnConsultar_Click" TabIndex="4" />
+                <Grid Height="41" HorizontalAlignment="Left" Margin="6,6,0,0" Name="grid1" VerticalAlignment="Top" Width="347" PreviewKeyDown="grid1_PreviewKeyDown">
+                    <ComboBox Height="23" HorizontalAlignment="Left" Margin="15,10,0,0" Name="cmbTpConsulta" VerticalAlignment="Top" Width="81" Background="{x:Null}" SelectionChanged="cmbTpConsulta_SelectionChanged" TabIndex="0">
+                        <ComboBoxItem Content="DATA" IsSelected="True" />
+
+                    </ComboBox>
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="120,10,0,0" Name="txtConsulta" VerticalAlignment="Top" Width="211" MaxLength="9" IsEnabled="True" Visibility="Hidden" PreviewKeyDown="txtConsulta_PreviewKeyDown" MaxLines="3" TabIndex="3" CharacterCasing="Upper" />
+                    <DatePicker Height="23" HorizontalAlignment="Left" Margin="120,10,0,0" Name="datePickerdataConsulta" VerticalAlignment="Top" Width="101" SelectedDateChanged="datePickerdataConsulta_SelectedDateChanged" TabIndex="1" />
+                    <DatePicker Height="23" HorizontalAlignment="Left" Margin="230,10,0,0" Name="datePickerdataConsultaFim" VerticalAlignment="Top" Width="101" SelectedDateChanged="datePickerdataConsultaFim_SelectedDateChanged" TabIndex="2" />
+                </Grid>
+            </Grid>
+        </GroupBox>
+        <Label x:Name="lblTotalSelecionado" HorizontalAlignment="Left" Margin="12,328,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.466,0.443" Foreground="#FF8B0303"/>
+        <TabControl HorizontalAlignment="Left" Height="323" Name="tabControl" SelectionChanged="tabControl_SelectionChanged" VerticalAlignment="Top" Width="925">
+            <TabItem Header="Todos" Name="tabItemTodos">
+                <Grid Background="#FFE5E5E5">
+                    <DataGrid AutoGenerateColumns="False"  AlternationCount="2" RowBackground="White" AlternatingRowBackground="#FF8DE1FF" IsReadOnly="True" SelectionMode="Extended" x:Name="dataGrid1" AllowDrop="False" HeadersVisibility="All" CanUserResizeRows="False" SelectionUnit="FullRow" GridLinesVisibility="None" ClipboardCopyMode="ExcludeHeader" HorizontalScrollBarVisibility="Auto" UseLayoutRounding="True" Background="{x:Null}" MouseRightButtonDown="dataGrid1_MouseRightButtonDown" SelectionChanged="dataGrid1_SelectionChanged" IsTabStop="True" >
+                        <DataGrid.RowStyle>
+                            <Style TargetType="{x:Type DataGridRow}">
+                                <EventSetter Event="Control.MouseDoubleClick" Handler="dataGrid1_MouseDoubleClick"/>
+                            </Style>
+                        </DataGrid.RowStyle>
+                        <DataGrid.CellStyle>
+                            <Style TargetType="{x:Type DataGridCell}">
+                                <Style.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter Property="Background" Value="#FF0086FF" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </DataGrid.CellStyle>
+                        <DataGrid.ContextMenu>
+                            <ContextMenu Selector.IsSelected="True" ForceCursor="True" x:Name="menu">
+                                <MenuItem Header="Excluir" x:Name="MenuItemExcluir" Click="MenuItemExcluir_Click">
+                                    <MenuItem.Icon>
+                                        <Image Source="/CS_Caixa;component/Images/1425064473_DeleteRed.png" />
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                                <MenuItem Header="Alterar" x:Name="MenuItemAlterar" Click="MenuItemAlterar_Click">
+                                    <MenuItem.Icon>
+                                        <Image Source="/CS_Caixa;component/Images/modify.png" />
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                                <MenuItem Header="Novo" x:Name="MenuItemNovo" Click="MenuItemNovo_Click">
+                                    <MenuItem.Icon>
+                                        <Image Source="/CS_Caixa;component/Images/1425064642_Create.png" />
+                                    </MenuItem.Icon>
+                                </MenuItem>
+
+                                <MenuItem Header="Imprimir Recibo" x:Name="MenuItemRecibo" Click="MenuItemRecibo_Click">
+                                    <MenuItem.Icon>
+                                        <Image Source="/CS_Caixa;component/Images/ImprimirSelosReservados.png" />
+                                    </MenuItem.Icon>
+                                </MenuItem>
+
+                                <MenuItem Header="Certidão Inteiro Teor" x:Name="MenuItemInteiroTeor" Click="MenuItemInteiroTeor_Click">
+                                    <MenuItem.Icon>
+                                        <Image Source="/CS_Caixa;component/Images/ImprimirSelosUtilizados.png" />
+                                    </MenuItem.Icon>
+                                </MenuItem>
+
+                                <MenuItem Header="Tipo Pagamento" x:Name="MenuItemPagamento">
+
+                                    <MenuItem Header="Dinheiro" Name="MenuItemDinheiro" Click="MenuItemDinheiro_Click">
+                                    </MenuItem>
+                                    <MenuItem Header="Depósito" Name="MenuItemDeposito" Click="MenuItemDeposito_Click">
+                                    </MenuItem>
+                                    <MenuItem Header="Mensalista" IsEnabled="false" Name="MenuItemMensalista">
+                                    </MenuItem>
+                                    <MenuItem Header="Cheque" Name="MenuItemCheque" Click="MenuItemCheque_Click">
+                                    </MenuItem>
+                                    <MenuItem Header="Pix Bradesco" Name="MenuItemPre" Click="MenuItemChequePre_Click">
+                                    </MenuItem>
+                                    <MenuItem Header="Pix Nubank" Name="MenuItemBoleto" Click="MenuItemBoleto_Click">
+                                    </MenuItem>
+                                    <MenuItem Header="Cartão Crédito" Name="MenuItemCartaoCredito" Click="MenuItemCartaoCredito_Click">
+                                    </MenuItem>
+                                    <MenuItem Header="Pagar Itens Selecionados" x:Name="MenuItemPago" Click="MenuItemPago_Click"/>
+                                </MenuItem>
+                               
+
+                            </ContextMenu>
+                        </DataGrid.ContextMenu>
+
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Ato" Width="50" Binding="{Binding Id_Ato}" CanUserResize="False" Visibility="Hidden"/>
+                            <DataGridTextColumn Header="Data" Width="70" Binding="{Binding DataPagamento, StringFormat=dd/MM/yyyy}" CanUserResize="False" x:Name="colData"/>
+                            <DataGridCheckBoxColumn Header="Pago" Width="40" Binding="{Binding Pago}" CanUserResize="False" x:Name="colPago"/>
+                            <DataGridTextColumn Header="Recibo" Width="50" Binding="{Binding Recibo}" CanUserResize="False" x:Name="colRecibo"/>
+                            <DataGridTextColumn Header="Protocolo" Width="70" Binding="{Binding Protocolo}" CanUserResize="False" x:Name="colProtocolo"/>
+                            <DataGridTextColumn Header="Portador" Width="150" Binding="{Binding Portador}" CanUserResize="False" x:Name="colPortador"/>
+                            <DataGridTextColumn Header="Faixa" Width="50" Binding="{Binding Faixa}" CanUserResize="False" x:Name="colFaixa"/>
+                            <DataGridTextColumn Header="Natureza" Width="300" Binding="{Binding Natureza}" CanUserResize="False" x:Name="colNatureza"/>
+                            <DataGridTextColumn Header="Tipo Custas" Width="120" Binding="{Binding TipoCobranca}" CanUserResize="False" x:Name="colTpCustas"/>
+                            <DataGridTextColumn Header="Tipo Pagamento" Width="150" Binding="{Binding TipoPagamento}" CanUserResize="False" x:Name="colTpPagamento"/>
+                            <DataGridTextColumn Header="Vr Título" Width="70" Binding="{Binding ValorTitulo, StringFormat=\{0:n2\}}" CanUserResize="False" x:Name="colVrTitulo"/>
+                            <DataGridTextColumn Header="Conv." Width="50" Binding="{Binding Convenio}" CanUserResize="False" x:Name="colConvenio"/>
+                            <DataGridTextColumn Header="Total" Width="150" Binding="{Binding Total, StringFormat=\{0:n2\}}" CanUserResize="False" x:Name="colTotal"/>
+                        </DataGrid.Columns>
+
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Convênios" Name="tabItemConvenio">
+                <Grid Background="#FFE5E5E5">
+                    <DataGrid AutoGenerateColumns="False"  AlternationCount="2" RowBackground="White" AlternatingRowBackground="#FF8DE1FF" IsReadOnly="True" SelectionMode="Extended" x:Name="dataGridConvenio" AllowDrop="False" HeadersVisibility="All" CanUserResizeRows="False" SelectionUnit="FullRow" GridLinesVisibility="None" ClipboardCopyMode="ExcludeHeader" HorizontalScrollBarVisibility="Auto" UseLayoutRounding="True" Background="{x:Null}" MouseRightButtonDown="dataGridConvenio_MouseRightButtonDown" SelectionChanged="dataGridConvenio_SelectionChanged" IsTabStop="True" MouseDoubleClick="dataGridConvenio_MouseDoubleClick" >
+                        <DataGrid.CellStyle>
+                            <Style TargetType="{x:Type DataGridCell}">
+                                <Style.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter Property="Background" Value="#FF0086FF" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </DataGrid.CellStyle>
+                        <DataGrid.ContextMenu>
+                            <ContextMenu Selector.IsSelected="True" ForceCursor="True" x:Name="menu1">
+                                <MenuItem Header="Excluir" x:Name="MenuItemExcluir1" Click="MenuItemExcluir_Click">
+                                    <MenuItem.Icon>
+                                        <Image Source="Images/1425064473_DeleteRed.png" />
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                                <MenuItem Header="Alterar" x:Name="MenuItemAlterar1" Click="MenuItemAlterar_Click">
+                                    <MenuItem.Icon>
+                                        <Image Source="Images/modify.png" />
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                                <MenuItem Header="Novo" x:Name="MenuItemNovo1" Click="MenuItemNovo_Click">
+                                    <MenuItem.Icon>
+                                        <Image Source="Images/1425064642_Create.png" />
+                                    </MenuItem.Icon>
+                                </MenuItem>
+
+                                <MenuItem Header="Imprimir Recibo" x:Name="MenuItemRecibo1" Click="MenuItemRecibo_Click">
+                                    <MenuItem.Icon>
+                                        <Image Source="Images/ImprimirSelosReservados.png" />
+                                    </MenuItem.Icon>
+                                </MenuItem>
+
+                                <MenuItem Header="Tipo Pagamento" x:Name="MenuItemPagamento1">
+
+                                    <MenuItem Header="Dinheiro" Name="MenuItemDinheiro1" Click="MenuItemDinheiro_Click">
+                                    </MenuItem>
+                                    <MenuItem Header="Depósito" Name="MenuItemDeposito1" Click="MenuItemDeposito_Click">
+                                    </MenuItem>
+                                    <MenuItem Header="Mensalista" IsEnabled="false" Name="MenuItemMensalista1">
+                                    </MenuItem>
+                                    <MenuItem Header="Cheque" Name="MenuItemCheque1" Click="MenuItemCheque_Click">
+                                    </MenuItem>
+                                    <MenuItem Header="Pix Bradesco" Name="MenuItemPre1" Click="MenuItemChequePre_Click">
+                                    </MenuItem>
+                                    <MenuItem Header="Pix Nubank" Name="MenuItemBoleto1" Click="MenuItemBoleto_Click">
+                                    </MenuItem>
+                                    <MenuItem Header="Cartão Crédito" Name="MenuItemCartaoCredito1" Click="MenuItemCartaoCredito_Click">
+                                    </MenuItem>
+                                    <MenuItem Header="Pagar Itens Selecionados" x:Name="MenuItemPago1" Click="MenuItemPago_Click"/>
+
+                                </MenuItem>
+
+                            </ContextMenu>
+                        </DataGrid.ContextMenu>
+
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Ato" Width="50" Binding="{Binding Id_Ato}" CanUserResize="False" Visibility="Hidden"/>
+                            <DataGridTextColumn Header="Data" Width="70" Binding="{Binding DataPagamento, StringFormat=dd/MM/yyyy}" CanUserResize="False" x:Name="colData1"/>
+                            <DataGridCheckBoxColumn Header="Pago" Width="40" Binding="{Binding Pago}" CanUserResize="False" x:Name="colPago1"/>
+                            <DataGridTextColumn Header="Recibo" Width="50" Binding="{Binding Recibo}" CanUserResize="False" x:Name="colRecibo1"/>
+                            <DataGridTextColumn Header="Protocolo" Width="70" Binding="{Binding Protocolo}" CanUserResize="False" x:Name="colProtocolo1"/>
+                            <DataGridTextColumn Header="Portador" Width="150" Binding="{Binding Portador}" CanUserResize="False" x:Name="colPortador1"/>
+                            <DataGridTextColumn Header="Faixa" Width="50" Binding="{Binding Faixa}" CanUserResize="False" x:Name="colFaixa1"/>
+                            <DataGridTextColumn Header="Natureza" Width="300" Binding="{Binding Natureza}" CanUserResize="False" x:Name="colNatureza1"/>
+                            <DataGridTextColumn Header="Tipo Custas" Width="120" Binding="{Binding TipoCobranca}" CanUserResize="False" x:Name="colTpCustas1"/>
+                            <DataGridTextColumn Header="Tipo Pagamento" Width="150" Binding="{Binding TipoPagamento}" CanUserResize="False" x:Name="colTpPagamento1"/>
+                            <DataGridTextColumn Header="Vr Título" Width="70" Binding="{Binding ValorTitulo, StringFormat=\{0:n2\}}" CanUserResize="False" x:Name="colVrTitulo1"/>
+                            <DataGridTextColumn Header="Conv." Width="50" Binding="{Binding Convenio}" CanUserResize="False" x:Name="colConvenio1"/>
+                            <DataGridTextColumn Header="Total" Width="150" Binding="{Binding Total, StringFormat=\{0:n2\}}" CanUserResize="False" x:Name="colTotal1"/>
+                        </DataGrid.Columns>
+
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Não Convênios" Name="tabItemNaoConvenio">
+                <Grid Background="#FFE5E5E5">
+                    <DataGrid AutoGenerateColumns="False"  AlternationCount="2" RowBackground="White" AlternatingRowBackground="#FF8DE1FF" IsReadOnly="True" SelectionMode="Extended" x:Name="dataGridNaoConvenio" AllowDrop="False" HeadersVisibility="All" CanUserResizeRows="False" SelectionUnit="FullRow" GridLinesVisibility="None" ClipboardCopyMode="ExcludeHeader" HorizontalScrollBarVisibility="Auto" UseLayoutRounding="True" Background="{x:Null}" MouseRightButtonDown="dataGridNaoConvenio_MouseRightButtonDown" SelectionChanged="dataGridNaoConvenio_SelectionChanged" IsTabStop="True" MouseDoubleClick="dataGridNaoConvenio_MouseDoubleClick" >
+                        <DataGrid.CellStyle>
+                            <Style TargetType="{x:Type DataGridCell}">
+                                <Style.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter Property="Background" Value="#FF0086FF" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </DataGrid.CellStyle>
+                        <DataGrid.ContextMenu>
+                            <ContextMenu Selector.IsSelected="True" ForceCursor="True" x:Name="menu2">
+                                <MenuItem Header="Excluir" x:Name="MenuItemExcluir2" Click="MenuItemExcluir_Click">
+                                    <MenuItem.Icon>
+                                        <Image Source="Images/1425064473_DeleteRed.png" />
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                                <MenuItem Header="Alterar" x:Name="MenuItemAlterar2" Click="MenuItemAlterar_Click">
+                                    <MenuItem.Icon>
+                                        <Image Source="Images/modify.png" />
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                                <MenuItem Header="Novo" x:Name="MenuItemNovo2" Click="MenuItemNovo_Click">
+                                    <MenuItem.Icon>
+                                        <Image Source="Images/1425064642_Create.png" />
+                                    </MenuItem.Icon>
+                                </MenuItem>
+
+                                <MenuItem Header="Imprimir Recibo" x:Name="MenuItemRecibo2" Click="MenuItemRecibo_Click">
+                                    <MenuItem.Icon>
+                                        <Image Source="Images/ImprimirSelosReservados.png" />
+                                    </MenuItem.Icon>
+                                </MenuItem>
+
+                                <MenuItem Header="Tipo Pagamento" x:Name="MenuItemPagamento2">
+
+                                    <MenuItem Header="Dinheiro" Name="MenuItemDinheiro2" Click="MenuItemDinheiro_Click">
+                                    </MenuItem>
+                                    <MenuItem Header="Depósito" Name="MenuItemDeposito2" Click="MenuItemDeposito_Click">
+                                    </MenuItem>
+                                    <MenuItem Header="Mensalista" IsEnabled="false" Name="MenuItemMensalista2">
+                                    </MenuItem>
+                                    <MenuItem Header="Cheque" Name="MenuItemCheque2" Click="MenuItemCheque_Click">
+                                    </MenuItem>
+                                    <MenuItem Header="Pix Bradesco" Name="MenuItemPre2" Click="MenuItemChequePre_Click">
+                                    </MenuItem>
+                                    <MenuItem Header="Pix Nubank" Name="MenuItemBoleto2" Click="MenuItemBoleto_Click">
+                                    </MenuItem>
+                                    <MenuItem Header="Cartão Crédito" Name="MenuItemCartaoCredito2" Click="MenuItemCartaoCredito_Click">
+                                    </MenuItem>
+                                    <MenuItem Header="Pagar Itens Selecionados" x:Name="MenuItemPago2" Click="MenuItemPago_Click"/>
+                                </MenuItem>
+
+                            </ContextMenu>
+                        </DataGrid.ContextMenu>
+
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Ato" Width="50" Binding="{Binding Id_Ato}" CanUserResize="False" Visibility="Hidden"/>
+                            <DataGridTextColumn Header="Data" Width="70" Binding="{Binding DataPagamento, StringFormat=dd/MM/yyyy}" CanUserResize="False" x:Name="colData2"/>
+                            <DataGridCheckBoxColumn Header="Pago" Width="40" Binding="{Binding Pago}" CanUserResize="False" x:Name="colPago2"/>
+                            <DataGridTextColumn Header="Recibo" Width="50" Binding="{Binding Recibo}" CanUserResize="False" x:Name="colRecibo2"/>
+                            <DataGridTextColumn Header="Protocolo" Width="70" Binding="{Binding Protocolo}" CanUserResize="False" x:Name="colProtocolo2"/>
+                            <DataGridTextColumn Header="Portador" Width="150" Binding="{Binding Portador}" CanUserResize="False" x:Name="colPortador2"/>
+                            <DataGridTextColumn Header="Faixa" Width="50" Binding="{Binding Faixa}" CanUserResize="False" x:Name="colFaixa2"/>
+                            <DataGridTextColumn Header="Natureza" Width="300" Binding="{Binding Natureza}" CanUserResize="False" x:Name="colNatureza2"/>
+                            <DataGridTextColumn Header="Tipo Custas" Width="120" Binding="{Binding TipoCobranca}" CanUserResize="False" x:Name="colTpCustas2"/>
+                            <DataGridTextColumn Header="Tipo Pagamento" Width="150" Binding="{Binding TipoPagamento}" CanUserResize="False" x:Name="colTpPagamento2"/>
+                            <DataGridTextColumn Header="Vr Título" Width="70" Binding="{Binding ValorTitulo, StringFormat=\{0:n2\}}" CanUserResize="False" x:Name="colVrTitulo2"/>
+                            <DataGridTextColumn Header="Conv." Width="50" Binding="{Binding Convenio}" CanUserResize="False" x:Name="colConvenio2"/>
+                            <DataGridTextColumn Header="Total" Width="150" Binding="{Binding Total, StringFormat=\{0:n2\}}" CanUserResize="False" x:Name="colTotal2"/>
+                        </DataGrid.Columns>
+
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Emissão de Guia" Visibility="Hidden" Name="tabItemEmissaoDeGuia">
+                <Grid Background="#FFE5E5E5">
+                    <DataGrid AutoGenerateColumns="False"  AlternationCount="2" RowBackground="White" AlternatingRowBackground="#FF8DE1FF" IsReadOnly="True" SelectionMode="Extended" x:Name="dataGridEmissaoGuia" AllowDrop="False" HeadersVisibility="All" CanUserResizeRows="False" SelectionUnit="FullRow" GridLinesVisibility="None" ClipboardCopyMode="ExcludeHeader" HorizontalScrollBarVisibility="Auto" UseLayoutRounding="True" Background="{x:Null}" IsTabStop="True" SelectionChanged="dataGridEmissaoGuia_SelectionChanged">
+                        <DataGrid.CellStyle>
+                            <Style TargetType="{x:Type DataGridCell}">
+                                <Style.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter Property="Background" Value="#FF0086FF" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </DataGrid.CellStyle>
+                        <DataGrid.ContextMenu>
+                            <ContextMenu Selector.IsSelected="True" ForceCursor="True" x:Name="menuEmissao">
+                                <MenuItem Header="Excluir" x:Name="MenuItemExcluirEmissao" Click="MenuItemExcluirEmissao_Click">
+                                    <MenuItem.Icon>
+                                        <Image Source="/CS_Caixa;component/Images/1425064473_DeleteRed.png" />
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                            </ContextMenu>
+                        </DataGrid.ContextMenu>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Ato" Width="50" Binding="{Binding Id_Ato}" CanUserResize="False" Visibility="Hidden"/>
+                            <DataGridTextColumn Header="Data" Width="70" Binding="{Binding DataPagamento, StringFormat=dd/MM/yyyy}" CanUserResize="False" x:Name="colData3"/>
+                            <DataGridCheckBoxColumn Header="Pago" Width="40" Binding="{Binding Pago}" CanUserResize="False" x:Name="colPago3"/>
+                            <DataGridTextColumn Header="Recibo" Width="50" Binding="{Binding Recibo}" CanUserResize="False" x:Name="colRecibo3"/>
+                            <DataGridTextColumn Header="Protocolo" Width="100" Binding="{Binding Protocolo}" CanUserResize="False" x:Name="colProtocolo3"/>
+                            <DataGridTextColumn Header="Portador" Width="150" Binding="{Binding Portador}" CanUserResize="False" x:Name="colPortador3"/>
+                            <DataGridTextColumn Header="Faixa" Width="50" Binding="{Binding Faixa}" CanUserResize="False" x:Name="colFaixa3"/>
+                            <DataGridTextColumn Header="Natureza" Width="300" Binding="{Binding Natureza}" CanUserResize="False" x:Name="colNatureza3"/>
+                            <DataGridTextColumn Header="Tipo Custas" Width="140" Binding="{Binding TipoCobranca}" CanUserResize="False" x:Name="colTpCustas3"/>
+                            <DataGridTextColumn Header="Tipo Pagamento" Width="200" Binding="{Binding TipoPagamento}" CanUserResize="False" x:Name="colTpPagamento3"/>
+                            <DataGridTextColumn Header="Vr Título" Width="70" Binding="{Binding ValorTitulo, StringFormat=\{0:n2\}}" CanUserResize="False" x:Name="colVrTitulo3"/>
+                            <DataGridTextColumn Header="Convênio" Width="60" Binding="{Binding Convenio}" CanUserResize="False" x:Name="colConvenio3"/>
+                            <DataGridTextColumn Header="Total" Width="100" Binding="{Binding Total, StringFormat=\{0:n2\}}" CanUserResize="False" x:Name="colTotal3"/>
+                        </DataGrid.Columns>
+
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+
+        </TabControl>
+        <Button Content="_Imprimir" IsEnabled="False" Height="49" HorizontalAlignment="Left" Margin="588,376,0,0" x:Name="btnImprimir" VerticalAlignment="Top" Width="69" Cursor="Hand" Click="btnImprimir_Click" HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom">
+            <Button.Background>
+                <ImageBrush ImageSource="Images/ImprimirSelosReservados.png" Stretch="Uniform" TileMode="None" />
+            </Button.Background>
+        </Button>
+        <Label x:Name="lblTotalSelecionadoTarifa" HorizontalAlignment="Left" Margin="377,328,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.466,0.443" Foreground="#FF8B0303"/>
+        <Label x:Name="lblTotalSelecionadoApontamento" HorizontalAlignment="Left" Margin="772,328,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.466,0.443" Foreground="#FF8B0303"/>
+        <Button Content="Importar" Height="49" HorizontalAlignment="Left" Margin="503,376,0,0" x:Name="btnImportar" VerticalAlignment="Top" Width="70" Cursor="Hand" Visibility="Hidden" Click="btnImportar_Click" HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom">
+            <Button.Background>
+                <ImageBrush ImageSource="Images/12094_64x64.png" Stretch="Uniform" TileMode="None" />
+            </Button.Background>
+        </Button>
+        <Grid HorizontalAlignment="Left" Visibility="Hidden" Name="gridEnviar" Height="31" Margin="503,328,0,0" VerticalAlignment="Top" Width="412">
+            <Button Content="Selecionar" Name="btnSelecionar" VerticalAlignment="Top" Click="btnSelecionar_Click" Margin="0,6,10,0" HorizontalAlignment="Right" Width="89" />
+            <TextBox Name="txtCaminho" IsEnabled="False"  HorizontalAlignment="Left" Height="20" Margin="1,6,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="223"/>
+            <Label Content="Enviar boleto:" Margin="229,3,0,-3" HorizontalAlignment="Left" Width="87"/>
+        </Grid>
+    </Grid>
+</Window>

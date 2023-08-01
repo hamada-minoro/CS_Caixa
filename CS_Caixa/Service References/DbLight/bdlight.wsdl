@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="bdlight" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://wsoficiorj.hml.arisp.com.br/bdlight.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://wsoficiorj.hml.arisp.com.br/bdlight.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://wsoficiorj.hml.arisp.com.br/bdlight.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WSOficioRJ" />
+      <xsd:import schemaLocation="http://wsoficiorj.hml.arisp.com.br/bdlight.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="Ibdlight_ListArquivosXMLBDL_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListArquivosXMLBDL" />
+  </wsdl:message>
+  <wsdl:message name="Ibdlight_ListArquivosXMLBDL_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListArquivosXMLBDLResponse" />
+  </wsdl:message>
+  <wsdl:message name="Ibdlight_GetArquivoXMLBDL_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetArquivoXMLBDL" />
+  </wsdl:message>
+  <wsdl:message name="Ibdlight_GetArquivoXMLBDL_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetArquivoXMLBDLResponse" />
+  </wsdl:message>
+  <wsdl:message name="Ibdlight_ImportarArquivoBDL_InputMessage">
+    <wsdl:part name="parameters" element="tns:ImportarArquivoBDL" />
+  </wsdl:message>
+  <wsdl:message name="Ibdlight_ImportarArquivoBDL_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ImportarArquivoBDLResponse" />
+  </wsdl:message>
+  <wsdl:message name="Ibdlight_SetBDLightAtualizado_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetBDLightAtualizado" />
+  </wsdl:message>
+  <wsdl:message name="Ibdlight_SetBDLightAtualizado_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetBDLightAtualizadoResponse" />
+  </wsdl:message>
+  <wsdl:portType name="Ibdlight">
+    <wsdl:operation name="ListArquivosXMLBDL">
+      <wsdl:input wsaw:Action="http://tempuri.org/Ibdlight/ListArquivosXMLBDL" message="tns:Ibdlight_ListArquivosXMLBDL_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/Ibdlight/ListArquivosXMLBDLResponse" message="tns:Ibdlight_ListArquivosXMLBDL_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetArquivoXMLBDL">
+      <wsdl:input wsaw:Action="http://tempuri.org/Ibdlight/GetArquivoXMLBDL" message="tns:Ibdlight_GetArquivoXMLBDL_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/Ibdlight/GetArquivoXMLBDLResponse" message="tns:Ibdlight_GetArquivoXMLBDL_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ImportarArquivoBDL">
+      <wsdl:input wsaw:Action="http://tempuri.org/Ibdlight/ImportarArquivoBDL" message="tns:Ibdlight_ImportarArquivoBDL_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/Ibdlight/ImportarArquivoBDLResponse" message="tns:Ibdlight_ImportarArquivoBDL_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetBDLightAtualizado">
+      <wsdl:input wsaw:Action="http://tempuri.org/Ibdlight/SetBDLightAtualizado" message="tns:Ibdlight_SetBDLightAtualizado_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/Ibdlight/SetBDLightAtualizadoResponse" message="tns:Ibdlight_SetBDLightAtualizado_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_Ibdlight" type="tns:Ibdlight">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ListArquivosXMLBDL">
+      <soap:operation soapAction="http://tempuri.org/Ibdlight/ListArquivosXMLBDL" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetArquivoXMLBDL">
+      <soap:operation soapAction="http://tempuri.org/Ibdlight/GetArquivoXMLBDL" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ImportarArquivoBDL">
+      <soap:operation soapAction="http://tempuri.org/Ibdlight/ImportarArquivoBDL" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetBDLightAtualizado">
+      <soap:operation soapAction="http://tempuri.org/Ibdlight/SetBDLightAtualizado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="bdlight">
+    <wsdl:port name="BasicHttpBinding_Ibdlight" binding="tns:BasicHttpBinding_Ibdlight">
+      <soap:address location="http://wsoficiorj.hml.arisp.com.br/bdlight.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

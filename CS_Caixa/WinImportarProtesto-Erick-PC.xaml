@@ -1,0 +1,83 @@
+﻿<Window x:Class="CS_Caixa.WinImportarProtesto"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Importar " Height="429.791" Width="706.343" ShowInTaskbar="False" WindowStartupLocation="CenterScreen" WindowStyle="ThreeDBorderWindow" Loaded="Window_Loaded" ResizeMode="NoResize">
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FF39CBDE" Offset="0" />
+            <GradientStop Color="#FFE2F9FC" Offset="0.285" />
+        </LinearGradientBrush>
+    </Window.Background>
+    <Grid Background="#FF2FAEA9">
+        <Button Background="{x:Null}" Content="_Importar" Cursor="Hand" Height="62" HorizontalAlignment="Left" Margin="562,38,0,0" Name="btnImportar" TabIndex="10" VerticalAlignment="Top" Width="89" Click="btnImportar_Click" />
+        <Border BorderBrush="Black" BorderThickness="1" Background="#FF81C1AD" CornerRadius="7" Height="266" VerticalAlignment="Bottom">
+
+            <ListView x:Name="dataGridConsulta" Background="#FFBFCFC9" Margin="4" SelectionChanged="dataGridConsulta_SelectionChanged">
+
+                <ListView.View>
+                    <GridView AllowsColumnReorder="False" >
+
+                        <!--<GridViewColumn Width="30">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <CheckBox Tag="{Binding Checked}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>-->
+
+                        <GridViewColumn DisplayMemberBinding=
+                          "{Binding DataAto, StringFormat=dd/MM/yyyy}" 
+        					Header="Data Protoc." Width="80" x:Name="colData"/>
+
+                        <GridViewColumn DisplayMemberBinding=
+                          "{Binding DataPagamento, StringFormat=dd/MM/yyyy}" 
+        					Header="Data Pago" Width="80" x:Name="colDataPag"/>
+
+                        <GridViewColumn DisplayMemberBinding=
+                          "{Binding Protocolo}" 
+        					Header="Protocolo" Width="100"/>
+
+                        <GridViewColumn DisplayMemberBinding=
+                          "{Binding TipoAto}" 
+        					Header="Status" Width="200"/>
+
+                        <GridViewColumn DisplayMemberBinding=
+                          "{Binding Portador}" 
+        					Header="Apresentante" Width="200"/>
+
+                        <GridViewColumn DisplayMemberBinding=
+                          "{Binding ValorTitulo, StringFormat=\{0:n2\}}" 
+        					Header="Valor Título" Width="70"/>
+
+                        <GridViewColumn DisplayMemberBinding=
+                          "{Binding Convenio}" 
+        					Header="Conv." Width="60"/>
+
+                        <GridViewColumn DisplayMemberBinding=
+                          "{Binding Total, StringFormat=\{0:n2\}}" 
+        					Header="Emol." Width="100"/>
+
+                    </GridView>
+                </ListView.View>
+
+            </ListView>
+        </Border>
+        <Border BorderBrush="Black" CornerRadius="30" BorderThickness="1" HorizontalAlignment="Left" Height="62" Margin="10,39,0,0" VerticalAlignment="Top" Width="502">
+            <Grid x:Name="grid1" Margin="-1" HorizontalAlignment="Left" Width="502">
+                <ComboBox Background="{x:Null}" Height="23" HorizontalAlignment="Left" Margin="31,19,0,0" PreviewKeyDown="cmbTpConsulta_PreviewKeyDown" x:Name="cmbTpConsulta" SelectionChanged="cmbTpConsulta_SelectionChanged" TabIndex="0" VerticalAlignment="Top" Width="81">
+                    <ComboBoxItem Content="DATA" IsSelected="True" />
+                    <ComboBoxItem Content="PROTOCOLO" />
+                </ComboBox>
+                <TextBox CharacterCasing="Upper" Height="23" HorizontalAlignment="Left" IsEnabled="True" Margin="130,19,0,0" MaxLength="9" MaxLines="3" x:Name="txtConsulta" PreviewKeyDown="txtConsulta_PreviewKeyDown" TabIndex="2" VerticalAlignment="Top" Visibility="Hidden" Width="211" />
+                <DatePicker Height="23" HorizontalAlignment="Left" Margin="130,19,0,0" x:Name="datePickerdataConsulta" SelectedDateChanged="datePickerdataConsulta_SelectedDateChanged" TabIndex="1" VerticalAlignment="Top" Width="101" DisplayDateStart="1/1/2016" PreviewKeyDown="datePickerdataConsulta_PreviewKeyDown"/>
+                <DatePicker Height="23" HorizontalAlignment="Left" Margin="240,19,0,0" x:Name="datePickerdataConsultaFim" SelectedDateChanged="datePickerdataConsultaFim_SelectedDateChanged" TabIndex="2" VerticalAlignment="Top" Width="101"  PreviewKeyDown="datePickerdataConsultaFim_PreviewKeyDown"/>
+                <Grid HorizontalAlignment="Left" Height="62" Margin="346,0,0,0" VerticalAlignment="Top" Width="146">
+                    <Button Background="{x:Null}" Click="btnConsultar_Click" Content="_Consultar" Cursor="Hand" Height="41" Margin="31,10,0,0" x:Name="btnConsultar" TabIndex="4" VerticalAlignment="Top" HorizontalAlignment="Left" Width="84" />
+                </Grid>
+            </Grid>
+        </Border>
+        <Label Content="CONSULTAR" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="10,3,0,0" VerticalAlignment="Top" Width="502" FontSize="20" Height="34" Background="Transparent"/>
+        <CheckBox Content="Cartão de Crédito" Height="19" x:Name="checkBoxCartao" Width="166" FontSize="14" Foreground="White" Margin="139,110,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" IsChecked="False" IsEnabled="False" TabIndex="1" />
+        <Button Background="{x:Null}" Click="btnCartao_Click" Content="Cartão de Crédito" Cursor="Hand" Height="24" Margin="36,105,0,0" x:Name="btnCartao" TabIndex="5" VerticalAlignment="Top" HorizontalAlignment="Left" Width="98" />
+    </Grid>
+</Window>

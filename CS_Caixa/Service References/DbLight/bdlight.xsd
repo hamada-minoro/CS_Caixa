@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/WSOficioRJ" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/WSOficioRJ" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://wsoficiorj.hml.arisp.com.br/bdlight.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="ListArquivosXMLBDLRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DataFinal" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DataInicial" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Hash" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MaxRowPerPage" type="xs:int" />
+      <xs:element minOccurs="0" name="PageNumber" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ListArquivosXMLBDLRequest" nillable="true" type="tns:ListArquivosXMLBDLRequest" />
+  <xs:complexType name="ListArquivosXMLBDLResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Arquivos" nillable="true" type="tns:ArrayOfArquivoXMLBDL" />
+      <xs:element minOccurs="0" name="CodigoErro" type="xs:int" />
+      <xs:element minOccurs="0" name="ErroDescricao" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="QtdePaginas" type="xs:int" />
+      <xs:element minOccurs="0" name="QtdeRegistros" type="xs:int" />
+      <xs:element minOccurs="0" name="Retorno" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ListArquivosXMLBDLResponse" nillable="true" type="tns:ListArquivosXMLBDLResponse" />
+  <xs:complexType name="ArrayOfArquivoXMLBDL">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ArquivoXMLBDL" nillable="true" type="tns:ArquivoXMLBDL" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfArquivoXMLBDL" nillable="true" type="tns:ArrayOfArquivoXMLBDL" />
+  <xs:complexType name="ArquivoXMLBDL">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CNS" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DataImportacao" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IDArquivo" type="xs:int" />
+      <xs:element minOccurs="0" name="IDStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="QtdeInvalidos" type="xs:int" />
+      <xs:element minOccurs="0" name="QtdeRegistros" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArquivoXMLBDL" nillable="true" type="tns:ArquivoXMLBDL" />
+  <xs:complexType name="GetArquivoXMLBDLRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Hash" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IDArquivo" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetArquivoXMLBDLRequest" nillable="true" type="tns:GetArquivoXMLBDLRequest" />
+  <xs:complexType name="GetArquivoXMLBDLResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CodigoErro" type="xs:int" />
+      <xs:element minOccurs="0" name="DataImportacao" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ErroDescricao" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ErrosImportacao" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IDStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="Invalidos" nillable="true" type="tns:ArrayOfInvalido" />
+      <xs:element minOccurs="0" name="QtdeInvalidos" type="xs:int" />
+      <xs:element minOccurs="0" name="QtdeRegistros" type="xs:int" />
+      <xs:element minOccurs="0" name="Retorno" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="URLArquivo" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetArquivoXMLBDLResponse" nillable="true" type="tns:GetArquivoXMLBDLResponse" />
+  <xs:complexType name="ArrayOfInvalido">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Invalido" nillable="true" type="tns:Invalido" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfInvalido" nillable="true" type="tns:ArrayOfInvalido" />
+  <xs:complexType name="Invalido">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CPFCNPJ" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NMatricula" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NomeRazao" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Invalido" nillable="true" type="tns:Invalido" />
+  <xs:complexType name="ImportarArquivoBDLRequest">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Arquivos" nillable="true" type="q1:ArrayOfstring" />
+      <xs:element minOccurs="0" name="Hash" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ImportarArquivoBDLRequest" nillable="true" type="tns:ImportarArquivoBDLRequest" />
+  <xs:complexType name="BDLightResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CodigoErro" type="xs:int" />
+      <xs:element minOccurs="0" name="ErroDescricao" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Retorno" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BDLightResponse" nillable="true" type="tns:BDLightResponse" />
+</xs:schema>

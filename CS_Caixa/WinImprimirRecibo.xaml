@@ -1,0 +1,16 @@
+﻿<Window x:Class="CS_Caixa.WinImprimirRecibo"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="ImprimirRecibo" Height="180.56" Width="435.923" WindowStartupLocation="CenterScreen" ShowInTaskbar="False" WindowStyle="None" Background="#FFC0DAFF" Loaded="Window_Loaded" ResizeMode="NoResize" ShowActivated="False" PreviewKeyDown="Window_PreviewKeyDown">
+    <Grid Margin="10" Background="#FFEFF5FF">
+        <TextBox Name="txtCpfCnpj" HorizontalAlignment="Left" Height="23" Margin="10,68,0,0" TextWrapping="Wrap" Text="" CharacterCasing="Upper" VerticalAlignment="Top" Width="119" PreviewKeyDown="txtCpfCnpj_PreviewKeyDown" LostFocus="txtCpfCnpj_LostFocus" GotFocus="txtCpfCnpj_GotFocus"/>
+        <TextBox Name="txtNome" HorizontalAlignment="Left" Height="23" Margin="134,68,0,0" TextWrapping="Wrap" Text="" CharacterCasing="Upper" VerticalAlignment="Top" Width="272" PreviewKeyDown="txtNome_PreviewKeyDown"/>
+        <Label Content="CPF/CNPJ:" HorizontalAlignment="Left" Margin="10,42,0,0" VerticalAlignment="Top" Width="129"/>
+        <Label Content="NOME:" HorizontalAlignment="Left" Margin="134,42,0,0" VerticalAlignment="Top" Width="129"/>
+        <Button Content="Imprimir" Height="28" Margin="314,123,0,0" x:Name="btnImprimirRecibo" VerticalAlignment="Top" HorizontalAlignment="Left" Width="92" Click="btnImprimirRecibo_Click" />
+        <Label Content="IMPRIMIR RECIBO" VerticalAlignment="Top" Height="42" FontSize="22" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="#FFFFEBEB"/>
+        <ComboBox Background="#FFF5F6F8" Height="28" HorizontalAlignment="Left" IsEditable="False" Margin="10,123,0,0" x:Name="impressoraComboBox" SelectedIndex="0" TabIndex="3" VerticalAlignment="Top" Width="299" />
+        <Label Content="IMPRESSORAS:" HorizontalAlignment="Left" Margin="10,97,0,0" VerticalAlignment="Top" Width="129"/>
+
+    </Grid>
+</Window>

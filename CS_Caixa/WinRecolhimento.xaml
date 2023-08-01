@@ -1,0 +1,1704 @@
+﻿<Window x:Class="CS_Caixa.WinRecolhimento"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Recolhimento" Height="650" Width="950" WindowStyle="None"
+        ResizeMode="NoResize" ShowInTaskbar="False" WindowStartupLocation="CenterScreen"
+        ShowActivated="False" Loaded="Window_Loaded">
+    <Window.Resources>
+
+
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="OptionMark.Static.Background" Color="#FFFFFFFF"/>
+        <SolidColorBrush x:Key="OptionMark.Static.Border" Color="#FF707070"/>
+        <Style x:Key="OptionMarkFocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="14,0,0,0" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <SolidColorBrush x:Key="OptionMark.MouseOver.Background" Color="#FFF3F9FF"/>
+        <SolidColorBrush x:Key="OptionMark.MouseOver.Border" Color="#FF5593FF"/>
+        <SolidColorBrush x:Key="OptionMark.MouseOver.Glyph" Color="#FF212121"/>
+        <SolidColorBrush x:Key="OptionMark.Disabled.Background" Color="#FFE6E6E6"/>
+        <SolidColorBrush x:Key="OptionMark.Disabled.Border" Color="#FFBCBCBC"/>
+        <SolidColorBrush x:Key="OptionMark.Disabled.Glyph" Color="#FF707070"/>
+        <SolidColorBrush x:Key="OptionMark.Pressed.Background" Color="#FFD9ECFF"/>
+        <SolidColorBrush x:Key="OptionMark.Pressed.Border" Color="#FF3C77DD"/>
+        <SolidColorBrush x:Key="OptionMark.Pressed.Glyph" Color="#FF212121"/>
+        <SolidColorBrush x:Key="OptionMark.Static.Glyph" Color="#FF212121"/>
+
+
+
+
+
+        <Style TargetType="{x:Type CheckBox}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource OptionMark.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource OptionMark.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type CheckBox}">
+                        <Grid x:Name="templateRoot" Background="Transparent" SnapsToDevicePixels="True">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Border x:Name="checkBoxBorder" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="1" VerticalAlignment="{TemplateBinding VerticalContentAlignment}">
+                                <Grid x:Name="markGrid">
+                                    <Path x:Name="optionMark" Data="F1 M 9.97498,1.22334L 4.6983,9.09834L 4.52164,9.09834L 0,5.19331L 1.27664,3.52165L 4.255,6.08833L 8.33331,1.52588e-005L 9.97498,1.22334 Z "
+                                      Fill="{StaticResource OptionMark.Pressed.Glyph}" Margin="3" Opacity="0" Stretch="Uniform"/>
+                                    <Rectangle x:Name="indeterminateMark" Fill="{StaticResource OptionMark.Static.Glyph}" Margin="2" Opacity="0"/>
+                                </Grid>
+                            </Border>
+                            <ContentPresenter x:Name="contentPresenter" Grid.Column="1" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="HasContent" Value="true">
+                                <Setter Property="FocusVisualStyle" Value="{StaticResource OptionMarkFocusVisual}"/>
+                                <Setter Property="Padding" Value="4,-1,0,0"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="checkBoxBorder" Value="{StaticResource OptionMark.MouseOver.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="checkBoxBorder" Value="{StaticResource OptionMark.MouseOver.Border}"/>
+                                <Setter Property="Fill" TargetName="optionMark" Value="{StaticResource OptionMark.MouseOver.Glyph}"/>
+                                <Setter Property="Fill" TargetName="indeterminateMark" Value="{StaticResource OptionMark.MouseOver.Glyph}"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="checkBoxBorder" Value="{StaticResource OptionMark.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="checkBoxBorder" Value="{StaticResource OptionMark.Disabled.Border}"/>
+                                <Setter Property="Fill" TargetName="optionMark" Value="{StaticResource OptionMark.Disabled.Glyph}"/>
+                                <Setter Property="Fill" TargetName="indeterminateMark" Value="{StaticResource OptionMark.Disabled.Glyph}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="checkBoxBorder" Value="{StaticResource OptionMark.Pressed.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="checkBoxBorder" Value="{StaticResource OptionMark.Pressed.Border}"/>
+                                <Setter Property="Fill" TargetName="optionMark" Value="{StaticResource OptionMark.Pressed.Glyph}"/>
+                                <Setter Property="Fill" TargetName="indeterminateMark" Value="{StaticResource OptionMark.Pressed.Glyph}"/>
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="true">
+                                <Setter Property="Opacity" TargetName="optionMark" Value="1"/>
+                                <Setter Property="Opacity" TargetName="indeterminateMark" Value="0"/>
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="{x:Null}">
+                                <Setter Property="Opacity" TargetName="optionMark" Value="0"/>
+                                <Setter Property="Opacity" TargetName="indeterminateMark" Value="1"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="ComboBox" x:Key="Flat_ComboBox">
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="MinWidth" Value="30"/>
+            <Setter Property="UIElement.SnapsToDevicePixels" Value="True"/>
+            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
+            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="ScrollViewer.CanContentScroll" Value="True"/>
+            <Setter Property="TextElement.Foreground" Value="Black"/>
+            <Setter Property="FrameworkElement.FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Background" Value="White" />
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="LightSkyBlue" />
+                </Trigger>
+            </Style.Triggers>
+
+        </Style>
+        <ControlTemplate x:Key="ComboBoxToggleButton" TargetType="{x:Type ToggleButton}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="20" />
+                </Grid.ColumnDefinitions>
+                <Border
+  x:Name="Border" 
+  Grid.ColumnSpan="2"
+  CornerRadius="2"
+  Background="#FFDBD1FF"
+  BorderBrush="#404040"
+  BorderThickness="1" />
+                <Border 
+  Grid.Column="0"
+  CornerRadius="2,0,0,2" 
+  Margin="1" 
+  Background="#FFFFFF" 
+  BorderBrush="#404040"
+  BorderThickness="0,0,1,0" />
+                <Path 
+  x:Name="Arrow"
+  Grid.Column="1"     
+  Fill="#404040"
+  HorizontalAlignment="Center"
+  VerticalAlignment="Center"
+  Data="M 0 0 L 4 4 L 8 0 Z"/>
+            </Grid>
+            <ControlTemplate.Triggers>
+                <Trigger Property="ToggleButton.IsMouseOver" Value="true">
+                    <Setter TargetName="Border" Property="Background" Value="#808080" />
+                </Trigger>
+                <Trigger Property="ToggleButton.IsChecked" Value="true">
+                    <Setter TargetName="Border" Property="Background" Value="#E0E0E0" />
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter TargetName="Border" Property="Background" Value="#EEEEEE" />
+                    <Setter TargetName="Border" Property="BorderBrush" Value="#AAAAAA" />
+                    <Setter Property="Foreground" Value="#888888"/>
+                    <Setter TargetName="Arrow" Property="Fill" Value="#888888" />
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <ControlTemplate x:Key="ComboBoxTextBox" TargetType="{x:Type TextBox}">
+            <Border x:Name="PART_ContentHost" Focusable="False" Background="{TemplateBinding Background}" />
+        </ControlTemplate>
+        <Style x:Key="{x:Type ComboBox}" TargetType="{x:Type ComboBox}">
+            <Setter Property="SnapsToDevicePixels" Value="true"/>
+            <Setter Property="OverridesDefaultStyle" Value="true"/>
+            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="ScrollViewer.CanContentScroll" Value="true"/>
+            <Setter Property="MinWidth" Value="30"/>
+            <Setter Property="MinHeight" Value="20"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ComboBox}">
+                        <Grid>
+                            <ToggleButton 
+        Name="ToggleButton" 
+        Template="{StaticResource ComboBoxToggleButton}" 
+        Grid.Column="2" 
+        Focusable="false"
+        IsChecked="{Binding Path=IsDropDownOpen,Mode=TwoWay,RelativeSource={RelativeSource TemplatedParent}}"
+        ClickMode="Press">
+                            </ToggleButton>
+                            <ContentPresenter
+        Name="ContentSite"
+        IsHitTestVisible="False" 
+        Content="{TemplateBinding SelectionBoxItem}"
+        ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+        ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
+        Margin="3,3,23,3"
+        VerticalAlignment="Center"
+        HorizontalAlignment="Left" />
+                            <TextBox x:Name="PART_EditableTextBox"
+        Style="{x:Null}" 
+        Template="{StaticResource ComboBoxTextBox}" 
+        HorizontalAlignment="Left" 
+        VerticalAlignment="Center" 
+        Margin="3,3,23,3"
+        Focusable="True" 
+        Background="Transparent"
+        Visibility="Hidden"
+        IsReadOnly="{TemplateBinding IsReadOnly}"/>
+                            <Popup 
+        Name="Popup"
+        Placement="Bottom"
+        IsOpen="{TemplateBinding IsDropDownOpen}"
+        AllowsTransparency="True" 
+        Focusable="False"
+        PopupAnimation="Slide">
+                                <Grid 
+          Name="DropDown"
+          SnapsToDevicePixels="True"                
+          MinWidth="{TemplateBinding ActualWidth}"
+          MaxHeight="{TemplateBinding MaxDropDownHeight}">
+                                    <Border 
+            x:Name="DropDownBorder"
+            Background="#FFFFFF"
+            BorderThickness="1"
+            BorderBrush="#888888"/>
+                                    <ScrollViewer Margin="4,6,4,6" SnapsToDevicePixels="True">
+                                        <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Contained" />
+                                    </ScrollViewer>
+                                </Grid>
+                            </Popup>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="HasItems" Value="false">
+                                <Setter TargetName="DropDownBorder" Property="MinHeight" Value="95"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Foreground" Value="#888888"/>
+                            </Trigger>
+                            <Trigger Property="IsGrouping" Value="true">
+                                <Setter Property="ScrollViewer.CanContentScroll" Value="false"/>
+                            </Trigger>
+                            <Trigger SourceName="Popup" Property="Popup.AllowsTransparency" Value="true">
+                                <Setter TargetName="DropDownBorder" Property="CornerRadius" Value="4"/>
+                                <Setter TargetName="DropDownBorder" Property="Margin" Value="0,2,0,0"/>
+                            </Trigger>
+                            <Trigger Property="IsEditable"
+           Value="true">
+                                <Setter Property="IsTabStop" Value="false"/>
+                                <Setter TargetName="PART_EditableTextBox" Property="Visibility" Value="Visible"/>
+                                <Setter TargetName="ContentSite" Property="Visibility" Value="Hidden"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+            </Style.Triggers>
+        </Style>
+        <!-- SimpleStyles: ComboBoxItem -->
+        <Style x:Key="{x:Type ComboBoxItem}" TargetType="{x:Type ComboBoxItem}">
+            <Setter Property="SnapsToDevicePixels" Value="true"/>
+            <Setter Property="OverridesDefaultStyle" Value="true"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ComboBoxItem}">
+                        <Border 
+      Name="Border"
+      Padding="2"
+      SnapsToDevicePixels="true">
+                            <ContentPresenter />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsHighlighted" Value="true">
+                                <Setter TargetName="Border" Property="Background" Value="#FFC1F0ED"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Foreground" Value="#888888"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
+
+
+
+
+        <Style x:Key="Cabecalho" TargetType="Label">
+            <Setter Property="BorderBrush" Value="{x:Null}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Margin" Value="1"/>
+            <Setter Property="FontWeight" Value="Medium"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontFamily" Value="Font/#Dosis"/>
+            <Setter Property="Foreground" Value="LightGray"/>
+            <Setter Property="Background" Value="#FF665B9B"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate  TargetType="Label">
+                        <Border x:Name="border" BorderBrush="White" CornerRadius="10" Background="{TemplateBinding Background}"
+                                   BorderThickness="0" >
+                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="BotaoMenu" TargetType="{x:Type Button}">
+            <Setter Property="BorderBrush" Value="{x:Null}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Background" Value="#FF360851"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="25"/>
+            <Setter Property="FontFamily" Value="Font/#Dosis"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border" BorderBrush="White" CornerRadius="10" Background="{TemplateBinding Background}"
+                                   BorderThickness="0" >
+                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="#FF861EC3"/>
+                            </Trigger>
+
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="#FFA6A6A6"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="btnAtribuicao" TargetType="Button">
+            <Setter Property="Content" Value="Botão"/>
+            <Setter Property="Background" Value="#FF406497"/>
+            <Setter Property="BorderBrush" Value="{x:Null}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button" >
+                        <Border x:Name="border" CornerRadius="10" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}">
+                            <ContentPresenter Content="{TemplateBinding Content}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="#FF4690F9"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="#FFA6A6A6"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="TextBox">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBoxBase}">
+                        <Border CornerRadius="5" Padding="2" Background="White" BorderBrush="#FF5587F3" BorderThickness="1">
+                            <ScrollViewer Margin="0" x:Name="PART_ContentHost" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Window.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid x:Name="gridBarraTitulo" Grid.ColumnSpan="2" Background="#FF68217A" MouseDown="gridBarraTitulo_MouseDown">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.ColumnSpan="3" Orientation="Horizontal">
+                <Image Source="Images/icone Caixa.png" Width="20" Height="20" Margin="4,0,0,0"/>
+
+                <TextBlock Text="RECOLHIMENTO" Foreground="White"
+                       VerticalAlignment="Center" Margin="10" FontFamily="Font/#Dosis"
+                       FontSize="12" />
+            </StackPanel>
+            <StackPanel Grid.Column="11" Grid.ColumnSpan="3" Orientation="Horizontal" FlowDirection="RightToLeft" >
+                <Button x:Name="btnFechar" Width="20" Height="20" Margin="5" Focusable="False" Click="btnFechar_Click">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Content" Value="X"/>
+                            <Setter Property="BorderBrush" Value="{x:Null}"/>
+                            <Setter Property="Background" Value="#FF001678"/>
+                            <Setter Property="Foreground" Value="LightGray"/>
+                            <Setter Property="FontFamily" Value="Font/#Dosis"/>
+                            <Setter Property="FontWeight" Value="Bold"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Border x:Name="border" BorderBrush="White" CornerRadius="10" Background="{TemplateBinding Background}"
+                                   BorderThickness="0" >
+                                            <ContentPresenter VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"/>
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="true">
+                                                <Setter Property="Background" TargetName="border" Value="#FF143F7E" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Style>
+
+                </Button>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="1" Background="#FFB477C3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="200"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Image x:Name="imagemTodos" Margin="10">
+                <Image.Source>
+                    <BitmapImage UriSource="Images/1425097360_Application.png"/>
+                </Image.Source>
+            </Image>
+
+            <Image x:Name="imagemRgi" Margin="10" Visibility="Hidden">
+                <Image.Source>
+                    <BitmapImage UriSource="Images/RecolhimentoRgi.png"/>
+                </Image.Source>
+            </Image>
+            <Image x:Name="imagemNotas" Margin="10" Visibility="Hidden">
+                <Image.Source>
+                    <BitmapImage UriSource="Images/RecolhimentoNotas.png"/>
+                </Image.Source>
+            </Image>
+            <Image x:Name="imagemProtesto" Margin="10" Visibility="Hidden">
+                <Image.Source>
+                    <BitmapImage UriSource="Images/RecolhimentoProtesto.png"/>
+                </Image.Source>
+            </Image>
+
+            <Image x:Name="imagemBalcao" Margin="10" Visibility="Hidden">
+                <Image.Source>
+                    <BitmapImage UriSource="Images/RecolhimentoBalcao.png"/>
+                </Image.Source>
+            </Image>
+
+
+            <Grid x:Name="gridMenu" Grid.Row="1" Background="#FF68217A" >
+                <StackPanel Orientation="Vertical" Margin="10,10,10,0" Height="303" VerticalAlignment="Top" >
+                    <Button x:Name="btnTodos" Content="Todos" Height="40" Margin="10" Style="{StaticResource BotaoMenu}" Click="btnTodos_Click"/>
+                    <Button x:Name="btnRgi" Content="RGI" Height="40" Margin="10" Style="{StaticResource BotaoMenu}" Click="btnRgi_Click"/>
+                    <Button x:Name="btnNotas" Content="Notas" Height="40" Margin="10" Style="{StaticResource BotaoMenu}" Click="btnNotas_Click"/>
+                    <Button x:Name="btnProtesto" Content="Protesto" Height="40" Margin="10" Style="{StaticResource BotaoMenu}" Click="btnProtesto_Click" />
+                    <Button x:Name="btnBalcao" Content="Balcão" Height="40" Margin="10" Style="{StaticResource BotaoMenu}" Click="btnBalcao_Click" />
+                </StackPanel>
+            </Grid>
+        </Grid>
+        <TabControl x:Name="tabControl" Grid.Column="1" Grid.Row="1" BorderThickness="0" BorderBrush="{x:Null}" Background="{x:Null}">
+            <TabItem x:Name="tabItemTodos" Header="TODOS" Visibility="Hidden">
+                <Grid Background="#FFC8C2D6">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="133"/>
+                        <RowDefinition Height="421"/>
+                    </Grid.RowDefinitions>
+                    <Label Content="TODAS AS ATRIBUIÇÕES" Style="{StaticResource Cabecalho}"/>
+                    <Grid Margin="5" Grid.ColumnSpan="2" Grid.Row="1" Background="#FFD9D7FA">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Border BorderBrush="Gray" CornerRadius="10" BorderThickness="1" Margin="10,10,-255,10">
+                            <Grid>
+                                <Button x:Name="btnBuscar" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Margin="461,31,0,0" Height="40" Click="btnBuscar_Click">
+                                    <Button.Style>
+                                        <Style TargetType="Button" >
+                                            <Setter Property="Content" Value="Buscar"/>
+                                            <Setter Property="FontFamily" Value="Font/#Dosis"/>
+                                            <Setter Property="FontSize" Value="15"/>
+                                            <Setter Property="Background" Value="#FF243066"/>
+                                            <Setter Property="Foreground" Value="AliceBlue"/>
+                                            <Setter Property="BorderBrush" Value="{x:Null}"/>
+                                            <Setter Property="BorderThickness" Value="0"/>
+                                            <Setter Property="Cursor" Value="Hand"/>
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="Button">
+                                                        <Border x:Name="border" CornerRadius="10" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}"
+                                                                BorderThickness="{TemplateBinding BorderThickness}">
+                                                            <ContentPresenter Content="{TemplateBinding Content}" VerticalAlignment="Center" HorizontalAlignment="Center" ClipToBounds="False"/>
+                                                        </Border>
+                                                        <ControlTemplate.Triggers>
+                                                            <Trigger Property="IsMouseOver" Value="true">
+                                                                <Setter Property="Background" TargetName="border" Value="#FF545BEE"/>
+                                                            </Trigger>
+                                                            <Trigger Property="IsEnabled" Value="false">
+                                                                <Setter Property="Background" TargetName="border" Value="#FFA6A6A6"/>
+                                                            </Trigger>
+                                                        </ControlTemplate.Triggers>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style>
+                                    </Button.Style>
+                                </Button>
+
+
+                                <DatePicker Margin="185,46,0,0" x:Name="datePickerInicioTodos" SelectedDateChanged="datePickerInicioTodos_SelectedDateChanged" Height="25" VerticalAlignment="Top" HorizontalAlignment="Left" Width="111" />
+                                <Label Content="Data Início:" Margin="185,18,0,0" x:Name="label1" Height="28" VerticalAlignment="Top" HorizontalAlignment="Left" Width="70" />
+                                <DatePicker Margin="313,46,0,0" x:Name="datePickerFimTodos" SelectedDateChanged="datePickerFimTodos_SelectedDateChanged" HorizontalAlignment="Left" Width="111" Height="25" VerticalAlignment="Top"/>
+                                <Label Content="Data Fim:" Margin="313,18,0,0" x:Name="label2" HorizontalAlignment="Left" Width="66" Height="28" VerticalAlignment="Top" />
+                                <ComboBox x:Name="cmbAtribuicaoTodos" HorizontalAlignment="Left" Width="150" Margin="19,46,0,30">
+                                    <ComboBoxItem Content="TODOS" IsSelected="True"/>
+                                    <ComboBoxItem Content="RGI"/>
+                                    <ComboBoxItem Content="NOTAS"/>
+                                    <ComboBoxItem Content="PROTESTO"/>
+                                    <ComboBoxItem Content="BALCÃO"/>
+                                </ComboBox>
+                                <Label Content="Atribuição:" Margin="19,18,0,0" x:Name="label1_Copy" Height="28" VerticalAlignment="Top" HorizontalAlignment="Left" Width="70" />
+                            </Grid>
+                        </Border>
+                        <Button x:Name="btnImprimirTodos" Content="Imprimir" FontSize="18" Grid.Column="1" HorizontalAlignment="Left" Margin="265,26,0,0" VerticalAlignment="Top" Width="84" Height="66" Style="{StaticResource btnAtribuicao}" Click="btnImprimirTodos_Click"/>
+                    </Grid>
+                    <Grid Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Rectangle Width="220" Margin="10" Fill="White" RadiusX="10" RadiusY="10">
+                            <Rectangle.Effect>
+                                <DropShadowEffect Color="#FF716576" BlurRadius="20"/>
+                            </Rectangle.Effect>
+                        </Rectangle>
+                        <Grid Margin="14,10,15,10">
+                            <Grid Width="35" Background="#FFC7AD09" Height="89" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="25,7,0,0">
+                                <Grid.Effect>
+                                    <DropShadowEffect BlurRadius="20" Color="#FFC5BDBD"/>
+                                </Grid.Effect>
+                                <Image Source="Images/RecolhimentoQtdAtos.png" Width="30" Height="30" VerticalAlignment="Bottom" Margin="0 0 0 3"/>
+
+                            </Grid>
+                            <Grid Height="29" VerticalAlignment="Top" Background="#FFBDA81F" Margin="0,7,0,0">
+                                <Grid.Effect>
+                                    <DropShadowEffect Color="#FFC5BDBD" BlurRadius="20"/>
+                                </Grid.Effect>
+                                <TextBlock Text="QUANTIDADE DE ATOS" Foreground="#FF2C2C2C" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 5 10 5" 
+                                       FontFamily="Font/#Dosis" FontSize="15" FontWeight="Medium"/>
+                            </Grid>
+
+
+                            <TextBlock x:Name="txbQtdAtosTodos" Text="0" Foreground="#FF6A5C00" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,55,10,32" 
+                                       FontFamily="Font/#Dosis" FontSize="27" FontWeight="Bold" Width="145" TextAlignment="Right" />
+
+                            <TextBlock x:Name="txbQtdAtosGratuitosTodos" Text="Atos gratuitos: 0" Foreground="#FF2C2C2C" VerticalAlignment="Bottom" Margin="10,0,10,5" 
+                                       FontFamily="Font/#Dosis" FontSize="12" TextAlignment="Right"/>
+                        </Grid>
+
+                        <Rectangle Grid.Column="1" Width="220" Margin="10" Fill="White" RadiusX="10" RadiusY="10">
+                            <Rectangle.Effect>
+                                <DropShadowEffect Color="#FF716576" BlurRadius="20"/>
+                            </Rectangle.Effect>
+                        </Rectangle>
+                        <Grid Margin="14,10,15,10" Grid.Column="1">
+                            <Grid Width="35" Background="#FFC75F09" Height="89" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="25,7,0,0">
+                                <Grid.Effect>
+                                    <DropShadowEffect BlurRadius="20" Color="#FFC5BDBD"/>
+                                </Grid.Effect>
+                                <Image Source="Images/RecolhimentoEmol.png" Width="30" Height="30" VerticalAlignment="Bottom" Margin="0 0 0 3"/>
+
+                            </Grid>
+                            <Grid Height="29" VerticalAlignment="Top" Background="#FFC75F09" Margin="0,7,0,0">
+                                <Grid.Effect>
+                                    <DropShadowEffect Color="#FFC5BDBD" BlurRadius="20"/>
+                                </Grid.Effect>
+                                <TextBlock Text="EMOLUMENTOS" Foreground="#FF2C2C2C" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 5 10 5" 
+                                       FontFamily="Font/#Dosis" FontSize="15" FontWeight="Medium"/>
+                            </Grid>
+
+
+                            <TextBlock x:Name="txbEmolTodos" Text="0,00" Foreground="#FF874424" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,55,10,32" 
+                                       FontFamily="Font/#Dosis" FontSize="27" FontWeight="Bold" Width="145" TextAlignment="Right" />
+
+                            <TextBlock Text="Total de Emolumentos" Foreground="#FF2C2C2C" VerticalAlignment="Bottom" Margin="10,0,10,5" 
+                                       FontFamily="Font/#Dosis" FontSize="12" TextAlignment="Right"/>
+                        </Grid>
+
+                        <Rectangle Grid.Column="2" Width="220" Margin="10" Fill="White" RadiusX="10" RadiusY="10">
+                            <Rectangle.Effect>
+                                <DropShadowEffect Color="#FF716576" BlurRadius="20"/>
+                            </Rectangle.Effect>
+                        </Rectangle>
+                        <Grid Margin="14,10,15,10" Grid.Column="2">
+                            <Grid Width="35" Background="#FF09C7A4" Height="89" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="25,7,0,0">
+                                <Grid.Effect>
+                                    <DropShadowEffect BlurRadius="20" Color="#FFC5BDBD"/>
+                                </Grid.Effect>
+                                <Image Source="Images/RecolhimentoEmol.png" Width="30" Height="30" VerticalAlignment="Bottom" Margin="0 0 0 3"/>
+
+                            </Grid>
+                            <Grid Height="29" VerticalAlignment="Top" Background="#FF09C7A4" Margin="0,7,0,0">
+                                <Grid.Effect>
+                                    <DropShadowEffect Color="#FFC5BDBD" BlurRadius="20"/>
+                                </Grid.Effect>
+                                <TextBlock Text="FETJ" Foreground="#FF2C2C2C" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 5 10 5" 
+                                       FontFamily="Font/#Dosis" FontSize="15" FontWeight="Medium"/>
+                            </Grid>
+
+
+                            <TextBlock x:Name="txbFetjTodos" Text="0,00" Foreground="#FF0F493F" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,55,10,32" 
+                                       FontFamily="Font/#Dosis" FontSize="27" FontWeight="Bold" Width="145" TextAlignment="Right" />
+
+                            <TextBlock Text="Lei 3217/99 ref. aos 20% do Emol." Foreground="#FF2C2C2C" VerticalAlignment="Bottom" Margin="10,0,10,5" 
+                                       FontFamily="Font/#Dosis" FontSize="12" TextAlignment="Right"/>
+                        </Grid>
+
+                        <Rectangle Grid.Row="1" Width="220" Margin="10" Fill="White" RadiusX="10" RadiusY="10">
+                            <Rectangle.Effect>
+                                <DropShadowEffect Color="#FF716576" BlurRadius="20"/>
+                            </Rectangle.Effect>
+                        </Rectangle>
+                        <Grid Margin="14,10,15,10" Grid.Row="1">
+                            <Grid Width="35" Background="#FF098BC7" Height="89" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="25,7,0,0">
+                                <Grid.Effect>
+                                    <DropShadowEffect BlurRadius="20" Color="#FFC5BDBD"/>
+                                </Grid.Effect>
+                                <Image Source="Images/RecolhimentoEmol.png" Width="30" Height="30" VerticalAlignment="Bottom" Margin="0 0 0 3"/>
+
+                            </Grid>
+                            <Grid Height="29" VerticalAlignment="Top" Background="#FF098BC7" Margin="0,7,0,0">
+                                <Grid.Effect>
+                                    <DropShadowEffect Color="#FFC5BDBD" BlurRadius="20"/>
+                                </Grid.Effect>
+                                <TextBlock Text="FUNDPERJ" Foreground="#FF2C2C2C" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 5 10 5" 
+                                       FontFamily="Font/#Dosis" FontSize="15" FontWeight="Medium"/>
+                            </Grid>
+
+
+                            <TextBlock x:Name="txbFundTodos" Text="0,00" Foreground="#FF0F2949" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,55,10,32" 
+                                       FontFamily="Font/#Dosis" FontSize="27" FontWeight="Bold" Width="145" TextAlignment="Right" />
+
+                            <TextBlock Text="Lei 4664/05 ref. aos 5% do Emol." Foreground="#FF2C2C2C" VerticalAlignment="Bottom" Margin="10,0,10,5" 
+                                       FontFamily="Font/#Dosis" FontSize="12" TextAlignment="Right"/>
+                        </Grid>
+
+                        <Rectangle Grid.Row="1" Grid.Column="1" Width="220" Margin="10" Fill="White" RadiusX="10" RadiusY="10">
+                            <Rectangle.Effect>
+                                <DropShadowEffect Color="#FF716576" BlurRadius="20"/>
+                            </Rectangle.Effect>
+                        </Rectangle>
+                        <Grid Margin="14,10,15,10" Grid.Row="1" Grid.Column="1">
+                            <Grid Width="35" Background="#FF6184E2" Height="89" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="25,7,0,0">
+                                <Grid.Effect>
+                                    <DropShadowEffect BlurRadius="20" Color="#FFC5BDBD"/>
+                                </Grid.Effect>
+                                <Image Source="Images/RecolhimentoEmol.png" Width="30" Height="30" VerticalAlignment="Bottom" Margin="0 0 0 3"/>
+
+                            </Grid>
+                            <Grid Height="29" VerticalAlignment="Top" Background="#FF6184E2" Margin="0,7,0,0">
+                                <Grid.Effect>
+                                    <DropShadowEffect Color="#FFC5BDBD" BlurRadius="20"/>
+                                </Grid.Effect>
+                                <TextBlock Text="FUNPERJ" Foreground="#FF2C2C2C" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 5 10 5" 
+                                       FontFamily="Font/#Dosis" FontSize="15" FontWeight="Medium"/>
+                            </Grid>
+
+
+                            <TextBlock x:Name="txbFunpTodos" Text="0,00" Foreground="#FF405AA0" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,55,10,32" 
+                                       FontFamily="Font/#Dosis" FontSize="27" FontWeight="Bold" Width="145" TextAlignment="Right" />
+
+                            <TextBlock Text="Lei 6281/12 ref. aos 5% do Emol." Foreground="#FF2C2C2C" VerticalAlignment="Bottom" Margin="10,0,10,5" 
+                                       FontFamily="Font/#Dosis" FontSize="12" TextAlignment="Right"/>
+                        </Grid>
+
+                        <Rectangle Grid.Row="1" Grid.Column="2" Width="220" Margin="10" Fill="White" RadiusX="10" RadiusY="10">
+                            <Rectangle.Effect>
+                                <DropShadowEffect Color="#FF716576" BlurRadius="20"/>
+                            </Rectangle.Effect>
+                        </Rectangle>
+                        <Grid Margin="14,10,15,10" Grid.Row="1" Grid.Column="2">
+                            <Grid Width="35" Background="#FF9C61E2" Height="89" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="25,7,0,0">
+                                <Grid.Effect>
+                                    <DropShadowEffect BlurRadius="20" Color="#FFC5BDBD"/>
+                                </Grid.Effect>
+                                <Image Source="Images/RecolhimentoEmol.png" Width="30" Height="30" VerticalAlignment="Bottom" Margin="0 0 0 3"/>
+
+                            </Grid>
+                            <Grid Height="29" VerticalAlignment="Top" Background="#FF9C61E2" Margin="0,7,0,0">
+                                <Grid.Effect>
+                                    <DropShadowEffect Color="#FFC5BDBD" BlurRadius="20"/>
+                                </Grid.Effect>
+                                <TextBlock Text="FUNARPEN" Foreground="#FF2C2C2C" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 5 10 5" 
+                                       FontFamily="Font/#Dosis" FontSize="15" FontWeight="Medium"/>
+                            </Grid>
+
+
+                            <TextBlock x:Name="txbFunaTodos" Text="0,00" Foreground="#FF5D348D" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,55,10,32" 
+                                       FontFamily="Font/#Dosis" FontSize="27" FontWeight="Bold" Width="145" TextAlignment="Right" />
+
+                            <TextBlock Text="Lei 6281/12 ref. aos 4% do Emol." Foreground="#FF2C2C2C" VerticalAlignment="Bottom" Margin="10,0,10,5" 
+                                       FontFamily="Font/#Dosis" FontSize="12" TextAlignment="Right"/>
+                        </Grid>
+
+
+                        <Rectangle Grid.Row="2" Width="220" Margin="10" Fill="White" RadiusX="10" RadiusY="10">
+                            <Rectangle.Effect>
+                                <DropShadowEffect Color="#FF716576" BlurRadius="20"/>
+                            </Rectangle.Effect>
+                        </Rectangle>
+                        <Grid Margin="14,10,15,10" Grid.Row="2" >
+                            <Grid Width="35" Background="#FFFD7F7F" Height="89" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="25,7,0,0">
+                                <Grid.Effect>
+                                    <DropShadowEffect BlurRadius="20" Color="#FFC5BDBD"/>
+                                </Grid.Effect>
+                                <Image Source="Images/RecolhimentoEmol.png" Width="30" Height="30" VerticalAlignment="Bottom" Margin="0 0 0 3"/>
+
+                            </Grid>
+                            <Grid Height="29" VerticalAlignment="Top" Background="#FFFD7F7F" Margin="0,7,0,0">
+                                <Grid.Effect>
+                                    <DropShadowEffect Color="#FFC5BDBD" BlurRadius="20"/>
+                                </Grid.Effect>
+                                <TextBlock Text="PMCMV" Foreground="#FF2C2C2C" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 5 10 5" 
+                                       FontFamily="Font/#Dosis" FontSize="15" FontWeight="Medium"/>
+                            </Grid>
+
+
+                            <TextBlock x:Name="txbPmcmvTodos" Text="0,00" Foreground="#FFAC4545" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,55,10,32" 
+                                       FontFamily="Font/#Dosis" FontSize="27" FontWeight="Bold" Width="145" TextAlignment="Right" />
+
+                            <TextBlock Text="Lei 6370/12 ref. aos 2% do Emol." Foreground="#FF2C2C2C" VerticalAlignment="Bottom" Margin="10,0,10,5" 
+                                       FontFamily="Font/#Dosis" FontSize="12" TextAlignment="Right"/>
+                        </Grid>
+
+                        <Rectangle Grid.Row="2" Grid.Column="1" Width="220" Margin="10" Fill="White" RadiusX="10" RadiusY="10">
+                            <Rectangle.Effect>
+                                <DropShadowEffect Color="#FF716576" BlurRadius="20"/>
+                            </Rectangle.Effect>
+                        </Rectangle>
+                        <Grid Margin="14,10,15,10" Grid.Row="2" Grid.Column="1">
+                            <Grid Width="35" Background="#FF86ACA8" Height="89" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="25,7,0,0">
+                                <Grid.Effect>
+                                    <DropShadowEffect BlurRadius="20" Color="#FFC5BDBD"/>
+                                </Grid.Effect>
+                                <Image Source="Images/RecolhimentoEmol.png" Width="30" Height="30" VerticalAlignment="Bottom" Margin="0 0 0 3"/>
+
+                            </Grid>
+                            <Grid Height="29" VerticalAlignment="Top" Background="#FF86ACA8" Margin="0,7,0,0">
+                                <Grid.Effect>
+                                    <DropShadowEffect Color="#FFC5BDBD" BlurRadius="20"/>
+                                </Grid.Effect>
+                                <TextBlock Text="ISSQN" Foreground="#FF2C2C2C" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 5 10 5" 
+                                       FontFamily="Font/#Dosis" FontSize="15" FontWeight="Medium"/>
+                            </Grid>
+
+
+                            <TextBlock x:Name="txbIssTodos" Text="0,00" Foreground="#FF579B93" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,55,10,32" 
+                                       FontFamily="Font/#Dosis" FontSize="27" FontWeight="Bold" Width="145" TextAlignment="Right" />
+
+                            <TextBlock Text="ISS ref. aos 5,26% do Emol." Foreground="#FF2C2C2C" VerticalAlignment="Bottom" Margin="10,0,10,5" 
+                                       FontFamily="Font/#Dosis" FontSize="12" TextAlignment="Right"/>
+                        </Grid>
+
+                        <Rectangle Grid.Row="2" Grid.Column="2" Width="220" Margin="10" Fill="White" RadiusX="10" RadiusY="10">
+                            <Rectangle.Effect>
+                                <DropShadowEffect Color="#FF716576" BlurRadius="20"/>
+                            </Rectangle.Effect>
+                        </Rectangle>
+                        <Grid Margin="14,10,15,10" Grid.Row="2" Grid.Column="2">
+                            <Grid Width="35" Background="#FF6A970A" Height="89" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="25,7,0,0">
+                                <Grid.Effect>
+                                    <DropShadowEffect BlurRadius="20" Color="#FFC5BDBD"/>
+                                </Grid.Effect>
+                                <Image Source="Images/RecolhimentoEmol.png" Width="30" Height="30" VerticalAlignment="Bottom" Margin="0 0 0 3"/>
+
+                            </Grid>
+                            <Grid Height="29" VerticalAlignment="Top" Background="#FF6A970A" Margin="0,7,0,0">
+                                <Grid.Effect>
+                                    <DropShadowEffect Color="#FFC5BDBD" BlurRadius="20"/>
+                                </Grid.Effect>
+                                <TextBlock Text="TOTAL" Foreground="#FF2C2C2C" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 5 10 5" 
+                                       FontFamily="Font/#Dosis" FontSize="15" FontWeight="Medium"/>
+                            </Grid>
+
+
+                            <TextBlock x:Name="txbTotalTodos" Text="0,00" Foreground="#FF678526" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,55,10,32" 
+                                       FontFamily="Font/#Dosis" FontSize="27" FontWeight="Bold" Width="145" TextAlignment="Right" />
+
+                            <TextBlock Text="Total da soma de todos os valores" Foreground="#FF2C2C2C" VerticalAlignment="Bottom" Margin="10,0,10,5" 
+                                       FontFamily="Font/#Dosis" FontSize="12" TextAlignment="Right"/>
+                        </Grid>
+
+
+                    </Grid>
+                </Grid>
+            </TabItem>
+
+            <!--RGI-->
+            <TabItem Header="RGI" Visibility="Hidden">
+                <Grid Background="#FFE8E2F5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Label Content="REGISTRO DE IMÓVEIS" Style="{StaticResource Cabecalho}"/>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="368"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="118"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid x:Name="gridBuscarRgi">
+                            <Border BorderBrush="Gray" CornerRadius="10" BorderThickness="1" Margin="10,10,0,13">
+                                <Button x:Name="btnBuscarRGI" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Margin="241,29,0,0" Height="40" Click="btnBuscarRGI_Click">
+                                    <Button.Style>
+                                        <Style TargetType="Button" >
+                                            <Setter Property="Content" Value="Buscar"/>
+                                            <Setter Property="FontFamily" Value="Font/#Dosis"/>
+                                            <Setter Property="FontSize" Value="15"/>
+                                            <Setter Property="Background" Value="#FF243066"/>
+                                            <Setter Property="Foreground" Value="AliceBlue"/>
+                                            <Setter Property="BorderBrush" Value="{x:Null}"/>
+                                            <Setter Property="BorderThickness" Value="0"/>
+                                            <Setter Property="Cursor" Value="Hand"/>
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="Button">
+                                                        <Border x:Name="border" CornerRadius="10" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}"
+                                                                BorderThickness="{TemplateBinding BorderThickness}">
+                                                            <ContentPresenter Content="{TemplateBinding Content}" VerticalAlignment="Center" HorizontalAlignment="Center" ClipToBounds="False"/>
+                                                        </Border>
+                                                        <ControlTemplate.Triggers>
+                                                            <Trigger Property="IsMouseOver" Value="true">
+                                                                <Setter Property="Background" TargetName="border" Value="#FF545BEE"/>
+                                                            </Trigger>
+                                                            <Trigger Property="IsEnabled" Value="false">
+                                                                <Setter Property="Background" TargetName="border" Value="#FFA6A6A6"/>
+                                                            </Trigger>
+                                                        </ControlTemplate.Triggers>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style>
+                                    </Button.Style>
+                                </Button>
+                            </Border>
+
+                            <DatePicker Margin="18,49,0,0" x:Name="datePickerInicioRGI" SelectedDateChanged="datePickerInicioRGI_SelectedDateChanged" Height="25" VerticalAlignment="Top" HorizontalAlignment="Left" Width="111" />
+                            <Label Content="Data Início:" Margin="18,21,0,0" x:Name="label3" Height="28" VerticalAlignment="Top" HorizontalAlignment="Left" Width="70" />
+                            <DatePicker Margin="134,49,0,0" x:Name="datePickerFimRGI" SelectedDateChanged="datePickerFimRGI_SelectedDateChanged" HorizontalAlignment="Left" Width="111" Height="25" VerticalAlignment="Top"/>
+                            <Label Content="Data Fim:" Margin="134,21,0,0" x:Name="label4" HorizontalAlignment="Left" Width="66" Height="28" VerticalAlignment="Top" />
+                            <Separator Height="25" Margin="10,108,-368,-15" VerticalAlignment="Top" Background="#FF958585"/>
+
+                        </Grid>
+
+                        <!--Botoes RGI-->
+                        <Grid Grid.Column="1">
+                            <Button x:Name="btnNovoRgi" Content="Novo" FontSize="20" Grid.Column="1" HorizontalAlignment="Left" Margin="265,26,0,0" VerticalAlignment="Top" Width="84" Height="66" Style="{StaticResource btnAtribuicao}" Click="btnNovoRgi_Click"/>
+                            <Button x:Name="btnAlterarRgi" IsEnabled="False" Content="Alterar" FontSize="20" HorizontalAlignment="Left" Margin="146,26,0,0" VerticalAlignment="Top" Width="84" Height="66" Style="{StaticResource btnAtribuicao}" Click="btnAlterarRgi_Click"/>
+                            <Button x:Name="btnExcluirRgi" IsEnabled="False" Content="Excluir" FontSize="20" HorizontalAlignment="Left" Margin="28,26,0,0" VerticalAlignment="Top" Width="84" Height="66" Style="{StaticResource btnAtribuicao}" Click="btnExcluirRgi_Click"/>
+                        </Grid>
+                        <Grid  Grid.Row="1" Grid.ColumnSpan="2">
+                            <Grid x:Name="gridDadosRgi" IsEnabled="False" VerticalAlignment="Top" PreviewKeyDown="gridDadosRgi_PreviewKeyDown" Margin="0,0,116,0">
+                                <Rectangle Width="609" Height="200" Fill="#FFCBBFF3" RadiusX="10" RadiusY="10" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,20,0,0"/>
+                                <Grid HorizontalAlignment="Left" Height="63" Margin="37,34,0,0" VerticalAlignment="Top" Width="571" Background="#FFF1EFEF" >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="5*"/>
+                                        <RowDefinition Height="16*"/>
+                                    </Grid.RowDefinitions>
+                                    <ComboBox x:Name="cmbAtosRgi" Margin="10,16,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="433" Grid.Row="1">
+                                        <ComboBoxItem Content="AVERBAÇÃO"/>
+                                        <ComboBoxItem Content="AVERBAÇÃO AD VALOREM"/>
+                                        <ComboBoxItem Content="CANCELAMENTO"/>
+                                        <ComboBoxItem Content="EXAME DE TÍTULO EM PRENOTAÇÃO"/>
+                                        <ComboBoxItem Content="REGISTRO (COOPERATIVAS HABITACIONAIS)"/>
+                                        <ComboBoxItem Content="REGISTRO DE INTIMAÇÃO DE PROMISSÁRIO COMPRADOR DE LOTEAMENTO"/>
+                                        <ComboBoxItem Content="REGISTRO DE MEMORIAL DE INCORPORAÇÃO"/>
+                                        <ComboBoxItem Content="REGISTRO DE MEMORIAL DE LOTEAMENTO URBANO/RURAL"/>
+                                        <ComboBoxItem Content="REGISTRO EM GERAL"/>
+                                        <ComboBoxItem Content="REGISTRO EM GERAL (1ª AQUISIÇÃO)"/>
+                                        <ComboBoxItem Content="REGISTRO EM GERAL (1ª AQUISIÇÃO + SFH)"/>
+                                        <ComboBoxItem Content="REGISTRO EM GERAL (DEMAIS AQUISIÇÕES PELO SFH)"/>
+                                        <ComboBoxItem Content="REGISTRO DE ESCRITURA DE CONVENÇÃO DE CONDOMÍNIO"/>
+                                        <ComboBoxItem Content="CERTIDÃO DE PRENOTAÇÃO"/>
+                                        <ComboBoxItem Content="CERTIDÃO RGI"/>
+                                        <ComboBoxItem Content="CERTIDÃO - COMPLEMENTO"/>
+                                        <ComboBoxItem Content="VISTO"/>
+                                        <ComboBoxItem Content="BUSCA VERBAL"/>
+                                    </ComboBox>
+                                    <TextBlock Text="Selecione o Ato:" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="14" FontFamily="Font/#Dosis" FontWeight="Medium" Foreground="#FF323131" Margin="10 10 0 0" Grid.RowSpan="2"/>
+                                    <CheckBox x:Name="ckbGratuitoRgi" Content="Gratuito" Margin="0,5,134,0" VerticalAlignment="Top" Height="22" FontSize="16" RenderTransformOrigin="0.506,0.591" HorizontalAlignment="Right" Width="85" Grid.RowSpan="2"/>
+                                    <TextBlock Text="Selecione a Data:" VerticalAlignment="Top" FontSize="14" FontFamily="Font/#Dosis" FontWeight="Medium" Foreground="#FF323131" Margin="448,10,10,0" Grid.RowSpan="2"/>
+                                    <DatePicker Margin="0,17,12,0" x:Name="datePickerDataAtoRgi" Height="21" VerticalAlignment="Top" HorizontalAlignment="Right" Width="111" Grid.Row="1" />
+
+                                </Grid>
+
+                                <Border CornerRadius="10" BorderBrush="#FF707070" BorderThickness="1" HorizontalAlignment="Left" Height="51" Margin="37,102,0,0" VerticalAlignment="Top" Width="91" Background="#FFE9E1F5">
+                                    <TextBlock TextWrapping="Wrap" Margin="5,5,1,1"><Run Text="Prot./Recibo:"/><InlineUIContainer>
+                                			<TextBox x:Name="txtProtocoloRgi" Margin="-1,1,1,0" MaxLength="9" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" PreviewKeyDown="txtProtocoloRgi_PreviewKeyDown"/>
+                                		</InlineUIContainer></TextBlock>
+                                </Border>
+                                <Border CornerRadius="10" BorderBrush="#FF707070" BorderThickness="1" HorizontalAlignment="Left" Height="51" Margin="133,102,0,0" VerticalAlignment="Top" Width="91" Background="#FFE9E1F5">
+                                    <TextBlock TextWrapping="Wrap" Margin="5,5,1,1"><Run Text="Matricula:"/><InlineUIContainer>
+                                			<TextBox x:Name="txtMatriculaRgi" MaxLength="9" Margin="-1,1,1,0" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="80"/>
+                                		</InlineUIContainer></TextBlock>
+                                </Border>
+                                <Border CornerRadius="10" BorderBrush="#FF707070" BorderThickness="1" HorizontalAlignment="Left" Height="51" Margin="229,102,0,0" VerticalAlignment="Top" Width="91" Background="#FFE9E1F5">
+                                    <TextBlock TextWrapping="Wrap" Margin="5,5,1,1"><Run Text="Livro:"/><InlineUIContainer>
+                                			<TextBox x:Name="txtLivroRgi" MaxLength="9" Margin="-1,1,1,0" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="80"/>
+                                		</InlineUIContainer></TextBlock>
+                                </Border>
+                                <Border CornerRadius="10" BorderBrush="#FF707070" BorderThickness="1" HorizontalAlignment="Left" Height="51" Margin="325,102,0,0" VerticalAlignment="Top" Width="91" Background="#FFE9E1F5">
+                                    <TextBlock TextWrapping="Wrap" Margin="5,5,1,1"><Run Text="Reg. ex.: R.1"/><InlineUIContainer>
+                                			<TextBox x:Name="txtRegistroRgi" CharacterCasing="Upper" MaxLength="5" Margin="-1,1,1,0" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="80"/>
+                                		</InlineUIContainer></TextBlock>
+                                </Border>
+                                <Border CornerRadius="10" BorderBrush="#FF707070" BorderThickness="1" HorizontalAlignment="Left" Height="51" Margin="421,102,0,0" VerticalAlignment="Top" Width="91" Background="#FFE9E1F5">
+                                    <TextBlock TextWrapping="Wrap" Margin="5,5,1,1"><Run Text="Emolumentos:"/><InlineUIContainer>
+                                			<TextBox x:Name="txtEmolRgi" Margin="-1,1,1,0" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" PreviewKeyDown="txtEmolRgi_PreviewKeyDown" LostFocus="txtEmolRgi_LostFocus" GotFocus="txtEmolRgi_GotFocus"/>
+                                		</InlineUIContainer></TextBlock>
+                                </Border>
+                                <Border CornerRadius="10" BorderBrush="#FF707070" BorderThickness="1" HorizontalAlignment="Left" Height="51" Margin="517,102,0,0" VerticalAlignment="Top" Width="91" Background="#FFE9E1F5">
+                                    <TextBlock TextWrapping="Wrap" Margin="5,5,1,1"><Run Text="FETJ:"/><InlineUIContainer>
+                                			<TextBox x:Name="txtFetjRgi" Margin="-1,1,1,0" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" PreviewKeyDown="txtFetjRgi_PreviewKeyDown" LostFocus="txtFetjRgi_LostFocus" GotFocus="txtFetjRgi_GotFocus"/>
+                                		</InlineUIContainer></TextBlock>
+                                </Border>
+                                <Border CornerRadius="10" BorderBrush="#FF707070" BorderThickness="1" HorizontalAlignment="Left" Height="51" Margin="37,159,0,0" VerticalAlignment="Top" Width="91" Background="#FFE9E1F5">
+                                    <TextBlock TextWrapping="Wrap" Margin="5,5,1,1"><Run Text="FUND.:"/><InlineUIContainer>
+                                			<TextBox x:Name="txtFundRgi" Margin="-1,1,1,0" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" PreviewKeyDown="txtFundRgi_PreviewKeyDown" LostFocus="txtFundRgi_LostFocus" GotFocus="txtFundRgi_GotFocus"/>
+                                		</InlineUIContainer></TextBlock>
+                                </Border>
+                                <Border CornerRadius="10" BorderBrush="#FF707070" BorderThickness="1" HorizontalAlignment="Left" Height="51" Margin="133,159,0,0" VerticalAlignment="Top" Width="91" Background="#FFE9E1F5">
+                                    <TextBlock TextWrapping="Wrap" Margin="5,5,1,1"><Run Text="FUNP.:"/><InlineUIContainer>
+                                			<TextBox x:Name="txtFunpRgi" Margin="-1,1,1,0" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" PreviewKeyDown="txtFunpRgi_PreviewKeyDown" LostFocus="txtFunpRgi_LostFocus" GotFocus="txtFunpRgi_GotFocus"/>
+                                		</InlineUIContainer></TextBlock>
+                                </Border>
+                                <Border CornerRadius="10" BorderBrush="#FF707070" BorderThickness="1" HorizontalAlignment="Left" Height="51" Margin="229,159,0,0" VerticalAlignment="Top" Width="91" Background="#FFE9E1F5">
+                                    <TextBlock TextWrapping="Wrap" Margin="5,5,1,1"><Run Text="FUNA:"/><InlineUIContainer>
+                                			<TextBox x:Name="txtFunaRgi" Margin="-1,1,1,0" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="80"  PreviewKeyDown="txtFunaRgi_PreviewKeyDown" LostFocus="txtFunaRgi_LostFocus" GotFocus="txtFunaRgi_GotFocus"/>
+                                		</InlineUIContainer></TextBlock>
+                                </Border>
+                                <Border CornerRadius="10" BorderBrush="#FF707070" BorderThickness="1" HorizontalAlignment="Left" Height="51" Margin="325,159,0,0" VerticalAlignment="Top" Width="91" Background="#FFE9E1F5">
+                                    <TextBlock TextWrapping="Wrap" Margin="5,5,1,1"><Run Text="PMCMV:"/><InlineUIContainer>
+                                			<TextBox x:Name="txtPmcmvRgi" Margin="-1,1,1,0" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" PreviewKeyDown="txtPmcmvRgi_PreviewKeyDown" LostFocus="txtPmcmvRgi_LostFocus" GotFocus="txtPmcmvRgi_GotFocus"/>
+                                		</InlineUIContainer></TextBlock>
+                                </Border>
+                                <Border CornerRadius="10" BorderBrush="#FF707070" BorderThickness="1" HorizontalAlignment="Left" Height="51" Margin="421,159,0,0" VerticalAlignment="Top" Width="91" Background="#FFE9E1F5">
+                                    <TextBlock TextWrapping="Wrap" Margin="5,5,1,1"><Run Text="ISS:"/><InlineUIContainer>
+                                			<TextBox x:Name="txtIssRgi" Margin="-1,1,1,0" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" PreviewKeyDown="txtIssRgi_PreviewKeyDown" LostFocus="txtIssRgi_LostFocus" GotFocus="txtIssRgi_GotFocus"/>
+                                		</InlineUIContainer></TextBlock>
+                                </Border>
+                                <Border CornerRadius="10" BorderBrush="#FF707070" BorderThickness="1" HorizontalAlignment="Left" Height="51" Margin="517,159,0,0" VerticalAlignment="Top" Width="91" Background="#FFE9E1F5">
+                                    <TextBlock TextWrapping="Wrap" Margin="5,5,1,1"><Run Text="Selo:"/><InlineUIContainer>
+                                			<TextBox x:Name="txtSeloRgi" MaxLength="9" CharacterCasing="Upper" Margin="-1,1,1,0" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="80"/>
+                                		</InlineUIContainer></TextBlock>
+                                </Border>
+
+                            </Grid>
+                            <!--ListView RGI 198-->
+                            <Grid x:Name="gridListViewRgi" Height="198" VerticalAlignment="Bottom">
+                                <ListView x:Name="listViewRgi" Background="Gainsboro" SelectionChanged="listViewRgi_SelectionChanged">
+                                    <ListView.View>
+                                        <GridView AllowsColumnReorder="true" >
+                                            <GridViewColumn Width="32" >
+                                                <GridViewColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <CheckBox  IsEnabled="False" Tag="{Binding Gratuito}" IsChecked="{Binding RelativeSource={RelativeSource AncestorType={x:Type ListViewItem}}, Path=IsSelected}" />
+                                                    </DataTemplate>
+                                                </GridViewColumn.CellTemplate>
+                                            </GridViewColumn>
+
+                                            <GridViewColumn DisplayMemberBinding=
+                          "{Binding Data, StringFormat=dd/MM/yyyy}" 
+                        					Header="Data" Width="80"/>
+
+                                            <GridViewColumn DisplayMemberBinding=
+                          "{Binding TipoAto}" 
+                        					Header="Descrição" Width="200"/>
+
+                                            <GridViewColumn DisplayMemberBinding=
+                          "{Binding Emol, StringFormat=\{0:n2\}}" 
+                        					Header="EMOL." Width="80"/>
+
+                                            <GridViewColumn DisplayMemberBinding=
+                          "{Binding Fetj, StringFormat=\{0:n2\}}" 
+                        					Header="FETJ" Width="70"/>
+
+                                            <GridViewColumn DisplayMemberBinding=
+                          "{Binding Fund, StringFormat=\{0:n2\}}" 
+                        					Header="FUND" Width="60"/>
+
+                                            <GridViewColumn DisplayMemberBinding=
+                          "{Binding Funp, StringFormat=\{0:n2\}}" 
+                        					Header="FUNP" Width="60"/>
+                                            <GridViewColumn DisplayMemberBinding=
+                          "{Binding Funa, StringFormat=\{0:n2\}}" 
+                        					Header="FUNA" Width="60"/>
+                                            <GridViewColumn DisplayMemberBinding=
+                          "{Binding Pmcmv, StringFormat=\{0:n2\}}" 
+                        					Header="PMCMV" Width="60"/>
+                                            <GridViewColumn DisplayMemberBinding=
+                          "{Binding Iss, StringFormat=\{0:n2\}}" 
+                        					Header="ISS" Width="60"/>
+                                        </GridView>
+                                    </ListView.View>
+                                </ListView>
+                            </Grid>
+                            <StackPanel x:Name="spBotoesRgi" IsEnabled="False" Width="110" Margin="0,22,6,216" HorizontalAlignment="Right" VerticalAlignment="Stretch" Orientation="Vertical">
+                                <Button x:Name="btnImportarRgi" Focusable="False" Content="Importar" Background="#FFA89450" FontSize="20" Margin="0 10 " Width="84" Height="46" Style="{StaticResource btnAtribuicao}" Click="btnImportarRgi_Click"/>
+                                <Button x:Name="btnCancelarRgi" Focusable="False" Content="Cancelar" Background="#FFA85C50" FontSize="20" Margin="0 10 " Width="84" Height="46" Style="{StaticResource btnAtribuicao}" Click="btnCancelarRgi_Click"/>
+                                <Button x:Name="btnSalvarRgi" Content="Salvar" Background="#FF5C50A8" Margin="0 10 " FontSize="20" Width="84" Height="46" Style="{StaticResource btnAtribuicao}" Click="btnSalvarRgi_Click"/>
+                            </StackPanel>
+                        </Grid>
+
+                    </Grid>
+
+                </Grid>
+            </TabItem>
+
+            <!--NOTAS-->
+            <TabItem Header="NOTAS" Visibility="Hidden">
+
+
+                <Grid Background="#FFE8E2F5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Label Content="NOTAS" Style="{StaticResource Cabecalho}"/>
+
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="368"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="118"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+
+                        <Grid x:Name="gridBuscarNotas">
+                            <Border BorderBrush="Gray" CornerRadius="10" BorderThickness="1" Margin="10,10,0,13">
+                                <Button x:Name="btnBuscarNotas" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Margin="241,29,0,0" Height="40" Click="btnBuscarNotas_Click">
+                                    <Button.Style>
+                                        <Style TargetType="Button" >
+                                            <Setter Property="Content" Value="Buscar"/>
+                                            <Setter Property="FontFamily" Value="Font/#Dosis"/>
+                                            <Setter Property="FontSize" Value="15"/>
+                                            <Setter Property="Background" Value="#FF243066"/>
+                                            <Setter Property="Foreground" Value="AliceBlue"/>
+                                            <Setter Property="BorderBrush" Value="{x:Null}"/>
+                                            <Setter Property="BorderThickness" Value="0"/>
+                                            <Setter Property="Cursor" Value="Hand"/>
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="Button">
+                                                        <Border x:Name="border" CornerRadius="10" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}"
+                                                                BorderThickness="{TemplateBinding BorderThickness}">
+                                                            <ContentPresenter Content="{TemplateBinding Content}" VerticalAlignment="Center" HorizontalAlignment="Center" ClipToBounds="False"/>
+                                                        </Border>
+                                                        <ControlTemplate.Triggers>
+                                                            <Trigger Property="IsMouseOver" Value="true">
+                                                                <Setter Property="Background" TargetName="border" Value="#FF545BEE"/>
+                                                            </Trigger>
+                                                            <Trigger Property="IsEnabled" Value="false">
+                                                                <Setter Property="Background" TargetName="border" Value="#FFA6A6A6"/>
+                                                            </Trigger>
+                                                        </ControlTemplate.Triggers>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style>
+                                    </Button.Style>
+                                </Button>
+                            </Border>
+
+                            <DatePicker Margin="18,49,0,0" x:Name="datePickerInicioNotas" SelectedDateChanged="datePickerInicioNotas_SelectedDateChanged" Height="25" VerticalAlignment="Top" HorizontalAlignment="Left" Width="111" />
+                            <Label Content="Data Início:" Margin="18,21,0,0" x:Name="label5" Height="28" VerticalAlignment="Top" HorizontalAlignment="Left" Width="70" />
+                            <DatePicker Margin="134,49,0,0" x:Name="datePickerFimNotas" SelectedDateChanged="datePickerFimNotas_SelectedDateChanged" HorizontalAlignment="Left" Width="111" Height="25" VerticalAlignment="Top"/>
+                            <Label Content="Data Fim:" Margin="134,21,0,0" x:Name="label6" HorizontalAlignment="Left" Width="66" Height="28" VerticalAlignment="Top" />
+                            <Separator Height="25" Margin="10,108,-368,-15" VerticalAlignment="Top" Background="#FF958585"/>
+
+                        </Grid>
+
+                        <!--Botoes NOTAS-->
+                        <Grid Grid.Column="1">
+                            <Button x:Name="btnNovoNotas" Content="Novo" FontSize="20" Grid.Column="1" HorizontalAlignment="Left" Margin="265,26,0,0" VerticalAlignment="Top" Width="84" Height="66" Style="{StaticResource btnAtribuicao}" Click="btnNovoNotas_Click"/>
+                            <Button x:Name="btnAlterarNotas" IsEnabled="False" Content="Alterar" FontSize="20" HorizontalAlignment="Left" Margin="146,26,0,0" VerticalAlignment="Top" Width="84" Height="66" Style="{StaticResource btnAtribuicao}" Click="btnAlterarNotas_Click"/>
+                            <Button x:Name="btnExcluirNotas" IsEnabled="False" Content="Excluir" FontSize="20" HorizontalAlignment="Left" Margin="28,26,0,0" VerticalAlignment="Top" Width="84" Height="66" Style="{StaticResource btnAtribuicao}" Click="btnExcluirNotas_Click"/>
+                        </Grid>
+                        <Grid  Grid.Row="1" Grid.ColumnSpan="2">
+                            <Grid x:Name="gridDadosNotas" IsEnabled="False" VerticalAlignment="Top" PreviewKeyDown="gridDadosNotas_PreviewKeyDown" Margin="0,0,115,0">
+                                <Rectangle Width="609" Height="200" Fill="#FFCBBFF3" RadiusX="10" RadiusY="10" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,20,0,0"/>
+                                <Grid HorizontalAlignment="Left" Height="63" Margin="37,34,0,0" VerticalAlignment="Top" Width="571" Background="#FFF1EFEF" >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="5*"/>
+                                        <RowDefinition Height="16*"/>
+                                    </Grid.RowDefinitions>
+                                    <ComboBox x:Name="cmbAtosNotas" TabIndex="1" Margin="10,16,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="114" Grid.Row="1" SelectionChanged="cmbAtosNotas_SelectionChanged">
+                                        <ComboBoxItem Content="ESCRITURA"/>
+                                        <ComboBoxItem Content="PROCURAÇÃO"/>
+                                        <ComboBoxItem Content="TESTAMENTO"/>
+                                        <ComboBoxItem Content="CERTIDÃO"/>
+                                    </ComboBox>
+                                    <TextBlock Text="Espécie do Ato:" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="14" FontFamily="Font/#Dosis" FontWeight="Medium" Foreground="#FF323131" Margin="10,9,0,0" Grid.RowSpan="2"/>
+                                    <CheckBox x:Name="ckbGratuitoNotas" TabIndex="3" Content="Gratuito" Margin="0,5,178,0" VerticalAlignment="Top" Height="22" FontSize="16" RenderTransformOrigin="0.506,0.591" HorizontalAlignment="Right" Width="85" Grid.RowSpan="2"/>
+                                    <TextBlock Text="Selecione a Data:" VerticalAlignment="Top" FontSize="14" FontFamily="Font/#Dosis" FontWeight="Medium" Foreground="#FF323131" Margin="399,9,61,0" Grid.RowSpan="2"/>
+                                    <DatePicker Margin="0,17,61,0" TabIndex="4" x:Name="datePickerDataAtoNotas" Height="21" VerticalAlignment="Top" HorizontalAlignment="Right" Width="111" Grid.Row="1" />
+                                    <TextBox x:Name="txtNaturezaNotas" TabIndex="2" MaxLength="200" Margin="129,16,0,0" HorizontalAlignment="Left" Height="22" TextWrapping="Wrap" VerticalAlignment="Top" Width="264" Grid.Row="1" CharacterCasing="Upper"/>
+                                    <TextBlock Text="Natureza do Ato:" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="14" FontFamily="Font/#Dosis" FontWeight="Medium" Foreground="#FF323131" Margin="129,10,0,0" Grid.RowSpan="2"/>
+                                    <TextBox x:Name="txtExcedenteNotas" TabIndex="5" HorizontalAlignment="Left" MaxLength="3" Height="22" Margin="515,16,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="46" />
+                                    <TextBlock Text="Exced.:" VerticalAlignment="Top" FontSize="14" FontFamily="Font/#Dosis" FontWeight="Medium" Foreground="#FF323131" Margin="515,10,10,0" Grid.RowSpan="2"/>
+
+                                </Grid>
+
+                                <Border CornerRadius="10" BorderBrush="#FF707070" BorderThickness="1" HorizontalAlignment="Left" Height="51" Margin="37,102,0,0" VerticalAlignment="Top" Width="91" Background="#FFE9E1F5">
+                                    <TextBlock TextWrapping="Wrap" Margin="5,5,1,1"><Run x:Name="valorProtocolo" Text="Prot./Recibo:"/><InlineUIContainer>
+                                			<TextBox x:Name="txtProtReciboNotas" TabIndex="6" Margin="-1,1,1,0" MaxLength="10" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" PreviewKeyDown="txtProtReciboNotas_PreviewKeyDown"/>
+                                		</InlineUIContainer></TextBlock>
+                                </Border>
+                                <Border CornerRadius="10" BorderBrush="#FF707070" BorderThickness="1" HorizontalAlignment="Left" Height="51" Margin="133,102,0,0" VerticalAlignment="Top" Width="91" Background="#FFE9E1F5">
+                                    <TextBlock TextWrapping="Wrap" Margin="5,5,1,1"><Run Text="Valor:"/><InlineUIContainer>
+                                			<TextBox x:Name="txtValorNotas" TabIndex="7" MaxLength="9" Margin="-1,1,1,0" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="80"/>
+                                		</InlineUIContainer></TextBlock>
+                                </Border>
+                                <Border CornerRadius="10" BorderBrush="#FF707070" BorderThickness="1" HorizontalAlignment="Left" Height="51" Margin="229,102,0,0" VerticalAlignment="Top" Width="187" Background="#FFE9E1F5">
+                                    <TextBlock TextWrapping="Wrap" Margin="5,5,0,1" HorizontalAlignment="Left" Width="171"><Run Text="Livro/Folhas/Ato:"/><InlineUIContainer>
+                                			<TextBox x:Name="txtLivroFolhasNotas" TabIndex="8" MaxLength="20" Margin="-1,1,1,0" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="171"/>
+                                		</InlineUIContainer></TextBlock>
+                                </Border>
+                                <Border CornerRadius="10" BorderBrush="#FF707070" BorderThickness="1" HorizontalAlignment="Left" Height="51" Margin="421,102,0,0" VerticalAlignment="Top" Width="91" Background="#FFE9E1F5">
+                                    <TextBlock TextWrapping="Wrap" Margin="5,5,1,1"><Run Text="Emolumentos:"/><InlineUIContainer>
+                                			<TextBox x:Name="txtEmolNotas" TabIndex="9" Margin="-1,1,1,0" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" PreviewKeyDown="txtEmolNotas_PreviewKeyDown" LostFocus="txtEmolNotas_LostFocus" GotFocus="txtEmolNotas_GotFocus"/>
+                                		</InlineUIContainer></TextBlock>
+                                </Border>
+                                <Border CornerRadius="10" BorderBrush="#FF707070" BorderThickness="1" HorizontalAlignment="Left" Height="51" Margin="517,102,0,0" VerticalAlignment="Top" Width="91" Background="#FFE9E1F5">
+                                    <TextBlock TextWrapping="Wrap" Margin="5,5,1,1"><Run Text="FETJ:"/><InlineUIContainer>
+                                			<TextBox x:Name="txtFetjNotas" TabIndex="10" Margin="-1,1,1,0" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" PreviewKeyDown="txtFetjNotas_PreviewKeyDown" LostFocus="txtFetjNotas_LostFocus" GotFocus="txtFetjNotas_GotFocus"/>
+                                		</InlineUIContainer></TextBlock>
+                                </Border>
+                                <Border CornerRadius="10" BorderBrush="#FF707070" BorderThickness="1" HorizontalAlignment="Left" Height="51" Margin="37,159,0,0" VerticalAlignment="Top" Width="91" Background="#FFE9E1F5">
+                                    <TextBlock TextWrapping="Wrap" Margin="5,5,1,1"><Run Text="FUND.:"/><InlineUIContainer>
+                                			<TextBox x:Name="txtFundNotas" TabIndex="11" Margin="-1,1,1,0" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" PreviewKeyDown="txtFundNotas_PreviewKeyDown" LostFocus="txtFundNotas_LostFocus" GotFocus="txtFundNotas_GotFocus"/>
+                                		</InlineUIContainer></TextBlock>
+                                </Border>
+                                <Border CornerRadius="10" BorderBrush="#FF707070" BorderThickness="1" HorizontalAlignment="Left" Height="51" Margin="133,159,0,0" VerticalAlignment="Top" Width="91" Background="#FFE9E1F5">
+                                    <TextBlock TextWrapping="Wrap" Margin="5,5,1,1"><Run Text="FUNP.:"/><InlineUIContainer>
+                                			<TextBox x:Name="txtFunpNotas" TabIndex="12" Margin="-1,1,1,0" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" PreviewKeyDown="txtFunpNotas_PreviewKeyDown" LostFocus="txtFunpNotas_LostFocus" GotFocus="txtFunpNotas_GotFocus"/>
+                                		</InlineUIContainer></TextBlock>
+                                </Border>
+                                <Border CornerRadius="10" BorderBrush="#FF707070" BorderThickness="1" HorizontalAlignment="Left" Height="51" Margin="229,159,0,0" VerticalAlignment="Top" Width="91" Background="#FFE9E1F5">
+                                    <TextBlock TextWrapping="Wrap" Margin="5,5,1,1"><Run Text="FUNA:"/><InlineUIContainer>
+                                			<TextBox x:Name="txtFunaNotas" TabIndex="13" Margin="-1,1,1,0" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="80"  PreviewKeyDown="txtFunaNotas_PreviewKeyDown" LostFocus="txtFunaNotas_LostFocus" GotFocus="txtFunaNotas_GotFocus"/>
+                                		</InlineUIContainer></TextBlock>
+                                </Border>
+                                <Border CornerRadius="10" BorderBrush="#FF707070" BorderThickness="1" HorizontalAlignment="Left" Height="51" Margin="325,159,0,0" VerticalAlignment="Top" Width="91" Background="#FFE9E1F5">
+                                    <TextBlock TextWrapping="Wrap" Margin="5,5,1,1"><Run Text="PMCMV:"/><InlineUIContainer>
+                                			<TextBox x:Name="txtPmcmvNotas" TabIndex="14" Margin="-1,1,1,0" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" PreviewKeyDown="txtPmcmvNotas_PreviewKeyDown" LostFocus="txtPmcmvNotas_LostFocus" GotFocus="txtPmcmvNotas_GotFocus"/>
+                                		</InlineUIContainer></TextBlock>
+                                </Border>
+                                <Border CornerRadius="10" BorderBrush="#FF707070" BorderThickness="1" HorizontalAlignment="Left" Height="51" Margin="421,159,0,0" VerticalAlignment="Top" Width="91" Background="#FFE9E1F5">
+                                    <TextBlock TextWrapping="Wrap" Margin="5,5,1,1"><Run Text="ISS:"/><InlineUIContainer>
+                                			<TextBox x:Name="txtIssNotas" TabIndex="15" Margin="-1,1,1,0" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" PreviewKeyDown="txtIssNotas_PreviewKeyDown" LostFocus="txtIssNotas_LostFocus" GotFocus="txtIssNotas_GotFocus"/>
+                                		</InlineUIContainer></TextBlock>
+                                </Border>
+                                <Border CornerRadius="10" BorderBrush="#FF707070" BorderThickness="1" HorizontalAlignment="Left" Height="51" Margin="517,159,0,0" VerticalAlignment="Top" Width="91" Background="#FFE9E1F5">
+                                    <TextBlock TextWrapping="Wrap" Margin="5,5,1,1"><Run Text="Selo:"/><InlineUIContainer>
+                                			<TextBox x:Name="txtSeloNotas" TabIndex="16" MaxLength="9" CharacterCasing="Upper" Margin="-1,1,1,0" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="80"/>
+                                		</InlineUIContainer></TextBlock>
+                                </Border>
+
+                            </Grid>
+                            <!--ListView RGI 198-->
+                            <Grid x:Name="gridListViewNotas" Height="198" VerticalAlignment="Bottom">
+                                <ListView x:Name="listViewNotas" Background="Gainsboro" SelectionChanged="listViewNotas_SelectionChanged">
+                                    <ListView.View>
+                                        <GridView AllowsColumnReorder="true" >
+                                            <GridViewColumn Width="32" >
+                                                <GridViewColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <CheckBox  IsEnabled="False" Tag="{Binding Gratuito}" IsChecked="{Binding RelativeSource={RelativeSource AncestorType={x:Type ListViewItem}}, Path=IsSelected}" />
+                                                    </DataTemplate>
+                                                </GridViewColumn.CellTemplate>
+                                            </GridViewColumn>
+
+                                            <GridViewColumn DisplayMemberBinding=
+                          "{Binding Data, StringFormat=dd/MM/yyyy}" 
+                        					Header="Data" Width="80"/>
+
+                                            <GridViewColumn DisplayMemberBinding=
+                          "{Binding TipoAto}" 
+                        					Header="Espécie" Width="200"/>
+
+                                            <GridViewColumn DisplayMemberBinding=
+                          "{Binding Emol, StringFormat=\{0:n2\}}" 
+                        					Header="EMOL." Width="80"/>
+
+                                            <GridViewColumn DisplayMemberBinding=
+                          "{Binding Fetj, StringFormat=\{0:n2\}}" 
+                        					Header="FETJ" Width="70"/>
+
+                                            <GridViewColumn DisplayMemberBinding=
+                          "{Binding Fund, StringFormat=\{0:n2\}}" 
+                        					Header="FUND" Width="60"/>
+
+                                            <GridViewColumn DisplayMemberBinding=
+                          "{Binding Funp, StringFormat=\{0:n2\}}" 
+                        					Header="FUNP" Width="60"/>
+                                            <GridViewColumn DisplayMemberBinding=
+                          "{Binding Funa, StringFormat=\{0:n2\}}" 
+                        					Header="FUNA" Width="60"/>
+                                            <GridViewColumn DisplayMemberBinding=
+                          "{Binding Pmcmv, StringFormat=\{0:n2\}}" 
+                        					Header="PMCMV" Width="60"/>
+                                            <GridViewColumn DisplayMemberBinding=
+                          "{Binding Iss, StringFormat=\{0:n2\}}" 
+                        					Header="ISS" Width="60"/>
+                                        </GridView>
+                                    </ListView.View>
+                                </ListView>
+                            </Grid>
+                            <StackPanel x:Name="spBotoesNotas" IsEnabled="False" Width="110" Margin="0,22,5,216" HorizontalAlignment="Right" VerticalAlignment="Stretch" Orientation="Vertical">
+                                <Button x:Name="btnImportarNotas" Focusable="False" Content="Importar" Background="#FFA89450" FontSize="20" Margin="0 10 " Width="84" Height="46" Style="{StaticResource btnAtribuicao}" Click="btnImportarNotas_Click"/>
+                                <Button x:Name="btnCancelarNotas" Focusable="False" Content="Cancelar" Background="#FFA85C50" FontSize="20" Margin="0 10 " Width="84" Height="46" Style="{StaticResource btnAtribuicao}" Click="btnCancelarNotas_Click"/>
+                                <Button x:Name="btnSalvarNotas" Content="Salvar" Background="#FF5C50A8" Margin="0 10 " FontSize="20" Width="84" Height="46" Style="{StaticResource btnAtribuicao}" Click="btnSalvarNotas_Click"/>
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+                </Grid>
+
+            </TabItem>
+            <!--PROTESTO-->
+            <TabItem Header="PROTESTO" Visibility="Hidden">
+                <Grid Background="#FFE8E2F5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Label Content="PROTESTO" Style="{StaticResource Cabecalho}"/>
+
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="368"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="118"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid x:Name="gridBuscarProtesto">
+                            <Border BorderBrush="Gray" CornerRadius="10" BorderThickness="1" Margin="10,10,0,13">
+                                <Button x:Name="btnBuscarProtesto" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Margin="241,29,0,0" Height="40" Click="btnBuscarProtesto_Click">
+                                    <Button.Style>
+                                        <Style TargetType="{x:Type Button}" >
+                                            <Setter Property="Content" Value="Buscar"/>
+                                            <Setter Property="FontFamily" Value="Font/#Dosis"/>
+                                            <Setter Property="FontSize" Value="15"/>
+                                            <Setter Property="Background" Value="#FF243066"/>
+                                            <Setter Property="Foreground" Value="AliceBlue"/>
+                                            <Setter Property="BorderBrush" Value="{x:Null}"/>
+                                            <Setter Property="BorderThickness" Value="0"/>
+                                            <Setter Property="Cursor" Value="Hand"/>
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="{x:Type Button}">
+                                                        <Border x:Name="border" CornerRadius="10" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}"
+        											BorderThickness="{TemplateBinding BorderThickness}">
+                                                            <ContentPresenter Content="{TemplateBinding Content}" VerticalAlignment="Center" HorizontalAlignment="Center" ClipToBounds="False"/>
+                                                        </Border>
+                                                        <ControlTemplate.Triggers>
+                                                            <Trigger Property="IsMouseOver" Value="true">
+                                                                <Setter Property="Background" TargetName="border" Value="#FF545BEE"/>
+                                                            </Trigger>
+                                                            <Trigger Property="IsEnabled" Value="false">
+                                                                <Setter Property="Background" TargetName="border" Value="#FFA6A6A6"/>
+                                                            </Trigger>
+                                                        </ControlTemplate.Triggers>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style>
+                                    </Button.Style>
+                                </Button>
+                            </Border>
+
+                            <DatePicker Margin="18,49,0,0" x:Name="datePickerInicioProtesto" SelectedDateChanged="datePickerInicioProtesto_SelectedDateChanged" Height="25" VerticalAlignment="Top" HorizontalAlignment="Left" Width="111" />
+                            <Label Content="Data Início:" Margin="18,21,0,0" x:Name="label7" Height="28" VerticalAlignment="Top" HorizontalAlignment="Left" Width="70" />
+                            <DatePicker Margin="134,49,0,0" x:Name="datePickerFimProtesto" SelectedDateChanged="datePickerFimProtesto_SelectedDateChanged" HorizontalAlignment="Left" Width="111" Height="25" VerticalAlignment="Top"/>
+                            <Label Content="Data Fim:" Margin="134,21,0,0" x:Name="label8" HorizontalAlignment="Left" Width="66" Height="28" VerticalAlignment="Top" />
+                            <Separator Height="25" Margin="10,108,-368,-15" VerticalAlignment="Top" Background="#FF958585"/>
+
+                        </Grid>
+
+                        <!--Botoes PROTESTO-->
+                        <Grid Grid.Column="1">
+                            <Button x:Name="btnNovoProtesto" Content="Novo" FontSize="20" Grid.Column="1" HorizontalAlignment="Left" Margin="265,26,0,0" VerticalAlignment="Top" Width="84" Height="66" Style="{StaticResource btnAtribuicao}" Click="btnNovoProtesto_Click"/>
+                            <Button x:Name="btnAlterarProtesto" IsEnabled="False" Content="Alterar" FontSize="20" HorizontalAlignment="Left" Margin="146,26,0,0" VerticalAlignment="Top" Width="84" Height="66" Style="{StaticResource btnAtribuicao}" Click="btnAlterarProtesto_Click"/>
+                            <Button x:Name="btnExcluirProtesto" IsEnabled="False" Content="Excluir" FontSize="20" HorizontalAlignment="Left" Margin="28,26,0,0" VerticalAlignment="Top" Width="84" Height="66" Style="{StaticResource btnAtribuicao}" Click="btnExcluirProtesto_Click"/>
+                        </Grid>
+                        <Grid  Grid.Row="1" Grid.ColumnSpan="2">
+                            <Grid x:Name="gridDadosProtesto" IsEnabled="False" VerticalAlignment="Top" PreviewKeyDown="gridDadosProtesto_PreviewKeyDown" Margin="0,0,116,0">
+                                <Rectangle Width="609" Height="200" Fill="#FFCBBFF3" RadiusX="10" RadiusY="10" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,20,0,0"/>
+                                <Grid HorizontalAlignment="Left" Height="63" Margin="37,34,0,0" VerticalAlignment="Top" Width="571" Background="#FFF1EFEF" >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="5*"/>
+                                        <RowDefinition Height="16*"/>
+                                    </Grid.RowDefinitions>
+                                    <ComboBox x:Name="cmbAtosProtesto" Margin="10,16,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="276" Grid.Row="1">
+                                        <ComboBoxItem Content="APONTAMENTO"/>
+                                        <ComboBoxItem Content="APONTAMENTO CANCELAMENTO"/>
+                                        <ComboBoxItem Content="APONTAMENTO RETIRADO"/>
+                                        <ComboBoxItem Content="CANCELAMENTO"/>
+                                        <ComboBoxItem Content="CERTIDÃO PROTESTO"/>
+                                        <ComboBoxItem Content="EMISSÃO DE GUIA"/>
+                                        <ComboBoxItem Content="PAGAMENTO"/>
+                                    </ComboBox>
+                                    <TextBlock Text="Selecione o Ato:" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="14" FontFamily="Font/#Dosis" FontWeight="Medium" Foreground="#FF323131" Margin="10 10 0 0" Grid.RowSpan="2"/>
+                                    <CheckBox x:Name="ckbGratuitoProtesto" Content="Gratuito" Margin="0,5,285,0" VerticalAlignment="Top" Height="22" FontSize="16" RenderTransformOrigin="0.506,0.591" HorizontalAlignment="Right" Width="85" Grid.RowSpan="2"/>
+                                    <TextBlock Text="Selecione a Data:" VerticalAlignment="Top" FontSize="14" FontFamily="Font/#Dosis" FontWeight="Medium" Foreground="#FF323131" Margin="448,10,10,0" Grid.RowSpan="2"/>
+                                    <DatePicker Margin="0,17,12,0" x:Name="datePickerDataAtoProtesto" Height="21" VerticalAlignment="Top" HorizontalAlignment="Right" Width="111" Grid.Row="1" />
+                                    <ComboBox x:Name="cmbConvenioProtesto" Margin="311,16,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="118" Grid.Row="1">
+                                        <ComboBoxItem Content="NÃO"/>
+                                        <ComboBoxItem Content="SIM"/>
+                                    </ComboBox>
+                                    <TextBlock Text="Convênio:" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="14" FontFamily="Font/#Dosis" FontWeight="Medium" Foreground="#FF323131" Margin="311,10,0,0" Grid.RowSpan="2" Width="118"/>
+
+                                </Grid>
+
+                                <Border CornerRadius="10" BorderBrush="#FF707070" BorderThickness="1" HorizontalAlignment="Left" Height="51" Margin="37,102,0,0" VerticalAlignment="Top" Width="91" Background="#FFE9E1F5">
+                                    <TextBlock TextWrapping="Wrap" Margin="5,5,1,1"><Run Text="Prot./Recibo:"/><InlineUIContainer>
+        							<TextBox x:Name="txtProtocoloProtesto" Margin="-1,1,1,0" MaxLength="9" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" PreviewKeyDown="txtProtocoloProtesto_PreviewKeyDown"/>
+        						</InlineUIContainer></TextBlock>
+                                </Border>
+                                <Border CornerRadius="10" BorderBrush="#FF707070" BorderThickness="1" HorizontalAlignment="Left" Height="51" Margin="133,102,0,0" VerticalAlignment="Top" Width="283" Background="#FFE9E1F5">
+                                    <Grid>
+                                        <TextBlock HorizontalAlignment="Left" Margin="7,5,0,0" TextWrapping="Wrap" Text="Natureza:" VerticalAlignment="Top" Width="159"/>
+                                        <TextBox x:Name="txtNaturezaProtesto" Margin="7,21,8,0" MaxLength="9" Height="23" TextWrapping="Wrap" VerticalAlignment="Top"  CharacterCasing="Upper"/>
+                                    </Grid>
+                                </Border>
+                                <Border CornerRadius="10" BorderBrush="#FF707070" BorderThickness="1" HorizontalAlignment="Left" Height="51" Margin="421,102,0,0" VerticalAlignment="Top" Width="91" Background="#FFE9E1F5">
+                                    <TextBlock TextWrapping="Wrap" Margin="5,5,1,1"><Run Text="Emolumentos:"/><InlineUIContainer>
+        							<TextBox x:Name="txtEmolProtesto" Margin="-1,1,1,0" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" PreviewKeyDown="txtEmolProtesto_PreviewKeyDown" LostFocus="txtEmolProtesto_LostFocus" GotFocus="txtEmolProtesto_GotFocus"/>
+        						</InlineUIContainer></TextBlock>
+                                </Border>
+                                <Border CornerRadius="10" BorderBrush="#FF707070" BorderThickness="1" HorizontalAlignment="Left" Height="51" Margin="517,102,0,0" VerticalAlignment="Top" Width="91" Background="#FFE9E1F5">
+                                    <TextBlock TextWrapping="Wrap" Margin="5,5,1,1"><Run Text="FETJ:"/><InlineUIContainer>
+        							<TextBox x:Name="txtFetjProtesto" Margin="-1,1,1,0" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" PreviewKeyDown="txtFetjProtesto_PreviewKeyDown" LostFocus="txtFetjProtesto_LostFocus" GotFocus="txtFetjProtesto_GotFocus"/>
+        						</InlineUIContainer></TextBlock>
+                                </Border>
+                                <Border CornerRadius="10" BorderBrush="#FF707070" BorderThickness="1" HorizontalAlignment="Left" Height="51" Margin="37,159,0,0" VerticalAlignment="Top" Width="91" Background="#FFE9E1F5">
+                                    <TextBlock TextWrapping="Wrap" Margin="5,5,1,1"><Run Text="FUND.:"/><InlineUIContainer>
+        							<TextBox x:Name="txtFundProtesto" Margin="-1,1,1,0" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" PreviewKeyDown="txtFundProtesto_PreviewKeyDown" LostFocus="txtFundProtesto_LostFocus" GotFocus="txtFundProtesto_GotFocus"/>
+        						</InlineUIContainer></TextBlock>
+                                </Border>
+                                <Border CornerRadius="10" BorderBrush="#FF707070" BorderThickness="1" HorizontalAlignment="Left" Height="51" Margin="133,159,0,0" VerticalAlignment="Top" Width="91" Background="#FFE9E1F5">
+                                    <TextBlock TextWrapping="Wrap" Margin="5,5,1,1"><Run Text="FUNP.:"/><InlineUIContainer>
+        							<TextBox x:Name="txtFunpProtesto" Margin="-1,1,1,0" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" PreviewKeyDown="txtFunpProtesto_PreviewKeyDown" LostFocus="txtFunpProtesto_LostFocus" GotFocus="txtFunpProtesto_GotFocus"/>
+        						</InlineUIContainer></TextBlock>
+                                </Border>
+                                <Border CornerRadius="10" BorderBrush="#FF707070" BorderThickness="1" HorizontalAlignment="Left" Height="51" Margin="229,159,0,0" VerticalAlignment="Top" Width="91" Background="#FFE9E1F5">
+                                    <TextBlock TextWrapping="Wrap" Margin="5,5,1,1"><Run Text="FUNA:"/><InlineUIContainer>
+        							<TextBox x:Name="txtFunaProtesto" Margin="-1,1,1,0" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="80"  PreviewKeyDown="txtFunaProtesto_PreviewKeyDown" LostFocus="txtFunaProtesto_LostFocus" GotFocus="txtFunaProtesto_GotFocus"/>
+        						</InlineUIContainer></TextBlock>
+                                </Border>
+                                <Border CornerRadius="10" BorderBrush="#FF707070" BorderThickness="1" HorizontalAlignment="Left" Height="51" Margin="325,159,0,0" VerticalAlignment="Top" Width="91" Background="#FFE9E1F5">
+                                    <TextBlock TextWrapping="Wrap" Margin="5,5,1,1"><Run Text="PMCMV:"/><InlineUIContainer>
+        							<TextBox x:Name="txtPmcmvProtesto" Margin="-1,1,1,0" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" PreviewKeyDown="txtPmcmvProtesto_PreviewKeyDown" LostFocus="txtPmcmvProtesto_LostFocus" GotFocus="txtPmcmvProtesto_GotFocus"/>
+        						</InlineUIContainer></TextBlock>
+                                </Border>
+                                <Border CornerRadius="10" BorderBrush="#FF707070" BorderThickness="1" HorizontalAlignment="Left" Height="51" Margin="421,159,0,0" VerticalAlignment="Top" Width="91" Background="#FFE9E1F5">
+                                    <TextBlock TextWrapping="Wrap" Margin="5,5,1,1"><Run Text="ISS:"/><InlineUIContainer>
+        							<TextBox x:Name="txtIssProtesto" Margin="-1,1,1,0" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" PreviewKeyDown="txtIssProtesto_PreviewKeyDown" LostFocus="txtIssProtesto_LostFocus" GotFocus="txtIssProtestoGotFocus"/>
+        						</InlineUIContainer></TextBlock>
+                                </Border>
+                                <Border CornerRadius="10" BorderBrush="#FF707070" BorderThickness="1" HorizontalAlignment="Left" Height="51" Margin="517,159,0,0" VerticalAlignment="Top" Width="91" Background="#FFE9E1F5">
+                                    <TextBlock TextWrapping="Wrap" Margin="5,5,1,1"><Run Text="Selo:"/><InlineUIContainer>
+        							<TextBox x:Name="txtSeloProtesto" MaxLength="9" CharacterCasing="Upper" Margin="-1,1,1,0" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="80"/>
+        						</InlineUIContainer></TextBlock>
+                                </Border>
+
+                            </Grid>
+                            <!--ListView RGI 198-->
+                            <Grid x:Name="gridListViewProtesto" Height="198" VerticalAlignment="Bottom">
+                                <ListView x:Name="listViewProtesto" Background="Gainsboro" SelectionChanged="listViewProtesto_SelectionChanged">
+                                    <ListView.View>
+                                        <GridView AllowsColumnReorder="true" >
+                                            <GridViewColumn Width="32" >
+                                                <GridViewColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <CheckBox  IsEnabled="False" Tag="{Binding Gratuito}" IsChecked="{Binding IsSelected, RelativeSource={RelativeSource AncestorType={x:Type ListViewItem}}}" />
+                                                    </DataTemplate>
+                                                </GridViewColumn.CellTemplate>
+                                            </GridViewColumn>
+
+                                            <GridViewColumn DisplayMemberBinding=
+                          "{Binding Data, StringFormat=dd/MM/yyyy}" 
+        								Header="Data" Width="80"/>
+
+                                            <GridViewColumn DisplayMemberBinding=
+                          "{Binding TipoAto}" 
+        								Header="Descrição" Width="200"/>
+
+                                            <GridViewColumn DisplayMemberBinding=
+                          "{Binding Emol, StringFormat=\{0:n2\}}" 
+        								Header="EMOL." Width="80"/>
+
+                                            <GridViewColumn DisplayMemberBinding=
+                          "{Binding Fetj, StringFormat=\{0:n2\}}" 
+        								Header="FETJ" Width="70"/>
+
+                                            <GridViewColumn DisplayMemberBinding=
+                          "{Binding Fund, StringFormat=\{0:n2\}}" 
+        								Header="FUND" Width="60"/>
+
+                                            <GridViewColumn DisplayMemberBinding=
+                          "{Binding Funp, StringFormat=\{0:n2\}}" 
+        								Header="FUNP" Width="60"/>
+                                            <GridViewColumn DisplayMemberBinding=
+                          "{Binding Funa, StringFormat=\{0:n2\}}" 
+        								Header="FUNA" Width="60"/>
+                                            <GridViewColumn DisplayMemberBinding=
+                          "{Binding Pmcmv, StringFormat=\{0:n2\}}" 
+        								Header="PMCMV" Width="60"/>
+                                            <GridViewColumn DisplayMemberBinding=
+                          "{Binding Iss, StringFormat=\{0:n2\}}" 
+        								Header="ISS" Width="60"/>
+                                        </GridView>
+                                    </ListView.View>
+                                </ListView>
+                            </Grid>
+                            <StackPanel x:Name="spBotoesProtesto" IsEnabled="False" Width="110" Margin="0,22,6,216" HorizontalAlignment="Right" VerticalAlignment="Stretch" Orientation="Vertical">
+                                <Button x:Name="btnImportarProtesto" Focusable="False" Content="Importar" Background="#FFA89450" FontSize="20" Margin="0 10 " Width="84" Height="46" Style="{StaticResource btnAtribuicao}" Click="btnImportarProtesto_Click"/>
+                                <Button x:Name="btnCancelarProtesto" Focusable="False" Content="Cancelar" Background="#FFA85C50" FontSize="20" Margin="0 10 " Width="84" Height="46" Style="{StaticResource btnAtribuicao}" Click="btnCancelarProtesto_Click"/>
+                                <Button x:Name="btnSalvarProtesto" Content="Salvar" Background="#FF5C50A8" Margin="0 10 " FontSize="20" Width="84" Height="46" Style="{StaticResource btnAtribuicao}" Click="btnSalvarProtesto_Click"/>
+                            </StackPanel>
+                        </Grid>
+
+                    </Grid>
+
+                </Grid>
+
+            </TabItem>
+            <!--BALCÃO-->
+            <TabItem Header="BALCÃO" Visibility="Hidden">
+                <Grid Background="#FFE8E2F5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Label Content="BALCÃO" Style="{StaticResource Cabecalho}"/>
+
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="368"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="118"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid x:Name="gridBuscarBalcao">
+                            <Border BorderBrush="Gray" CornerRadius="10" BorderThickness="1" Margin="10,10,0,13">
+                                <Button x:Name="btnBuscarBalcao" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Margin="241,29,0,0" Height="40" Click="btnBuscarBalcao_Click">
+                                    <Button.Style>
+                                        <Style TargetType="{x:Type Button}" >
+                                            <Setter Property="Content" Value="Buscar"/>
+                                            <Setter Property="FontFamily" Value="Font/#Dosis"/>
+                                            <Setter Property="FontSize" Value="15"/>
+                                            <Setter Property="Background" Value="#FF243066"/>
+                                            <Setter Property="Foreground" Value="AliceBlue"/>
+                                            <Setter Property="BorderBrush" Value="{x:Null}"/>
+                                            <Setter Property="BorderThickness" Value="0"/>
+                                            <Setter Property="Cursor" Value="Hand"/>
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="{x:Type Button}">
+                                                        <Border x:Name="border" CornerRadius="10" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}"
+        											BorderThickness="{TemplateBinding BorderThickness}">
+                                                            <ContentPresenter Content="{TemplateBinding Content}" VerticalAlignment="Center" HorizontalAlignment="Center" ClipToBounds="False"/>
+                                                        </Border>
+                                                        <ControlTemplate.Triggers>
+                                                            <Trigger Property="IsMouseOver" Value="true">
+                                                                <Setter Property="Background" TargetName="border" Value="#FF545BEE"/>
+                                                            </Trigger>
+                                                            <Trigger Property="IsEnabled" Value="false">
+                                                                <Setter Property="Background" TargetName="border" Value="#FFA6A6A6"/>
+                                                            </Trigger>
+                                                        </ControlTemplate.Triggers>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style>
+                                    </Button.Style>
+                                </Button>
+                            </Border>
+
+                            <DatePicker Margin="18,49,0,0" x:Name="datePickerInicioBalcao" SelectedDateChanged="datePickerInicioBalcao_SelectedDateChanged" Height="25" VerticalAlignment="Top" HorizontalAlignment="Left" Width="111" />
+                            <Label Content="Data Início:" Margin="18,21,0,0" x:Name="label9" Height="28" VerticalAlignment="Top" HorizontalAlignment="Left" Width="70" />
+                            <DatePicker Margin="134,49,0,0" x:Name="datePickerFimBalcao" SelectedDateChanged="datePickerFimBalcao_SelectedDateChanged" HorizontalAlignment="Left" Width="111" Height="25" VerticalAlignment="Top"/>
+                            <Label Content="Data Fim:" Margin="134,21,0,0" x:Name="label10" HorizontalAlignment="Left" Width="66" Height="28" VerticalAlignment="Top" />
+                            <Separator Height="25" Margin="10,108,-368,-15" VerticalAlignment="Top" Background="#FF958585"/>
+
+                        </Grid>
+
+                        <!--Botoes BALCAO-->
+                        <Grid Grid.Column="1">
+                            <Button x:Name="btnNovoBalcao" Content="Novo" FontSize="20" Grid.Column="1" HorizontalAlignment="Left" Margin="265,26,0,0" VerticalAlignment="Top" Width="84" Height="66" Style="{StaticResource btnAtribuicao}" Click="btnNovoBalcao_Click"/>
+                            <Button x:Name="btnAlterarBalcao" IsEnabled="False" Content="Alterar" FontSize="20" HorizontalAlignment="Left" Margin="146,26,0,0" VerticalAlignment="Top" Width="84" Height="66" Style="{StaticResource btnAtribuicao}" Click="btnAlterarBalcao_Click"/>
+                            <Button x:Name="btnExcluirBalcao" IsEnabled="False" Content="Excluir" FontSize="20" HorizontalAlignment="Left" Margin="28,26,0,0" VerticalAlignment="Top" Width="84" Height="66" Style="{StaticResource btnAtribuicao}" Click="btnExcluirBalcao_Click"/>
+                        </Grid>
+                        <Grid  Grid.Row="1" Grid.ColumnSpan="2">
+                            <Grid x:Name="gridDadosBalcao" IsEnabled="False" VerticalAlignment="Top" PreviewKeyDown="gridDadosBalcao_PreviewKeyDown" Margin="0,0,116,0">
+                                <Rectangle Width="609" Height="200" Fill="#FFCBBFF3" RadiusX="10" RadiusY="10" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,20,0,0"/>
+                                <Grid HorizontalAlignment="Left" Height="63" Margin="37,34,0,0" VerticalAlignment="Top" Width="571" Background="#FFF1EFEF" >
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="5*"/>
+                                        <RowDefinition Height="16*"/>
+                                    </Grid.RowDefinitions>
+                                    <ComboBox x:Name="cmbAtosBalcao" Margin="10,16,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="433" Grid.Row="1">
+                                        <ComboBoxItem Content="ABERTURA DE FIRMAS"/>
+                                        <ComboBoxItem Content="AUTENTICAÇÃO"/>
+                                        <ComboBoxItem Content="MATERIALIZAÇÃO DE DOCUMENTOS ELETRÔNICOS"/>
+                                        <ComboBoxItem Content="REC AUTENTICIDADE"/>
+                                        <ComboBoxItem Content="REC AUTENTICIDADE (DUT)"/>
+                                        <ComboBoxItem Content="REC SEMELHANÇA"/>
+                                        <ComboBoxItem Content="SINAL PÚBLICO"/>
+                                    </ComboBox>
+                                    <TextBlock Text="Selecione o Ato:" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="14" FontFamily="Font/#Dosis" FontWeight="Medium" Foreground="#FF323131" Margin="10 10 0 0" Grid.RowSpan="2"/>
+                                    <CheckBox x:Name="ckbGratuitoBalcao" Content="Gratuito" Margin="0,6,128,0" VerticalAlignment="Top" Height="22" FontSize="16" RenderTransformOrigin="0.506,0.591" HorizontalAlignment="Right" Width="85" Grid.RowSpan="2"/>
+                                    <TextBlock Text="Selecione a Data:" VerticalAlignment="Top" FontSize="14" FontFamily="Font/#Dosis" FontWeight="Medium" Foreground="#FF323131" Margin="448,10,10,0" Grid.RowSpan="2"/>
+                                    <DatePicker Margin="0,17,12,0" x:Name="datePickerDataAtoBalcao" Height="21" VerticalAlignment="Top" HorizontalAlignment="Right" Width="111" Grid.Row="1" />
+
+                                </Grid>
+
+                                <Border CornerRadius="10" BorderBrush="#FF707070" BorderThickness="1" HorizontalAlignment="Left" Height="51" Margin="37,102,0,0" VerticalAlignment="Top" Width="91" Background="#FFE9E1F5">
+                                    <TextBlock TextWrapping="Wrap" Margin="5,5,1,1"><Run Text="Prot./Recibo:"/><InlineUIContainer>
+        							<TextBox x:Name="txtProtocoloBalcao" Margin="-1,1,1,0" MaxLength="9" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" PreviewKeyDown="txtProtocoloBalcao_PreviewKeyDown"/>
+        						</InlineUIContainer></TextBlock>
+                                </Border>
+                                <Border CornerRadius="10" BorderBrush="#FF707070" BorderThickness="1" HorizontalAlignment="Left" Height="51" Margin="133,102,0,0" VerticalAlignment="Top" Width="283" Background="#FFE9E1F5">
+                                    <Grid>
+                                        <TextBlock HorizontalAlignment="Left" Margin="7,5,0,0" TextWrapping="Wrap" Text="Origem:" VerticalAlignment="Top" Width="159"/>
+                                        <TextBox x:Name="txtNaturezaBalcao" Margin="7,21,8,0" MaxLength="9" Height="23" TextWrapping="Wrap" VerticalAlignment="Top"  CharacterCasing="Upper"/>
+                                    </Grid>
+                                </Border>
+                                <Border CornerRadius="10" BorderBrush="#FF707070" BorderThickness="1" HorizontalAlignment="Left" Height="51" Margin="421,102,0,0" VerticalAlignment="Top" Width="91" Background="#FFE9E1F5">
+                                    <TextBlock TextWrapping="Wrap" Margin="5,5,1,1"><Run Text="Emolumentos:"/><InlineUIContainer>
+        							<TextBox x:Name="txtEmolBalcao" Margin="-1,1,1,0" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" PreviewKeyDown="txtEmolBalcao_PreviewKeyDown" LostFocus="txtEmolBalcao_LostFocus" GotFocus="txtEmolBalcao_GotFocus"/>
+        						</InlineUIContainer></TextBlock>
+                                </Border>
+                                <Border CornerRadius="10" BorderBrush="#FF707070" BorderThickness="1" HorizontalAlignment="Left" Height="51" Margin="517,102,0,0" VerticalAlignment="Top" Width="91" Background="#FFE9E1F5">
+                                    <TextBlock TextWrapping="Wrap" Margin="5,5,1,1"><Run Text="FETJ:"/><InlineUIContainer>
+        							<TextBox x:Name="txtFetjBalcao" Margin="-1,1,1,0" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" PreviewKeyDown="txtFetjBalcao_PreviewKeyDown" LostFocus="txtFetjBalcao_LostFocus" GotFocus="txtFetjBalcao_GotFocus"/>
+        						</InlineUIContainer></TextBlock>
+                                </Border>
+                                <Border CornerRadius="10" BorderBrush="#FF707070" BorderThickness="1" HorizontalAlignment="Left" Height="51" Margin="37,159,0,0" VerticalAlignment="Top" Width="91" Background="#FFE9E1F5">
+                                    <TextBlock TextWrapping="Wrap" Margin="5,5,1,1"><Run Text="FUND.:"/><InlineUIContainer>
+        							<TextBox x:Name="txtFundBalcao" Margin="-1,1,1,0" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" PreviewKeyDown="txtFundBalcao_PreviewKeyDown" LostFocus="txtFundBalcao_LostFocus" GotFocus="txtFundBalcao_GotFocus"/>
+        						</InlineUIContainer></TextBlock>
+                                </Border>
+                                <Border CornerRadius="10" BorderBrush="#FF707070" BorderThickness="1" HorizontalAlignment="Left" Height="51" Margin="133,159,0,0" VerticalAlignment="Top" Width="91" Background="#FFE9E1F5">
+                                    <TextBlock TextWrapping="Wrap" Margin="5,5,1,1"><Run Text="FUNP.:"/><InlineUIContainer>
+        							<TextBox x:Name="txtFunpBalcao" Margin="-1,1,1,0" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" PreviewKeyDown="txtFunpBalcao_PreviewKeyDown" LostFocus="txtFunpBalcao_LostFocus" GotFocus="txtFunpBalcao_GotFocus"/>
+        						</InlineUIContainer></TextBlock>
+                                </Border>
+                                <Border CornerRadius="10" BorderBrush="#FF707070" BorderThickness="1" HorizontalAlignment="Left" Height="51" Margin="229,159,0,0" VerticalAlignment="Top" Width="91" Background="#FFE9E1F5">
+                                    <TextBlock TextWrapping="Wrap" Margin="5,5,1,1"><Run Text="FUNA:"/><InlineUIContainer>
+        							<TextBox x:Name="txtFunaBalcao" Margin="-1,1,1,0" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="80"  PreviewKeyDown="txtFunaBalcao_PreviewKeyDown" LostFocus="txtFunaBalcao_LostFocus" GotFocus="txtFunaBalcao_GotFocus"/>
+        						</InlineUIContainer></TextBlock>
+                                </Border>
+                                <Border CornerRadius="10" BorderBrush="#FF707070" BorderThickness="1" HorizontalAlignment="Left" Height="51" Margin="325,159,0,0" VerticalAlignment="Top" Width="91" Background="#FFE9E1F5">
+                                    <TextBlock TextWrapping="Wrap" Margin="5,5,1,1"><Run Text="PMCMV:"/><InlineUIContainer>
+        							<TextBox x:Name="txtPmcmvBalcao" Margin="-1,1,1,0" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" PreviewKeyDown="txtPmcmvBalcao_PreviewKeyDown" LostFocus="txtPmcmvBalcao_LostFocus" GotFocus="txtPmcmvBalcao_GotFocus"/>
+        						</InlineUIContainer></TextBlock>
+                                </Border>
+                                <Border CornerRadius="10" BorderBrush="#FF707070" BorderThickness="1" HorizontalAlignment="Left" Height="51" Margin="421,159,0,0" VerticalAlignment="Top" Width="91" Background="#FFE9E1F5">
+                                    <TextBlock TextWrapping="Wrap" Margin="5,5,1,1"><Run Text="ISS:"/><InlineUIContainer>
+        							<TextBox x:Name="txtIssBalcao" Margin="-1,1,1,0" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="80" PreviewKeyDown="txtIssBalcao_PreviewKeyDown" LostFocus="txtIssBalcao_LostFocus" GotFocus="txtIssBalcao_GotFocus"/>
+        						</InlineUIContainer></TextBlock>
+                                </Border>
+                                <Border CornerRadius="10" BorderBrush="#FF707070" BorderThickness="1" HorizontalAlignment="Left" Height="51" Margin="517,159,0,0" VerticalAlignment="Top" Width="91" Background="#FFE9E1F5">
+                                    <TextBlock TextWrapping="Wrap" Margin="5,5,1,1"><Run Text="Selo:"/><InlineUIContainer>
+        							<TextBox x:Name="txtSeloBalcao" MaxLength="9" CharacterCasing="Upper" Margin="-1,1,1,0" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="80"/>
+        						</InlineUIContainer></TextBlock>
+                                </Border>
+
+                            </Grid>
+                            <!--ListView RGI -->
+                            <Grid x:Name="gridListViewBalcao" Height="198" VerticalAlignment="Bottom">
+                                <ListView x:Name="listViewBalcao" Background="Gainsboro" SelectionChanged="listViewBalcao_SelectionChanged">
+                                    <ListView.View>
+                                        <GridView AllowsColumnReorder="true" >
+                                            <GridViewColumn Width="32" >
+                                                <GridViewColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <CheckBox  IsEnabled="False" Tag="{Binding Gratuito}" IsChecked="{Binding IsSelected, RelativeSource={RelativeSource AncestorType={x:Type ListViewItem}}}" />
+                                                    </DataTemplate>
+                                                </GridViewColumn.CellTemplate>
+                                            </GridViewColumn>
+
+                                            <GridViewColumn DisplayMemberBinding=
+                          "{Binding Data, StringFormat=dd/MM/yyyy}" 
+        								Header="Data" Width="80"/>
+
+                                            <GridViewColumn DisplayMemberBinding=
+                          "{Binding TipoAto}" 
+        								Header="Descrição" Width="200"/>
+
+                                            <GridViewColumn DisplayMemberBinding=
+                          "{Binding Emol, StringFormat=\{0:n2\}}" 
+        								Header="EMOL." Width="80"/>
+
+                                            <GridViewColumn DisplayMemberBinding=
+                          "{Binding Fetj, StringFormat=\{0:n2\}}" 
+        								Header="FETJ" Width="70"/>
+
+                                            <GridViewColumn DisplayMemberBinding=
+                          "{Binding Fund, StringFormat=\{0:n2\}}" 
+        								Header="FUND" Width="60"/>
+
+                                            <GridViewColumn DisplayMemberBinding=
+                          "{Binding Funp, StringFormat=\{0:n2\}}" 
+        								Header="FUNP" Width="60"/>
+                                            <GridViewColumn DisplayMemberBinding=
+                          "{Binding Funa, StringFormat=\{0:n2\}}" 
+        								Header="FUNA" Width="60"/>
+                                            <GridViewColumn DisplayMemberBinding=
+                          "{Binding Pmcmv, StringFormat=\{0:n2\}}" 
+        								Header="PMCMV" Width="60"/>
+                                            <GridViewColumn DisplayMemberBinding=
+                          "{Binding Iss, StringFormat=\{0:n2\}}" 
+        								Header="ISS" Width="60"/>
+                                        </GridView>
+                                    </ListView.View>
+                                </ListView>
+                            </Grid>
+                            <StackPanel x:Name="spBotoesBalcao" IsEnabled="False" Width="110" Margin="0,22,6,216" HorizontalAlignment="Right" VerticalAlignment="Stretch" Orientation="Vertical">
+                                <Button x:Name="btnImportarBalcao" Focusable="False" Content="Importar" Background="#FFA89450" FontSize="20" Margin="0 10 " Width="84" Height="46" Style="{StaticResource btnAtribuicao}" Click="btnImportarBalcao_Click"/>
+                                <Button x:Name="btnCancelarBalcao" Focusable="False" Content="Cancelar" Background="#FFA85C50" FontSize="20" Margin="0 10 " Width="84" Height="46" Style="{StaticResource btnAtribuicao}" Click="btnCancelarBalcao_Click"/>
+                                <Button x:Name="btnSalvarBalcao" Content="Salvar" Background="#FF5C50A8" Margin="0 10 " FontSize="20" Width="84" Height="46" Style="{StaticResource btnAtribuicao}" Click="btnSalvarBalcao_Click"/>
+                            </StackPanel>
+                        </Grid>
+
+                    </Grid>
+
+                </Grid>
+
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Window>

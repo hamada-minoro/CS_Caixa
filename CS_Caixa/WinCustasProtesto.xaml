@@ -1,0 +1,125 @@
+﻿<Window x:Class="CS_Caixa.WinCustasProtesto"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Custas" Height="548" Width="713" ResizeMode="NoResize" ShowInTaskbar="False" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" WindowStyle="ToolWindow" Background="#FF662121">
+    <Grid>
+        <StackPanel Height="211" HorizontalAlignment="Left" Margin="22,11,0,0" Name="stackPanel1" VerticalAlignment="Top" Width="666" Background="{x:Null}">
+            <DataGrid AutoGenerateColumns="False" Name="dataGridItens" IsReadOnly="True" SelectionMode="Single" Height="166" Width="664" Background="White" SelectedIndex="0" CanUserResizeRows="False">
+                <DataGrid.RowStyle>
+                    <Style TargetType="{x:Type DataGridRow}">
+                        <EventSetter Event="Control.MouseDoubleClick" Handler="dataGridItens_MouseDoubleClick"/>
+                    </Style>
+                </DataGrid.RowStyle>
+                <DataGrid.CellStyle>
+                    <Style TargetType="DataGridCell">
+                        <Style.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Background" Value="#FF0086FF" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </DataGrid.CellStyle>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="id" Width="50" Binding="{Binding Path=Id_Custas}" CanUserResize="False" Visibility="Hidden"/>
+                    <DataGridTextColumn Header="Tabela" Width="70" Binding="{Binding Path=TAB}" CanUserResize="False" Visibility="Visible"/>
+                    <DataGridTextColumn Header="Item" Width="70" Binding="{Binding Path=ITEM}" CanUserResize="False" Visibility="Visible"/>
+                    <DataGridTextColumn Header="Subitem" Width="70" Binding="{Binding Path=SUB}" CanUserResize="False" Visibility="Visible"/>
+                    <DataGridTextColumn Header="Descrição" Width="350" Binding="{Binding Path=TEXTO}" CanUserResize="False" Visibility="Visible"/>
+                    <DataGridTextColumn Header="Valor" Width="101" Binding="{Binding Path=VALOR, StringFormat=\{0:n2\}}" CanUserResize="False" Visibility="Visible"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <StackPanel Height="42" Name="stackPanel2" Width="664" Orientation="Horizontal" Background="{x:Null}">
+                <StackPanel Height="38" Name="stackPanel8" Width="148" Orientation="Horizontal">
+                    <Label Content="Quantidade: " Height="28" Name="label3" Width="80" />
+                    <TextBox Height="23" Name="txtQtdItens" Width="59" Text="1" LostFocus="txtQtdItens_LostFocus" PreviewKeyDown="txtQtdItens_PreviewKeyDown" GotFocus="txtQtdItens_GotFocus"/>
+                </StackPanel>
+                <Button Content="Adicionar" Height="34" Name="btnAdicionar" Width="84" Click="btnAdicionar_Click" Background="AliceBlue" Cursor="Hand" />
+                <StackPanel Height="38" Name="stackPanel3" Width="24" />
+                <Button Content="Remover" Height="34" Name="btnRemover" Width="84" Click="btnRemover_Click" Background="AliceBlue" Cursor="Hand" />
+                <StackPanel Height="39" Name="stackPanel5" Width="23" />
+                <Button Content="Limpar" Height="34" Name="btnLimpar" Width="84" Background="AliceBlue" Click="btnLimpar_Click" Cursor="Hand" />
+                <StackPanel Height="38" Name="stackPanel4" Width="131" />
+                <Button Content="OK" Name="btnOk" Width="84" Click="btnOk_Click" Height="34" Background="AliceBlue" Cursor="Hand" />
+            </StackPanel>
+        </StackPanel>
+        <DataGrid AutoGenerateColumns="False" Height="131" IsReadOnly="True" SelectionMode="Single" HorizontalAlignment="Left" Margin="23,221,0,0" Name="dataGridItensSelecionados" VerticalAlignment="Top" Width="664" Background="White" SelectedIndex="0" CanUserResizeRows="False" PreviewKeyDown="dataGridItensSelecionados_PreviewKeyDown" SelectionChanged="dataGridItensSelecionados_SelectionChanged">
+            <DataGrid.RowStyle>
+                <Style TargetType="{x:Type DataGridRow}">
+                    <EventSetter Event="Control.MouseDoubleClick" Handler="dataGridItensSelecionados_MouseDoubleClick"/>
+                </Style>
+            </DataGrid.RowStyle>
+            <DataGrid.CellStyle>
+                <Style TargetType="DataGridCell">
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="#FF0086FF" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.CellStyle>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="id" Width="50" Binding="{Binding Path=Id_Custa}" CanUserResize="False" Visibility="Hidden"/>
+                <DataGridTextColumn Header="Tabela" Width="70" Binding="{Binding Path=Tabela}" CanUserResize="False" Visibility="Visible"/>
+                <DataGridTextColumn Header="Item" Width="70" Binding="{Binding Path=Item}" CanUserResize="False" Visibility="Visible"/>
+                <DataGridTextColumn Header="Subitem" Width="70" Binding="{Binding Path=SubItem}" CanUserResize="False" Visibility="Visible"/>
+                <DataGridTextColumn Header="Descrição" Width="280" Binding="{Binding Path=Descricao}" CanUserResize="False" Visibility="Visible"/>
+                <DataGridTextColumn Header="Qtd" Width="30" Binding="{Binding Path=Quantidade}" CanUserResize="False" Visibility="Visible"/>
+                <DataGridTextColumn Header="Valor" Width="70" Binding="{Binding Path=Valor, StringFormat=\{0:n2\}}" CanUserResize="False" Visibility="Visible"/>
+                <DataGridTextColumn Header="Total" Width="70" Binding="{Binding Path=Total, StringFormat=\{0:n2\}}" CanUserResize="False" Visibility="Visible"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <GroupBox Header="Valores" Height="146" Margin="23,357,0,0" Name="groupBox1" VerticalAlignment="Top" HorizontalAlignment="Left" Width="659">
+            <Grid Height="118">
+                <StackPanel Height="49" Name="stackPanel19" Width="112" Margin="195,133,360,-57"></StackPanel>
+                <StackPanel Height="49" Name="stackPanel20" Width="83" Margin="231,7,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <Label Content="Fundperj (5%):" Height="26" Name="label18" Width="78" />
+                    <TextBox Height="23" IsReadOnly="True" Name="txtFundperj" TabIndex="25" Text="0,00" Width="70" />
+                </StackPanel>
+                <StackPanel Height="49" Name="stackPanel21" Width="83" Margin="338,7,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <Label Content="Funperj(5%):" Height="26" Name="label19" Width="77" />
+                    <TextBox Height="23" IsReadOnly="True" Name="txtFunperj" TabIndex="26" Text="0,00" Width="70" />
+                </StackPanel>
+                <StackPanel Height="49" Name="stackPanel22" Width="83" Margin="443,7,0,0" VerticalAlignment="Top" HorizontalAlignment="Left">
+                    <Label Content="Funarpen(4%):" Height="26" Name="label20" Width="77" />
+                    <TextBox Height="23" IsReadOnly="True" Name="txtFunarpen" TabIndex="27" Text="0,00" Width="70" />
+                </StackPanel>
+                <StackPanel Height="49" Name="stackPanel23" Width="83" Margin="549,7,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <Label Content="Pmcmv(2%):" Height="26" Name="label21" Width="78" />
+                    <TextBox Height="23" IsReadOnly="True" Name="txtPmcmv" TabIndex="28" Text="0,00" Width="70" />
+                </StackPanel>
+                <StackPanel Name="stackPanel18" Width="83" Margin="19,7,0,0" HorizontalAlignment="Left" Height="49" VerticalAlignment="Top">
+                    <Label Content="Emol.:" Height="26" Name="label16" Width="78" />
+                    <TextBox Height="23" IsReadOnly="True" Name="txtEmol" TabIndex="23" Text="0,00" Width="70" />
+                </StackPanel>
+                <StackPanel Name="stackPanel17" Orientation="Vertical" Margin="122,7,0,0" Width="83" HorizontalAlignment="Left" Height="49" VerticalAlignment="Top">
+                    <Label Content="Fetj (20%):" Height="26" Name="label17" Width="78" />
+                    <TextBox Height="23" IsReadOnly="True" Name="txtFetj" TabIndex="24" Text="0,00" Width="70" />
+                </StackPanel>
+                <StackPanel Height="49" Name="stackPanel30" Width="83" Margin="122,60,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <Label Content="Mútua:" Height="26" Name="label25" Width="78" />
+                    <TextBox Height="23" IsReadOnly="True" Name="txtMutua" TabIndex="29" Text="0,00" Width="70" />
+                </StackPanel>
+                <StackPanel Height="49" Name="stackPanel31" Width="83" Margin="231,60,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <Label Content="Acoterj:" Height="26" Name="label26" Width="78" />
+                    <TextBox Height="23" IsReadOnly="True" Name="txtAcoterj" TabIndex="30" Text="0,00" Width="70" />
+                </StackPanel>
+                <StackPanel Height="49" Name="stackPanel32" Width="83" Margin="338,60,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"></StackPanel>
+                <StackPanel Height="49" Name="stackPanel29" Width="83" Margin="19,60,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <Label Content="ISS:" Height="26" Name="label1" Width="78" />
+                    <TextBox Height="23" IsReadOnly="True" Name="txtIss" TabIndex="29" Text="0,00" Width="70" />
+                </StackPanel>
+                <StackPanel Height="49" Name="stackPanel33" Width="83" Margin="443,60,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                <StackPanel Height="49" Name="stackPanel34" Width="83" Margin="549,60,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <Label Content="Total:" Height="26" Name="label30" Width="76" />
+                    <TextBox Height="23" IsReadOnly="True" Name="txtTotal" TabIndex="33" Text="0,00" Width="70" />
+                </StackPanel>
+            </Grid>
+        </GroupBox>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FFACB5D1" Offset="0" />
+                <GradientStop Color="White" Offset="1" />
+            </LinearGradientBrush>
+        </Grid.Background>
+    </Grid>
+</Window>

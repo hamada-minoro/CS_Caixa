@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xs:element name="Relatorio">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="ItemRelatorio" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="DESC_ATRIBUICAO" type="xs:string" minOccurs="0" />
+              <xs:element name="CD_SELO" type="xs:string" minOccurs="0" />
+              <xs:element name="CD_ALEATORIO" type="xs:string" minOccurs="0" />
+              <xs:element name="DESC_TIPO_ATO" type="xs:string" minOccurs="0" />
+              <xs:element name="CD_TIPO_COBRANCA" type="xs:string" minOccurs="0" />
+              <xs:element name="VALOR_EMOLUMENTOS" type="xs:string" minOccurs="0" />
+              <xs:element name="FETJ" type="xs:string" minOccurs="0" />
+              <xs:element name="FUNDPERJ" type="xs:string" minOccurs="0" />
+              <xs:element name="FUNPERJ" type="xs:string" minOccurs="0" />
+              <xs:element name="FUNARPEN" type="xs:string" minOccurs="0" />
+              <xs:element name="RESSAG" type="xs:string" minOccurs="0" />
+              <xs:element name="MUTUA" type="xs:string" minOccurs="0" />
+              <xs:element name="ACOTERJ" type="xs:string" minOccurs="0" />
+              <xs:element name="DISTRIBUIDOR" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="IdPedido" type="xs:string" />
+      <xs:attribute name="CodRelatorio" type="xs:string" />
+      <xs:attribute name="NomeRelatorio" type="xs:string" />
+      <xs:attribute name="NomeArquivo" type="xs:string" />
+      <xs:attribute name="LocalReportPath" type="xs:string" />
+      <xs:attribute name="FormatoRetorno" type="xs:string" />
+      <xs:attribute name="NomeSolicitante" type="xs:string" />
+      <xs:attribute name="DataEmissao" type="xs:string" />
+      <xs:attribute name="NotaRodape" type="xs:string" />
+      <xs:attribute name="Renderizador" type="xs:string" />
+      <xs:attribute name="CodServico" type="xs:string" />
+      <xs:attribute name="NomeServico" type="xs:string" />
+      <xs:attribute name="DataPratica" type="xs:string" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="Relatorio" />
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

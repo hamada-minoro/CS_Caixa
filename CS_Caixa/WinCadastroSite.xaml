@@ -1,0 +1,63 @@
+﻿<Window x:Class="CS_Caixa.WinCadastroSite"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Identificação Presencial - Cadastro Site" Height="396" Width="604" ShowInTaskbar="False" Icon="/CS_Caixa;component/Images/Icone48.ico" ResizeMode="NoResize" Background="#FFCACDFF" Loaded="Window_Loaded" WindowStartupLocation="CenterOwner" PreviewKeyDown="Window_PreviewKeyDown">
+    <Grid>
+        <GroupBox Header="Dados" Height="132" Margin="9,12,8,0" Name="groupBox1" VerticalAlignment="Top" PreviewKeyDown="groupBox1_PreviewKeyDown">
+            <Grid Name="GridAdicionar">
+                <TextBox Height="23" TabIndex="4" Margin="6,72,6,0" Name="txtNome" VerticalAlignment="Top" CharacterCasing="Upper" MaxLength="255" />
+                <Label Content="CPF/CNPJ:" Height="28" HorizontalAlignment="Left" Margin="2,0,0,0" Name="label1" VerticalAlignment="Top" Width="106" />
+                <Label Content="Nome:" Height="28" HorizontalAlignment="Left" Margin="3,48,0,0" Name="label5" VerticalAlignment="Top" Width="94" />
+                <TextBox Height="23" Margin="6,25,381,0" MaxLength="14" x:Name="txtDocumento" VerticalAlignment="Top" CharacterCasing="Upper" TabIndex="1" PreviewKeyDown="txtDocumento_PreviewKeyDown"  LostFocus="txtDocumento_LostFocus"/>
+                <CheckBox Content="Receber notificação" TabIndex="3" Name="ckbReceberNotificacao" HorizontalAlignment="Left" Margin="435,28,0,0" VerticalAlignment="Top"/>
+                <ComboBox Height="23" IsEnabled="False" TabIndex="2" Margin="235,25,176,0" x:Name="cmbTipo" VerticalAlignment="Top" Background="{x:Null}">
+                    <ComboBoxItem Content="Física" />
+                    <ComboBoxItem Content="Jurídica" />
+                </ComboBox>
+                <Label Content="Tipo Pessoa:" Height="28" HorizontalAlignment="Left" Margin="235,0,0,0" x:Name="label3" VerticalAlignment="Top" Width="95" />
+            </Grid>
+        </GroupBox>
+        <DataGrid AllowDrop="False" AlternatingRowBackground="#FF8DE1FF" AlternationCount="2" AutoGenerateColumns="False" Background="{x:Null}" CanUserResizeRows="False" ClipboardCopyMode="ExcludeHeader" GridLinesVisibility="None" HeadersVisibility="All" HorizontalScrollBarVisibility="Auto" IsReadOnly="True" IsTabStop="True" Name="dataGrid1" RowBackground="White" SelectionMode="Single" SelectionUnit="FullRow" UseLayoutRounding="True" Height="138" VerticalAlignment="Bottom"  SelectionChanged="dataGrid1_SelectionChanged">
+            <DataGrid.CellStyle>
+                <Style TargetType="{x:Type DataGridCell}">
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="#FF0086FF" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.CellStyle>
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Path=Id}" CanUserResize="False" Header="Cod" Visibility="Hidden" Width="80" />
+                <DataGridTextColumn Binding="{Binding Path=DataCadastro, StringFormat=dd/MM/yyyy}" CanUserResize="False" Header="Data" Width="100" />
+                <DataGridTextColumn Binding="{Binding Path=Email}" CanUserResize="False" Header="Email" Width="490" />               
+            </DataGrid.Columns>
+            <DataGrid.ContextMenu>
+                <ContextMenu ForceCursor="True" Name="menu" Selector.IsSelected="True" Visibility="Hidden">
+                    <MenuItem Click="MenuItemExcluir_Click" Header="Excluir" Name="MenuItemExcluir">
+                        <MenuItem.Icon>
+                            <Image Source="/CS_Caixa;component/Images/1425064473_DeleteRed.png" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Click="MenuItemAlterar_Click" Header="Alterar" Name="MenuItemAlterar">
+                        <MenuItem.Icon>
+                            <Image Source="/CS_Caixa;component/Images/modify.png" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+        </DataGrid>
+        <GroupBox Header="Consulta" Height="80" HorizontalAlignment="Left" Margin="9,144,0,0" Name="groupBoxConsulta" VerticalAlignment="Top" Width="430">
+            <Grid>
+                <Button Content="Consultar" Height="42" HorizontalAlignment="Left" Margin="356,10,0,0" Name="btnConsultar" VerticalAlignment="Top" Width="58" Click="btnConsultar_Click" Cursor="Hand" />
+                <Label Content="E-mail:" Height="28" HorizontalAlignment="Left" Margin="10,-3,0,0" x:Name="label1_Copy" VerticalAlignment="Top" Width="106" />
+                <TextBox Height="23" Margin="10,25,68,0" x:Name="txtConsulta" VerticalAlignment="Top" CharacterCasing="Lower" MaxLength="255" />
+            </Grid>
+        </GroupBox>
+        <Button Content="_Salvar" TabIndex="0" Cursor="Hand" Height="52" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="466,161,0,0" Name="btnSalvar" VerticalAlignment="Top" VerticalContentAlignment="Bottom" Width="122" IsEnabled="False" Click="btnSalvar_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="/CS_Caixa;component/Images/Salvar.png" Stretch="Uniform" TileMode="None" />
+            </Button.Background>
+        </Button>
+    </Grid>
+</Window>

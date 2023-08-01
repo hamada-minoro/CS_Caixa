@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://1oficioararuama.com.br/webservice/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://1oficioararuama.com.br/webservice/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://1oficioararuama.com.br/webservice/">
+      <s:element name="AdicionarFirmas">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="firma" type="tns:ConsultaFirma" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ConsultaFirma">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ConsultaFirmaId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nome" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Cpf" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AdicionarFirmasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AdicionarFirmasResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AdicionarRegistro">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="registro" type="tns:ConsultaRegistro" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ConsultaRegistro">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ConsultaRegistroId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="DataEntrada" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DataRegistro" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Protocolo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Natureza" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Matricula" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DataModificado" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Situacao" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Exigencia" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdAto" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AdicionarRegistroResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AdicionarRegistroResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AdicionarProtesto">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="protesto" type="tns:ConsultaProtesto" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ConsultaProtesto">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ConsultaProtestoId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdAto" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Devedor" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DocumentoDevedor" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DataProtesto" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AdicionarProtestoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AdicionarProtestoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExcluirProtesto">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="protesto" type="tns:ConsultaProtesto" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExcluirProtestoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ExcluirProtestoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObterTitulosCaducados">
+        <s:complexType />
+      </s:element>
+      <s:element name="ObterTitulosCaducadosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObterTitulosCaducadosResult" type="tns:ArrayOfConsultaProtesto" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfConsultaProtesto">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ConsultaProtesto" nillable="true" type="tns:ConsultaProtesto" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="AdicionarFirmasSoapIn">
+    <wsdl:part name="parameters" element="tns:AdicionarFirmas" />
+  </wsdl:message>
+  <wsdl:message name="AdicionarFirmasSoapOut">
+    <wsdl:part name="parameters" element="tns:AdicionarFirmasResponse" />
+  </wsdl:message>
+  <wsdl:message name="AdicionarRegistroSoapIn">
+    <wsdl:part name="parameters" element="tns:AdicionarRegistro" />
+  </wsdl:message>
+  <wsdl:message name="AdicionarRegistroSoapOut">
+    <wsdl:part name="parameters" element="tns:AdicionarRegistroResponse" />
+  </wsdl:message>
+  <wsdl:message name="AdicionarProtestoSoapIn">
+    <wsdl:part name="parameters" element="tns:AdicionarProtesto" />
+  </wsdl:message>
+  <wsdl:message name="AdicionarProtestoSoapOut">
+    <wsdl:part name="parameters" element="tns:AdicionarProtestoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ExcluirProtestoSoapIn">
+    <wsdl:part name="parameters" element="tns:ExcluirProtesto" />
+  </wsdl:message>
+  <wsdl:message name="ExcluirProtestoSoapOut">
+    <wsdl:part name="parameters" element="tns:ExcluirProtestoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ObterTitulosCaducadosSoapIn">
+    <wsdl:part name="parameters" element="tns:ObterTitulosCaducados" />
+  </wsdl:message>
+  <wsdl:message name="ObterTitulosCaducadosSoapOut">
+    <wsdl:part name="parameters" element="tns:ObterTitulosCaducadosResponse" />
+  </wsdl:message>
+  <wsdl:portType name="Cartorio1OficioSoap">
+    <wsdl:operation name="AdicionarFirmas">
+      <wsdl:input message="tns:AdicionarFirmasSoapIn" />
+      <wsdl:output message="tns:AdicionarFirmasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AdicionarRegistro">
+      <wsdl:input message="tns:AdicionarRegistroSoapIn" />
+      <wsdl:output message="tns:AdicionarRegistroSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AdicionarProtesto">
+      <wsdl:input message="tns:AdicionarProtestoSoapIn" />
+      <wsdl:output message="tns:AdicionarProtestoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ExcluirProtesto">
+      <wsdl:input message="tns:ExcluirProtestoSoapIn" />
+      <wsdl:output message="tns:ExcluirProtestoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ObterTitulosCaducados">
+      <wsdl:input message="tns:ObterTitulosCaducadosSoapIn" />
+      <wsdl:output message="tns:ObterTitulosCaducadosSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="Cartorio1OficioSoap" type="tns:Cartorio1OficioSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AdicionarFirmas">
+      <soap:operation soapAction="http://1oficioararuama.com.br/webservice/AdicionarFirmas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AdicionarRegistro">
+      <soap:operation soapAction="http://1oficioararuama.com.br/webservice/AdicionarRegistro" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AdicionarProtesto">
+      <soap:operation soapAction="http://1oficioararuama.com.br/webservice/AdicionarProtesto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExcluirProtesto">
+      <soap:operation soapAction="http://1oficioararuama.com.br/webservice/ExcluirProtesto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObterTitulosCaducados">
+      <soap:operation soapAction="http://1oficioararuama.com.br/webservice/ObterTitulosCaducados" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Cartorio1OficioSoap12" type="tns:Cartorio1OficioSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AdicionarFirmas">
+      <soap12:operation soapAction="http://1oficioararuama.com.br/webservice/AdicionarFirmas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AdicionarRegistro">
+      <soap12:operation soapAction="http://1oficioararuama.com.br/webservice/AdicionarRegistro" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AdicionarProtesto">
+      <soap12:operation soapAction="http://1oficioararuama.com.br/webservice/AdicionarProtesto" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExcluirProtesto">
+      <soap12:operation soapAction="http://1oficioararuama.com.br/webservice/ExcluirProtesto" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObterTitulosCaducados">
+      <soap12:operation soapAction="http://1oficioararuama.com.br/webservice/ObterTitulosCaducados" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Cartorio1Oficio">
+    <wsdl:port name="Cartorio1OficioSoap" binding="tns:Cartorio1OficioSoap">
+      <soap:address location="http://192.168.254.1/cartorio1oficio/WebService/Cartorio1Oficio.asmx" />
+    </wsdl:port>
+    <wsdl:port name="Cartorio1OficioSoap12" binding="tns:Cartorio1OficioSoap12">
+      <soap12:address location="http://192.168.254.1/cartorio1oficio/WebService/Cartorio1Oficio.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

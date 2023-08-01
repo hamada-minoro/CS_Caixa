@@ -1,0 +1,148 @@
+﻿<Window x:Class="CS_Caixa.WinGerarQrCode"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Gerar QR Code - Notas" Height="488" Width="775" ShowInTaskbar="False" WindowStartupLocation="CenterScreen" WindowStyle="ToolWindow" Loaded="Window_Loaded" ResizeMode="NoResize" >
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FF39CBDE" Offset="0" />
+            <GradientStop Color="#FFB5E4EA" Offset="0.285" />
+        </LinearGradientBrush>
+    </Window.Background>
+    <Grid>
+        <GroupBox Header="Consultar por Livro e Ato" Height="76" Margin="10,101,550,0" Name="groupBox1" VerticalAlignment="Top">
+            <Grid>
+                <Button Background="{x:Null}" Click="btnConsultar_Click" Content="_Consultar" Cursor="Hand" Height="41" Margin="122,10,0,0" Name="btnConsultar" TabIndex="2" VerticalAlignment="Top" HorizontalAlignment="Left" Width="75" />
+                <TextBox CharacterCasing="Upper" MaxLength="5" Height="23" IsEnabled="True" Margin="5,24,0,0" MaxLines="3" x:Name="txtLivro" TabIndex="0" VerticalAlignment="Top" Visibility="Visible" PreviewKeyDown="txtLivro_PreviewKeyDown" HorizontalAlignment="Left" Width="53"/>
+                <Label Content="Livro:" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Top" Height="24"/>
+                <TextBox CharacterCasing="Upper" Height="23" IsEnabled="True" Margin="63,24,0,0" MaxLength="3" MaxLines="3" x:Name="txtAto" TabIndex="1" VerticalAlignment="Top" Visibility="Visible" PreviewKeyDown="txtAto_PreviewKeyDown" HorizontalAlignment="Left" Width="53"/>
+                <Label Content="Ato:" HorizontalAlignment="Left" Margin="63,0,0,0" VerticalAlignment="Top" Height="24"/>
+            </Grid>
+        </GroupBox>
+        <DataGrid AllowDrop="False" AlternatingRowBackground="#FF8DE1FF" AlternationCount="2" AutoGenerateColumns="False" Background="{x:Null}" CanUserResizeRows="False" ClipboardCopyMode="ExcludeHeader" GridLinesVisibility="None" HeadersVisibility="All" Height="218" HorizontalScrollBarVisibility="Auto" IsReadOnly="true" IsTabStop="True" Margin="10,0,12,16" Name="dataGridConsulta" RowBackground="White" SelectionMode="Single" SelectionUnit="FullRow" UseLayoutRounding="True" VerticalAlignment="Bottom" >
+            <DataGrid.CellStyle>
+                <Style TargetType="DataGridCell">
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="#FF0086FF" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.CellStyle>
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Path=IdAto}" CanUserResize="False" Header="Ato" Visibility="Hidden" Width="50" />
+                <DataGridTextColumn x:Name="colData" Binding="{Binding Path=Data, StringFormat=dd/MM/yyyy}" CanUserResize="False" Header="Data" Width="80" IsReadOnly="true"/>
+                <DataGridTextColumn x:Name="colLivro" Binding="{Binding Path=Livro}" CanUserResize="False" Header="Livro" Width="80" IsReadOnly="true"/>
+                <DataGridTextColumn x:Name="colFolhasInicio" Binding="{Binding Path=FolhasInicio}" CanUserResize="False" Header="Folhas Início" Width="80"  IsReadOnly="true"/>
+                <DataGridTextColumn x:Name="colFolhasFim" Binding="{Binding Path=FolhasFim}" CanUserResize="False" Header="Folhas Fim" Width="80"  IsReadOnly="true"/>
+                <DataGridTextColumn x:Name="colAto" Binding="{Binding Path=Ato}" CanUserResize="False" Header="Ato" Width="60" IsReadOnly="true" />
+                <DataGridTextColumn x:Name="colNatureza" Binding="{Binding Path=Natureza}" CanUserResize="False" Header="Natureza" Width="200" IsReadOnly="true" />
+                <DataGridTextColumn x:Name="colSelo" Binding="{Binding Path=Selo}" CanUserResize="False" Header="Selo" Width="80" IsReadOnly="true" />
+                <DataGridTextColumn x:Name="colAleatorio" Binding="{Binding Path=Aleatorio}" CanUserResize="False" Header="Aleatório" Width="60" IsReadOnly="true" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <GroupBox Header="Consulta por Data" Height="76" Margin="224,101,249,0" x:Name="groupBox1_Copy" VerticalAlignment="Top">
+            <Grid>
+                <Button Background="{x:Null}" Click="btnConsultarData_Click" Content="_Consultar" Cursor="Hand" Height="41" Margin="209,10,0,0" x:Name="btnConsultarData" TabIndex="5" VerticalAlignment="Top" HorizontalAlignment="Left" Width="73" />
+                <DatePicker Height="23" Margin="108,21,0,0" x:Name="datePickerdataConsultaFim" SelectedDateChanged="datePickerdataConsultaFim_SelectedDateChanged" TabIndex="4" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5"  PreviewKeyDown="datePickerdataConsultaFim_PreviewKeyDown" HorizontalAlignment="Left" Width="96"/>
+                <DatePicker Height="23" Margin="4,21,0,0" x:Name="datePickerdataConsulta" SelectedDateChanged="datePickerdataConsulta_SelectedDateChanged" TabIndex="3" VerticalAlignment="Top" DisplayDateStart="1/1/2016" PreviewKeyDown="datePickerdataConsulta_PreviewKeyDown" HorizontalAlignment="Left" Width="99"/>
+                <Label Content="Data Início:" HorizontalAlignment="Left" Margin="4,-3,0,0" VerticalAlignment="Top" Height="24"/>
+                <Label Content="Data Fim:" HorizontalAlignment="Left" Margin="108,-3,0,0" VerticalAlignment="Top" Height="24"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="Tipo de Ato" Height="76" Margin="10,10,12,0" x:Name="groupBox1_Copy1" VerticalAlignment="Top">
+            <Grid>
+                <RadioButton Content="Escritura" IsChecked="True" Name="rbEscritura" HorizontalAlignment="Left" Margin="10,19,0,0" VerticalAlignment="Top" Width="65"/>
+                <RadioButton Content="Cert. de Escritura" Name="rbCertidaoEscritura" HorizontalAlignment="Left" Margin="80,19,0,0" VerticalAlignment="Top" Width="109"/>
+                <RadioButton Content="Procuração" Name="rbProcuracao" HorizontalAlignment="Left" Margin="194,19,0,0" VerticalAlignment="Top" Width="83"/>
+                <RadioButton Content="Cert. de Procuração" Name="rbCertidaoProcuracao" HorizontalAlignment="Left" Margin="282,19,0,0" VerticalAlignment="Top" Width="124"/>
+                <RadioButton Content="Cert. Eletrônica" Name="rbCertidaoEletronica" HorizontalAlignment="Left" Margin="622,19,0,0" VerticalAlignment="Top" Width="101"/>
+                <RadioButton Content="Testamento" x:Name="rbTestamento" HorizontalAlignment="Left" Margin="411,19,0,0" VerticalAlignment="Top" Width="84"/>
+                <RadioButton Content="Cert. Testamento" x:Name="rbCertidaoTestamento" HorizontalAlignment="Left" Margin="500,19,0,0" VerticalAlignment="Top" Width="108"/>
+            </Grid>
+        </GroupBox>
+        <Button Background="{x:Null}" Click="btnGerar_Click" Content="QR Code" Cursor="Hand" Height="42" Margin="660,131,12,0" x:Name="btnGerar" TabIndex="6" VerticalAlignment="Top" />
+        <ComboBox Height="23" Margin="525,150,0,0" x:Name="cmbModelo" SelectedIndex="0" TabIndex="4" Width="117" HorizontalAlignment="Left" VerticalAlignment="Top" Background="#FFF5F6F8">
+            <ComboBoxItem Content="Altura 30 cm" />
+            <ComboBoxItem Content="Altura 29,50 cm" />
+            <ComboBoxItem Content="Altura 29 cm" IsSelected="True"/>
+            <ComboBoxItem Content="Altura 28,50 cm" />
+            <ComboBoxItem Content="Altura 28 cm" />
+            <ComboBoxItem Content="Altura 27,50 cm" />
+            <ComboBoxItem Content="Altura 27 cm" />
+            <ComboBoxItem Content="Altura 26,50 cm" />
+            <ComboBoxItem Content="Altura 26 cm" />
+            <ComboBoxItem Content="Altura 25,50 cm" />
+            <ComboBoxItem Content="Altura 25 cm" />
+            <ComboBoxItem Content="Altura 24,50 cm" />
+            <ComboBoxItem Content="Altura 24 cm" />
+            <ComboBoxItem Content="Altura 23,50 cm" />
+            <ComboBoxItem Content="Altura 23 cm" />
+            <ComboBoxItem Content="Altura 22,50 cm" />
+            <ComboBoxItem Content="Altura 22 cm" />
+            <ComboBoxItem Content="Altura 21,50 cm" />
+            <ComboBoxItem Content="Altura 21 cm" />
+            <ComboBoxItem Content="Altura 20,50 cm" />
+            <ComboBoxItem Content="Altura 20 cm" />
+            <ComboBoxItem Content="Altura 19,50 cm" />
+            <ComboBoxItem Content="Altura 19 cm" />
+            <ComboBoxItem Content="Altura 18,50 cm" />
+            <ComboBoxItem Content="Altura 18 cm" />
+            <ComboBoxItem Content="Altura 17,50 cm" />
+            <ComboBoxItem Content="Altura 17 cm" />
+            <ComboBoxItem Content="Altura 16,50 cm" />
+            <ComboBoxItem Content="Altura 16 cm" />
+            <ComboBoxItem Content="Altura 15,50 cm" />
+            <ComboBoxItem Content="Altura 15 cm" />
+            <ComboBoxItem Content="Altura 14,50 cm" />
+            <ComboBoxItem Content="Altura 14 cm" />
+            <ComboBoxItem Content="Altura 13,50 cm" />
+            <ComboBoxItem Content="Altura 13 cm" />
+            <ComboBoxItem Content="Altura 12,50 cm" />
+            <ComboBoxItem Content="Altura 12 cm" />
+            <ComboBoxItem Content="Altura 11,50 cm" />
+            <ComboBoxItem Content="Altura 11 cm" />
+            <ComboBoxItem Content="Altura 10,50 cm" />
+            <ComboBoxItem Content="Altura 10 cm" />
+            <ComboBoxItem Content="Altura 9,50 cm" />
+            <ComboBoxItem Content="Altura 9 cm" />
+            <ComboBoxItem Content="Altura 8,50 cm" />
+            <ComboBoxItem Content="Altura 8 cm" />
+            <ComboBoxItem Content="Altura 7,50 cm" />
+            <ComboBoxItem Content="Altura 7 cm" />
+            <ComboBoxItem Content="Altura 6,50 cm" />
+            <ComboBoxItem Content="Altura 6 cm" />
+            <ComboBoxItem Content="Altura 5,50 cm" />
+            <ComboBoxItem Content="Altura 5 cm" />
+        </ComboBox>
+        <CheckBox Name="ckbEmTest" IsChecked="False" Content="EM TESTº" HorizontalAlignment="Left" Margin="660,111,0,0" VerticalAlignment="Top"/>
+        <ComboBox Height="23" Margin="525,111,0,0" x:Name="cmbEsquerda" SelectedIndex="0" TabIndex="4" Width="117" HorizontalAlignment="Left" VerticalAlignment="Top" Background="#FFF5F6F8">
+            <ComboBoxItem Content="Esquerda 2 cm" />
+            <ComboBoxItem Content="Esquerda 2,50 cm" />
+            <ComboBoxItem Content="Esquerda 3 cm" />
+            <ComboBoxItem Content="Esquerda 3,50 cm" />
+            <ComboBoxItem Content="Esquerda 4 cm" IsSelected="True"/>
+            <ComboBoxItem Content="Esquerda 4,50 cm" />
+            <ComboBoxItem Content="Esquerda 5 cm" />
+            <ComboBoxItem Content="Esquerda 5,50 cm" />
+            <ComboBoxItem Content="Esquerda 6 cm" />
+            <ComboBoxItem Content="Esquerda 6,50 cm" />
+            <ComboBoxItem Content="Esquerda 7 cm" />
+            <ComboBoxItem Content="Esquerda 7,50 cm" />
+            <ComboBoxItem Content="Esquerda 8 cm" />
+            <ComboBoxItem Content="Esquerda 8,50 cm" />
+            <ComboBoxItem Content="Esquerda 9 cm" />
+            <ComboBoxItem Content="Esquerda 9,50 cm" />
+            <ComboBoxItem Content="Esquerda 10 cm" />
+            <ComboBoxItem Content="Esquerda 10,50 cm" />
+            <ComboBoxItem Content="Esquerda 11 cm" />
+            <ComboBoxItem Content="Esquerda 11,50 cm" />
+            <ComboBoxItem Content="Esquerda 12 cm" />
+            <ComboBoxItem Content="Esquerda 12,50 cm" />
+            <ComboBoxItem Content="Esquerda 13 cm" />
+            <ComboBoxItem Content="Esquerda 13,50 cm" />
+            <ComboBoxItem Content="Esquerda 14 cm" />
+            <ComboBoxItem Content="Esquerda 14,50 cm" />
+        </ComboBox>
+    </Grid>
+</Window>
+

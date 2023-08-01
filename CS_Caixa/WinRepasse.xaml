@@ -1,0 +1,73 @@
+﻿<Window x:Class="CS_Caixa.WinRepasse"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+       Title="Repasse de Caixa" Height="396" Width="604" ShowInTaskbar="False" Icon="/CS_Caixa;component/Images/Icone48.ico" ResizeMode="NoResize" Background="#FF85AAB2" Loaded="Window_Loaded" WindowStartupLocation="CenterOwner" PreviewKeyDown="Window_PreviewKeyDown">
+    <Grid>
+        <GroupBox Header="Dados da Repasse" Height="132" Margin="9,12,8,0" Name="groupBox1" VerticalAlignment="Top" PreviewKeyDown="groupBox1_PreviewKeyDown">
+            <Grid Name="GridAdicionar">
+                <DatePicker Height="25" HorizontalAlignment="Left" Margin="6,24,0,0" Name="datePickerData" VerticalAlignment="Top" Width="102" TabIndex="1" SelectedDateChanged="datePickerData_SelectedDateChanged"/>
+                <TextBox Height="25" Margin="128,24,0,0" Name="txtValorRepasse" VerticalAlignment="Top" Text="0,00" HorizontalAlignment="Left" Width="86" TabIndex="2" FontSize="14" PreviewKeyDown="txtValorRepasse_PreviewKeyDown" GotFocus="txtValorRepasse_GotFocus" LostFocus="txtValorRepasse_LostFocus"  />
+                <TextBox Height="23" Margin="6,72,6,0" Name="txtDescricao" Focusable="False" VerticalAlignment="Top" CharacterCasing="Upper" MaxLength="255" TabIndex="6" Background="#FFF5E3E3" />
+                <Label Content="Data:" Height="28" HorizontalAlignment="Left" Margin="2,0,0,0" Name="label1" VerticalAlignment="Top" Width="106" />
+                <Label Content="Valor Repasse:" Height="28" HorizontalAlignment="Left" Margin="124,0,0,0" Name="label4" VerticalAlignment="Top" Width="86" />
+                <Label Content="Descrição:" Height="28" HorizontalAlignment="Left" Margin="3,48,0,0" Name="label5" VerticalAlignment="Top" Width="94" />
+                <TextBox Height="25" Focusable="False" Margin="229,24,0,0" x:Name="txtValorDinheiroCaixa" VerticalAlignment="Top" Text="0,00" HorizontalAlignment="Left" Width="86" TabIndex="3" FontSize="14" Background="#FFF5E3E3"  />
+                <Label Content="Valor Caixa:" Height="28" HorizontalAlignment="Left" Margin="226,0,0,0" x:Name="label4_Copy" VerticalAlignment="Top" Width="86" />
+                <TextBox Height="25" Focusable="False" Margin="477,24,0,0" x:Name="txtValorRestante" VerticalAlignment="Top" Text="0,00" HorizontalAlignment="Left" Width="86" TabIndex="5" FontSize="14" Background="#FFF5E3E3" />
+                <Label Content="Valor Restante:" Height="28" HorizontalAlignment="Left" Margin="472,0,0,0" x:Name="label4_Copy1" VerticalAlignment="Top" Width="97" />
+                <DatePicker Height="25" HorizontalAlignment="Left" Margin="370,24,0,0" x:Name="datePickerDataPgRestante" VerticalAlignment="Top" Width="102" TabIndex="4" SelectedDateChanged="datePickerDataPgRestante_SelectedDateChanged"/>
+                <Label Content="Data PG Restante:" Height="28" HorizontalAlignment="Left" Margin="366,0,0,0" x:Name="label1_Copy" VerticalAlignment="Top" Width="106" />
+            </Grid>
+        </GroupBox>
+        <DataGrid AllowDrop="False" AlternatingRowBackground="#FF8DE1FF" AlternationCount="2" AutoGenerateColumns="False" Background="{x:Null}" CanUserResizeRows="False" ClipboardCopyMode="ExcludeHeader" GridLinesVisibility="None" HeadersVisibility="All" HorizontalScrollBarVisibility="Auto" IsReadOnly="True" IsTabStop="True" Name="dataGrid1" RowBackground="White" SelectionMode="Single" SelectionUnit="FullRow" UseLayoutRounding="True" Height="138" VerticalAlignment="Bottom" PreviewKeyDown="dataGrid1_PreviewKeyDown"  SelectionChanged="dataGrid1_SelectionChanged">
+            <DataGrid.CellStyle>
+                <Style TargetType="DataGridCell">
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="#FF0086FF" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.CellStyle>
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Path=RepasseCaixaId}" CanUserResize="False" Header="Cod" Visibility="Hidden" Width="50" />
+                <DataGridTextColumn Binding="{Binding Path=DataCaixa, StringFormat=dd/MM/yyyy}" CanUserResize="False" Header="Data" Width="70" />
+                <DataGridTextColumn Binding="{Binding Path=Descricao}" CanUserResize="False" Header="Descrição" Width="525" />
+            </DataGrid.Columns>
+            <DataGrid.ContextMenu>
+                <ContextMenu ForceCursor="True" Name="menu" Selector.IsSelected="True">
+                    <MenuItem Click="MenuItemExcluir_Click" Header="Excluir" Name="MenuItemExcluir">
+                        <MenuItem.Icon>
+                            <Image Source="/CS_Caixa;component/Images/1425064473_DeleteRed.png" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Click="MenuItemAlterar_Click" Header="Alterar" Name="MenuItemAlterar">
+                        <MenuItem.Icon>
+                            <Image Source="/CS_Caixa;component/Images/modify.png" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                   
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+        </DataGrid>
+        <GroupBox Header="Consulta" Height="69" HorizontalAlignment="Left" Margin="9,144,0,0" Name="groupBoxConsulta" VerticalAlignment="Top" Width="337">
+            <Grid>
+                <DatePicker Height="25" HorizontalAlignment="Left" Margin="6,17,0,0" Name="datePickerDataInicio" VerticalAlignment="Top" Width="102" SelectedDateChanged="datePickerDataInicio_SelectedDateChanged" />
+                <DatePicker Height="25" HorizontalAlignment="Left" Margin="122,17,0,0" Name="datePickerDataFim" VerticalAlignment="Top" Width="101" SelectedDateChanged="datePickerDataFim_SelectedDateChanged"/>
+                <Button Content="Consultar" Height="34" HorizontalAlignment="Left" Margin="245,6,0,0" Name="btnConsultar" VerticalAlignment="Top" Width="75" Click="btnConsultar_Click" Cursor="Hand" />
+                <Label Content="Data Início:" Height="28" HorizontalAlignment="Left" Margin="2,-6,0,0" Name="label6" VerticalAlignment="Top" Width="91" />
+                <Label Content="Data Fim:" Height="28" HorizontalAlignment="Left" Margin="117,-6,0,0" Name="label7" VerticalAlignment="Top" Width="91" />
+            </Grid>
+        </GroupBox>
+        <Button Content="_Novo" Cursor="Hand" Height="52" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="478,155,0,0" Name="btnNovo" VerticalAlignment="Top" VerticalContentAlignment="Bottom" Width="110" Click="btnNovo_Click" IsEnabled="False">
+            <Button.Background>
+                <ImageBrush ImageSource="/CS_Caixa;component/Images/1425064642_Create.png" Stretch="Uniform" TileMode="None" />
+            </Button.Background>
+        </Button>
+        <Button Content="_Salvar" Cursor="Hand" Height="52" HorizontalAlignment="Left" HorizontalContentAlignment="Right" Margin="362,155,0,0" Name="btnSalvar" VerticalAlignment="Top" VerticalContentAlignment="Bottom" Width="110" IsEnabled="False" Click="btnSalvar_Click" TabIndex="4">
+            <Button.Background>
+                <ImageBrush ImageSource="/CS_Caixa;component/Images/Salvar.png" Stretch="Uniform" TileMode="None" />
+            </Button.Background>
+        </Button>
+    </Grid>
+</Window>
